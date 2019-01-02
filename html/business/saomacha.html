@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>扫码查</title>
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/saomacha.css">
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">扫码查</h1>
+		</header>
+		<div class="cont">
+			<div class="box">
+				<ul>
+					<script type="text/template" id="tmp">
+						<% for (var i=0,l=info.length;i<l;i++) {%>
+							<li><span class="l"><%= info[i].title%></span><span class="r"><%= info[i].value%></span></li>
+						<% } %>
+					</script>
+				</ul>
+			</div>			
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/template-native.js"></script>
+	<script>		
+		$(function(){
+			mui.init({
+			});		
+			var url_mh=localStorage.url_mh;//获取门户后台地址
+			mui.plusReady(function() {
+				var ws=plus.webview.currentWebview();
+				var result=ws.result;//扫码传过来的信息
+				mui.toast(result)
+				$.ajax({
+					type:'get',
+					url:url_mh+'/jqzw/server',
+					data:{service:"InventoryClientService",params:result,method:"getAssetCardInfo"},
+					dataType:'json',
+					success:function(info){
+						if(info.type == 'success'){
+							var html=template('tmp',{info:info.value});
+							$('.box ul').html(html);
+						}
+					},
+					error:function(){
+						plus.nativeUI.alert("扫描无结果");
+					}
+				})
+			});
+		});
+		
+		
+	</script>
+</html>

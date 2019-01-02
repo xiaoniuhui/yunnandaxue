@@ -1,0 +1,325 @@
+<!--
+	作者：369126371@qq.com
+	时间：2016-10-26
+	描述：资产借用
+-->
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>资产借用</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../../css/mui.min.css">
+	</head>
+<style>
+	.mui-content{
+		background:#fff;
+		overflow: auto;
+	}
+	.headcount{
+			background-color: rgb(44,195,255);
+		}
+	.mui-table-view-cell:after {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0px;
+		height: 1px;
+		content: '';
+		-webkit-transform: scaleY(.5);
+		transform: scaleY(.5);
+		background-color: #DCDCDC;				
+	}
+	.mui-table-view-cell{
+		color: #676767;
+		font-size: 14px;
+	}
+	.lititle{
+		width: 100%;
+		font-size: 14px;
+	}
+	.lidivone{
+		width: 40%;
+		text-align: right;
+		float: left;
+	}
+	.lidivtwo{
+		width: 60%;
+		float: left;
+	}
+	.lidivtwo input{
+		font-size: 14px;
+	}
+	
+	.buttondiv{
+		width: 100%;
+		height: 50px;
+	}
+	.buttonwebs{
+		width: 98%;
+		margin-left: 1%;
+		height: 45px;
+		background-color: rgb(44,195,255);
+		color: #FFFFFF;
+		font-size: 18px;
+		letter-spacing: 5px;
+		border: 1px solid rgb(90,200,255);
+	}
+	
+	.inputluru{
+		width: 90%;
+		border: 1px #CCCCCC solid;
+	}
+   .hidediv{
+		display: none;
+	}
+	input[type=text]{
+		margin-bottom: 0px;
+		height: 25px;
+		line-height: 20px;
+	}
+	.flstdcode,.flrecid{
+		display: none;
+	}
+	.fltitle{
+		height: 50px;
+		margin-top:5px ;
+		width: 100%;
+		text-align: center;
+		font-size: 16px;
+		letter-spacing: 5px;
+		color: #FFFFFF;
+		background-color: rgb(44,195,255);.
+		line-height: 50px;
+		padding-top: 12px;
+	}
+	.lbtitle{
+		height: 30px;
+		margin-top:5px ;
+		width: 100%;
+		text-align: center;
+		font-size: 14px;
+		letter-spacing: 5px;
+		color: #FFFFFF;
+		background-color: rgb(44,195,255);.
+		line-height: 50px;
+		padding-top: 5px;
+	}
+	.redbixu{
+		color: red;
+	}
+	.plusandjian{
+		float: left;
+		height: 16px;
+		width: 16px;
+		border-radius: 8px;
+		font-weight: 700;
+		color: #FFFFFF;
+		background-color: #666666;
+		text-align: center;
+		line-height: 16px;
+		margin-right: 10px;
+	}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav headcount">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;">
+				<span style="font-size: 15px;"></span>
+			</a>
+			<h1 class="mui-title" style="color: #FFFFFF;">资产借用登记</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded" style="margin: 5px;">
+				<ul class="mui-table-view" id="thelistul">
+					<li class="mui-table-view-cell">
+						<div class="lidivone">借出经办人：</div>
+						<div class="lidivtwo"><input class="inputluru qdht" id="BIZ_SDSFDX_JIECJBR"  type="text" readonly="readonly" /></div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="lidivone">借用人：</div>
+						<div class="lidivtwo"><input class="inputluru" id="jieyr"  type="text" readonly="readonly" /></div>
+					</li>
+					<li class="mui-table-view-cell" style="display: none;">
+						<div class="lidivone">借用人：</div>
+						<div class="lidivtwo"><input class="inputluru qdht" id="BIZ_SDSFDX_JIEYR01" type="text"/></div>
+					</li>
+					<li class="mui-table-view-cell" style="display: none;">
+						<div class="lidivone">借用经办人：</div>
+						<div class="lidivtwo"><input class="inputluru" readonly="readonly" type="text"/></div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="lidivone">借出时间：</div>
+						<div class="lidivtwo"><input class="inputluru " type="text" readonly="readonly" /></div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="lidivone">预计归还时间：</div>
+						<div class="lidivtwo"><input class="inputluru qdht" id="BIZ_SDSFDX_YUJGHSJ"  type="text" readonly="readonly" /></div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="lidivone">借用事由：</div>
+						<div class="lidivtwo">
+							<textarea id="BIZ_SDSFDX_JIEYSY" class="qdht" rows="2" cols="3"></textarea>
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="lidivone">设备附件：</div>
+						<div class="lidivtwo">
+							<textarea id="BIZ_SDSFDX_SHEBFJ" class="qdht" rows="2" cols="3"></textarea>
+						</div>
+					</li>
+					<li class="mui-table-view-cell" id="clickCard">
+						<span style="font-size: 16px; font-weight: 700;">待借用资产信息：</span>
+					</li>
+					
+				</ul>
+				<div class="buttondiv">
+					<button class="buttonwebs" id="comtodnaButton">确定</button>
+				</div>
+			</div>
+		</div>
+		
+		
+		<script src="../../js/jquery-1.11.3.js"></script>
+		<script type="text/javascript" src="../../js/jqzw_server.js" ></script>
+		<script type="text/javascript" src="../../js/mui.min.js" ></script>
+		<script type="text/javascript" src="../../js/laydate/laydate.js" ></script>
+		<script type="text/javascript" src="../../js/layer/layer.js" ></script>
+		<script type="text/javascript" src="../../js/Util.js"></script>
+		<script>
+			
+		window.addEventListener('refreshPerson', function(event) {
+			if(event.detail.selectprorecid != "") {
+				$("#jieyr").val(event.detail.selectperson);
+				$("#BIZ_SDSFDX_JIEYR01").val(event.detail.selectpersonid);
+			}
+		});
+		
+		mui.init();
+		mui.plusReady(function(){ 
+			var AssetJieYong = plus.webview.getWebviewById("AssetJieYong");
+			var assetcards = AssetJieYong.assetcards;
+			
+			var dd = new Date();
+			var y = dd.getFullYear();
+			var m = dd.getMonth()+1;//获取当前月份的日期
+			if(m<10){
+				m="0"+m.toString()
+			}
+			var d = dd.getDate(); 
+			if(d<10){
+				d="0"+d.toString()
+			}
+			$("#BIZ_SDSFDX_YUJGHSJ").val(y+"-"+m+"-"+d);
+			$("#BIZ_SDSFDX_JIECJBR").val(localStorage.title);
+			
+			setDivAssetCard(assetcards);
+			
+			document.getElementById("jieyr").addEventListener('tap', function() {
+				mui.openWindow({
+					url: "../basedata/selectPerson.html",
+					id: 'selectPerson',
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					},
+					extras: {
+						hrefid: plus.webview.currentWebview().id,
+						callback: 'refreshPerson'
+					}
+				});
+			});
+		});
+		
+		$(function(){
+			$("#comtodnaButton").click(function(){
+				var AcceptBorrow = new Object();
+				var flags = true;
+				$(".qdht").each(function(){
+					if($(this).val() == ""){
+						var tiptext = $(this).parent().siblings(".lidivone").text();
+						mui.toast(tiptext+"不能为空！");
+						flags = false;
+						return false;
+					}
+					var shuxing = $(this).attr("id");
+					AcceptBorrow[shuxing] = replaceReturn($(this).val());
+				});
+				if(!flags){
+					return false
+				}
+				//如果循环有未填写的表头将会直接返回 并给出提示
+
+				var AssetJieYongobj = plus.webview.getWebviewById("AssetJieYong");
+				var assetcards = AssetJieYongobj.assetcards;
+				
+				var Assetsjson = "{"+"'AcceptBorrow':'"+JSON.stringify(AcceptBorrow)+"','AssetCards':'"+JSON.stringify(assetcardsnew)+"'}";
+				$jqzw_server.callServer('SdSfDxAssetBorrowService','saveAssetBorrow',Assetsjson).success(function(iv){
+					if(iv || iv == 'true'){
+						mui.toast("保存成功！");
+						mui.back();
+					}else{
+						mui.toast("保存失败！")
+					}
+				}).error(function(iv){
+					mui.toast("保存失败！")
+					console.log(iv);
+				}).unlogin(function(iv){
+					mui.toast("登录超时，可重新点击上一次按钮");
+				});
+			});
+		});
+		
+		;!function(){
+			laydate.skin('yalan');
+			laydate({
+			   elem: '#BIZ_SDSFDX_YUJGHSJ',
+			   isclear: false, //是否显示清空
+			   issure: false //是否显示确定
+			});
+		}();
+		
+		var assetcardsnew = [];
+		function setDivAssetCard(assetcards){
+			for(var i in assetcards){
+				var objnew = new Object();
+				objnew["recid"] = assetcards[i].recid;
+				objnew["billdefine"] = assetcards[i].billdefine;
+				objnew["objectid"] = assetcards[i].objectid;
+				assetcardsnew.push(objnew);
+				var html = '<div class="mui-card" style="margin:5px" id="assetcards'+i+'">'
+					+'<ul class="mui-table-view">'
+					+'<li class="mui-table-view-cell mui-collapse">'
+						+'<a class="mui-navigate-right" href="#">'
+							+'<div class="plusandjian">+</div>'+assetcards[i].zicbh+" "+assetcards[i].zicmc
+						+'</a>'
+						+'<div class="mui-collapse-content">'
+							+'<div class="lititle">'
+								+'<div class="sumdiv" id="zhanshidivshow">'
+								+'<ul class="mui-table-view">'
+									+'<li class="mui-table-view-cell zicbh"><div class="lititle"><div class="lidivone">资产编号：</div><div class="lidivtwo">'+assetcards[i].zicbh+'</div></div></li>'
+									+'<li class="mui-table-view-cell zicmc"><div class="lititle"><div class="lidivone">资产名称：</div><div class="lidivtwo">'+assetcards[i].zicmc+'</div></div></li>'
+									+'<li class="mui-table-view-cell guigxh"><div class="lititle"><div class="lidivone">规格型号：</div><div class="lidivtwo">'+assetcards[i].guigxh+'</div></div></li>'
+									+'<li class="mui-table-view-cell zicmc">'
+										+'<div class="lititle">'
+											+'<div class="lidivone">取得日期：</div>'
+											+'<div class="lidivtwo">'+formatData(assetcards[i].qudrq)+'</div>'
+										+'</div>'
+									+'</li>'
+									+'<li class="mui-table-view-cell jiaz"><div class="lititle"><div class="lidivone">价值：</div><div class="lidivtwo">'+assetcards[i].jiaz+'</div></div></li>'
+									+'<li class="mui-table-view-cell shul"><div class="lititle"><div class="lidivone">责任人：</div><div class="lidivtwo">'+assetcards[i].shiyr+'</div></div></li>'
+								+'</ul></div>';
+				$("#thelistul").append(html);
+			}
+		}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>登录页</title>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/login.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="w">
+			<img src="../../image/back@1x.png" alt="" id="backBtn" class="mui-action-back">
+			<div class="loginBox">
+				<div class="welcom">欢迎登录</div>
+				<div class="toggleBOX active" id="zhLogin">
+					<div class="account">
+						<input type="text" placeholder="请输入账号" id="username">
+					</div>
+					<div class="pwd">
+						<input type="password" placeholder="请输入密码" id="password">
+					</div>
+				</div>
+				<div class="toggleBOX" id="mmLogin">
+					<div class="account">
+						<input type="text" placeholder="请输入手机号" id="tellphone">
+					</div>
+					<div class="yzm">
+						<input type="text" placeholder="请输入验证码" id="yzmcheck">
+						<span id="yzmBtn">获取验证码</span>
+					</div>
+				</div>				
+			</div>
+			<span class="toggle">短信验证码登录</span>
+			<span class="toregister">注册</span>
+			<!-- <span id="forget">忘记密码</span> -->
+			<div class="loginBtn">登录</div>
+			
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript"> 
+			var url=localStorage.url; 	//设置url地址
+			var url_mh=localStorage.url_mh; //资产后台地址
+			mui.init({
+				beforeback: function() {
+			　　　　 //获得父页面的webview
+					var list = plus.webview.currentWebview().opener();
+			　　　　 //触发父页面的自定义事件(refresh),从而进行刷新
+					mui.fire(list, 'refresh');
+					//返回true,继续页面关闭逻辑
+					return true;
+				},
+				keyEventBind: {//返回设置
+					backbutton: false
+				},
+				swipeBack: false,
+				statusBarBackground: '#f7f7f7',
+				gestureConfig: {  
+					doubletap: true
+				}
+			});
+			mui.plusReady(function() {
+								
+			});
+			
+			$(function(){
+				$('.toggle').on('click',function(){
+					if($(this).text() == '短信验证码登录'){
+						$(this).text('账户密码登录');
+						$('#zhLogin').removeClass('active');
+						$('#mmLogin').addClass('active');
+					}else if($(this).text() == '账户密码登录'){
+						$(this).text('短信验证码登录');
+						$('#zhLogin').addClass('active');
+						$('#mmLogin').removeClass('active');
+					}
+				});
+				//获取验证码
+				$('#yzmBtn').on('click',function(){
+					var tellphone = $("#tellphone").val();
+					if( tellphone ==''){
+						mui.toast('手机号码不能为空');
+						return;
+					}
+					var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
+					if (!myreg.test(tellphone)) {
+						mui.toast('您输入的手机格式有误，请重新输入');
+						return;
+					}
+					var _this=$(this);
+					if(_this.hasClass('daoji')){
+						return;
+					}
+					var time=60;			
+					$(this).addClass('daoji').text(time+'秒后点击重新发送验证码');
+					var timeId=setInterval(function(){
+						time--;
+						if (time < 1 ) {
+							window.clearInterval(timeId);
+							_this.removeClass('daoji').text('获取验证码');
+							return;
+						}
+						_this.text(time + '秒后点击重新发送验证码');
+					},1000);
+					$.ajax({
+						url:url+'/jqzw/sverification',
+						type:'get',
+						data:{phone:tellphone,SMSverificateId:"SMSverificateId"},
+						dataType:'json',						
+						success:function(info){
+							if(info.type == 'success'){
+								mui.toast(info.value)
+							}
+						},
+						error:function(err){
+							console.log(JSON.stringify(err))
+						}
+					});
+					
+				});
+				//注册
+				$('.toregister').click(function(){
+					mui.openWindow({
+						url: "../base/register.html",
+						styles: {
+							popGesture: 'close',
+							scrollIndicator: "none"
+						},						
+						waiting: {
+							autoShow: true
+						},
+						extras:{		
+							
+						}
+					})
+				})
+				$(".loginBtn").click(function(){
+					if($('.toggle').text() == '短信验证码登录'){
+						//账号密码登录
+						var username = $("#username").val();
+						var topassword = $("#password").val();
+						if( username =='' || topassword==''){
+							mui.toast('账号或密码不能为空');
+							return;
+						}
+						$.ajax({
+							type:'get',
+							data:{username:username,password:topassword},
+							dataType:'json',
+							url:url+'/jqzw/login/log',
+							beforeSend:function(){
+								plus.nativeUI.showWaiting('正在登录');
+							},
+							success:function(info){
+								if(info.type=='success'){
+									mui.toast('登录成功');
+									localStorage.wid=info.value.user.wid;
+									localStorage.userId=info.value.user.id;
+									localStorage.username=info.value.user.title;
+									localStorage.stdcode=info.value.user.name;
+									localStorage.dept=info.value.user.dept;
+									localStorage.yonghlxcode=info.value.user.yonghlxcode;
+									localStorage.dy_roles=JSON.stringify(info.value.user.roles);
+									localStorage.mh_roles=JSON.stringify(info.value.user.roles);
+									//跳转,返回上一页
+									mui.back();	
+								}else{
+									mui.toast(info.value);
+								}
+							},
+							error:function(err){
+								console.log(err);
+							},
+							complete:function(){
+								plus.nativeUI.closeWaiting();
+							}
+						});
+					}else if ($('.toggle').text() == '账户密码登录'){
+						//短信验证登录
+						var tellphone = $("#tellphone").val();
+						if( tellphone ==''){
+							mui.toast('手机号码不能为空');
+							return;
+						}
+						var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
+						if (!myreg.test(tellphone)) {
+							mui.toast('您输入的手机格式有误，请重新输入');
+							return;
+						}
+						var yzm=$('#yzmcheck').val();
+						if(yzm == ''){
+							mui.toast('验证码不能为空');
+							return;
+						}
+						$.ajax({
+							type:'get',
+							data:{phone:tellphone,SmsCheckCode:yzm},
+							dataType:'json',
+							url:url+'/jqzw/login/log',
+							beforeSend:function(){
+								plus.nativeUI.showWaiting('正在登录');
+							},
+							success:function(info){
+								if(info.type=='success'){
+									mui.toast('登录成功');
+									localStorage.wid=info.value.user.wid;
+									localStorage.userId=info.value.user.id;
+									localStorage.username=info.value.user.title;
+									localStorage.stdcode=info.value.user.name;
+									localStorage.dept=info.value.user.dept;
+									localStorage.yonghlxcode=info.value.user.yonghlxcode;
+									localStorage.dy_roles=JSON.stringify(info.value.user.roles);
+									localStorage.mh_roles=JSON.stringify(info.value.user.roles);
+									//跳转,返回上一页
+									mui.back();	
+								}else{
+									mui.toast(info.value);
+								}
+							},
+							error:function(err){
+								console.log(err);
+							},
+							complete:function(){
+								plus.nativeUI.closeWaiting();
+							}
+						});
+					}
+					
+					
+					
+				});
+				
+				
+			});
+		</script>
+	</body>
+</html>

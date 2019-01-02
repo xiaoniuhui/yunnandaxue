@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>机构与职能</title>
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/myMessage.css">
+		<link rel="stylesheet" href="../../css/organization.css">
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">机构与职能</h1>
+		</header>
+		<div class="cont">
+			<div class="topTab">
+				<ul>
+					<li class="active">采购管理科</li>
+					<li>实验室管理科</li>
+					<li>仪器设备管理科</li>
+					<li>办公室</li>
+				</ul>
+			</div>
+			<div class="tabCont">
+				<div class="caigou active">
+					<ul>
+						<li>贯彻执行国家采购法律法规及上级主管部门采购政策;</li>
+						<li>按学校采购管理办法和规章制度组织管理采购工作;</li>
+						<li>负责全校财政性资金采购项目的审核、报批、执行、备案等工作;</li>
+						<li>按学校采购管理办法起草、审核、报批采购合同;</li>
+						<li>参与全校采购预算编制、汇总工作;</li>
+						<li>负责办理进口设备的免税申报工作;</li>
+					</ul>
+				</div>
+				<div class="shiys">
+					<ul>
+						<li>负责实验室设施设备技术安全管理及实验室安全保障条件建设;</li>
+						<li>督促各单位做好大型设备购置可行性论证；推动大型仪器设备开放共享;</li>
+						<li>办理易制毒化学品集中申购报批手续和协助实验室做好“三废”收集、环保处置、报批、执行、备案等工作;</li>
+						<li>负责电梯等特种设备安全监管、审核、报批采购合同;</li>
+						<li>做好实验室信息数据统计上报;</li>
+						<li>配合上级主管部门，做好实验室调研;</li>
+					</ul>
+				</div>
+				<div class="yiqisheb">
+					<ul>
+						<li>贯彻执行国家、上级部门、学校关于仪器设备管理的政策精神;</li>
+						<li>负责仪器设备的验收工作;</li>
+						<li>负责仪器设备的建账、调拨、处置等日常管理;</li>
+						<li>负责仪器设备的定期账账、账物核查工作;</li>
+						<li>协调学校各类资产报表的整理和填报工作;</li>
+						<li>负责仪器设备调剂信息的公布工作;</li>
+						<li>负责教职工离校仪器设备移交审核工作;</li>
+						<li>完成上级交办的其他工作;</li>
+					</ul>
+				</div>
+				<div class="bangongshi">
+					<ul>
+						<li>实验室与设备管理处成立于2015年，前身是学校资产管理处部份职能部门，主要负责学校实验室建设与管理工作，以及教学、科研仪器设备的论证购置、验收入账、报废处置和日常管理等工作;</li>
+						<li>实验室与设备管理处下设：办公室、实验室管理科、仪器设备管理科、采购管理科;</li>
+						<li>实验室与设备管理处的服务宗旨：保障教学、服务科研、规范管理、高效运行;</li>
+						<li>处秘书：65032850;</li>
+						<li>仪器设备管理科：65033879;</li>
+						<li>实验室管理科：65031878;</li>
+						<li>采购管理科：65032850;</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script>		
+		$(function(){
+			mui.init({
+			});	
+			mui.plusReady(function() {
+			});
+			$('.topTab li').on('click',function(){
+				$(this).addClass('active').siblings('li').removeClass('active');
+				var i=$(this).index();
+				$(".tabCont>div").eq(i).addClass("active").siblings().removeClass("active");
+			});
+		});
+		
+		
+	</script>
+</html>

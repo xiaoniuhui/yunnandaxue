@@ -1,0 +1,47 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.cont{
+	background-color: #FFFFFF;
+	padding: 0 15px;
+	padding-top: 60px;
+	padding-bottom: 20px;
+	min-height: 500px;
+}
+.card{
+	height: 130px;
+	background-image: linear-gradient(-45deg, #4DA3EE 0%, #5E79E6 100%);
+	box-shadow: 0 2px 4px 0 rgba(57,96,222,0.40);
+	border-radius: 8px;
+	margin: 0 auto;
+	padding: 20px;
+	margin-bottom: 30px;
+}
+.card .title{
+	font-family: PingFangSC-Medium;
+	font-size: 16px;
+	color: #FFFFFF;
+	line-height: 16px;
+}
+.card .price{
+	font-family: PingFangSC-Regular;
+	font-size: 36px;
+	color: #FFFFFF;
+	text-align: center;
+	margin-top: 25px;
+}
+.btngrop{
+	background-image: linear-gradient(-90deg, #3DA1F2 0%, #3586EF 95%);
+	border-radius: 4px;
+	width:90%;
+	line-height: 1;
+	font-family: PingFangSC-Regular;
+	font-size: 18px;
+	color: #FFFFFF;
+	margin: 0 auto;
+	text-align: center;
+	padding: 15px 0;
+	margin-top: 60px;
+}
+	

@@ -1,0 +1,128 @@
+<!--
+	作者：宋超
+	时间：2016-10-24
+	描述：注册页
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/checkstyle.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/register.css"/>
+	</head>
+	<style>
+
+	</style>
+	<body>
+
+		<header class="head">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: #000;margin: 13px;">
+			</a>
+			<h3 class="" style="color: #000;">注册</h1>
+		</header>
+		<div class="registerList">
+			<div class="name box">
+				<div class="up">姓名</div>
+				<div class="down">
+					<input type="text" name="name" id="name" placeholder="请输入姓名" />
+				</div>
+			</div>
+			<div class="name box">
+				<div class="up">身份信息</div>
+				<div class="down sel">
+					<select type="text" name="shefxx" id="shefxx" placeholder="请选择" />
+						<option value="0101">本科</option>
+						<option value="0102">硕士</option>
+						<option value="0102">博士</option>
+						<option value="02">导师</option>
+						<option value="03" >其他</option>
+					</select>
+					<span class="icon_down"><img src="../../image/jt_x.png"/></span>
+				</div>
+			</div>
+			<div class="name box">
+				<div class="up">登陆密码</div>
+				<div class="down">
+					<input type="text" name="password" id="password" placeholder="建议使用字母、数字和符合两种及以上组合，6-20个字符" />
+				</div>
+			</div>
+			<div class="name box">
+				<div class="up">确认密码</div>
+				<div class="down">
+					<input type="text" name="quermm" id="quermm" placeholder="请在此输入密码" />
+				</div>
+			</div>
+			<div class="name box">
+				<div class="up">所属单位</div>
+				<div class="down">
+					<input type="text" name="suosdw" id="suosdw" placeholder="请输入所属单位" />
+				</div>
+			</div>
+			<div class="name box">
+				<div class="up">单位类型</div>
+				<div class="down sel">
+					<select type="text" name="danwlx" id="danwlx" placeholder="请选择" />
+						<option value="学校">学校</option>
+						<option value="企业">企业</option>
+						<option value="科研院所">科研院所</option>
+						<option value="其他">其他</option>
+					</select>
+					<span class="icon_down"><img src="../../image/jt_x.png"/></span>
+				</div>
+			</div>
+			<div class="name box">
+				<div class="up">所属部门名称</div>
+				<div class="down">
+					<input type="text" name="bummc" id="bummc" placeholder="请输入所属部门" />
+				</div>
+			</div>
+			<div class="name box">
+				<div class="up">所属单位地址</div>
+				<div class="down">
+					<input type="text" name="address" id="address" placeholder="请输入单位地址" />
+				</div>
+			</div>
+			<div class="name box">
+				<div class="up">电子邮箱</div>
+				<div class="down">
+					<input type="text" name="email" id="email" placeholder="建议使用常用邮箱，用于登陆和找回密码" />
+				</div>
+			</div>		
+			<div class="name box">
+				<div class="up">手机号码</div>
+				<div class="down">
+					<input type="text" name="phone" id="phone" placeholder="请输入手机号码" />
+				</div>
+			</div>	
+			<div class="name box">
+				<div class="up">验证码</div>
+				<div class="down">
+					<input type="text" name="yanzm" id="yanzm" placeholder="请输入验证码" />
+					<button class="yanzmbtn">获取验证码</button>
+				</div>
+			</div>
+			<button class="zhucbtn">立即注册</button>
+		</div>
+	
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery-1.11.3.js"></script>
+		<script src="../../js/jqzw_server.js"></script>
+		<script type="text/javascript" > 
+			var aniShow = "pop-in";
+			mui.init({});
+			mui.plusReady(function() {
+				
+				
+			});
+			$(function(){
+				$(".registerbut").click(function(){
+					mui.back();
+				})
+			});
+			
+		</script>
+	</body>
+</html>

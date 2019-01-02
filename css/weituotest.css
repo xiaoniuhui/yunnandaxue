@@ -1,0 +1,231 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.cont{
+	width:100%;
+	margin-top: 54px;
+}
+.topTab{
+	width:100%;
+	background-color: #FFFFFF;
+	padding:0 20px;
+	border-bottom: 1px solid #CBCBCB;
+}
+.topTab ul{
+	list-style: none;
+	overflow: hidden;
+	display: flex;
+}
+.topTab li{
+	flex: 1;
+	font-family: PingFangSC-Regular;
+	font-size: 16px;
+	color: #999999;
+	letter-spacing: 0;
+	line-height: 37px;
+	height: 37px;
+	text-align: center;
+	border-bottom: 2px solid transparent;
+}
+.topTab li.active{
+	border-bottom: 2px solid #426DFF;
+	color: #426DFF;
+}
+/* 切换内容 */
+.tabcont{
+	width:100%;
+	min-height: 700px;
+}
+.tabcont form>div{
+	width:100%;
+	min-height: 100px;
+	display: none;
+}
+form div.active{
+	display: block;
+}
+.sampleInfo{	
+	background-color: #FFFFFF;	
+	
+}
+.remind {
+	padding: 0 20px;
+	padding-top: 20px;
+	min-height: 80px;
+	border-bottom: 1px solid #CBCBCB;
+}
+.remind h6{
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #666666;
+	letter-spacing: 0;
+	line-height: 16px;
+	height: 20px;
+}
+.tianxie{
+	
+}
+.tianxie .item{
+	min-height: 60px;
+	padding: 0 20px;
+	border-bottom: 1px solid #CBCBCB;
+}
+.tianxie .item label{
+	float: left;
+	height: 16px;
+	font-size: 14px;
+	color: #666666;
+	margin-top: 21px;
+	padding-right: 10px;
+	line-height: 1;
+	border-right: 1px solid #DBDBDB;
+}
+.tianxie .item input{
+	float: left;
+	width: 250px;
+	margin-top: 10px;
+	margin-bottom: 0;
+	/* border: none;
+	border-bottom: 1px solid #ccc; */
+}
+.tianxie .itemA{
+	height: 58px;
+	padding: 0 20px;
+	border-bottom: 1px solid #CBCBCB;
+}
+.tianxie .itemA input{	
+	height: 16px;	
+	margin-top: 19px;
+	margin-right: 10px;
+	vertical-align: bottom;
+}
+.tianxie .itemA label{
+	float: left;
+	height: 16px;
+	font-size: 14px;
+	color: #666666;
+	margin-top: 21px;
+	padding-right: 10px;
+	line-height: 1;
+}
+.tianxie .item input::-webkit-input-placeholder{
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #999999;
+	line-height: 16px;
+}
+/* 课题账本信息 */
+.tianxie .item div{
+	width: 190px;
+	height: 16px;
+	float: left;
+	margin-top: 20px;
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #999999;
+	line-height: 16px;
+	padding-left: 15px;
+}
+.bottom{
+	width:100%;
+	height: 170px;
+	margin-top: 10px;
+	padding: 0 20px;
+}
+.bottom h6{
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #666666;
+	line-height: 16px;
+}
+.bottom textarea{
+	width:100%;
+	height: 120px;
+	background-color: #F4F4F4;
+}
+.bottom textarea::-webkit-input-placeholder{
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #999999;
+	line-height: 16px;
+}
+.ketiinfo{
+	background-color: #FFFFFF;
+}
+.ketiinfo .item select{
+	float: left;
+	width: 300px;
+	height: 16px;
+	/* border: none; */
+	border: 1px solid #CBCBCB !important;
+}
+
+
+
+.charge{
+	
+}
+.charge h4{
+	text-align: center;
+}
+.charge .listItem{
+	width: 100%;
+	background-color: #FFFFFF;
+	padding: 0 20px;
+	padding-top: 20px;
+	margin-bottom: 20px;
+}
+.listItem label{
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #666666;
+	line-height: 16px;
+}
+.listItem .shul{
+	margin-top: 8px;
+	padding-left: 15px;	
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #666666;
+}
+.listItem .shul input{
+	width: 100px;
+	height: 19px;
+	border: 1px solid #DEDFE0;
+}
+
+/* 按钮盒子 */
+.but-bottom{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	background-color: #b2b9b9;
+	width: 100%;
+	padding:10px 20px;
+}
+.btnsubmit{
+	background-image: linear-gradient(-90deg, #6089FF 0%, #485FFF 95%);
+	border-radius: 8px;
+	width: 40%;
+	height: 46px;
+	font-family: PingFangSC-Regular;
+	font-size: 18px;
+	color: #FFFFFF;
+	letter-spacing: 0;
+}
+.btnback{
+	font-family: PingFangSC-Regular;
+	font-size: 18px;
+	color: #DE564F;
+	border-radius: 8px;
+	width: 40%;
+	height: 46px;
+	float: right;
+}
+/* 费用合计 */
+.heji{
+	margin-bottom: 15px;
+}
+
+

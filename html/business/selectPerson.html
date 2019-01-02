@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link type="text/css" rel="stylesheet" href="../../css/common.css">
+		<link rel="stylesheet" type="text/css" href="../../css/common-asset-search.css">
+		<title></title>
+		<style type="text/css">
+			.select{
+				width: 100%;
+				margin-top: 60px;
+				overflow: hidden;
+			}
+			.left{
+				width: 70%;
+				float: left;
+				margin:0 30px;
+			}
+			button{
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">选择使用人</h1>
+		</header>
+		<div class="select">
+			<div class="mui-input-row .mui-input-search left">
+			    <input type="search" class="mui-input-clear" id="text" placeholder="">			    
+			</div>
+			<button type="button" class="mui-btn mui-btn-primary mui-btn-outlined btn">搜索</button>
+		</div>
+		<div class="nameList">
+			<ul class="mui-table-view nameHome">
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/template-native.js"></script>
+	<script src="../../js/jqzw_server.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		mui.plusReady(function(){
+			$('.select').on('click','.btn',function(){
+				$('.nameHome').empty()
+				var keyword = $('#text').val();
+				var url_mh=localStorage.url_mh;
+				var stdcode = localStorage.stdcode;
+				//默认登录,防止登录过期
+				$.ajax({
+					type:'get',
+					url:url_mh+'/jqzw/login/log',
+					dataType:'json',
+					data:{username:stdcode,token:"tryagain"},
+					success:function(info){
+						
+					},
+					error:function(err){
+						console.log(err)
+					}
+				})
+				//搜索
+				$.ajax({
+					url:url_mh+'/jqzw/server',
+					type:'get',
+					dataType:'json',
+					data:{service:"BaseDataService",params:"GAMS_JC_PERSONNEL,"+keyword,method:"findObjects_authByKeyword"},
+					success:function(info){
+//						console.log(JSON.stringify(info))
+						var len = info.value.length;
+						if(len == 0 || info.value == ''){
+							mui.toast('未搜到到数据！')
+							return false;
+						}
+						var html = '';
+						for(var i = 0; i < len; i++){
+							html += '<li class="mui-table-view-cell name" id="'+ info.value[i].RECID +'">'+ info.value[i]. STDNAME+'</li>'
+						}
+						$('.nameHome').append(html)
+					},
+					error:function(err){
+						mui.toast('请求错误！')
+					}
+				});
+				$('.nameHome').on('click','.name',function(){
+					var name = $(this).html();
+					var recid = $(this).attr('id');
+					//向父页面传值
+					var main=plus.webview.getWebviewById("dengjiDetail");
+					mui.fire(main,'change',{name:name,recid:recid});
+					mui.back();
+				})
+			})
+		})
+	</script>
+</html>

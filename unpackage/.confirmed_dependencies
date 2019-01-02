@@ -1,0 +1,1236 @@
+{
+	"index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"html/base/login.html",
+			"html/main/main.html"
+		]
+	},
+	"html/base/login.html": {
+		"resources": [
+			"js/jquery-1.11.3.js",
+			"js/jqzw_server.js",
+			"css/checkstyle.css",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"image/dl_icon_mm.png",
+			"image/dl_icon_yhmc.png",
+			"fonts/mui.ttf",
+			"image/shousxh.jpg"
+		],
+		"refer": [
+			"html/main/main.html",
+			"html/base/register.html",
+			"html/main/sutdentmain.html"
+		]
+	},
+	"html/main/main.html": {
+		"resources": [
+			"js/common.js",
+			"css/common.css",
+			"js/islogin.js",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"image/zcgl_icon_xxbd.png",
+			"image/tjgb.png",
+			"image/zcgl_icon_zcdb.png",
+			"image/zcgl_icon_smjd.png",
+			"image/zcgl_icon_zcgz.png",
+			"image/icon_ss.png",
+			"image/zcgl_icon_zccz.png",
+			"image/zcgl_icon_x_yhzx.png",
+			"image/zcgl_icon_zpgl.png",
+			"image/zcgl_icon_x_bz.png",
+			"html/main/HomeList.html",
+			"fonts/mui-icons-extra.ttf",
+			"css/icons-extra.css",
+			"js/layer/layer.js",
+			"js/layer/need/layer.css"
+		],
+		"refer": [
+			"html/Management/AssetCredit.html",
+			"html/Management/AssetsInventory.html",
+			"html/Management/AssetJiaoJie.html",
+			"html/main/ScanCreateTable.html",
+			"html/Management/AssetLingYong.html",
+			"html/base/barcode_scan.html",
+			"html/Management/AssetJiaoHui.html",
+			"html/main/SaoMaQuCard.html",
+			"html/Management/AssetJieYong.html",
+			"html/main/ScanCreateDan.html",
+			"html/Management/AssetBaoXiu.html",
+			"html/main/ScanCredit.html",
+			"html/Approval/MainApproval.html",
+			"html/daily/ItemAuthorization.html",
+			"html/Management/AssetGuiHui.html",
+			"html/Approval/MyApproval.html",
+			"html/Approval/AssetAcceptance.html",
+			"html/main/HomeList.html",
+			"html/main/UserPage.html",
+			"html/main/AnnouncementList.html",
+			"html/main/ToDoList.html",
+			"html/main/function.html",
+			"html/main/Handle.html",
+			"html/main/number.html",
+			"html/base/login.html"
+		]
+	},
+	"html/Management/AssetCredit.html": {
+		"resources": [
+			"image/icon_jt_x.png",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/laydate/skins/default/laydate.css",
+			"js/laydate/need/laydate.css",
+			"js/laydate/laydate.js",
+			"js/layer/layer.js",
+			"js/layer/need/layer.css"
+		],
+		"refer": [
+			"html/base/selectProject.html",
+			"html/base/selectDept.html",
+			"html/base/selectAddress.html",
+			"html/base/selectProjectYou.html",
+			"html/base/selectDeptYou.html",
+			"html/base/selectAddressYou.html",
+			"html/basedata/selectPerson.html",
+			"html/basedata/selectDept.html",
+			"html/basedata/selectAddress.html"
+		]
+	},
+	"html/Management/AssetsInventory.html": {
+		"resources": [
+			"css/checkstyle.css",
+			"image/pic-02.png",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/islogin.js"
+		],
+		"refer": [
+			"html/Management/chartshow.html"
+		]
+	},
+	"html/Management/chartshow.html": {
+		"resources": [
+			"js/echarts.min.js",
+			"js/common.js",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/islogin.js",
+			"css/common.css"
+		],
+		"refer": [
+			"html/Management/mingxi.html",
+			"html/Management/PyLuru.html",
+			"html/base/barcode_scan.html"
+		]
+	},
+	"html/Management/mingxi.html": {
+		"resources": [
+			"html/Management/yipandian.html",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"html/Management/yipandian.html",
+			"html/Management/weipandian.html",
+			"html/Management/pankui.html",
+			"html/Management/panying.html"
+		]
+	},
+	"html/Management/weipandian.html": {
+		"resources": [
+			"js/jquery-1.11.3.js",
+			"js/jqzw_server.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/checkstyle.css",
+			"js/layer/layer.js",
+			"js/layer/need/layer.css",
+			"js/islogin.js"
+		],
+		"refer": []
+	},
+	"html/Management/yipandian.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/islogin.js",
+			"js/layer-v3.0.3/layer/skin/default/layer.css",
+			"js/layer-v3.0.3/layer/layer.js",
+			"js/layer/layer.js",
+			"js/layer/need/layer.css"
+		],
+		"refer": []
+	},
+	"html/Management/AssetJiaoJie.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"image/icon_jt_x.png",
+			"js/laydate/skins/default/laydate.css",
+			"js/laydate/need/laydate.css",
+			"js/laydate/laydate.js",
+			"js/layer/layer.js",
+			"js/layer/need/layer.css"
+		],
+		"refer": [
+			"html/Management/Jchartshow.html"
+		]
+	},
+	"html/main/ScanCreateTable.html": {
+		"resources": [
+			"image/sm_icon.png",
+			"js/common.js",
+			"js/mui.min.js",
+			"css/common.css",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"image/icon_ss.png",
+			"css/mui.min.css",
+			"js/jqzw_server.js"
+		],
+		"refer": [
+			"html/base/barcode_scan.html",
+			"html/daily/InfoChange.html",
+			"html/Management/AssetBaoXiu.html",
+			"html/Management/UnitSwap.html",
+			"html/Management/DepartmentSwap.html",
+			"html/Management/AssetGuiHui.html",
+			"html/Approval/AcceptanceApplication.html",
+			"html/Approval/MattersApproval.html"
+		]
+	},
+	"html/Management/AssetLingYong.html": {
+		"resources": [
+			"image/icon_jt_x.png",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/laydate/skins/default/laydate.css",
+			"js/laydate/need/laydate.css",
+			"js/laydate/laydate.js",
+			"js/layer/layer.js",
+			"js/layer/need/layer.css"
+		],
+		"refer": []
+	},
+	"html/base/barcode_scan.html": {
+		"resources": [
+			"js/common.js"
+		],
+		"refer": []
+	},
+	"html/Management/AssetJiaoHui.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/laydate/skins/default/laydate.css",
+			"js/laydate/need/laydate.css",
+			"js/laydate/laydate.js",
+			"js/layer/layer.js",
+			"js/layer/need/layer.css"
+		],
+		"refer": [
+			"html/main/SaoMaQuCard.html"
+		]
+	},
+	"html/main/SaoMaQuCard.html": {
+		"resources": [
+			"js/common.js",
+			"image/sm_icon.png",
+			"css/common.css",
+			"image/icon_ss.png",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js"
+		],
+		"refer": [
+			"html/base/barcode_scan.html"
+		]
+	},
+	"html/Management/AssetJieYong.html": {
+		"resources": [
+			"image/icon_jt_x.png",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/laydate/skins/default/laydate.css",
+			"js/laydate/need/laydate.css",
+			"js/laydate/laydate.js",
+			"js/layer/layer.js",
+			"js/layer/need/layer.css",
+			"js/laydate/skins/yalan/laydate.css"
+		],
+		"refer": [
+			"html/basedata/selectPerson.html"
+		]
+	},
+	"html/main/ScanCreateDan.html": {
+		"resources": [
+			"js/common.js",
+			"image/sm_icon.png",
+			"js/mui.min.js",
+			"css/common.css",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"image/icon_ss.png",
+			"css/mui.min.css",
+			"js/jqzw_server.js"
+		],
+		"refer": [
+			"html/Management/AssetCredit.html",
+			"html/base/barcode_scan.html"
+		]
+	},
+	"html/Management/AssetBaoXiu.html": {
+		"resources": [
+			"image/zpgl_icon_zx.png",
+			"image/plus.jpg",
+			"image/icon_jt_x.png",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/laydate/laydate.js",
+			"js/layer/layer.js",
+			"js/layer/need/layer.css",
+			"js/laydate/skins/default/laydate.css",
+			"js/laydate/need/laydate.css",
+			"js/laydate/skins/yalan/laydate.css"
+		],
+		"refer": []
+	},
+	"html/base/register.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"css/checkstyle.css",
+			"image/shousxh.jpg"
+		],
+		"refer": []
+	},
+	"html/main/sutdentmain.html": {
+		"resources": [
+			"image/zcgl_icon_xxbd.png",
+			"js/common.js",
+			"image/zcgl_icon_smjd.png",
+			"css/common.css",
+			"image/zcgl_icon_zpgl.png",
+			"js/islogin.js",
+			"image/zcgl_icon_x_yhzx.png",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/jqzw_server.js"
+		],
+		"refer": [
+			"html/Management/AssetJieYong.html"
+		]
+	},
+	"html/main/ScanCredit.html": {
+		"resources": [
+			"image/sm_icon.png",
+			"js/common.js",
+			"js/mui.min.js",
+			"css/common.css",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"image/icon_ss.png",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/test.js",
+			"js/nfcty.js"
+		],
+		"refer": [
+			"html/Management/AssetCredit.html",
+			"html/base/barcode_scan.html",
+			"html/Approval/AssetAcceptance.html"
+		]
+	},
+	"html/Approval/AssetAcceptance.html": {
+		"resources": [
+			"css/checkstyle.css",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/layer/layer.js",
+			"js/layer/need/layer.css",
+			"image/icon_ss.png",
+			"js/common.js",
+			"css/common.css",
+			"image/sm_icon.png",
+			"js/nfcty.js",
+			"js/test.js",
+			"js/common1.js"
+		],
+		"refer": [
+			"html/Approval/AcceptanceApplication.html",
+			"html/base/barcode_scan.html",
+			"html/base/selectDeptYou.html",
+			"html/base/selectDeptAll.html",
+			"html/basedata/selectDept.html"
+		]
+	},
+	"html/Approval/MainApproval.html": {
+		"resources": [
+			"css/checkstyle.css",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js"
+		],
+		"refer": [
+			"html/Approval/MattersApproval.html",
+			"html/Approval/MyApproval.html"
+		]
+	},
+	"html/Approval/MattersApproval.html": {
+		"resources": [
+			"js/layer/layer.js",
+			"js/layer/need/layer.css",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"css/checkstyle.css"
+		],
+		"refer": [
+			"html/Approval/AssetTrajectory.html",
+			"html/Approval/ViewDetails.html",
+			"html/shenpi/ViewDetails.html"
+		]
+	},
+	"html/Approval/MyApproval.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/layer/layer.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"css/checkstyle.css",
+			"js/layer/need/layer.css"
+		],
+		"refer": []
+	},
+	"html/daily/ItemAuthorization.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"image/icon_ss.png",
+			"css/common.css",
+			"js/common.js",
+			"css/checkstyle.css"
+		],
+		"refer": [
+			"html/daily/AssetAuthorizationt.html",
+			"html/base/barcode_scan.html"
+		]
+	},
+	"html/daily/AssetAuthorizationt.html": {
+		"resources": [
+			"js/laydate/skins/default/laydate.css",
+			"js/laydate/need/laydate.css",
+			"js/laydate/laydate.js",
+			"js/layer/layer.js",
+			"js/layer/need/layer.css",
+			"image/icon_jt_x.png",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js"
+		],
+		"refer": [
+			"html/daily/StudentAuthorization.html"
+		]
+	},
+	"html/daily/StudentAuthorization.html": {
+		"resources": [
+			"js/laydate/skins/default/laydate.css",
+			"js/laydate/need/laydate.css",
+			"js/laydate/laydate.js",
+			"js/mui.min.js",
+			"js/layer/layer.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/layer/need/layer.css",
+			"css/checkstyle.css"
+		],
+		"refer": []
+	},
+	"html/daily/InfoChange.html": {
+		"resources": [
+			"js/laydate/skins/default/laydate.css",
+			"js/laydate/need/laydate.css",
+			"js/laydate/laydate.js",
+			"js/layer/layer.js",
+			"js/layer/need/layer.css",
+			"image/icon_jt_x.png",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/laydate/skins/yalan/laydate.css"
+		],
+		"refer": []
+	},
+	"html/Management/UnitSwap.html": {
+		"resources": [
+			"js/laydate/skins/default/laydate.css",
+			"js/laydate/need/laydate.css",
+			"js/laydate/laydate.js",
+			"js/mui.min.js",
+			"js/layer/layer.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/layer/need/layer.css",
+			"image/icon_jt_x.png",
+			"js/laydate/skins/yalan/laydate.css"
+		],
+		"refer": []
+	},
+	"html/Management/DepartmentSwap.html": {
+		"resources": [
+			"js/laydate/skins/default/laydate.css",
+			"js/laydate/need/laydate.css",
+			"js/laydate/laydate.js",
+			"js/layer/layer.js",
+			"js/layer/need/layer.css",
+			"image/icon_jt_x.png",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/laydate/skins/yalan/laydate.css"
+		],
+		"refer": []
+	},
+	"html/Approval/AcceptanceApplication.html": {
+		"resources": [
+			"js/laydate/skins/default/laydate.css",
+			"js/laydate/need/laydate.css",
+			"js/laydate/laydate.js",
+			"js/laydate/skins/yalan/laydate.css",
+			"js/mui.min.js",
+			"js/layer/layer.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/layer/need/layer.css"
+		],
+		"refer": [
+			"html/base/selectDept.html"
+		]
+	},
+	"html/Management/AssetGuiHui.html": {
+		"resources": [
+			"js/laydate/skins/default/laydate.css",
+			"js/laydate/need/laydate.css",
+			"js/laydate/laydate.js",
+			"js/layer/layer.js",
+			"js/laydate/skins/yalan/laydate.css",
+			"js/layer/need/layer.css",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js"
+		],
+		"refer": []
+	},
+	"html/Management/Jchartshow.html": {
+		"resources": [
+			"js/echarts.min.js",
+			"js/common.js",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js"
+		],
+		"refer": [
+			"html/Management/mingxi.html",
+			"html/Management/Jmingxi.html",
+			"html/base/barcode_scan.html"
+		]
+	},
+	"html/Management/Jmingxi.html": {
+		"resources": [
+			"html/Management/jyipandian.html",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"html/Management/jyipandian.html",
+			"html/Management/jweipandian.html"
+		]
+	},
+	"html/Management/jyipandian.html": {
+		"resources": [
+			"js/jquery-1.11.3.js",
+			"js/jqzw_server.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"js/islogin.js"
+		],
+		"refer": []
+	},
+	"html/Management/jweipandian.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/islogin.js"
+		],
+		"refer": [
+			"html/Management/AssetCredit.html",
+			"html/Management/AssetMingxi.html"
+		]
+	},
+	"html/Management/AssetMingxi.html": {
+		"resources": [
+			"js/laydate/skins/default/laydate.css",
+			"js/laydate/need/laydate.css",
+			"js/laydate/laydate.js",
+			"js/mui.min.js",
+			"js/layer/layer.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/layer/need/layer.css"
+		],
+		"refer": []
+	},
+	"html/Management/PyLuru.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/islogin.js",
+			"js/jqzw_server.js"
+		],
+		"refer": [
+			"html/Management/chartshow.html",
+			"html/base/selectProjectYou.html",
+			"html/base/selectDept.html",
+			"html/base/selectDeptYou.html",
+			"html/base/selectAddressYou.html"
+		]
+	},
+	"html/main/HomeList.html": {
+		"resources": [
+			"css/common.css",
+			"image/icon_ss.png",
+			"css/font-awesome-4.5.0/css/font-awesome.min.css",
+			"css/font-awesome-4.5.0/fonts/fontawesome-webfont.woff2",
+			"js/common.js",
+			"js/mui.min.js",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/jquery-1.11.3.js",
+			"css/font-awesome-4.5.0/fonts/fontawesome-webfont.woff",
+			"css/font-awesome-4.5.0/fonts/fontawesome-webfont.ttf",
+			"css/checkstyle.css"
+		],
+		"refer": [
+			"html/base/barcode_scan.html",
+			"html/main/ScanCredit.html",
+			"html/Approval/AssetAcceptance.html",
+			"html/Management/AssetShowPage.html",
+			"html/main/MainRe.html",
+			"html/Management/AssetBaoXiu.html",
+			"html/Management/AssetJieYong.html",
+			"html/main/AssetJieYongScan.html",
+			"html/main/AssetGuiHuiScan.html",
+			"html/main/AssetBaoXiuScan.html",
+			"html/Approval/MattersApproval.html",
+			"html/main/DaiBanMore.html",
+			"html/Management/AssetsInventory.html",
+			"html/Approval/ViewDetails.html",
+			"html/Approval/AssetBorrowApproval.html",
+			"html/Approval/ZhuLouJiaJUApproval.html",
+			"html/Approval/BumApproval.html",
+			"html/chuzhi/ScanCreateDan.html",
+			"html/Approval/ChuzApproval.html",
+			"html/Approval/AssetYanShou.html",
+			"html/Management/AssetJiaoJie.html",
+			"html/main/AssetTiaoji.html",
+			"html/business/yuyueyiqi.html"
+		]
+	},
+	"html/base/selectProject.html": {
+		"resources": [
+			"js/jquery.tree.js",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"image/icon-folder-open.gif",
+			"image/icon-folder.gif"
+		],
+		"refer": []
+	},
+	"html/base/selectDept.html": {
+		"resources": [
+			"js/jquery.tree.js",
+			"image/icon-folder-open.gif",
+			"image/icon-folder.gif",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js"
+		],
+		"refer": []
+	},
+	"html/base/selectAddress.html": {
+		"resources": [
+			"js/jquery.tree.js",
+			"image/icon-folder-open.gif",
+			"image/icon-folder.gif",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js"
+		],
+		"refer": []
+	},
+	"html/Management/AssetShowPage.html": {
+		"resources": [
+			"js/laydate/skins/default/laydate.css",
+			"js/laydate/need/laydate.css",
+			"js/laydate/laydate.js",
+			"js/mui.min.js",
+			"js/layer/layer.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/layer/need/layer.css"
+		],
+		"refer": []
+	},
+	"html/main/MainRe.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/common.css",
+			"js/jquery-1.11.3.js",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"css/font-awesome-4.5.0/css/font-awesome.min.css",
+			"css/font-awesome-4.5.0/fonts/fontawesome-webfont.woff2",
+			"fonts/mui.ttf",
+			"js/layer-v3.0.3/layer/skin/default/layer.css",
+			"js/layer-v3.0.3/layer/layer.js",
+			"js/layer-v3.0.3/layer/skin/default/icon.png",
+			"css/font-awesome-4.5.0/fonts/fontawesome-webfont.woff"
+		],
+		"refer": [
+			"html/main/HomeList.html",
+			"html/main/ScanCredit.html"
+		]
+	},
+	"html/main/AssetJieYongScan.html": {
+		"resources": [
+			"image/sm_icon.png",
+			"js/layer/layer.js",
+			"js/layer/need/layer.css",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"image/icon_ss.png",
+			"js/jqzw_server.js",
+			"css/checkstyle.css",
+			"js/common.js",
+			"css/common.css",
+			"js/mui.min.js",
+			"js/islogin.js",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"html/base/barcode_scan.html",
+			"html/Management/AssetJieYong.html"
+		]
+	},
+	"html/main/AssetGuiHuiScan.html": {
+		"resources": [
+			"image/sm_icon.png",
+			"js/layer/layer.js",
+			"fonts/mui.ttf",
+			"css/checkstyle.css",
+			"js/layer/need/layer.css",
+			"js/jquery-1.11.3.js",
+			"image/icon_ss.png",
+			"js/jqzw_server.js",
+			"js/common.js",
+			"css/common.css",
+			"js/mui.min.js",
+			"js/islogin.js",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"html/base/barcode_scan.html",
+			"html/Management/AssetJieYong.html",
+			"html/Management/AssetGuiHui.html"
+		]
+	},
+	"html/main/AssetBaoXiuScan.html": {
+		"resources": [
+			"image/sm_icon.png",
+			"js/layer/layer.js",
+			"fonts/mui.ttf",
+			"js/layer/need/layer.css",
+			"js/jquery-1.11.3.js",
+			"image/icon_ss.png",
+			"js/jqzw_server.js",
+			"css/checkstyle.css",
+			"js/common.js",
+			"css/common.css",
+			"js/mui.min.js",
+			"js/islogin.js",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"html/base/barcode_scan.html",
+			"html/Management/AssetBaoXiu.html"
+		]
+	},
+	"html/main/ToDoList.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"css/checkstyle.css",
+			"css/font-awesome-4.5.0/css/font-awesome.min.css",
+			"css/font-awesome-4.5.0/fonts/fontawesome-webfont.woff2",
+			"css/font-awesome-4.5.0/fonts/fontawesome-webfont.ttf",
+			"css/font-awesome-4.5.0/fonts/fontawesome-webfont.woff"
+		],
+		"refer": [
+			"html/Approval/MattersApproval.html",
+			"html/Approval/BumApproval.html",
+			"html/Approval/ZhuLouJiaJUApproval.html",
+			"html/Approval/AssetBorrowApproval.html",
+			"html/Approval/AssetYanShou.html",
+			"html/Approval/DanwTiaojApproval.html",
+			"html/Approval/ChuzApproval.html"
+		]
+	},
+	"html/Approval/AssetTrajectory.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/layer/layer.js",
+			"js/jquery-1.11.3.js",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"fonts/mui.ttf",
+			"js/layer/need/layer.css",
+			"image/gj_icon.png"
+		],
+		"refer": []
+	},
+	"html/Approval/BumApproval.html": {
+		"resources": [
+			"js/layer/layer.js",
+			"fonts/mui.ttf",
+			"js/layer/need/layer.css",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"css/checkstyle.css"
+		],
+		"refer": [
+			"html/Approval/AssetTrajectory.html",
+			"html/Approval/ViewDetails.html",
+			"html/shenpi/ViewDetails.html"
+		]
+	},
+	"html/main/DaiBanMore.html": {
+		"resources": [
+			"js/common.js",
+			"js/mui.min.js",
+			"css/common.css",
+			"js/jquery-1.11.3.js",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"css/font-awesome-4.5.0/css/font-awesome.min.css",
+			"fonts/mui.ttf"
+		],
+		"refer": [
+			"html/Approval/ViewDetails.html"
+		]
+	},
+	"html/Approval/ZhuLouJiaJUApproval.html": {
+		"resources": [
+			"js/layer/layer.js",
+			"fonts/mui.ttf",
+			"js/layer/need/layer.css",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"css/checkstyle.css"
+		],
+		"refer": [
+			"html/Approval/AssetTrajectory.html",
+			"html/shenpi/ViewDetails.html",
+			"html/shenpi/AssetTrajectory.html"
+		]
+	},
+	"html/Approval/AssetBorrowApproval.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/layer/layer.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"css/checkstyle.css",
+			"js/layer/need/layer.css"
+		],
+		"refer": [
+			"html/Approval/AssetTrajectory.html",
+			"html/shenpi/ViewDetails.html",
+			"html/shenpi/AssetTrajectory.html"
+		]
+	},
+	"html/Approval/AssetYanShou.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/layer/layer.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"css/checkstyle.css",
+			"js/layer/need/layer.css"
+		],
+		"refer": [
+			"html/Approval/AssetTrajectory.html"
+		]
+	},
+	"html/Approval/ViewDetails.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/layer/layer.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"css/checkstyle.css",
+			"js/layer/need/layer.css"
+		],
+		"refer": []
+	},
+	"html/Management/pankui.html": {
+		"resources": [
+			"js/jquery-1.11.3.js",
+			"js/jqzw_server.js",
+			"js/mui.min.js",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/layer/layer.js",
+			"js/layer/need/layer.css"
+		],
+		"refer": []
+	},
+	"html/Management/panying.html": {
+		"resources": [
+			"js/jquery-1.11.3.js",
+			"js/jqzw_server.js",
+			"js/mui.min.js",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/layer/layer.js",
+			"js/layer/need/layer.css"
+		],
+		"refer": []
+	},
+	"html/base/selectProjectYou.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js"
+		],
+		"refer": []
+	},
+	"html/base/selectAddressYou.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js"
+		],
+		"refer": []
+	},
+	"html/base/selectDeptYou.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js"
+		],
+		"refer": []
+	},
+	"html/main/UserPage.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"image/dl_icon_yhmc.png",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"html/business/systemRole.html",
+			"html/business/settingAccount.html",
+			"html/base/login.html"
+		]
+	},
+	"html/base/selectDeptAll.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/layer/layer.js",
+			"js/layer/need/layer.css"
+		],
+		"refer": []
+	},
+	"html/chuzhi/ScanCreateDan.html": {
+		"resources": [
+			"js/jquery-1.11.3.js",
+			"js/layer/layer.js",
+			"fonts/mui.ttf",
+			"image/icon_ss.png",
+			"js/jqzw_server.js",
+			"css/checkstyle.css",
+			"js/layer/need/layer.css",
+			"image/sm_icon.png",
+			"js/common.js",
+			"css/common.css",
+			"js/mui.min.js",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/common1.js",
+			"js/nfcty.js",
+			"js/test.js"
+		],
+		"refer": [
+			"html/base/barcode_scan.html",
+			"html/chuzhi/ScanBuilding.html"
+		]
+	},
+	"html/chuzhi/ScanBuilding.html": {
+		"resources": [
+			"js/laydate/skins/default/laydate.css",
+			"js/laydate/need/laydate.css",
+			"js/laydate/laydate.js",
+			"js/mui.min.js",
+			"js/layer/layer.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"js/laydate/skins/yalan/laydate.css",
+			"js/layer/need/layer.css"
+		],
+		"refer": [
+			"html/base/selectDeptAll.html"
+		]
+	},
+	"html/main/AnnouncementList.html": {
+		"resources": [
+			"css/common.css",
+			"css/mui.min.css",
+			"css/checkstyle.css",
+			"js/common1.js",
+			"js/common.js",
+			"js/mui.min.js",
+			"js/layer/layer.js",
+			"js/jquery-1.11.3.js",
+			"js/islogin.js",
+			"js/nfcty.js",
+			"js/jqzw_server.js",
+			"js/test.js",
+			"js/layer/need/layer.css"
+		],
+		"refer": []
+	},
+	"html/Approval/ChuzApproval.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/layer/layer.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/islogin.js",
+			"css/mui.min.css",
+			"js/jqzw_server.js",
+			"css/checkstyle.css",
+			"js/layer/need/layer.css"
+		],
+		"refer": [
+			"html/shenpi/ViewDetails.html"
+		]
+	},
+	"html/main/AssetTiaoji.html": {
+		"refer": [
+			"html/main/AssetTiaoji_tj.html",
+			"html/base/selectDept.html",
+			"html/base/selectDeptYou.html",
+			"html/basedata/selectDept.html"
+		],
+		"resources": []
+	},
+	"html/main/AssetTiaoji_tj.html": {
+		"refer": [
+			"html/basedata/selectPerson.html",
+			"html/basedata/selectAddress.html"
+		],
+		"resources": []
+	},
+	"html/main/function.html": {
+		"refer": [
+			"html/business/yuyueyiqi.html",
+			"html/business/ziyongdengji.html",
+			"html/business/feiyongheding.html",
+			"html/business/yuancsxj.html"
+		]
+	},
+	"html/business/ziyongdengji.html": {
+		"refer": [
+			"html/business/dengjiDetail.html"
+		]
+	},
+	"html/main/number.html": {
+		"refer": [
+			"html/business/myAssets.html"
+		]
+	},
+	"html/business/feiyongheding.html": {
+		"refer": [
+			"html/business/feiyongqueren.html"
+		]
+	},
+	"html/business/yuyueyiqi.html": {
+		"refer": [
+			"html/business/weituotest.html"
+		]
+	},
+	"html/business/dengjiDetail.html": {
+		"refer": [
+			"html/business/selectPerson.html"
+		]
+	},
+	"html/main/Handle.html": {
+		"refer": [
+			"html/business/kuaisufaqi.html"
+		]
+	}
+}

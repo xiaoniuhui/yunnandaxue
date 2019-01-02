@@ -1,0 +1,1651 @@
+{
+    "@platforms" : [ "android", "iPhone", "iPad" ],
+    "id" : "H5A6A9A12",
+    "name" : "资产一体化移动平台",
+    "version" : {
+        "name" : "1.0",
+        "code" : "10"
+    },
+    "description" : "",
+    "icons" : {
+        "72" : "icon.png"
+    },
+    "launch_path" : "index.html",
+    "developer" : {
+        "name" : "",
+        "email" : "",
+        "url" : ""
+    },
+    "permissions" : {
+        "Accelerometer" : {
+            "description" : "访问加速度感应器"
+        },
+        "Audio" : {
+            "description" : "访问麦克风"
+        },
+        "Messaging" : {
+            "description" : "短彩邮件插件"
+        },
+        "Cache" : {
+            "description" : "管理应用缓存"
+        },
+        "Camera" : {
+            "description" : "访问摄像头"
+        },
+        "Console" : {
+            "description" : "跟踪调试输出日志"
+        },
+        "Contacts" : {
+            "description" : "访问系统联系人信息"
+        },
+        "Device" : {
+            "description" : "访问设备信息"
+        },
+        "Downloader" : {
+            "description" : "文件下载管理"
+        },
+        "Events" : {
+            "description" : "应用扩展事件"
+        },
+        "File" : {
+            "description" : "访问本地文件系统"
+        },
+        "Gallery" : {
+            "description" : "访问系统相册"
+        },
+        "Geolocation" : {
+            "description" : "访问位置信息"
+        },
+        "Invocation" : {
+            "description" : "使用Native.js能力"
+        },
+        "Orientation" : {
+            "description" : "访问方向感应器"
+        },
+        "Proximity" : {
+            "description" : "访问距离感应器"
+        },
+        "Storage" : {
+            "description" : "管理应用本地数据"
+        },
+        "Uploader" : {
+            "description" : "管理文件上传任务"
+        },
+        "Runtime" : {
+            "description" : "访问运行期环境"
+        },
+        "XMLHttpRequest" : {
+            "description" : "跨域网络访问"
+        },
+        "Zip" : {
+            "description" : "文件压缩与解压缩"
+        },
+        "Barcode" : {
+            "description" : "管理二维码扫描插件"
+        },
+        "Maps" : {
+            "description" : "管理地图插件"
+        },
+        "Webview" : {
+            "description" : "窗口管理"
+        },
+        "NativeUI" : {
+            "description" : "原生UI控件"
+        },
+        "Navigator" : {
+            "description" : "浏览器信息"
+        },
+        "NativeObj" : {
+            "description" : "原生对象"
+        }
+    },
+    "plus" : {
+        "splashscreen" : {
+            "autoclose" : true, /*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
+            "waiting" : true
+        },
+        "popGesture" : "close", /*设置应用默认侧滑返回关闭Webview窗口，"none"为无侧滑返回功能，"hide"为侧滑隐藏Webview窗口。参考http://ask.dcloud.net.cn/article/102*/
+        "runmode" : "normal", /*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
+        "signature" : "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==", /*可选，保留给应用签名，暂不使用*/
+        "distribute" : {
+            "apple" : {
+                "appid" : "", /*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
+                "mobileprovision" : "", /*iOS应用打包配置文件*/
+                "password" : "", /*iOS应用打包个人证书导入密码*/
+                "p12" : "", /*iOS应用打包个人证书，打包配置文件关联的个人证书*/
+                "devices" : "universal", /*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
+                "frameworks" : []
+            },
+            "google" : {
+                "packagename" : "", /*Android应用包名，如io.dcloud.HelloH5*/
+                "keystore" : "", /*Android应用打包使用的密钥库文件*/
+                "password" : "", /*Android应用打包使用密钥库中证书的密码*/
+                "aliasname" : "", /*Android应用打包使用密钥库中证书的别名*/
+                "permissions" : [
+                    "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+                    "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+                    "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CAMERA\"/>",
+                    "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+                    "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+                    "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+                    "<uses-permission android:name=\"android.permission.SEND_SMS\"/>",
+                    "<uses-permission android:name=\"android.permission.INTERNET\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+                    "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+                    "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+                    "<uses-feature android:name=\"android.hardware.camera\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_SMS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_SMS\"/>"
+                ]
+            },
+            "orientation" : [ "portrait-primary" ], /*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+            "icons" : {
+                "ios" : {
+                    "prerendered" : true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
+
+                    /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+                    "iphone" : {
+                        "normal" : "unpackage/res/icons/57x57.png", /*iPhone3/3GS程序图标，分辨率：57x57*/
+                        "retina" : "unpackage/res/icons/114x114.png", /*iPhone4程序图标，分辨率：114x114*/
+
+                        /*iPhone4S/5/6程序图标，分辨率：120x120*//*iPhone6 Plus程序图标，分辨率：180x180*/
+                        "spotlight-normal" : "unpackage/res/icons/29x29.png", /*iPhone3/3GS Spotlight搜索程序图标，分辨率：29x29*/
+                        "spotlight-retina" : "unpackage/res/icons/58x58.png", /*iPhone4 Spotlight搜索程序图标，分辨率：58x58*/
+
+                        /*iPhone4S/5/6 Spotlight搜索程序图标，分辨率：80x80*/
+                        "settings-normal" : "unpackage/res/icons/29x29.png", /*iPhone4设置页面程序图标，分辨率：29x29*/
+
+                        /*iPhone4S/5/6设置页面程序图标，分辨率：58x58*/
+                        "spotlight@2x" : "unpackage/res/icons/80x80.png",
+                        "app@2x" : "unpackage/res/icons/120x120.png",
+                        "app@3x" : "unpackage/res/icons/180x180.png",
+                        "settings@3x" : "unpackage/res/icons/87x87.png",
+                        "settings@2x" : "unpackage/res/icons/58x58.png",
+                        "spotlight@3x" : "unpackage/res/icons/120x120.png",
+                        "notification@3x" : "unpackage/res/icons/60x60.png",
+                        "notification@2x" : "unpackage/res/icons/40x40.png"
+                    },
+                    "ipad" : {
+                        "normal" : "unpackage/res/icons/72x72.png", /*iPad普通屏幕程序图标，分辨率：72x72*/
+                        "retina" : "unpackage/res/icons/144x144.png", /*iPad高分屏程序图标，分辨率：144x144*/
+
+                        /*iPad iOS7程序图标，分辨率：76x76*//*iPad iOS7高分屏程序图标，分辨率：152x152*/
+                        "spotlight-normal" : "unpackage/res/icons/50x50.png", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
+                        "spotlight-retina" : "unpackage/res/icons/100x100.png", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
+
+                        /*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*//*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*//*iPad设置页面程序图标，分辨率：29x29*/
+                        "app" : "unpackage/res/icons/76x76.png",
+                        "app@2x" : "unpackage/res/icons/152x152.png",
+                        "settings" : "unpackage/res/icons/29x29.png",
+                        "proapp@2x" : "unpackage/res/icons/167x167.png",
+                        "spotlight" : "unpackage/res/icons/40x40.png",
+                        "settings@2x" : "unpackage/res/icons/58x58.png",
+                        "spotlight@2x" : "unpackage/res/icons/80x80.png",
+                        "notification" : "unpackage/res/icons/20x20.png",
+                        "notification@2x" : "unpackage/res/icons/40x40.png"
+                    },
+                    "appstore" : "unpackage/res/icons/1024x1024.png"
+                },
+                "android" : {
+                    "mdpi" : "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
+                    "ldpi" : "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
+                    "hdpi" : "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
+                    "xhdpi" : "unpackage/res/icons/96x96.png", /*720P高分屏程序图标，分辨率：96x96*/
+                    "xxhdpi" : "unpackage/res/icons/144x144.png",
+                    "xxxhdpi" : "unpackage/res/icons/192x192.png"
+                }
+            },
+            "splashscreen" : {
+                "ios" : {
+                    "iphone" : {
+                        "default" : "", /*iPhone3启动图片选，分辨率：320x480*/
+                        "retina35" : ""
+                    },
+                    "ipad" : {}
+                },
+                "android" : {
+                    "mdpi" : "unpackage/res/icons/ssdqdtb.png", /*普通屏启动图片，分辨率：240x282*/
+                    "ldpi" : "unpackage/res/icons/ssdqdtb.png",
+                    "hdpi" : "unpackage/res/icons/yndxqdy.png",
+                    "xhdpi" : "unpackage/res/icons/yndxqdy.png",
+                    "xxhdpi" : "unpackage/res/icons/yndxqdy.png"
+                }
+            }
+        },
+        "ads" : {
+            "rp" : false,
+            "splash" : false,
+            "push" : false,
+            "spot" : false
+        },
+        "adid" : ""
+    },
+    "dependencies" : {
+		"pages": {
+			"index.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf"
+				],
+				"refer": [
+					"html/base/login.html",
+					"html/main/main.html"
+				],
+				"priority": 0
+			},
+			"html/base/login.html": {
+				"resources": [
+					"js/jquery-1.11.3.js",
+					"js/jqzw_server.js",
+					"css/checkstyle.css",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"image/dl_icon_mm.png",
+					"image/dl_icon_yhmc.png",
+					"fonts/mui.ttf",
+					"image/shousxh.jpg"
+				],
+				"refer": [
+					"html/main/main.html",
+					"html/base/register.html",
+					"html/main/sutdentmain.html"
+				],
+				"priority": 0
+			},
+			"html/main/main.html": {
+				"resources": [
+					"js/common.js",
+					"css/common.css",
+					"js/islogin.js",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"image/zcgl_icon_xxbd.png",
+					"image/tjgb.png",
+					"image/zcgl_icon_zcdb.png",
+					"image/zcgl_icon_smjd.png",
+					"image/zcgl_icon_zcgz.png",
+					"image/icon_ss.png",
+					"image/zcgl_icon_zccz.png",
+					"image/zcgl_icon_x_yhzx.png",
+					"image/zcgl_icon_zpgl.png",
+					"image/zcgl_icon_x_bz.png",
+					"html/main/HomeList.html",
+					"fonts/mui-icons-extra.ttf",
+					"css/icons-extra.css",
+					"js/layer/layer.js",
+					"js/layer/need/layer.css"
+				],
+				"refer": [
+					"html/Management/AssetCredit.html",
+					"html/Management/AssetsInventory.html",
+					"html/Management/AssetJiaoJie.html",
+					"html/main/ScanCreateTable.html",
+					"html/Management/AssetLingYong.html",
+					"html/base/barcode_scan.html",
+					"html/Management/AssetJiaoHui.html",
+					"html/main/SaoMaQuCard.html",
+					"html/Management/AssetJieYong.html",
+					"html/main/ScanCreateDan.html",
+					"html/Management/AssetBaoXiu.html",
+					"html/main/ScanCredit.html",
+					"html/Approval/MainApproval.html",
+					"html/daily/ItemAuthorization.html",
+					"html/Management/AssetGuiHui.html",
+					"html/Approval/MyApproval.html",
+					"html/Approval/AssetAcceptance.html",
+					"html/main/UserPage.html",
+					"html/main/AnnouncementList.html",
+					"html/main/ToDoList.html",
+					"html/main/function.html",
+					"html/main/Handle.html",
+					"html/main/number.html",
+					"html/base/login.html"
+				],
+				"priority": 0
+			},
+			"html/Management/AssetCredit.html": {
+				"resources": [
+					"image/icon_jt_x.png",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/laydate/skins/default/laydate.css",
+					"js/laydate/need/laydate.css",
+					"js/laydate/laydate.js",
+					"js/layer/layer.js",
+					"js/layer/need/layer.css"
+				],
+				"refer": [
+					"html/base/selectProject.html",
+					"html/base/selectDept.html",
+					"html/base/selectAddress.html",
+					"html/base/selectProjectYou.html",
+					"html/base/selectDeptYou.html",
+					"html/base/selectAddressYou.html",
+					"html/basedata/selectPerson.html",
+					"html/basedata/selectDept.html",
+					"html/basedata/selectAddress.html"
+				],
+				"priority": 0
+			},
+			"html/Management/AssetsInventory.html": {
+				"resources": [
+					"css/checkstyle.css",
+					"image/pic-02.png",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/islogin.js"
+				],
+				"refer": [
+					"html/Management/chartshow.html"
+				],
+				"priority": 0
+			},
+			"html/Management/chartshow.html": {
+				"resources": [
+					"js/echarts.min.js",
+					"js/common.js",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/islogin.js",
+					"css/common.css"
+				],
+				"refer": [
+					"html/Management/mingxi.html",
+					"html/Management/PyLuru.html",
+					"html/base/barcode_scan.html"
+				],
+				"priority": 0
+			},
+			"html/Management/mingxi.html": {
+				"resources": [
+					"html/Management/yipandian.html",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"html/Management/weipandian.html",
+					"html/Management/pankui.html",
+					"html/Management/panying.html"
+				],
+				"priority": 0
+			},
+			"html/Management/weipandian.html": {
+				"resources": [
+					"js/jquery-1.11.3.js",
+					"js/jqzw_server.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/checkstyle.css",
+					"js/layer/layer.js",
+					"js/layer/need/layer.css",
+					"js/islogin.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/Management/yipandian.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/islogin.js",
+					"js/layer-v3.0.3/layer/skin/default/layer.css",
+					"js/layer-v3.0.3/layer/layer.js",
+					"js/layer/layer.js",
+					"js/layer/need/layer.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/Management/AssetJiaoJie.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"image/icon_jt_x.png",
+					"js/laydate/skins/default/laydate.css",
+					"js/laydate/need/laydate.css",
+					"js/laydate/laydate.js",
+					"js/layer/layer.js",
+					"js/layer/need/layer.css"
+				],
+				"refer": [
+					"html/Management/Jchartshow.html"
+				],
+				"priority": 0
+			},
+			"html/main/ScanCreateTable.html": {
+				"resources": [
+					"image/sm_icon.png",
+					"js/common.js",
+					"js/mui.min.js",
+					"css/common.css",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"image/icon_ss.png",
+					"css/mui.min.css",
+					"js/jqzw_server.js"
+				],
+				"refer": [
+					"html/base/barcode_scan.html",
+					"html/daily/InfoChange.html",
+					"html/Management/AssetBaoXiu.html",
+					"html/Management/UnitSwap.html",
+					"html/Management/DepartmentSwap.html",
+					"html/Management/AssetGuiHui.html",
+					"html/Approval/AcceptanceApplication.html",
+					"html/Approval/MattersApproval.html"
+				],
+				"priority": 0
+			},
+			"html/Management/AssetLingYong.html": {
+				"resources": [
+					"image/icon_jt_x.png",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/laydate/skins/default/laydate.css",
+					"js/laydate/need/laydate.css",
+					"js/laydate/laydate.js",
+					"js/layer/layer.js",
+					"js/layer/need/layer.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/base/barcode_scan.html": {
+				"resources": [
+					"js/common.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/Management/AssetJiaoHui.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/laydate/skins/default/laydate.css",
+					"js/laydate/need/laydate.css",
+					"js/laydate/laydate.js",
+					"js/layer/layer.js",
+					"js/layer/need/layer.css"
+				],
+				"refer": [
+					"html/main/SaoMaQuCard.html"
+				],
+				"priority": 0
+			},
+			"html/main/SaoMaQuCard.html": {
+				"resources": [
+					"js/common.js",
+					"image/sm_icon.png",
+					"css/common.css",
+					"image/icon_ss.png",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js"
+				],
+				"refer": [
+					"html/base/barcode_scan.html"
+				],
+				"priority": 0
+			},
+			"html/Management/AssetJieYong.html": {
+				"resources": [
+					"image/icon_jt_x.png",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/laydate/skins/default/laydate.css",
+					"js/laydate/need/laydate.css",
+					"js/laydate/laydate.js",
+					"js/layer/layer.js",
+					"js/layer/need/layer.css",
+					"js/laydate/skins/yalan/laydate.css"
+				],
+				"refer": [
+					"html/basedata/selectPerson.html"
+				],
+				"priority": 0
+			},
+			"html/main/ScanCreateDan.html": {
+				"resources": [
+					"js/common.js",
+					"image/sm_icon.png",
+					"js/mui.min.js",
+					"css/common.css",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"image/icon_ss.png",
+					"css/mui.min.css",
+					"js/jqzw_server.js"
+				],
+				"refer": [
+					"html/Management/AssetCredit.html",
+					"html/base/barcode_scan.html"
+				],
+				"priority": 0
+			},
+			"html/Management/AssetBaoXiu.html": {
+				"resources": [
+					"image/zpgl_icon_zx.png",
+					"image/plus.jpg",
+					"image/icon_jt_x.png",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/laydate/laydate.js",
+					"js/layer/layer.js",
+					"js/layer/need/layer.css",
+					"js/laydate/skins/default/laydate.css",
+					"js/laydate/need/laydate.css",
+					"js/laydate/skins/yalan/laydate.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/base/register.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"css/checkstyle.css",
+					"image/shousxh.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/main/sutdentmain.html": {
+				"resources": [
+					"image/zcgl_icon_xxbd.png",
+					"js/common.js",
+					"image/zcgl_icon_smjd.png",
+					"css/common.css",
+					"image/zcgl_icon_zpgl.png",
+					"js/islogin.js",
+					"image/zcgl_icon_x_yhzx.png",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/jqzw_server.js"
+				],
+				"refer": [
+					"html/Management/AssetJieYong.html"
+				],
+				"priority": 0
+			},
+			"html/main/ScanCredit.html": {
+				"resources": [
+					"image/sm_icon.png",
+					"js/common.js",
+					"js/mui.min.js",
+					"css/common.css",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"image/icon_ss.png",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/test.js",
+					"js/nfcty.js"
+				],
+				"refer": [
+					"html/Management/AssetCredit.html",
+					"html/base/barcode_scan.html",
+					"html/Approval/AssetAcceptance.html"
+				],
+				"priority": 0
+			},
+			"html/Approval/AssetAcceptance.html": {
+				"resources": [
+					"css/checkstyle.css",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/layer/layer.js",
+					"js/layer/need/layer.css",
+					"image/icon_ss.png",
+					"js/common.js",
+					"css/common.css",
+					"image/sm_icon.png",
+					"js/nfcty.js",
+					"js/test.js",
+					"js/common1.js"
+				],
+				"refer": [
+					"html/Approval/AcceptanceApplication.html",
+					"html/base/barcode_scan.html",
+					"html/base/selectDeptYou.html",
+					"html/base/selectDeptAll.html",
+					"html/basedata/selectDept.html"
+				],
+				"priority": 0
+			},
+			"html/Approval/MainApproval.html": {
+				"resources": [
+					"css/checkstyle.css",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js"
+				],
+				"refer": [
+					"html/Approval/MattersApproval.html",
+					"html/Approval/MyApproval.html"
+				],
+				"priority": 0
+			},
+			"html/Approval/MattersApproval.html": {
+				"resources": [
+					"js/layer/layer.js",
+					"js/layer/need/layer.css",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"css/checkstyle.css"
+				],
+				"refer": [
+					"html/Approval/AssetTrajectory.html",
+					"html/Approval/ViewDetails.html",
+					"html/shenpi/ViewDetails.html"
+				],
+				"priority": 0
+			},
+			"html/Approval/MyApproval.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/layer/layer.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"css/checkstyle.css",
+					"js/layer/need/layer.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/daily/ItemAuthorization.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"image/icon_ss.png",
+					"css/common.css",
+					"js/common.js",
+					"css/checkstyle.css"
+				],
+				"refer": [
+					"html/daily/AssetAuthorizationt.html",
+					"html/base/barcode_scan.html"
+				],
+				"priority": 0
+			},
+			"html/daily/AssetAuthorizationt.html": {
+				"resources": [
+					"js/laydate/skins/default/laydate.css",
+					"js/laydate/need/laydate.css",
+					"js/laydate/laydate.js",
+					"js/layer/layer.js",
+					"js/layer/need/layer.css",
+					"image/icon_jt_x.png",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js"
+				],
+				"refer": [
+					"html/daily/StudentAuthorization.html"
+				],
+				"priority": 0
+			},
+			"html/daily/StudentAuthorization.html": {
+				"resources": [
+					"js/laydate/skins/default/laydate.css",
+					"js/laydate/need/laydate.css",
+					"js/laydate/laydate.js",
+					"js/mui.min.js",
+					"js/layer/layer.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/layer/need/layer.css",
+					"css/checkstyle.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/daily/InfoChange.html": {
+				"resources": [
+					"js/laydate/skins/default/laydate.css",
+					"js/laydate/need/laydate.css",
+					"js/laydate/laydate.js",
+					"js/layer/layer.js",
+					"js/layer/need/layer.css",
+					"image/icon_jt_x.png",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/laydate/skins/yalan/laydate.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/Management/UnitSwap.html": {
+				"resources": [
+					"js/laydate/skins/default/laydate.css",
+					"js/laydate/need/laydate.css",
+					"js/laydate/laydate.js",
+					"js/mui.min.js",
+					"js/layer/layer.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/layer/need/layer.css",
+					"image/icon_jt_x.png",
+					"js/laydate/skins/yalan/laydate.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/Management/DepartmentSwap.html": {
+				"resources": [
+					"js/laydate/skins/default/laydate.css",
+					"js/laydate/need/laydate.css",
+					"js/laydate/laydate.js",
+					"js/layer/layer.js",
+					"js/layer/need/layer.css",
+					"image/icon_jt_x.png",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/laydate/skins/yalan/laydate.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/Approval/AcceptanceApplication.html": {
+				"resources": [
+					"js/laydate/skins/default/laydate.css",
+					"js/laydate/need/laydate.css",
+					"js/laydate/laydate.js",
+					"js/laydate/skins/yalan/laydate.css",
+					"js/mui.min.js",
+					"js/layer/layer.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/layer/need/layer.css"
+				],
+				"refer": [
+					"html/base/selectDept.html"
+				],
+				"priority": 0
+			},
+			"html/Management/AssetGuiHui.html": {
+				"resources": [
+					"js/laydate/skins/default/laydate.css",
+					"js/laydate/need/laydate.css",
+					"js/laydate/laydate.js",
+					"js/layer/layer.js",
+					"js/laydate/skins/yalan/laydate.css",
+					"js/layer/need/layer.css",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/Management/Jchartshow.html": {
+				"resources": [
+					"js/echarts.min.js",
+					"js/common.js",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js"
+				],
+				"refer": [
+					"html/Management/mingxi.html",
+					"html/Management/Jmingxi.html",
+					"html/base/barcode_scan.html"
+				],
+				"priority": 0
+			},
+			"html/Management/Jmingxi.html": {
+				"resources": [
+					"html/Management/jyipandian.html",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"html/Management/jweipandian.html"
+				],
+				"priority": 0
+			},
+			"html/Management/jyipandian.html": {
+				"resources": [
+					"js/jquery-1.11.3.js",
+					"js/jqzw_server.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/islogin.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/Management/jweipandian.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/islogin.js"
+				],
+				"refer": [
+					"html/Management/AssetCredit.html",
+					"html/Management/AssetMingxi.html"
+				],
+				"priority": 0
+			},
+			"html/Management/AssetMingxi.html": {
+				"resources": [
+					"js/laydate/skins/default/laydate.css",
+					"js/laydate/need/laydate.css",
+					"js/laydate/laydate.js",
+					"js/mui.min.js",
+					"js/layer/layer.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/layer/need/layer.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/Management/PyLuru.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/islogin.js",
+					"js/jqzw_server.js"
+				],
+				"refer": [
+					"html/Management/chartshow.html",
+					"html/base/selectProjectYou.html",
+					"html/base/selectDept.html",
+					"html/base/selectDeptYou.html",
+					"html/base/selectAddressYou.html"
+				],
+				"priority": 0
+			},
+			"html/main/HomeList.html": {
+				"resources": [
+					"css/common.css",
+					"image/icon_ss.png",
+					"css/font-awesome-4.5.0/css/font-awesome.min.css",
+					"css/font-awesome-4.5.0/fonts/fontawesome-webfont.woff2",
+					"js/common.js",
+					"js/mui.min.js",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/jquery-1.11.3.js",
+					"css/font-awesome-4.5.0/fonts/fontawesome-webfont.woff",
+					"css/font-awesome-4.5.0/fonts/fontawesome-webfont.ttf",
+					"css/checkstyle.css",
+					"css/font-awesome-4.5.0/fonts/fontawesome-webfont.eot",
+					"css/font-awesome-4.5.0/fonts/fontawesome-webfont.svg",
+					"fonts/mui.ttf"
+				],
+				"refer": [
+					"html/base/barcode_scan.html",
+					"html/main/ScanCredit.html",
+					"html/Approval/AssetAcceptance.html",
+					"html/Management/AssetShowPage.html",
+					"html/main/MainRe.html",
+					"html/Management/AssetBaoXiu.html",
+					"html/Management/AssetJieYong.html",
+					"html/main/AssetJieYongScan.html",
+					"html/main/AssetGuiHuiScan.html",
+					"html/main/AssetBaoXiuScan.html",
+					"html/Approval/MattersApproval.html",
+					"html/main/DaiBanMore.html",
+					"html/Management/AssetsInventory.html",
+					"html/Approval/ViewDetails.html",
+					"html/Approval/AssetBorrowApproval.html",
+					"html/Approval/ZhuLouJiaJUApproval.html",
+					"html/Approval/BumApproval.html",
+					"html/chuzhi/ScanCreateDan.html",
+					"html/Approval/ChuzApproval.html",
+					"html/Approval/AssetYanShou.html",
+					"html/Management/AssetJiaoJie.html",
+					"html/main/AssetTiaoji.html",
+					"html/business/yuyueyiqi.html"
+				],
+				"priority": 0
+			},
+			"html/base/selectProject.html": {
+				"resources": [
+					"js/jquery.tree.js",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"image/icon-folder-open.gif",
+					"image/icon-folder.gif"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/base/selectDept.html": {
+				"resources": [
+					"js/jquery.tree.js",
+					"image/icon-folder-open.gif",
+					"image/icon-folder.gif",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/base/selectAddress.html": {
+				"resources": [
+					"js/jquery.tree.js",
+					"image/icon-folder-open.gif",
+					"image/icon-folder.gif",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/Management/AssetShowPage.html": {
+				"resources": [
+					"js/laydate/skins/default/laydate.css",
+					"js/laydate/need/laydate.css",
+					"js/laydate/laydate.js",
+					"js/mui.min.js",
+					"js/layer/layer.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/layer/need/layer.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/main/MainRe.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/common.css",
+					"js/jquery-1.11.3.js",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"css/font-awesome-4.5.0/css/font-awesome.min.css",
+					"css/font-awesome-4.5.0/fonts/fontawesome-webfont.woff2",
+					"fonts/mui.ttf",
+					"js/layer-v3.0.3/layer/skin/default/layer.css",
+					"js/layer-v3.0.3/layer/layer.js",
+					"js/layer-v3.0.3/layer/skin/default/icon.png",
+					"css/font-awesome-4.5.0/fonts/fontawesome-webfont.woff",
+					"css/font-awesome-4.5.0/fonts/fontawesome-webfont.eot",
+					"css/font-awesome-4.5.0/fonts/fontawesome-webfont.ttf",
+					"css/font-awesome-4.5.0/fonts/fontawesome-webfont.svg"
+				],
+				"refer": [
+					"html/main/HomeList.html",
+					"html/main/ScanCredit.html"
+				],
+				"priority": 0
+			},
+			"html/main/AssetJieYongScan.html": {
+				"resources": [
+					"image/sm_icon.png",
+					"js/layer/layer.js",
+					"js/layer/need/layer.css",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"image/icon_ss.png",
+					"js/jqzw_server.js",
+					"css/checkstyle.css",
+					"js/common.js",
+					"css/common.css",
+					"js/mui.min.js",
+					"js/islogin.js",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"html/base/barcode_scan.html",
+					"html/Management/AssetJieYong.html"
+				],
+				"priority": 0
+			},
+			"html/main/AssetGuiHuiScan.html": {
+				"resources": [
+					"image/sm_icon.png",
+					"js/layer/layer.js",
+					"fonts/mui.ttf",
+					"css/checkstyle.css",
+					"js/layer/need/layer.css",
+					"js/jquery-1.11.3.js",
+					"image/icon_ss.png",
+					"js/jqzw_server.js",
+					"js/common.js",
+					"css/common.css",
+					"js/mui.min.js",
+					"js/islogin.js",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"html/base/barcode_scan.html",
+					"html/Management/AssetJieYong.html",
+					"html/Management/AssetGuiHui.html"
+				],
+				"priority": 0
+			},
+			"html/main/AssetBaoXiuScan.html": {
+				"resources": [
+					"image/sm_icon.png",
+					"js/layer/layer.js",
+					"fonts/mui.ttf",
+					"js/layer/need/layer.css",
+					"js/jquery-1.11.3.js",
+					"image/icon_ss.png",
+					"js/jqzw_server.js",
+					"css/checkstyle.css",
+					"js/common.js",
+					"css/common.css",
+					"js/mui.min.js",
+					"js/islogin.js",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"html/base/barcode_scan.html",
+					"html/Management/AssetBaoXiu.html"
+				],
+				"priority": 0
+			},
+			"html/main/ToDoList.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"css/checkstyle.css",
+					"css/font-awesome-4.5.0/css/font-awesome.min.css",
+					"css/font-awesome-4.5.0/fonts/fontawesome-webfont.woff2",
+					"css/font-awesome-4.5.0/fonts/fontawesome-webfont.ttf",
+					"css/font-awesome-4.5.0/fonts/fontawesome-webfont.woff",
+					"css/font-awesome-4.5.0/fonts/fontawesome-webfont.eot",
+					"css/font-awesome-4.5.0/fonts/fontawesome-webfont.svg"
+				],
+				"refer": [
+					"html/Approval/MattersApproval.html",
+					"html/Approval/BumApproval.html",
+					"html/Approval/ZhuLouJiaJUApproval.html",
+					"html/Approval/AssetBorrowApproval.html",
+					"html/Approval/AssetYanShou.html",
+					"html/Approval/DanwTiaojApproval.html",
+					"html/Approval/ChuzApproval.html"
+				],
+				"priority": 0
+			},
+			"html/Approval/AssetTrajectory.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/layer/layer.js",
+					"js/jquery-1.11.3.js",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"fonts/mui.ttf",
+					"js/layer/need/layer.css",
+					"image/gj_icon.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/Approval/BumApproval.html": {
+				"resources": [
+					"js/layer/layer.js",
+					"fonts/mui.ttf",
+					"js/layer/need/layer.css",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"css/checkstyle.css"
+				],
+				"refer": [
+					"html/Approval/AssetTrajectory.html",
+					"html/Approval/ViewDetails.html",
+					"html/shenpi/ViewDetails.html"
+				],
+				"priority": 0
+			},
+			"html/main/DaiBanMore.html": {
+				"resources": [
+					"js/common.js",
+					"js/mui.min.js",
+					"css/common.css",
+					"js/jquery-1.11.3.js",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"css/font-awesome-4.5.0/css/font-awesome.min.css",
+					"fonts/mui.ttf"
+				],
+				"refer": [
+					"html/Approval/ViewDetails.html"
+				],
+				"priority": 0
+			},
+			"html/Approval/ZhuLouJiaJUApproval.html": {
+				"resources": [
+					"js/layer/layer.js",
+					"fonts/mui.ttf",
+					"js/layer/need/layer.css",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"css/checkstyle.css"
+				],
+				"refer": [
+					"html/Approval/AssetTrajectory.html",
+					"html/shenpi/ViewDetails.html",
+					"html/shenpi/AssetTrajectory.html"
+				],
+				"priority": 0
+			},
+			"html/Approval/AssetBorrowApproval.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/layer/layer.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"css/checkstyle.css",
+					"js/layer/need/layer.css"
+				],
+				"refer": [
+					"html/Approval/AssetTrajectory.html",
+					"html/shenpi/ViewDetails.html",
+					"html/shenpi/AssetTrajectory.html"
+				],
+				"priority": 0
+			},
+			"html/Approval/AssetYanShou.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/layer/layer.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"css/checkstyle.css",
+					"js/layer/need/layer.css"
+				],
+				"refer": [
+					"html/Approval/AssetTrajectory.html"
+				],
+				"priority": 0
+			},
+			"html/Approval/ViewDetails.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/layer/layer.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"css/checkstyle.css",
+					"js/layer/need/layer.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/Management/pankui.html": {
+				"resources": [
+					"js/jquery-1.11.3.js",
+					"js/jqzw_server.js",
+					"js/mui.min.js",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/layer/layer.js",
+					"js/layer/need/layer.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/Management/panying.html": {
+				"resources": [
+					"js/jquery-1.11.3.js",
+					"js/jqzw_server.js",
+					"js/mui.min.js",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/layer/layer.js",
+					"js/layer/need/layer.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/base/selectProjectYou.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/base/selectAddressYou.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/base/selectDeptYou.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/main/UserPage.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"image/dl_icon_yhmc.png",
+					"css/mui.min.css",
+					"fonts/mui.ttf"
+				],
+				"refer": [
+					"html/business/systemRole.html",
+					"html/business/settingAccount.html",
+					"html/base/login.html"
+				],
+				"priority": 0
+			},
+			"html/base/selectDeptAll.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/layer/layer.js",
+					"js/layer/need/layer.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/chuzhi/ScanCreateDan.html": {
+				"resources": [
+					"js/jquery-1.11.3.js",
+					"js/layer/layer.js",
+					"fonts/mui.ttf",
+					"image/icon_ss.png",
+					"js/jqzw_server.js",
+					"css/checkstyle.css",
+					"js/layer/need/layer.css",
+					"image/sm_icon.png",
+					"js/common.js",
+					"css/common.css",
+					"js/mui.min.js",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/common1.js",
+					"js/nfcty.js",
+					"js/test.js"
+				],
+				"refer": [
+					"html/base/barcode_scan.html",
+					"html/chuzhi/ScanBuilding.html"
+				],
+				"priority": 0
+			},
+			"html/chuzhi/ScanBuilding.html": {
+				"resources": [
+					"js/laydate/skins/default/laydate.css",
+					"js/laydate/need/laydate.css",
+					"js/laydate/laydate.js",
+					"js/mui.min.js",
+					"js/layer/layer.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"js/laydate/skins/yalan/laydate.css",
+					"js/layer/need/layer.css"
+				],
+				"refer": [
+					"html/base/selectDeptAll.html"
+				],
+				"priority": 0
+			},
+			"html/main/AnnouncementList.html": {
+				"resources": [
+					"css/common.css",
+					"css/mui.min.css",
+					"css/checkstyle.css",
+					"js/common1.js",
+					"js/common.js",
+					"js/mui.min.js",
+					"js/layer/layer.js",
+					"js/jquery-1.11.3.js",
+					"js/islogin.js",
+					"js/nfcty.js",
+					"js/jqzw_server.js",
+					"js/test.js",
+					"js/layer/need/layer.css",
+					"fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/Approval/ChuzApproval.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/layer/layer.js",
+					"js/jquery-1.11.3.js",
+					"fonts/mui.ttf",
+					"js/islogin.js",
+					"css/mui.min.css",
+					"js/jqzw_server.js",
+					"css/checkstyle.css",
+					"js/layer/need/layer.css"
+				],
+				"refer": [
+					"html/shenpi/ViewDetails.html"
+				],
+				"priority": 0
+			},
+			"html/main/AssetTiaoji.html": {
+				"resources": [],
+				"refer": [
+					"html/main/AssetTiaoji_tj.html",
+					"html/base/selectDept.html",
+					"html/base/selectDeptYou.html",
+					"html/basedata/selectDept.html"
+				],
+				"priority": 0
+			},
+			"html/main/AssetTiaoji_tj.html": {
+				"resources": [],
+				"refer": [
+					"html/basedata/selectPerson.html",
+					"html/basedata/selectAddress.html"
+				],
+				"priority": 0
+			},
+			"html/main/function.html": {
+				"resources": [],
+				"refer": [
+					"html/business/yuyueyiqi.html",
+					"html/business/ziyongdengji.html",
+					"html/business/feiyongheding.html",
+					"html/business/yuancsxj.html"
+				],
+				"priority": 0
+			},
+			"html/business/ziyongdengji.html": {
+				"resources": [],
+				"refer": [
+					"html/business/dengjiDetail.html"
+				],
+				"priority": 0
+			},
+			"html/main/number.html": {
+				"resources": [],
+				"refer": [
+					"html/business/myAssets.html"
+				],
+				"priority": 0
+			},
+			"html/business/feiyongheding.html": {
+				"resources": [],
+				"refer": [
+					"html/business/feiyongqueren.html"
+				],
+				"priority": 0
+			},
+			"html/business/yuyueyiqi.html": {
+				"resources": [],
+				"refer": [
+					"html/business/weituotest.html"
+				],
+				"priority": 0
+			},
+			"html/business/dengjiDetail.html": {
+				"resources": [],
+				"refer": [
+					"html/business/selectPerson.html"
+				],
+				"priority": 0
+			},
+			"html/main/Handle.html": {
+				"resources": [],
+				"refer": [
+					"html/business/kuaisufaqi.html"
+				],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"image/yhzx_icon_tx.png",
+				"image/zcgl_icon_x_ct.png",
+				"css/font-awesome-4.5.0/fonts/FontAwesome.otf",
+				"css/font-awesome-4.5.0/less/stacked.less",
+				"image/dl_wgx.png",
+				"css/font-awesome-4.5.0/less/font-awesome.less",
+				"css/dept.css",
+				"image/icon_xz.png",
+				"js/echarts.simple.min.js",
+				"image/icon_wxz.png",
+				"image/96x96.png",
+				"js/laydate/skins/default/icon.png",
+				"css/font-awesome-4.5.0/less/path.less",
+				"css/font-awesome-4.5.0/scss/font-awesome.scss",
+				"image/jt_s.png",
+				"css/font-awesome-4.5.0/css/font-awesome.css",
+				"css/font-awesome-4.5.0/less/fixed-width.less",
+				"css/font-awesome-4.5.0/scss/_bordered-pulled.scss",
+				"js/layer-v3.0.3/layer/skin/default/loading-2.gif",
+				"css/font-awesome-4.5.0/scss/_larger.scss",
+				"js/laydate/skins/dahong/laydate.css",
+				"image/zcgl_icon_smjd_h.png",
+				"image/zcgl_icon_zcgz_h.png",
+				"css/font-awesome-4.5.0/less/core.less",
+				"css/font-awesome-4.5.0/scss/_animated.scss",
+				"css/font-awesome-4.5.0/scss/_icons.scss",
+				"image/icon_db_wgx.png",
+				"image/icon_jt.png",
+				"js/layer-v3.0.3/layer/skin/default/loading-0.gif",
+				"image/yhzx_icon_qchc.png",
+				"css/font-awesome-4.5.0/scss/_path.scss",
+				"js/layer-v3.0.3/layer/mobile/layer.js",
+				"image/zcgl_icon_zccz_h.png",
+				"image/dl-mm-d.png",
+				"css/font-awesome-4.5.0/scss/_stacked.scss",
+				"js/Util.js",
+				"image/icon_lj.png",
+				"css/font-awesome-4.5.0/less/mixins.less",
+				"image/dl-yhm.png",
+				"image/yhzx_icon_bbh.png",
+				"css/font-awesome-4.5.0/less/animated.less",
+				"css/font-awesome-4.5.0/less/list.less",
+				"css/font-awesome-4.5.0/scss/_rotated-flipped.scss",
+				"image/icon-file.gif",
+				"image/zcgl_icon_zpgl_h.png",
+				"css/common-search.css",
+				"js/laydate/skins/molv/icon.png",
+				"image/dl-mm.png",
+				"image/dl-yhm-d.png",
+				"css/font-awesome-4.5.0/less/larger.less",
+				"css/font-awesome-4.5.0/less/rotated-flipped.less",
+				"image/zcgl_icon_zcdb_h.png",
+				"css/font-awesome-4.5.0/HELP-US-OUT.txt",
+				"image/zcgl_icon_xxbd_h.png",
+				"css/common-approval.css",
+				"js/layer-v3.0.3/layer/mobile/need/layer.css",
+				"image/icon_db_gx.png",
+				"image/dl-pic.png",
+				"image/dl_sz.png",
+				"css/common-approval-bottom.css",
+				"css/common-asset-search.css",
+				"image/logo.png",
+				"js/laydate/skins/yalan/icon.png",
+				"js/laydate/skins/dahong/icon.png",
+				"js/comment-approval.js",
+				"image/dl_gx.png",
+				"css/font-awesome-4.5.0/less/icons.less",
+				"css/font-awesome-4.5.0/scss/_variables.scss",
+				"css/tiaojiapplication.css",
+				"js/layer-v3.0.3/layer/skin/default/loading-1.gif",
+				"css/font-awesome-4.5.0/scss/_mixins.scss",
+				"css/font-awesome-4.5.0/less/variables.less",
+				"image/jt_x.png",
+				"js/layer-v3.0.3/layer/skin/default/icon-ext.png",
+				"css/font-awesome-4.5.0/scss/_list.scss",
+				"image/top_fh_icon.png",
+				"image/yhzx_icon_xgfwq.png",
+				"css/font-awesome-4.5.0/less/bordered-pulled.less",
+				"js/laydate/skins/molv/laydate.css",
+				"css/font-awesome-4.5.0/scss/_fixed-width.scss",
+				"image/top_icon_ss.png",
+				"css/font-awesome-4.5.0/scss/_core.scss"
+			]
+		}
+	},
+    "unpackage" : []
+}

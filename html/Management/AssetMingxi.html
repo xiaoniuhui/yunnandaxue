@@ -1,0 +1,230 @@
+<!--
+	作者：369126371@qq.com
+	时间：2016-10-12
+	描述：资产入账
+-->
+<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../../css/mui.min.css">
+	</head>
+	<style>
+
+	.mui-content{
+		background:#fff;
+		height:100%;
+		width:100%;
+		overflow-x: hidden;
+	}
+	.headcount{
+			background-color: rgb(42,195,253);
+		}
+	.mui-table-view-cell:after {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0px;
+		height: 1px;
+		content: '';
+		-webkit-transform: scaleY(.5);
+		transform: scaleY(.5);
+		background-color: #DCDCDC;				
+	}
+	.mui-table-view-cell{
+		color: #676767;
+		font-size: 14px;
+	}
+	.lititle{
+		width: 100%;
+		font-size: 14px;
+	}
+	.lidivone{
+		width: 35%;
+		float: left;
+	}
+	.lidivtwo{
+		width: 65%;
+		float: left;
+		text-align: right;
+	}
+	.lidivtwo input{
+		font-size: 14px;
+	}
+	
+	.buttondiv{
+		width: 100%;
+		height: 50px;
+	}
+	.buttonwebs{
+		width: 98%;
+		margin-left: 1%;
+		height: 45px;
+		background-color: rgb(42,195,253);
+		color: #FFFFFF;
+		font-size: 18px;
+		letter-spacing: 5px;
+	}
+	
+	.inputluru{
+		width: 90%;
+		border: 1px #CCCCCC solid;
+	}
+	.lanse{
+		color: rgb(42,195,253);
+	}
+	.changefont{
+		color: rgb(208,211,200);
+	}
+	.lidivimg{
+		width: 7px;
+	}
+	.lidivthere{
+		width: 60%;
+		float: left;
+		text-align: right;
+	}
+	.lidivfour{
+		width: 5%;
+		float: left;
+		text-align: right;
+		margin-top: 1px;
+	}
+	.hidediv{
+		display: none;
+	}
+	#thelistul{
+		padding: 5px;
+	}
+	.redbixu{
+		color: red;
+	}
+	.acceptance{
+		line-height: 30px;
+	}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav headcount">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;">
+					<span style="font-size: 15px;">返回</span>
+				</a>
+				<h1 class="mui-title" style="color: #FFFFFF;">资产明细信息</h1>
+				
+			</header>
+		<div class="mui-content">
+			
+				<div class="mui-content-padded" style="margin: 5px;">
+			
+			
+			</div>
+			
+				<div class="mui-content-padded" style="margin: 5px;">
+					<span style="font-size: 14px;">资产明细信息：</span>
+			<ul class="mui-table-view" >
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">资产编号：</div>
+						<div class="lidivtwo" id="zicbh">TY55026666</div> 
+					</div>
+					
+				</li>	
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">资产名称：</div>
+						<div class="lidivtwo" id="zicmc">戴尔笔记本</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">数量：</div>
+						<div class="lidivtwo" id="shul">
+							21
+						</div>
+					</div>
+					
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">价值：</div>
+						<div class="lidivtwo" id="jiaz" >3111.22</div>
+					</div>
+					
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">规格型号：</div>
+						<div class="lidivtwo" id="jiaz" >LY-1555</div>
+					</div>
+					
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">使用人：</div>
+						<div class="lidivtwo" id="shiyr">张伟民</div>
+					</div>
+					
+				</li>
+
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">使用部门：</div>
+						<div class="lidivtwo" id="shiybm">文学院</div>
+					</div>
+					
+				</li>
+				
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">存放地点：</div>
+						<div class="lidivtwo" id="cunfdd">图书馆</div>
+					</div>
+					
+				</li>
+				
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone" >SN号：</div>
+						<div class="lidivtwo" id="cunfdd">9996666</div>
+					</div>
+				</li>	
+				
+				
+			
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">备注：</div>
+						<div class="lidivtwo" id="beiZ">
+							我是一条备注我是一条备注我是一条备注我是一条备注我是一条备注我是一条备注我是一条备注
+						</div>
+					</div>
+					
+				</li>
+			
+					
+			</ul>
+			</div>
+			
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/laydate/laydate.js" ></script>
+		<script type="text/javascript" src="../../js/jquery-1.11.3.js" ></script>
+		<script type="text/javascript" src="../../js/layer/layer.js" ></script>
+		<script type="text/javascript" src="../../js/jqzw_server.js" ></script>
+		<script>
+			mui.init();
+			mui.plusReady(function(){
+
+				
+				
+				
+			});
+			
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,18 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.tabCont{
+	padding: 20px;
+}
+.tabCont div ul{
+	list-style: none;
+}
+.tabCont div ul li{	
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #0B0B0B;
+	letter-spacing: 0;
+	line-height: 16px;
+	padding: 10px 0;
+}

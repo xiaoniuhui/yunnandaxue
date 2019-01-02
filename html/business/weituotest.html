@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>委托预约测试</title>
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/mui.picker.min.css">
+		<link rel="stylesheet" href="../../css/mui.poppicker.css">
+		<link rel="stylesheet" href="../../css/weituotest.css">
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">委托预约</h1>
+		</header>
+		<div class="cont">
+			<div class="topTab">
+				<ul>
+					<li class="active">测样基本信息</li>
+					<li>课题账本信息</li>
+					<li>收费项选择</li>
+				</ul>
+			</div>
+			<div class="tabcont">
+				<form id="baseform">
+				<div class="sampleInfo active">
+					<div class="remind">
+						<h6>1：委托测试必须提前电话预约</h6>
+						<h6>2：线下与机组人员联系预约时间</h6>
+					</div>
+					<div class="tianxie">
+						<div class="item">
+							<label for="yangpmc" style="border: none;">样品名称</label>
+							<input type="text" placeholder="请填写" id="yangpmc" name="yangpmc">
+						</div>
+						<div class="item">
+							<label for="yangpsl" style="border: none;">样品数量</label>
+							<input type="text" placeholder="请填写" id="yangpsl" name="yangpsl">
+						</div>	
+						<div class="item">
+							<label for="yuycsrq">预约测试日期</label>
+							<div id="dyuycsrq"></div>
+							<input type="hidden" id="yuycsrq" name="yuycsrq">
+						</div>
+						<div class="item">
+							<label for="qiwwcsj">期望完成时间</label>
+							<div id="dshijd"></div>
+							<input type="hidden" id="qiwwcsj" name="qiwwcsj">
+						</div>
+					</div>
+					<div class="bottom">
+						<h6>样品信息监测要求</h6>
+						<textarea rows="" cols="" placeholder="请填写" id="jiancyq" name="jiancyq"></textarea>
+					</div>
+				</div>
+				<div class="ketiinfo">
+					<div class="tianxie">
+						<div class="item">
+							<label for="xiangmlx">项目类型</label>
+							<div id="dxiangmlx"></div>
+							<input type="hidden" id="xiangmlx" name="xiangmlx">
+						</div>
+						<div class="item">
+							<label for="suoszb">所属账本</label>
+							<div id="dsuoszb"></div>
+							<input type="hidden" id="accountid" name="accountid">
+						</div>	
+						<div class="item">
+							<label for="ketz">课题组<i style="visibility: hidden;">啊</i></label>
+							<div id="dketz"></div>
+							<input type="hidden" id="ketz" name="ketz">
+						</div>
+						<div class="itemA">
+							<label>样品形态</label>
+							<input type="radio" name="yangpxt" checked value="01">固态
+							<input type="radio" name="yangpxt" value="02">液态
+						</div>
+						<div class="itemA">
+							<label>腐蚀性</label>
+							<input type="radio" name="fusx" value="01" >是
+							<input type="radio" name="fusx" value="02" checked>否
+						</div>
+						<div class="itemA">
+							<label>易燃性</label>
+							<input type="radio" name="yirx" value="01" >是
+							<input type="radio" name="yirx" value="02" checked>否
+						</div>
+						<div class="itemA">
+							<label>易爆性</label>
+							<input type="radio" name="yibx" value="01" >是
+							<input type="radio" name="yibx" value="02" checked>否
+						</div>
+						<div class="itemA">
+							<label>毒性</label>
+							<input type="radio" name="dux" value="01" >是
+							<input type="radio" name="dux" value="02" checked>否
+						</div>
+						<div class="itemA">
+							<label>样品是否回收</label>
+							<input type="radio" name="shifhs" value="01" >是
+							<input type="radio" name="shifhs" value="02" checked>否
+						</div>
+						<div class="item">
+							<label for="yangpys" style="border: none;">颜色</label>
+							<input type="text" id="yangpys" name="yangpys">
+						</div>	
+					</div>
+				</div>
+				<div class="charge">
+					<script type="text/template" id="scaleTmp">
+						<% for (var key in info) { %>
+							<h4><%= key%></h4>
+							<% for (var i=0,l=info[key].length;i<l;i++) { %>
+								<div class="listItem">
+									<div class="checkBox">
+										<input type="hidden" value="<%=info[key][i].beiz%>" class="beiz">	
+										<input type="hidden" value="<%=info[key][i].irecid%>" class="recid">										
+										<% if ( key =='基础测试项目') { %>
+											<input type="checkbox" class="jichu">
+										<% } else { %>
+											<input type="checkbox" class="qita">
+										<% } %>
+										<label>
+											<span class="xmmc">
+												<%= info[key][i].xiagnmmc%>
+											</span>
+											<span class="jiage">
+												<% if (yonghlxCode =='01') { %>
+													<%=info[key][i].xiaonj%>
+												<%}else {%>
+													<%=info[key][i].xiaowj%>
+												<% }%>
+											</span>元/<%=info[key][i].chongmm%>
+										</label>
+									</div>
+									<div class="shul">
+										<label for="">样品数量</label>
+										<input type="text" name="" id="" value="" class="shuliang">
+										小计：<span class="xiaoji"><span>
+									</div>
+								</div>
+							<% } %>
+						<% } %>	
+					</script>				
+				</div>
+				</form>
+			</div>
+			<div class="but-bottom">
+				<div class="heji">
+					预计费用：<span id="yujifeiyong"></span>
+				</div>
+				<div class="btngroup">
+					<button class="btnsubmit">提交</button>
+					<button class="btnback mui-action-back">返回</button>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script src="../../js/mui.picker.min.js"></script>
+	<script src="../../js/mui.poppicker.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/template-native.js"></script>
+	<script>
+		var url=localStorage.url;
+		var userId=localStorage.wid;
+		var stdcode = localStorage.stdcode;//供默认登录使用
+		var objectid;//每台仪器的objectid
+		//默认加载收费项目
+		function getScale(objId){
+			$.ajax({
+				type:'get',
+				url:url+'/jqzw/server',
+				data:{service:"BigEquipmentService",params:objId,method:"getFeeScaleList"},
+				dataType:'json',
+				success:function(info){
+					console.log(JSON.stringify(info))
+					if(info.type == 'success'){
+						var html=template('scaleTmp',{info:info.value[0],yonghlxCode:localStorage.yonghlxcode});
+						$('.charge').html(html);
+					}
+					
+				},
+				error:function(err){
+					console.log(err);
+				}
+			})
+		}
+		mui.init({
+		});			
+		//创建子页面，首个选项卡页面显示，其它均隐藏；
+		mui.plusReady(function() {
+			var self=plus.webview.currentWebview();
+			var recid=self.recid;//仪器的recid,好像没用到
+			objectid=self.objectid;
+			getScale(objectid);
+		});
+		$(function(){
+			$('.topTab li').on('click',function(){
+				$(this).addClass('active').siblings('li').removeClass('active');
+				var i=$(this).index();
+				$(".tabcont form>div").eq(i).addClass("active").siblings().removeClass("active");
+			});
+			//预约测试时间
+			$('#dyuycsrq').on('click',function(){
+				var dtpicker = new mui.DtPicker({
+					type:'date',
+					labels: ['年', '月', '日'],//设置默认标签区域提示语
+					beginDate: new Date()//设置开始日期
+				});
+				dtpicker.show(function(items){
+					var riqi=items.y.text+'-'+items.m.text+'-'+items.d.text;
+					var hour=items.h.text;
+					$('#dyuycsrq').text(riqi);
+					$('#yuycsrq').val(riqi);
+				});
+			});
+			//期望完成时间
+			$('#dshijd').on('click',function(){
+				var dtpicker = new mui.DtPicker({
+					type:'hour',
+					labels: ['年', '月', '日', '小时'],//设置默认标签区域提示语 
+					customData: {
+						"h": [ 
+							{ value: "am", text: "上午" },
+							{ value: "pm", text: "下午" },
+						]
+					},					
+					beginDate: new Date()//设置开始日期
+				});
+				dtpicker.show(function(items){
+					var riqi=items.y.text+'-'+items.m.text+'-'+items.d.text;
+					var hour=items.h.text;
+					$('#dshijd').text(riqi);
+					$('#qiwwcsj').val(riqi);
+				});
+			});
+			
+			//选择项目类型
+			$('#dxiangmlx').on('click',function(){
+				var picker = new mui.PopPicker();
+				picker.setData([{value:'01',text:'教学'},{value:'02',text:'科研'},{value:'03',text:'社会服务'}]); 
+				picker.show(function(e){
+					$('#dxiangmlx').text(e[0].text);
+					$('#xiangmlx').val(e[0].value);
+				}); 
+			});
+			//选择所属账本
+			$('#dsuoszb').on('click',function(){				
+				$.ajax({
+					url:url+'/jqzw/server',
+					type:'get',
+					dataType:'json',
+					data:{service:"BigEquipmentService",params:userId,method:"getGetAccountList"},
+					success:function(info){
+						console.log(JSON.stringify(info))
+						if(info.type == 'success'){
+							var picker = new mui.PopPicker();							
+							picker.setData(info.value);
+							picker.show(function(e){
+								$('#dsuoszb').text(e[0].text);
+								$('#accountid').val(e[0].recid);
+							});
+						}
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
+			});
+			//选择课题组
+			$('#dketz').on('click',function(){				
+				$.ajax({
+					url:url+'/jqzw/server',
+					type:'get',
+					dataType:'json',
+					data:{service:"BigEquipmentService",params:userId,method:"getGetTopicList"},
+					success:function(info){
+						var picker = new mui.PopPicker();
+						picker.setData(info.value); 
+						picker.show(function(e){
+							$('#dketz').text(e[0].text);
+							$('#ketz').val(e[0].recid);
+						}); 
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
+			});
+			//每一项合计,总计
+			function getsum(){
+				var heji=0;
+				$.each($('input[type="checkbox"]:checked'),function(index,item){
+					var thisdanjia=$(item).parent().siblings('div.shul').find('span.xiaoji').text()-0;
+					heji+=thisdanjia;
+				});
+				$('#yujifeiyong').text(heji);
+			}
+			//收费项目键盘输入
+			$('body').on('keyup','input.shuliang',function(){
+				var flag=$(this).parent().siblings('div.checkBox').children('input[type="checkbox"]').prop('checked');//获取复选框状态值true/false
+				var shuliang=$(this).val()-0;
+				var danjia=$(this).parent().siblings('div.checkBox').find('span.jiage').text()-0;//获取价格		
+				console.log(danjia);
+				console.log(shuliang);
+				console.log(flag)
+				if(flag){
+					$(this).siblings('span.xiaoji').text(shuliang*danjia);//每一项勾选的小计
+					getsum();
+				}				
+			});
+			//获取勾选的jichu项目
+			function getJichuChekcbox(){
+				var obj_arr=[];				
+				$.each($('input.jichu:checked'),function(index,item){
+					var obj={};
+					var recid=$(item).siblings('input.recid').val();//获取recid
+					var yangpsl=$(item).parent().siblings('div.shul').find('input.shuliang').val()-0;//获取样品数量
+					var danj=$(item).siblings('label').find('span.jiage').text()-0;//获取价格
+					var xiangmmc=$(item).siblings('label').find('span.xmmc').text().trim();//获取项目名称
+					var feiyxj=yangpsl*danj;
+					var beizhu=$(item).siblings('input.beiz').val();//获取beiz					
+					obj.xiangmfl="62DC0E12200000014309853BC9E4872C";//基础项目分类,定值
+					obj.feiyxj=feiyxj;
+					obj.recid=recid;
+					obj.yangpsl=yangpsl;
+					obj.xiangmmc=xiangmmc;
+					obj.checked=1;					
+					obj.beizhu=beizhu;
+					obj_arr.push(obj);
+				});
+				return obj_arr;
+			}
+			//获取勾选的qita项目
+			function getQitaChekcbox(){
+				var obj_arr=[];				
+				$.each($('input.qita:checked'),function(index,item){
+					var obj={};
+					var recid=$(item).siblings('input.recid').val();//获取recid
+					var yangpsl=$(item).parent().siblings('div.shul').find('input.shuliang').val()-0;//获取样品数量
+					var danj=$(item).siblings('label').find('span.jiage').text()-0;//获取价格
+					var xiangmmc=$(item).siblings('label').find('span.xmmc').text().trim();//获取项目名称
+					var feiyxj=yangpsl*danj;
+					var beizhu=$(item).siblings('input.beiz').val();//获取beiz
+					obj.xiangmfl="62DC0E87A00000014EDF4C8238106761";//其他项目分类,定值
+					obj.feiyxj=feiyxj;
+					obj.recid=recid;
+					obj.yangpsl=yangpsl;
+					obj.xiangmmc=xiangmmc;
+					obj.checked=1;
+					obj.beizhu=beizhu;
+					obj_arr.push(obj);
+				});
+				return obj_arr;
+			}
+			
+			
+			//获取所有基础测试项目
+			function getjichu_all(){
+				var jichu_all=[];
+				$.each($('input.jichu'),function(index,item){
+					var obj={};
+					var recid=$(item).siblings('input.recid').val();//获取recid
+					var yangpsl=$(item).parent().siblings('div.shul').find('input.shuliang').val()-0;//获取样品数量
+					var danj=$(item).siblings('label').find('span.jiage').text()-0;//获取价格
+					var xiangmmc=$(item).siblings('label').find('span.xmmc').text().trim();//获取项目名称
+					var feiyxj=yangpsl*danj;
+					var beizhu=$(item).siblings('input.beiz').val();//获取beiz					
+					obj.xiangmfl="62DC0E12200000014309853BC9E4872C";//基础项目分类,定值
+					obj.feiyxj=feiyxj;
+					obj.recid=recid;
+					obj.yangpsl=yangpsl;
+					obj.xiangmmc=xiangmmc;
+					if($(this).is(':checked')){
+						obj.checked=1;
+					}else{
+						obj.checked=0;
+					}										
+					obj.beizhu=beizhu;
+					jichu_all.push(obj);
+				});
+				return jichu_all;
+			}
+			//获取所有其他测试项目
+			function getqita_all(){
+				var qita_all=[];
+				$.each($('input.qita'),function(index,item){
+					var obj={};
+					var recid=$(item).siblings('input.recid').val();//获取recid
+					var yangpsl=$(item).parent().siblings('div.shul').find('input.shuliang').val()-0;//获取样品数量
+					var danj=$(item).siblings('label').find('span.jiage').text()-0;//获取价格
+					var xiangmmc=$(item).siblings('label').find('span.xmmc').text().trim();//获取项目名称
+					var feiyxj=yangpsl*danj;
+					var beizhu=$(item).siblings('input.beiz').val();//获取beiz
+					obj.xiangmfl="62DC0E87A00000014EDF4C8238106761";//其他项目分类,定值
+					obj.feiyxj=feiyxj;
+					obj.recid=recid;
+					obj.yangpsl=yangpsl;
+					obj.xiangmmc=xiangmmc;
+					if($(this).is(':checked')){
+						obj.checked=1;
+					}else{
+						obj.checked=0;
+					}					
+					obj.beizhu=beizhu;
+					qita_all.push(obj);
+				});
+				return qita_all;
+			}
+			
+			
+			
+			
+			//复选框勾选事件
+			$('body').on('change','input[type="checkbox"]',function(){
+				var flag=$(this).prop('checked');
+				var shuliang=$(this).parent().siblings('div.shul').children('input.shuliang').val()-0;
+				var danjia=$(this).parent().find('span.jiage').text()-0;				
+				if(flag){
+					$(this).parent().siblings('div.shul').find('span.xiaoji').text(shuliang*danjia);
+					getsum()
+				}else{
+					$(this).parent().siblings('div.shul').find('span.xiaoji').text("");
+					getsum()
+				}				
+			});
+			
+			//btnsubmit提交按钮
+			$('.btnsubmit').on('click',function(){
+				//所属账本和课题组不能为空
+				if($('#dsuoszb').text() == '' || $('#dketz').text() == ''){
+					mui.toast("所属账本或课题组不能为空");
+					return;
+				}
+				var formdata=$('#baseform').serializeArray();
+				var obj={};
+				//from表单json化
+				$.each(formdata,function(index,item){
+					obj[item.name]=item.value;
+				});
+				var yujfy=$('#yujifeiyong').text()-0;//预计费用
+				if(yujfy<1){					
+					mui.toast("请至少勾选一个测试项目");
+					return;
+				}
+				obj.yujfy=yujfy;
+				obj.yujjs=($('#yangpsl').val()-0)*0.5;
+				obj.wid=localStorage.wid;
+				obj.accountcode=$('#dsuoszb').text();
+				obj.objectid=objectid;
+				//obj.cesxm=getChekcbox();
+				obj.cesxm={
+					"62DC0E12200000014309853BC9E4872C":getJichuChekcbox(),
+					"62DC0E87A00000014EDF4C8238106761":getQitaChekcbox()
+				};
+				obj.yuancsxm={
+					jichu_all:getjichu_all(),
+					qita_all:getqita_all()
+				};
+				obj=JSON.stringify(obj);
+				//默认登录,防止会话过期
+				$.ajax({
+					url:url+'/jqzw/login/log',
+					type:'get',
+					dataType:'json',
+					data:{username:stdcode,token:"tryagain"},
+					success:function(info){
+						if(info.type == 'success'){
+							$.ajax({
+								type:'get',
+								url:url+'/jqzw/server',
+								dataType:'json',
+								data:{service:"BigEquipmentService",params:obj,method:"saveDelegation"},
+								beforeSend:function(){
+									plus.nativeUI.showWaiting('正在提交...');
+								},
+								success:function(info){
+									console.log(JSON.stringify(info));
+									if(info.type =='success'){
+										mui.toast('提交成功');
+										mui.openWindow({
+											url: "./yuyueyiqi.html",
+											styles: {
+												popGesture: 'close',
+												scrollIndicator: "none"
+											},
+											waiting: {
+												autoShow: false
+											}
+										});
+									}
+								},
+								error:function(err){
+									console.log(JSON.stringify(err));
+								},
+								complete:function(){
+									plus.nativeUI.closeWaiting();
+								}
+							})
+						}else{
+							mui.toast('登录失败，会话过期，请重新登录');
+						}
+					},
+					error:function(err){
+						mui.toast('登录失败，会话过期，请重新登录');
+					}
+				})
+				
+				
+			});
+		});
+		
+		
+	</script>
+</html>

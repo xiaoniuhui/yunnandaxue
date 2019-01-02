@@ -1,0 +1,469 @@
+<!--
+	作者：369126371@qq.com
+	时间：2016-10-12
+	描述：资产入账
+-->
+<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../../css/mui.min.css">
+	</head>
+	<style>
+
+	.mui-content{
+		background:#fff;
+		height:100%;
+		width:100%;
+		overflow-x: hidden;
+	}
+	.headcount{
+			background-color: rgb(42,195,253);
+		}
+	.mui-table-view-cell:after {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0px;
+		height: 1px;
+		content: '';
+		-webkit-transform: scaleY(.5);
+		transform: scaleY(.5);
+		background-color: #DCDCDC;				
+	}
+	.mui-table-view-cell{
+		color: #676767;
+		font-size: 14px;
+	}
+	.lititle{
+		width: 100%;
+		font-size: 14px;
+	}
+	.lidivone{
+		width: 35%;
+		float: left;
+	}
+	.lidivtwo,.lidivtwos{
+		float: left;
+		width: 65%;
+		height: 21px;
+		line-height: 21px;
+		text-align: right;
+	}
+	.lidivtwo input{
+		font-size: 14px;
+	}
+	.lidivtwos input{
+		font-size: 14px;
+	}
+	.buttondiv{
+		width: 100%;
+		height: 50px;
+	}
+	.buttonwebs{
+		width: 98%;
+		margin-left: 1%;
+		height: 45px;
+		background-color: rgb(42,195,253);
+		color: #FFFFFF;
+		font-size: 18px;
+		letter-spacing: 5px;
+	}
+	
+	.inputluru{
+		width: 90%;
+		border: 1px #CCCCCC solid;
+	}
+	.lanse{
+		color: rgb(42,195,253);
+	}
+	.changefont{
+		color: rgb(208,211,200);
+	}
+	.lidivimg{
+		width: 7px;
+	}
+	.lidivthere{
+		width: 60%;
+		float: left;
+		text-align: right;
+	}
+	.lidivfour{
+		width: 5%;
+		float: left;
+		text-align: right;
+		margin-top: 1px;
+	}
+	.hidediv{
+		display: none;
+	}
+	#thelistul{
+		padding: 5px;
+	}
+	.redbixu{
+		color: red;
+	}
+	.acceptance{
+		line-height: 30px;
+	}
+	.active, .changed{
+		color: #34AADC;
+	}
+	
+	.layer-promot-title {
+		height: 30px;
+		line-height: 30px;
+		text-align: left;
+	}
+	
+	.layer-promot-btn {
+		margin-left: 10px;
+		margin-right: 10px;
+		width: 62px;
+		color: #FFFFFF;
+		background-color: rgb(42,195,253);
+		border: none;
+	}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav headcount">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;">
+				<span style="font-size: 15px;"></span>
+			</a>
+			<h1 class="mui-title" style="color: #FFFFFF;">资产卡片信息修改</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded" style="margin: 5px;"></div>
+			<div class="mui-content-padded" style="margin: 5px;">
+			<span style="font-size: 14px;">资产明细信息：</span>
+			<ul class="mui-table-view" >
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">资产编号：</div>
+						<div class="lidivtwos" id="zicbh"></div> 
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">资产名称：</div>
+						<div class="lidivtwo" id="zicmc"></div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">规格型号：</div>
+						<div class="lidivtwo" id="guigxh" ></div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell" id="li-cunfdd">
+					<div class="lititle">
+						<div class="lidivone">存放地点：</div>
+						<div class="lidivtwos" id="cunfdd"></div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell" style="display: none;">
+					<div class="lititle">
+						<div class="lidivone">存放地点：</div>
+						<div class="lidivtwo" id="cunfddid"></div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone" >出厂号：</div>
+						<div class="lidivtwo" id="chuch"></div>
+					</div>
+				</li>	
+				<li class="mui-table-view-cell" style="display: none;">
+					<div class="lititle">
+						<div class="lidivone">资产标识：</div>
+						<div class="lidivtwo" id="recid"></div> 
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">数量：</div>
+						<div class="lidivtwo" id="shul"></div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">价值：</div>
+						<div class="lidivtwo" id="jiaz" ></div>
+					</div>
+				</li>
+				
+				<li class="mui-table-view-cell" id="li-shiyr">
+					<div class="lititle">
+						<div class="lidivone">使用人：</div>
+						<div class="lidivtwos" id="shiyr"></div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell" style="display: none;">
+					<div class="lititle">
+						<div class="lidivone">使用人：</div>
+						<div class="lidivtwo" id="shiyrid"></div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell" id="li-shiybm">
+					<div class="lititle">
+						<div class="lidivone">使用部门：</div>
+						<div class="lidivtwos" id="shiybm"></div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell" style="display: none;">
+					<div class="lititle">
+						<div class="lidivone">使用部门：</div>
+						<div class="lidivtwo" id="shiybmid"></div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">备注：</div>
+						<div class="lidivtwo" id="beiZ"></div>
+					</div>
+				</li>
+			</ul>
+			</div>
+			<div class="buttondiv">
+				<button class="buttonwebs" id="comtodnaButton">确定</button>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/laydate/laydate.js" ></script>
+		<script type="text/javascript" src="../../js/jquery-1.11.3.js" ></script>
+		<script type="text/javascript" src="../../js/layer/layer.js" ></script>
+		<script type="text/javascript" src="../../js/jqzw_server.js" ></script>
+		<script>
+			var flag = false;
+			mui.init({
+				beforeback: function(){
+					$(function(){
+						if($(".lidivtwo").hasClass("active")){
+							layer.open({
+							    content: '返回上一级修改的数据将不会保存，是否返回上一级？'
+							    ,btn: ['是']
+							    ,yes: function(index){
+							      layer.close(index);
+							      gotoshangyiji();
+							    }
+							  });
+							
+						}else{
+							flag = true;
+						}
+					});
+					return flag;
+				}
+			});
+			
+			mui.plusReady(function(){
+				var AssetCredit = plus.webview.getWebviewById("../Management/AssetCredit.html");
+				var CradInfo = AssetCredit.cardobj;
+				var snhao = AssetCredit.snhao;
+				var cunfddobj = AssetCredit.cunfddobj;
+				var guigxh=AssetCredit.guigxh;
+				setInputval(CradInfo,cunfddobj,snhao,guigxh);
+				addBaseDataListener();
+			});
+			
+			function gotoshangyiji(){
+				flag = true;
+				mui.back();
+			}
+			
+			//cssI与后台的返回值的title相同  可直接赋值
+			function CompareClass(objclass){
+				var obh=eval(objclass);	
+				for(var i in obh){
+					if(obh[i] == null || obh[i] == ""){
+						$("#"+i).html("&nbsp;");
+					}else{
+						$("#"+i).text(obh[i]);	
+					}
+					
+				}
+			}
+			
+			function setInputval(CradInfo,cunfddobj,snhao,guigxh){
+//				console.log(JSON.stringify(CradInfo));
+				CompareClass(CradInfo);
+				
+				$("#guigxh").text(guigxh);
+				$("#guigxh").addClass("active");
+				
+				$("#chuch").text(snhao);
+				$("#chuch").addClass("active");
+				
+				$("#cunfdd").text(cunfddobj[0].stdname)
+				$("#cunfddid").text(cunfddobj[0].recid);
+				$('#cunfdd').addClass("changed");
+				$("#cunfddid").addClass("active");
+			}
+			window.addEventListener('refreshPerson',function(event){
+				// 刷新使用人事件;
+				if(event.detail.selectpersonid != ""){
+					$("#shiyr").text(event.detail.selectperson);
+					$("#shiyrid").text(event.detail.selectpersonid);
+					$("#shiyrid").addClass("active");
+					$("#shiyr").addClass('changed');
+				}
+			});
+			window.addEventListener('refreshdept',function(event){
+				// 刷新部门
+			  	if(event.detail.selectdeptrecid != ""){
+			  		$("#shiybm").text(event.detail.selectdept);
+				  	$("#shiybmid").text(event.detail.selectdeptrecid);
+				  	$("#shiybmid").addClass("active");
+				  	$("#shiybm").addClass('changed');
+			  	}
+			});
+			window.addEventListener('refreshAddress',function(event){
+				// 刷新存放地点;
+			  	if(event.detail.selectaddrecid != ""){
+				  	$("#cunfdd").text(event.detail.selectaddress);
+				  	$("#cunfddid").text(event.detail.selectaddrecid);
+				  	$("#cunfddid").addClass("active");
+				  	$("#cunfdd").addClass('changed');
+			  	}
+			});
+			
+			function addBaseDataListener() {
+				document.getElementById("li-cunfdd").addEventListener('tap', function() {
+					mui.openWindow({
+						url: "../basedata/selectAddress.html",
+						id: 'selectAddress',
+						styles: {
+							popGesture: 'close',
+							scrollIndicator: "none"
+						},
+						waiting: {
+							autoShow: false
+						},
+						extras: {
+							hrefid: plus.webview.currentWebview().id,
+							callback: 'refreshAddress'
+						}
+					});
+				});
+				document.getElementById("li-shiyr").addEventListener('tap', function() {
+					mui.openWindow({
+						url: "../basedata/selectPerson.html",
+						id: 'selectPerson',
+						styles: {
+							popGesture: 'close',
+							scrollIndicator: "none"
+						},
+						waiting: {
+							autoShow: false
+						},
+						extras: {
+							hrefid: plus.webview.currentWebview().id,
+							callback: 'refreshPerson'
+						}
+					});
+				});
+				document.getElementById("li-shiybm").addEventListener('tap', function() {
+					mui.openWindow({
+						url: "../basedata/selectDept.html",
+						id: 'selectDeptYou',
+						styles: {
+							popGesture: 'close',
+							scrollIndicator: "none"
+						},
+						waiting: {
+							autoShow: false
+						},
+						extras: {
+							hrefid: plus.webview.currentWebview().id,
+							callback: 'refreshdept'
+						}
+					});
+				});
+			}
+			$(function(){
+				$(".lidivtwo").click(function(){
+					var id = $(this).attr("id");
+					console.log(id);
+					if("shul" == id) {
+						return;
+					}
+					var title = $(this).prev('.lidivone').text();
+					var divtext = $(this).text().trim();
+					var idtext = $(this).attr("id");
+					
+					var contentDiv = '<div class="layer-promot-title">'+title+'</div>'
+									+'<textarea id="changtext">'+divtext+'</textarea>'
+									+'<div id="hidereciddiv" style="display:none">'+idtext+'</div>'
+									+'<div class="buttondiv">'
+										+'<button class="buttonwebs" id="textbutton">确定</button>'
+									+'</div>';
+					
+					layer.open({
+					    content: contentDiv
+					});
+				});
+		
+				$(document).on("click","#textbutton",function(){
+					var id = $("#hidereciddiv").text();
+					var changtext = $("#changtext").val();
+					if($("#"+id).text().trim() == changtext.trim()){
+						mui.toast("你并未修改！");
+						layer.closeAll();
+						return;
+					}else{
+						if(changtext.trim() == ""){
+							$("#"+id).html("&nbsp;")
+						}else{
+							$("#"+id).text(changtext.trim());
+						}
+						
+						$("#"+id).addClass("active")
+						layer.closeAll();
+					}
+				});
+				
+				$("#comtodnaButton").click(function(){
+					var chatings = new Object();
+					var indexs = 0;
+					$(".lidivtwo").each(function(){
+						if($(this).hasClass("active")){
+							indexs = indexs+1;
+							var biaozhi = $(this).attr("id");
+							var valuezhi = $(this).text();
+							chatings[biaozhi] = valuezhi;
+						}
+					});
+					if(indexs>0){
+//						console.log(JSON.stringify(chatings));
+					}else{
+						mui.toast("未作出任何修改！");
+						return;
+					}
+					var AssetCredit = plus.webview.getWebviewById("../Management/AssetCredit.html");
+					var CradInfo = AssetCredit.cardobj;	
+					
+					$jqzw_server.callServer('SdSfDxAssetCardInfoAddService','saveAssetCardInfoAdd',JSON.stringify(chatings),CradInfo.billdefine,CradInfo.recid).success(function(iv){
+						if(iv == "true" || iv){
+							flag = true;
+							mui.toast("保存成功")
+							mui.back();
+						}else{
+							mui.toast("保存失败")
+						}
+						//console.log(JSON.stringify(iv));  
+					}).error(function(iv){
+						console.log(iv);
+					}).unlogin(function(iv){
+						mui.toast("会话过久，可重新进行上次操作"); 
+					});
+				});
+			});
+			
+		</script>
+	</body>
+ 
+</html>

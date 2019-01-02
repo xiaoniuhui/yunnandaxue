@@ -1,0 +1,77 @@
+.yiqicont{
+	width:100%;
+	min-height: 600px;
+	background-color: #F4F4F4;
+	overflow: hidden;
+}
+.yiqicont .item{
+	width:95%;
+	min-height: 100px;
+	background-color: #FFFFFF;
+	margin: 0 auto;
+	margin-top: 10px;
+	box-sizing: border-box;
+	padding: 20px;
+}
+.item .imgbox{
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	float: left;
+}
+.item .imgbox img{
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+}
+/* 设备信息 */
+.item .yiqiinfo{
+	height: 60px;
+	float: left;
+	margin-left: 10px;
+}
+.yiqiinfo .left{
+	float: left;
+	width: 56px;
+	height: 60px;	
+}
+.yiqiinfo .left span{
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #666666;
+	display: block;
+	height: 20px;
+}
+.yiqiinfo .right{
+	float: left;
+	height: 60px;
+	max-width: 140px;
+	margin-left: 10px;
+	/* overflow: hidden; */
+}
+.yiqiinfo .right span{
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #333333;
+	height: 20px;
+	display: block;
+}
+/* 预约按钮组 */
+.item .btngroup{	
+	float: right;	
+	text-align: center;	
+	width: 68px;
+}
+.item .btngroup button{
+	padding: 0;
+	width: 68px;
+	height: 30px;
+	line-height: 30px;
+	font-family: PingFangSC-Regular;
+	font-size: 12px;
+	color: #FFFFFF;
+	background-image: linear-gradient(-90deg, #628DFF 0%, #4458FF 100%);
+	box-shadow: 0 2px 4px 0 rgba(70,116,239,0.30);
+	border-radius: 4px;
+	display: block;
+}

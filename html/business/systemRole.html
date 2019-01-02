@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>系统角色</title>
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/systemRole.css">
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">系统角色</h1>
+		</header>
+		<div class="cont">
+			<div class="item">
+				<div class="top">
+					<img src="../../image/dayi.png" alt="">
+					<span>大型仪器共享平台</span>
+				</div>
+				<div class="role dy"></div>
+			</div>
+			<div class="item">
+				<div class="top">
+					<img src="../../image/zichan.png" alt="">
+					<span>资产</span>
+				</div>
+				<div class="role mh">
+					<div class="list">平台管理员</div>
+					<div class="list">管理员</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script>		
+		$(function(){
+			mui.init({
+			});
+			mui.plusReady(function() {
+			});
+			var dy_roles=JSON.parse(localStorage.dy_roles||"{}");
+			var mh_roles=JSON.parse(localStorage.mh_roles||"{}");
+			console.log(localStorage.dy_roles)
+			console.log(localStorage.mh_roles)
+			
+			var dy_html="";
+			for(var i=0,l=dy_roles.length;i<l;i++){
+				dy_html+='<div class="list">'+dy_roles[i].title+'</div>';
+			}
+			$('.dy').html(dy_html);
+			var mh_html="";
+			for(var i=0,l=mh_roles.length;i<l;i++){
+				mh_html+='<div class="list">'+mh_roles[i].title+'</div>';
+			}
+			$('.mh').html(mh_html);
+		});
+		
+		
+	</script>
+</html>

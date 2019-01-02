@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<style>
+		html,body{
+			width:100%;
+			
+			font-family: "微软雅黑"; 
+		}
+		.mui-content{
+			background:rgb(242,242,242);		
+			width:100%;
+		}
+		.headcount{
+			background-color: rgb(95,161,246);
+		}
+		.mui-table-view-cell {
+			padding:0px;
+		}
+		.mui-table-view-cell:after {
+			background-color: rgb(242,242,242);
+		}
+		
+		.tabtitle{
+			width: 100%;
+			height: 60px;
+			position: absolute;
+			z-index: 9999;
+			margin-top: 45px;
+		}
+		.tabclass{
+			width: 50%;
+			height: 50px;
+			background: rgb(217,217,217);
+			float: left;
+			line-height: 50px;
+			text-align: center;
+		}
+		
+		.active{
+			color: rgb(242,242,242);
+			background-color: rgb(95,161,246);
+			border-bottom: rgb(150,0,0) 3px solid;
+		}
+		.liebiaodiv{
+			height: 50px;
+			line-height: 50px;
+			padding-left: 5px;
+			border-bottom: 1px solid #CCCCCC;
+			width: 100%;
+		}
+		.blue{
+			color: #0062CC;
+		}
+		.juhong{
+			color: #EC971F;
+		}
+		.clicka{
+			font-size: 12px;
+		}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav headcount">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;">
+				<span style="font-size: 15px;" id="texthead">选择人员</span>
+			</a>
+			<a id="searchBM" class="mui-icon  mui-icon-search mui-pull-right" style="color: white;"></a>
+		</header>
+		<div class="mui-content">
+			
+			<div  id="zonghe">
+				
+						
+					
+				
+			
+				
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jqzw_server.js"></script>
+		<script src="../../js/jquery-1.11.3.js"></script>
+		<script type="text/javascript" src="../../js/layer/layer.js" ></script>
+		<script type="text/javascript" charset="utf-8"> 
+			var index = 1;
+			var taboneList = [];
+			var isBackUp = false;
+			var selectpro = "";
+			var selectprorecid = "";
+			var deptCon = null;
+			var personCon = null;
+			mui.init({
+				beforeback: function(){
+					if(index == 1){
+						isBackUp = true;
+					}else{
+						taboneList.pop();
+						$(function(){
+							$("#taboneList"+index).remove();
+						});
+						index =index-1;
+						$(function(){
+							$("#taboneList"+index).show();
+						});
+					}
+					var selectProjectYou = plus.webview.getWebviewById('selectProjectYou');
+					var uptoPage = plus.webview.getWebviewById(selectProjectYou.hrefid)
+					//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+					mui.fire(uptoPage,'refreshProject',{
+					    selectpro:selectpro,
+						selectprorecid:selectprorecid
+					});
+					if(isBackUp){
+						taboneList = [];
+						document.getElementById("zonghe").innerHTML = "";
+					}
+					return isBackUp;
+				}
+			});
+			mui.plusReady(function() {
+				plus.nativeUI.closeWaiting();
+				plus.nativeUI.showWaiting("正在加载人员基础数据，请稍候...");
+				$jqzw_server.callServer('BaseDataService','findObjects_auth','GAMS_JC_DEPARTMENT').success(function(deptCons){ 
+					deptCon = deptCons;
+					$jqzw_server.callServer('BaseDataService','findObjects_auth','GAMS_JC_PERSONNEL').success(function(personCons){
+						personCon = personCons;
+						getPersonCon(deptCon,personCon);
+						plus.nativeUI.closeWaiting();
+					}).error(function(iv){ 
+						plus.nativeUI.closeWaiting();
+						console.log(iv);
+					}).unlogin(function(iv){
+						plus.nativeUI.closeWaiting();
+						console.log(iv);
+					});
+				}).error(function(iv){
+					console.log(iv);
+					plus.nativeUI.closeWaiting();
+				}).unlogin(function(iv){
+					plus.nativeUI.closeWaiting();
+					mui.toast("登录过期，请重新进行上一次操作");
+					console.log(iv);
+				});
+			});
+			//<div class="liebiaodiv mxclass" recid="'+jiaojies[i].recid+'" >'+jiaojies[i].zicbh+'&nbsp;'+jiaojies[i].zicmc+'</div>
+			
+			$(function(){
+				$("#searchBM").click(function(){
+					layer.open({
+						shade: 0.8,
+						shadeClose:true,
+					    content: '<div><input type="text"  id="searchPrmc"  placeholder="请输入人员名称" ></div><div class="buttondiv"><button class="buttonwebss" id="toclosemodal">确定</button></div>'
+					    
+					 });
+				 });
+				 mui("body").on('tap','#toclosemodal',function(){
+				 	var searchPrmc = $("#searchPrmc").val().trim();
+				 	if(searchPrmc == ""){
+				 		mui.toast("请输入人员名称");
+				 	}else{
+				 		var html = "";
+				 		for(var i=0;i<personCon.length;i++){
+							if(personCon[i].STDNAME.indexOf(searchPrmc) != -1){
+							
+								//console.log(deptCon[i].RECID);
+								html = html+'<div class="liebiaodiv mxclass clicka" recid="'+personCon[i].RECID+'"  obj="person" >'+personCon[i].STDNAME+'</div>';
+							}
+						}
+				 		if(html == ""){
+				 			mui.toast("未搜索到数据！")
+				 			return;
+				 		}
+				 		index = index+1;
+						$(".taboneList").hide();
+						$("#zonghe").append('<div id="taboneList'+index+'" class="taboneList" ></div>');
+						taboneList.push("taboneList"+index);  
+						$("#taboneList"+index).html(html);
+				 		layer.closeAll();
+				 	}
+				 });
+			});
+			
+			function getPersonCon(deptCon,personCon){
+				$(".taboneList").hide();
+				$("#zonghe").append('<div id="taboneList'+index+'" class="taboneList" ></div>');
+				taboneList.push("taboneList"+index); 
+				for(var i=0;i<deptCon.length;i++){
+					if(deptCon[i].LEVEL == index){
+					
+						//console.log(deptCon[i].RECID);
+						$("#taboneList"+index).append('<div class="liebiaodiv mxclass clicka" objectid="'+deptCon[i].OBJECTID+'"  recid="'+deptCon[i].RECID+'" level="'+deptCon[i].LEVEL+'" obj="dept" >'+deptCon[i].STDNAME+'</div>');
+						
+					}
+				}
+			}
+				
+				//mui自带监听事件
+			mui("#zonghe").on('tap','.clicka',function(){
+				if($(this).attr("obj") == "person"){
+					if($(this).hasClass("active")){
+						$(this).removeClass("active");
+						selectpro = "";
+						selectprorecid = "";
+						isBackUp = false;
+					}else{
+						$(".clicka").removeClass("active");
+						$(this).addClass("active");
+						selectpro = $(this).text().trim();
+						selectprorecid = $(this).attr("recid");
+						isBackUp = true;
+					}
+					
+					return false;
+				}
+				var flag = false;
+				var html = "";
+				var recid = $(this).attr("recid");
+				var objectid = $(this).attr("objectid");
+				for(var i=0;i<deptCon.length;i++){
+					if(deptCon[i].PARENT.indexOf(recid) != -1){
+						//console.log(JSON.stringify(deptCon[i]));
+						flag = true;
+						html = html+'<div class="liebiaodiv mxclass clicka" recid="'+deptCon[i].RECID+'" level="'+deptCon[i].LEVEL+'" obj="dept" >'+deptCon[i].STDNAME+'</div>';
+					}
+				}
+				
+				for(var i=0;i<personCon.length;i++){
+					if(personCon[i].SUOSBMID == objectid){ 
+						
+						flag = true;
+						html = html+'<div class="liebiaodiv mxclass clicka" recid="'+personCon[i].RECID+'"  obj="person" >'+personCon[i].STDNAME+'</div>';
+					}
+				} 
+				if(flag){
+					index = index+1;
+					$(".taboneList").hide();
+					$("#zonghe").append('<div id="taboneList'+index+'" class="taboneList" ></div>');
+					taboneList.push("taboneList"+index);  
+					$("#taboneList"+index).html(html);
+				}else{
+					mui.toast("此部门没有人员且没有下级！");
+				}
+			});
+		</script>
+			
+	</body>
+</html>

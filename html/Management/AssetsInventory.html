@@ -1,0 +1,207 @@
+<!--
+	作者：369126371@qq.com
+	时间：2016-11-01
+	描述：资产盘点
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title></title>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/checkstyle.css" rel="stylesheet" />
+	</head>
+	<style>
+
+		body{
+			background-color: #FFFFFF;
+		}
+		.headcount{
+			background-color: rgb(42,195,253);
+		}
+		.mui-content{
+			background:#fff;
+			margin-top: 5px; 
+			width:100%;
+		}
+		.biaoqiandiv{
+			width: 100%;
+			height: 80px;
+			border-bottom: #CCCCCC 1px solid;
+		}
+		.tupiandiv{
+			width: 20%;
+			height: 100%;
+			float: left;
+			text-align: center;
+			line-height: 125px;
+		}
+		.wenzidiv{
+			float: left;
+			width: 68%;
+			height: 100%;
+			font-size: 12px;
+			
+		}
+		.imageshow{
+			width: 50px;
+		}
+		.wenzidiv>:first-child{
+			font-size: 16px;
+			width: 100%;
+			font-weight: 600;
+			padding:18px 0px 7px 0px;
+		}
+		.mui-table-view-cell {
+			padding:0px;
+		}
+		.mui-table-view-cell:after {
+			background-color: #FFFFFF;
+		}
+	</style>
+	
+		<body>
+
+		<header class="mui-bar mui-bar-nav headcount">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;">
+				<span style="font-size: 15px;">返回</span>
+			</a>
+			<h1 class="mui-title" style="color: #FFFFFF;">资产盘点</h1>
+		</header>
+	
+		 
+		<div class="mui-content">
+			<div id="orderList" >
+			</div>
+		</div>
+	
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery-1.11.3.js"></script>
+		<script src="../../js/jqzw_server.js"></script>
+		<script>
+			var aniShow = "pop-in";
+		mui.init({
+		/*beforeback: function(){
+				//获得列表界面的webview
+				var selectDept = plus.webview.getWebviewById('selectDept');
+				var uptoPage = plus.webview.getWebviewById(selectDept.hrefid)
+				//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+				mui.fire(uptoPage,'refreshdept',{
+				    selectdept:selectdept,
+					selectdeptrecid:selectdeptrecid
+				});
+				//返回true，继续页面关闭逻辑
+				return true;
+			}*/
+		})
+		window.addEventListener('refresh',function(event){
+		  //获得事件参数; 
+			$jqzw_server.callServer('SdSfDxAssetInventory','getSchemes').success(function(renwu){
+				//console.log(JSON.stringify(renwu))
+				setPandianRenwu(renwu);
+			}).error(function(iv){
+				console.log(iv);
+			}).unlogin(function(iv){
+				console.log(iv);
+			}); 
+		 	setPandianRenwu(); 
+		});
+		mui.plusReady(function() 	{
+			$jqzw_server.callServer('SdSfDxAssetInventory','getSchemes').success(function(renwu){
+				setPandianRenwu(renwu);
+			}).error(function(iv){
+				console.log(iv); 
+			}).unlogin(function(iv){
+				console.log(iv);
+			}); 
+		});
+		function setPandianRenwu(renwu){
+			var objs = renwu;
+			var html = '';
+			for(var i in objs){
+				var dd = new Date(objs[i].createTime);
+				var y = dd.getFullYear();
+				var m = dd.getMonth()+1;//获取当前月份的日期
+				if(m<10){
+					m="0"+m.toString()
+				}
+				var d = dd.getDate(); 
+				if(d<10){
+					d="0"+d.toString()
+				}
+				var ymd = y+"年"+m+"月"+d;
+				// {"TIAOJ":[{"isshiwjj":false,"ywsj":1332259200000,"assetInfo":"","ywrecid":"363319C190000001EFDCB6F5CA1C4BB1","recid":"588C20F10000000169FDB3B845074B4F","ywbilldefine":"BD3E391B13AC72912BBF66B0FDD07217","ywbh":"DWTJ12000013","ywmc":"单位调剂"
+				//console.log(objs[i]);
+				html = html+ '<div class="biaoqiandiv mui-table-view-cell" createtime="" recid="'+objs[i].recid+'" title="'+objs[i].title+'" sj="'+ymd+'" cardobjectid="'+objs[i].cardobjectid+'">'
+						+'<div class="mui-slider-right mui-disabled">'
+						+'<a class="mui-btn mui-btn-green">上传</a><a class="mui-btn mui-btn-red rcshanchu">删除</a>'
+						+'</div><div class="mui-slider-handle pdclass" recid="" obj="" islixian=""> '
+						+'<div class="tupiandiv"><img src="../../image/pic-02.png" class="imageshow"/></div>'
+						+'<div class="wenzidiv"><div>'+objs[i].title+'</div>'
+						+'<div>'+ymd+'</div></div></div></div>'
+			}
+			$("#orderList").html(html); 
+		}
+		$(function(){
+			//mui自带监听事件
+			mui("#orderList").on('tap','.pdclass',function(){
+				var recid = $(this).parent().attr("recid");
+				var title = $(this).parent().attr("title");
+				var sj = $(this).parent().attr("sj");
+				var cardobjectid = $(this).parent().attr("cardobjectid");
+				mui.openWindow({
+				
+					url: "chartshow.html", 
+					id:'chartshow',
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					show: {
+						aniShow: aniShow
+					},
+					waiting: {
+						autoShow: false
+					},
+					extras:{
+							recid:recid,
+							title:title,
+							sj:sj,
+							cardobjectid:cardobjectid
+					}
+				});
+			}) 
+			$(document).on("click",".pdclass",function(){
+				var recid = $(this).parent().attr("recid");
+				var title = $(this).parent().attr("title");
+				var sj = $(this).parent().attr("sj");
+				var cardobjectid = $(this).parent().attr("cardobjectid");
+				mui.openWindow({
+				
+					url: "chartshow.html", 
+					id:'chartshow',
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					show: {
+						aniShow: aniShow
+					},
+					waiting: {
+						autoShow: false
+					},
+					extras:{
+							recid:recid,
+							title:title,
+							sj:sj,
+							cardobjectid:cardobjectid
+					}
+				});
+			})
+		})
+		</script>
+	</body>
+</html>

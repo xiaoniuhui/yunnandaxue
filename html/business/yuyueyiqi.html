@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>预约仪器试仪器列表</title>
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link type="text/css" rel="stylesheet" href="../../css/common.css">
+		<link rel="stylesheet" type="text/css" href="../../css/common-asset-search.css">
+		<link rel="stylesheet" href="../../css/yuyueyiqi.css">
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">预约设备选择</h1>
+		</header>		
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="asset-search-btn">
+				<label id="searchBy"> 搜索</label>
+				<input type="text" id="searchinput"  placeholder="搜索设备名称、规格型号、所属平台" style="">
+			</div>
+			<div class="mui-scroll">
+				<div class="yiqicont">
+					<script type="text/template" id="tmp">
+						<% for (var i=0;i<info.length;i++) { %>
+							<div class="item">
+								<div class="imgbox"><img src="<%=info[i].picUrl%>" alt=""></div>
+								<div class="yiqiinfo">
+									<div class="left">
+										<span>仪器名称</span>
+										<span>负责人</span>
+										<span>联系方式</span>
+										<span>当前状态</span>
+									</div>
+									<div class="right">
+										<span style="overflow: hidden;"><%=info[i].zicmc%></span>
+										<span><%=info[i].yiqgly%></span>
+										<span><%=info[i].jizrylxdh%></span>
+										<span>空闲</span>
+									</div>
+								</div>
+								<div class="btngroup" data-objid="<%=info[i].objectid%>" data-recid="<%=info[i].recid%>">
+									<% if (info[i].yuyfs =='01') {%>
+										<button class="btnwt">委托测试</button>
+									<% } else if (info[i].yuyfs =='02') {%>
+										<button class="btnzz" data-zizsfbs="<%=info[i].zizsfbs%>">自助测试</button>
+									<% } else if (info[i].yuyfs =='03') {%>
+										<button class="btnwt">委托测试</button>
+										<button class="btnzz" data-zizsfbs="<%=info[i].zizsfbs%>">自助测试</button>
+									<% } %>
+								</div>
+							</div>
+						<% } %>				
+					</script>
+				</div>	
+			</div>
+		</div>
+		
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/template-native.js"></script>
+	<script>
+		$(function(){
+			var url=localStorage.url;	
+			var pageStart=1;
+			var pageSize=10;
+			function pullupFresh(){				
+				$.ajax({
+					url:url+'/jqzw/server',
+					type:'get',
+					data:{service:"BigEquipmentService",params:pageStart+","+pageSize,method:"getBEList"},
+					dataType:'json',
+					success:function(info){
+						if(info.type == 'success'){
+							var html=template('tmp',{info:info.value});
+							$('.yiqicont').append(html);
+							pageStart++;
+							if(info.value.length < 10){
+								mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+							}else{
+								mui('#pullrefresh').pullRefresh().endPullupToRefresh(false);
+							}							
+							
+						}
+						
+					},
+					error:function(err){
+						console.log(err);						
+					}
+				});
+			}
+			//页面初始化加载仪器数据
+			mui.init({
+				pullRefresh : {
+					container:"#pullrefresh",//待刷新区域标识，querySelector能定位的css选择器均可，比如：id、.class等
+					up : {
+						height:50,//可选.默认50.触发上拉加载拖动距离
+						auto:true,//可选,默认false.自动上拉加载一次
+						contentrefresh : "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+						contentnomore:'没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+						callback :pullupFresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+					}
+				}			
+			});
+			//创建子页面，首个选项卡页面显示，其它均隐藏；
+			mui.plusReady(function() {
+				
+			});
+			
+			
+			//点击委托测试
+			$('.yiqicont').on('click','.btnwt',function(){
+				if(localStorage.stdcode == '' || localStorage.stdcode == null || localStorage.stdcode ==undefined){
+					//跳转登录页
+					mui.openWindow({
+						url: "../base/login.html",
+						styles: {
+							popGesture: 'close',
+							scrollIndicator: "none"
+						},						
+						waiting: {
+							autoShow: true
+						},
+						extras:{										
+						}
+					});
+					return;
+				}
+				var recid=$(this).parent().attr('data-recid');
+				var objectid=$(this).parent().attr('data-objid');
+				mui.openWindow({
+					url: "../business/weituotest.html",
+					id: '',
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					},
+					extras: {
+						recid:recid,
+						objectid:objectid
+					}
+				});
+			});
+			//点击自助测试
+			$('.yiqicont').on('click','.btnzz',function(){
+				var zizsfbs=$(this).attr('data-zizsfbs');
+				if(zizsfbs == 'false'){					
+					mui.toast("该仪器暂未设置收费标准，请联系管理员");
+					return;
+				}
+				if(localStorage.stdcode == '' || localStorage.stdcode == null || localStorage.stdcode ==undefined){
+					//跳转登录页
+					mui.openWindow({
+						url: "../base/login.html",
+						styles: {
+							popGesture: 'close',
+							scrollIndicator: "none"
+						},						
+						waiting: {
+							autoShow: true
+						},
+						extras:{										
+						}
+					});
+					return;
+				}
+				var recid=$(this).parent().attr('data-recid');
+				var objectid=$(this).parent().attr('data-objid');
+				mui.openWindow({
+					url: "../business/zizhutest.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					},
+					extras: {
+						recid:recid,
+						objectid:objectid
+					}
+				});
+			});
+			//搜索点击事件
+			$('#searchBy').on('click',function(){
+				var val=$('#searchinput').val();
+				if( val == ''){
+					location.reload()
+				}
+				$.ajax({
+					type:'get',
+					url:url+'/jqzw/server',
+					data:{service:"BigEquipmentService",method:"searchBEList",params:val},
+					dataType:'json',
+					beforeSend:function(){
+						plus.nativeUI.showWaiting('正在查询...');
+					},
+					success:function(info){
+						if(info.type == 'success'){
+							var html=template('tmp',{info:info.value});
+							$('.yiqicont').html(html);
+						}else{
+							mui.toast('未所搜到相关仪器')
+						}
+					},
+					error:function(err){
+						console.log(err)
+					},
+					complete:function(){
+						plus.nativeUI.closeWaiting();
+					}
+				})
+			})
+		});
+		
+		
+	</script>
+</html>

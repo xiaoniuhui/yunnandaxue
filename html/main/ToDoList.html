@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>办理</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/checkstyle.css" />
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/font-awesome-4.5.0/css/font-awesome.min.css" />
+	</head>
+	<style>
+		.mui-content{
+			height: 100%;
+			width: 100%;
+			position: absolute;
+		}
+		.contdiv{
+			float: left;
+			width: 96%;
+			margin-left: 2%;
+			margin-top: 10px;
+			font-size: 14px;
+		}
+		.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+			margin: 0;
+			padding: 5px 2px;
+			vertical-align: top;
+			border-right: 1px solid rgb(239,239,244);
+			border-bottom: 1px solid rgb(239,239,244);
+		}
+		.griddiv{
+			font-size: 10px!important;
+		}
+		.tubiaodivs{
+			width: 24px;
+			height: 24px;
+			border-radius: 12px;
+			text-align: center;
+			line-height: 24px;
+			background-color: rgba(255,50,0,0.3);
+			color: white;
+			font-size: 12px;
+			position: absolute; 
+			right: 0px;
+			margin-top:-8px;
+		}
+		.tubiaodiv{
+			font-size: 30px;
+		}
+	</style>
+	<body>
+		<div class="mui-content" id="divtoshowtodolist">
+			<div class="contsdiv">
+				<ul class="mui-table-view mui-grid-view mui-grid-9" style="background-color: #FFFFFF;" id="ulinlist">
+					<li>这里是待办吗？</li>
+				</ul> 
+			</div>
+		</div>		
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../../js/jqzw_server.js" ></script>
+		<script>
+		mui.init({
+			keyEventBind: {//返回设置
+			backbutton: false
+			},
+			swipeBack: false,
+			statusBarBackground: '#f7f7f7',
+			gestureConfig: {  
+				doubletap: true
+			}
+		});		
+		window.addEventListener('refresh', function() {
+			$jqzw_server.callServer('SdSfDxNeedToDoService','getCurLoginUserToDoCount').success(function(objs){
+				var zongshuliang = 0;
+				for(var i in objs){
+					zongshuliang = zongshuliang+parseInt(objs[i].shul);
+					$("#"+objs[i].biaos).children(".tubiaodivs").text(objs[i].shul);
+				}
+				var main = plus.webview.getWebviewById('main');
+				main.evalJS("showindexdaiban('"+zongshuliang+"');");
+			}).error(function(iv){
+				console.log(iv);
+			}).unlogin(function(iv){
+				mui.toast("会话过久，可重新进行上次操作"); 
+			});
+		});			
+		mui.plusReady(function(){
+			$jqzw_server.callServer('SdSfDxNeedToDoService','getCurLoginUserToDoCount').success(function(objs){ 
+				$jqzw_server.callServer('SdSfDxInventoryClientService','initFunctionsList').success(function(iv){
+					createhtmls(objs,iv);
+				}).error(function(iv){
+					console.log(iv);
+				}).unlogin(function(iv){
+					mui.toast("会话过久，可重新进行上次操作"); 
+				});
+			}).error(function(iv){
+				console.log(iv);
+			}).unlogin(function(iv){
+				mui.toast("会话过久，可重新进行上次操作"); 
+			});
+			addFunctionTapEvent();
+		});		
+		function createhtmls(objs,lis){ 
+			var zongshuliang = 0;
+			var html = "";
+			for(var i in lis){
+				if(lis[i].stdcode.substring(0,2) == "02"){
+					var pageUrl = lis[i]['functionpath'];
+					var pageId = lis[i]['wangyid'];
+					var pageTitle = lis[i]['gongnbt'];
+					var tableName = lis[i]['tablename'];
+					var funcDef = lis[i]['biaos'];
+					var subPage = lis[i]['xiajpath'];
+					
+					html = html + '<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" pageUrl="'+pageUrl
+									+'" pageId="'+pageId+'" pageTitle="'+pageTitle+'" tableName="'+tableName
+									+'" funcDef="'+funcDef+'" subPage="'+subPage+'">'
+						+'<a id="'+funcDef+'" href="javascript:void(0)">'
+							+'<span class="tubiaodivs"></span>'
+							+'<i class="fa ' + lis[i].picpath + ' tubiaodiv" style="color:' + lis[i].piccolour + '" ></i>'
+							+'<div class="mui-media-body griddiv">' + lis[i].gongnbt + '</div>'
+						+'</a></li>';
+				}
+			}
+			$("#ulinlist").html(html);
+			
+			var zongshuliang = 0;
+			for(var i in objs){
+				zongshuliang = zongshuliang+parseInt(objs[i].shul);
+				$("#"+objs[i].biaos).children(".tubiaodivs").text(objs[i].shul);
+			}
+			var main = plus.webview.getWebviewById('main');
+			main.evalJS("showindexdaiban('"+zongshuliang+"');");
+		}
+		
+		function addFunctionTapEvent() {
+			mui("#ulinlist").on('tap', 'li', function() {
+				var pageUrl = $(this).attr('pageUrl');
+				var pageId = $(this).attr('pageId');
+				var pageTitle = $(this).attr('pageTitle');
+				var tableName = $(this).attr('tableName');
+				var funcDef = $(this).attr('funcDef');
+				var zbhref = $(this).attr('subPage');
+				var id = $(this).attr('id');
+				
+				if(checkNull(pageUrl) && checkNull(pageId)) {
+					mui.openWindow({
+						url: pageUrl,
+						id: pageId,
+						styles: {
+							popGesture: 'close',
+							scrollIndicator: "none"
+						},
+						show: {
+							aniShow: 'pop-in'
+						},
+						waiting: {
+							autoShow: false
+						},
+						extras: {
+							headtexts: pageTitle,
+							biaoming: tableName,
+							zbhref: zbhref,
+							biaos: funcDef
+						}
+					});
+				} else {
+					mui.toast('未找到功能路径！');
+				}
+			});
+		}		
+		function checkNull(value) {
+			if(typeof value !== 'undefined' && value!==null && value!=='') {
+				return true;
+			}
+			return false;
+		}
+		</script>
+	</body>
+</html>

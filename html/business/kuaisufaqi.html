@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>快速发起业务</title>
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/kuaisufaqi.css">
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">快速发起业务</h1>
+		</header>
+		<div class="cont">
+			<div class="yewu dayi">仪器预约</div>
+			<div class="yewu">资产业务</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script>		
+		$(function(){
+			mui.init({
+			});	
+			mui.plusReady(function() {
+			});
+			$('.dayi').on('click',function(){
+				mui.openWindow({
+					url: "./yuyueyiqi.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					
+					waiting: {
+						autoShow: true
+					}
+				});
+			});
+		});
+		
+		
+	</script>
+</html>

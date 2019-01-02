@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>日常盘点录入</title>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<style>
+	body, html
+	{
+		width:100%;
+		height:100%;
+		font-family: "微软雅黑";
+		overflow-x: hidden;
+	}
+	.mui-content{
+		background:#fff;
+		height:100%;
+		width:100%;
+		overflow-x: hidden;
+	}
+	.headcount{
+			background-color: rgb(95,161,246);
+		}
+	.mui-table-view-cell:after {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0px;
+		height: 1px;
+		content: '';
+		-webkit-transform: scaleY(.5);
+		transform: scaleY(.5);
+		background-color: #DCDCDC;				
+	}
+	.mui-table-view-cell{
+		color: #676767;
+		font-size: 14px;
+	}
+	.lititle{
+		width: 100%;
+		font-size: 14px;
+	}
+	.lidivone{
+		width: 30%;
+		text-align: right;
+		float: left;
+	}
+	.lidivtwo{
+		width: 70%;
+		float: left;
+	}
+	.lidivtwo input{
+		font-size: 14px;
+	}
+	
+	.buttondiv{
+		width: 100%;
+		height: 50px;
+	}
+	.buttonwebs{
+		width: 98%;
+		margin-left: 1%;
+		height: 45px;
+		background-color: rgb(85,192,24);
+		color: #FFFFFF;
+		font-size: 18px;
+		letter-spacing: 5px;
+	}
+	
+	.inputluru{
+		width: 90%;
+		border: 1px #CCCCCC solid;
+	}
+		</style>
+	</head>
+	<body>
+		<div class="mui-content">
+			<header class="mui-bar mui-bar-nav headcount">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;">
+					<span style="font-size: 15px;">盘盈录入</span>
+				</a>
+			</header>
+				<div class="mui-content-padded" style="margin: 5px;">
+			<ul class="mui-table-view" >
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">&nbsp; </div>
+						<div class="lidivtwo">&nbsp; </div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">资产编号：</div>
+						<div class="lidivtwo"><input class="inputluru chuanru" id="ZICBH"  /></div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">原资产编号：</div>
+						<div class="lidivtwo"><input class="inputluru chuanru" id="YUANZCBH"  /></div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">资产名称：</div>
+						<div class="lidivtwo"><input class="inputluru qdht chuanru" id="ZICMC" /></div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">规格型号：</div>
+						<div class="lidivtwo"><input class="inputluru chuanru" id="GUIGXH" /></div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">价值：</div>
+						<div class="lidivtwo">
+							<div class="mui-numbox" data-numbox-step='1' data-numbox-min='0'  style="height: 23px; width: 150px;">
+							  <button class="mui-btn mui-numbox-btn-minus" type="button" >-</button>
+							  <input class="mui-numbox-input chuanru" type="number" style="color: red;" id="JIAZ" />
+							  <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+							</div>
+						</div>
+					</div>
+					
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">账面数量：</div>
+						<div class="lidivtwo">
+							<div class="mui-numbox" data-numbox-step='1' data-numbox-min='1'  style="height: 23px; width: 150px;">
+							  <button class="mui-btn mui-numbox-btn-minus" type="button" >-</button>
+							  <input class="mui-numbox-input chuanru" type="number" style="color: red;" id="ZHANGMSL"  />
+							  <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+							</div>
+						</div>
+					</div>
+					
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone ">使用人：</div>
+						<div class="lidivtwo"><input class="inputluru  qdht" id="shiyrt" /></div>
+					</div>
+					
+				</li>
+				<li class="mui-table-view-cell" style="display: none;">
+					<div class="lititle">
+						<div class="lidivone ">使用人：</div>
+						<div class="lidivtwo"><input class="inputluru chuanru" id="SHIYR" /></div>
+					</div>
+					
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">使用部门：</div>
+						<div class="lidivtwo"><input class="inputluru qdht" id="shiybmt" /></div>
+					</div>
+					
+				</li>
+				<li class="mui-table-view-cell" style="display: none;">
+					<div class="lititle">
+						<div class="lidivone">使用部门：</div>
+						<div class="lidivtwo"><input class="inputluru chuanru" id="SHIYBM" /></div>
+					</div>
+					
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">存放地点：</div>
+						<div class="lidivtwo"><input class="inputluru qdht " id="cunfddt" /></div>
+					</div>
+					
+				</li>
+				<li class="mui-table-view-cell" style="display: none;">
+					<div class="lititle">
+						<div class="lidivone">存放地点：</div>
+						<div class="lidivtwo"><input class="inputluru chuanru" id="CUNFDD" /></div>
+					</div>
+					
+				</li>
+				
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">盘点数量：</div>
+						<div class="lidivtwo">
+							<div class="mui-numbox" data-numbox-step='1' data-numbox-min='1'  style="height: 23px; width: 150px;">
+							  <button class="mui-btn mui-numbox-btn-minus" type="button" >-</button>
+							  <input class="mui-numbox-input chuanru" type="number" style="color: red;" id="PANDSL" />
+							  <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+							</div>
+						</div>
+					</div>
+					
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">原因：</div>
+						<div class="lidivtwo">
+							<textarea id="YUANY"  rows="2" cols="3" class="chuanru"></textarea>
+						</div>
+					</div>
+					
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="lititle">
+						<div class="lidivone">部门意见：</div>
+						<div class="lidivtwo">
+							<textarea id="SHIYBMYJ"  rows="2" cols="3" class="chuanru"></textarea>
+						</div>
+					</div>
+					
+				</li>
+
+					
+			</ul>
+			<div class="buttondiv">
+				<button class="buttonwebs">确定</button>
+			</div>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-1.11.3.js" ></script>
+		<script type="text/javascript" src="../../js/jqzw_server.js" ></script>
+		<script>		
+			var aniShow = "pop-in";
+			mui.init();
+			mui.plusReady(function() {
+				
+			});
+			
+			window.addEventListener('refreshProject',function(event){
+			  //获得事件参数; 
+			  $(function(){
+			  	$("#shiyrt").val(event.detail.selectpro)
+			  	$("#SHIYR").val(event.detail.selectprorecid)
+			  })
+			});
+			
+			window.addEventListener('refreshdept',function(event){
+			  //获得事件参数; 
+			  $(function(){
+			  	$("#shiybmt").val(event.detail.selectdept)
+			  	$("#SHIYBM").val(event.detail.selectdeptrecid)
+			  })
+			});
+			window.addEventListener('refreshAddress',function(event){
+			  //获得事件参数; 
+			  $(function(){
+			  	$("#cunfddt").val(event.detail.selectaddress)
+			  	$("#CUNFDD").val(event.detail.selectaddrecid)
+			  })
+			});
+			
+			
+			$(function(){
+				$("#shiyrt").click(function(){
+					plus.nativeUI.showWaiting();
+					mui.openWindow({
+							
+							url: "../base/selectProjectYou.html",
+							id:'selectProjectYou',
+							styles: {
+								popGesture: 'close',
+								scrollIndicator: "none"
+							},
+							show: {
+								aniShow: aniShow
+							},
+							waiting: {
+								autoShow: false
+							},
+							extras:{
+								hrefid:'PyLuru' 
+							}
+						
+					});
+				});
+				$("#shiybmt").click(function(){
+					
+				});
+				
+				$("#cunfddt").click(function(){
+					plus.nativeUI.showWaiting();
+					mui.openWindow({
+							
+							url: "../base/selectAddressYou.html",
+							id:'selectAddressYou',
+							styles: {
+								popGesture: 'close',
+								scrollIndicator: "none"
+							},
+							show: {
+								aniShow: aniShow
+							},
+							waiting: {
+								autoShow: false
+							},
+							extras:{
+								hrefid:'PyLuru'
+							}
+						
+					});
+				});
+				
+				
+				$(".buttonwebs").click(function(){
+					var Panyingluru = new Object();
+					//console.log($("#zicmc").val());
+					$(".qdht").each(function(){
+						if($(this).val() == ""){
+							var tiptext = $(this).parent().siblings(".lidivone").text();
+							mui.toast(tiptext+"不能为空！");
+							return false;
+						}
+						
+					});
+					if($("#JIAZ").text() == "0"){
+						mui.toast("价值大于0");
+						return false;
+					}
+					$(".chuanru").each(function(){
+						var shuxing = $(this).attr("id");
+						Panyingluru[shuxing] = $(this).val();
+					});
+					var chartshow = plus.webview.getWebviewById('chartshow');
+					//console.log(chartshow.recid)
+					$jqzw_server.callServer('SDSFDX_AssetInventoryService','insertSchemeDetail_PanY',chartshow.recid,JSON.stringify(Panyingluru)).success(function(iv){ 
+						mui.toast("盘盈录入成功");
+						mui.openWindow({
+							
+							url: "chartshow.html",
+							id:'chsh',
+							styles: {
+								popGesture: 'close',
+								scrollIndicator: "none"
+							},
+							show: {
+								aniShow: aniShow
+							},
+							waiting: {
+								autoShow: true
+							}
+						});
+					}).error(function(iv){ 
+						console.log(iv);
+					}).unlogin(function(iv){
+						console.log(iv);
+					});
+					
+					
+				});
+		
+			
+				
+				
+			});
+		
+		</script>
+	</body>
+</html>

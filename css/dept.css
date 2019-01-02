@@ -1,0 +1,52 @@
+#nav-dept {
+	width: 100%;
+	height: 56px;
+	line-height: 56px;
+	background: #FFFFFF;
+	margin: 6px 0;
+	white-space: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+#nav-dept::-webkit-scrollbar {
+	display:none
+}
+
+#nav-dept .dept-info:first-child {
+	margin-left: 21px;	
+}
+
+#nav-dept .dept-info .mui-icon {
+	color: #D2D2D2;
+}
+#nav-dept .dept-info .dept-name {
+	color: #2583E2;
+	font-size: 16px;
+}
+#zonghe {
+	width: 100%;
+	background: #FFFFFF;
+}
+
+.taboneList .liebiaodiv {
+	margin-left: 21px;
+	height: 44px;
+	line-height: 44px;
+	color: #333333;
+	font-size: 16px;
+	border-bottom: 1px solid #E6E6E6;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space:nowrap;
+}
+
+.taboneList .liebiaodiv:last-child {
+	border-bottom: none;
+}
+
+.taboneList .liebiaodiv .mui-icon {
+	color: #D2D2D2;
+	float: right;
+	margin-right: 30px;
+	margin-top: 10px;
+}

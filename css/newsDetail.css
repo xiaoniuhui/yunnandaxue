@@ -1,0 +1,34 @@
+body{
+	background-color: #FFFFFF;
+}
+.newsCont{
+	padding-top: 44px;
+}
+.newsCont .top{
+	overflow: hidden;
+	border-bottom: 1px solid #CBCBCB;
+}
+.newsCont header{
+	text-align: center;
+	font-family: PingFangSC-Regular;
+	font-size: 20px;
+	color: #333333;
+	margin-top: 10px;
+}
+.newsCont .createTime{
+	margin-top: 10px;
+	margin-bottom: 8px;
+	font-family: PingFangSC-Regular;
+	font-size: 16px;
+	color: #333333;
+	float: right;
+	padding-right: 20px;
+}
+.newsCont .cont{
+	padding: 20px;
+	font-family: PingFangSC-Regular;
+	font-size: 16px;
+	color: #333333;
+	line-height: 30px;
+}
+	

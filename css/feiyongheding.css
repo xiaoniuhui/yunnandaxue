@@ -1,0 +1,143 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+ul{
+	list-style: none;
+}
+.cont{
+	margin-top: 44px;
+	background-color: #FFFFFF;
+}
+/* 切换组件 */
+.topTab{
+	width:100%;
+	background-color: #FFFFFF;
+	padding:0 20px;
+	border-bottom: 1px solid #CBCBCB;
+}
+.topTab ul{
+	list-style: none;
+	overflow: hidden;
+	display: flex;
+	width:100%;
+}
+.topTab li{
+	flex: 1;
+	font-family: PingFangSC-Regular;
+	font-size: 16px;
+	color: #999999;
+	letter-spacing: 0;
+	line-height: 37px;
+	height: 37px;
+	text-align: center;
+	border-bottom: 2px solid transparent;
+}
+.topTab li.active{
+	border-bottom: 2px solid #426DFF;
+	color: #426DFF;
+}
+/* 切换内容 */
+.boxes{
+	width: 100%;
+}
+.boxes>div{
+	width:100%;
+	min-height: 100px;
+	display: none;
+	overflow: hidden;
+}
+.boxes>div.active{
+	display: block;
+}
+/* 业务 */
+.item{
+	overflow: hidden;
+	padding: 10px 20px 0;
+	border-bottom: 1px solid #C5C5C5;
+}
+/* 左中右结构 */
+.boxes div.left{
+	float: left;
+	width:15%;
+}
+.boxes div.left li{
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #666666;
+	line-height: 1;
+	padding: 10px 0;
+}
+.boxes div.center{
+	float: left;
+	width:65%;
+}
+.boxes div.center li{
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	color: #0B0B0B;
+	line-height: 1;
+	padding: 10px 0;
+	padding-left: 20px;
+	overflow: hidden;
+	word-break: keep-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.boxes div.btngroup{
+	float: left;
+	width:20%;
+}
+.boxes div.btngroup button{
+	width: 74px;
+	height: 30px;
+	border-radius: 23px;
+	font-family: PingFangSC-Regular;
+	font-size: 12px;
+	margin-top: 20px;
+	outline: none;
+}
+.boxes div.btngroup .btn-yuyue{
+	background-image: linear-gradient(-90deg, #3DA1F2 0%, #3586EF 95%);
+	color: #FFFFFF;
+}
+.boxes div.btngroup .btn-tongyi{
+	color: #3A97F0;
+}
+.boxes div.btngroup .btn-queren{
+	color: #3A97F0;
+}
+
+
+
+/* 面板切换 */
+.mianban{
+	width:100%;
+	padding: 20px;
+	overflow: hidden;
+}
+.mianban>div{
+	float: left;
+	width:50%;
+	line-height: 1;
+	padding: 15px 0;
+	border: 1px solid #C5C5C5;
+	text-align: center;
+	font-family: PingFangSC-Regular;
+	font-size: 16px;
+	color: #999999;
+}
+.mianban .me{
+	border-right: none;
+}
+.mianban div.active{
+	color: #3A97F0;
+	border-color: #A7CBFD;
+}
+/* 面板内容切换 */
+.mianbanTab>div{
+	display: none;
+}
+.mianbanTab>div.active{
+	display: block;
+}

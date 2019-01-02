@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../css/mui.min.css">
+	</head>
+
+	<body>
+
+		<style>
+		html,body{
+			width:100%;
+			
+			font-family: "微软雅黑"; 
+		}
+
+		.headcount{
+				background-color: rgb(95,161,246);
+		}
+		.mui-table-view-cell {
+			padding:0px;
+		}
+		.mui-table-view-cell:after {
+			background-color: rgb(242,242,242);
+		}
+		
+		.tabtitle{
+			width: 100%;
+			height: 60px;
+			margin-top: 45px;
+		}
+		.tabclass{
+			width: 50%;
+			height: 50px;
+			background: rgb(217,217,217);
+			float: left;
+			line-height: 50px;
+			text-align: center;
+		}
+		
+		.active{
+			color: rgb(95,161,246);
+			background-color: rgb(242,242,242);
+			border-bottom: rgb(150,0,0) 3px solid;
+		}
+		
+		.mui-pull-bottom-pocket, .mui-pull-top-pocket {
+			height: 100px;
+		}
+		</style>
+		<header class="mui-bar mui-bar-nav headcount">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;">
+					<span style="font-size: 15px;">返回</span>
+				</a>
+				<h1 class="mui-title" style="color: #FFFFFF;" id="headtext">交接明细</h1>
+			</header>
+			<div class="tabtitle">
+				<div class="tabclass" id="tabone" data-href="jyipandian.html">
+					已交接
+				</div>
+				<div class="tabclass" id="tabtwo" data-href="jweipandian.html">
+					未交接
+				</div>
+			</div>
+			
+
+		<script src="../../js/mui.min.js"></script>
+		<script>
+			
+
+			mui.init();
+			mui.plusReady(function() {
+			var mingxi = plus.webview.getWebviewById('Jmingxi');
+			if(mingxi.canshu.indexOf("未盘点")==-1){
+				document.getElementById("tabone").className = 'active tabclass';
+				document.getElementById("tabtwo").className = 'tabclass';
+			}else{
+				document.getElementById("tabone").className = 'tabclass';
+				document.getElementById("tabtwo").className = 'active tabclass';
+			}
+			/**
+			 * 获取当前窗口对象
+			 * http://www.html5plus.org/doc/zh_cn/webview.html#plus.webview.currentWebview
+			 */
+			var main = plus.webview.currentWebview();
+
+			/**
+			 * 获取顶部栏的文本节点
+			 * 关于querySelector()和querySelectorAll()
+			 * http://www.cnblogs.com/Wayou/p/html5_web_api_queryselector.html
+			 */
+			// 将子窗口的地址存在数组中，方便进行遍历，创建子窗口；
+			var subpageArr = ["jyipandian.html","jweipandian.html"];
+			/**
+			 * 设置子窗口的样式，顶部默认44px，底部默认50px，并且设置窗口无滚动条；
+			 * http://www.html5plus.org/doc/zh_cn/webview.html#plus.webview.WebviewStyle
+			 */
+			var subStyles = {
+				top: "95px",
+				bottom: "0px",
+				scrollIndicator: "none"
+			};
+			// 生成一个子窗口，并添加至主窗口；
+			var subpage = null;
+			for (var i = 0, subLength = subpageArr.length; i < subLength; i++) {
+				// http://www.html5plus.org/doc/zh_cn/webview.html#plus.webview.create
+				// 这里将窗口id设置与窗口相对路径一致，方面下一步切换操作
+				subpage = plus.webview.create(subpageArr[i], subpageArr[i], subStyles);
+				/**
+				 * 除第一个子窗口外，其它子窗口均隐藏（无动画效果）；
+				 * 这里我们是直接获取的一个webviewObject，所以并不是调用webview的hide()方法，而是webviewObject的hide()方法；
+				 * http://www.html5plus.org/doc/zh_cn/webview.html#plus.webview.WebviewObject.hide
+				 */
+				if(mingxi.canshu.indexOf("未盘点")==-1 && i==1){
+					subpage.hide("none");
+				}else if(mingxi.canshu.indexOf("未盘点")!=-1 && i==0){
+					subpage.hide("none");
+				}
+				// http://www.html5plus.org/doc/zh_cn/webview.html#plus.webview.WebviewObject.append
+				main.append(subpage);
+			}
+			
+			/**
+			 * 子页面切换
+			 */
+			var tabs = document.querySelectorAll(".tabclass");
+			// 设置中间变量，用于存储当前处于展示状态窗口的标识（这里用的标识是窗口的相对地址），通过判断选择默认窗口；
+			var activeTab;
+			if(mingxi.canshu.indexOf("未盘点")==-1){
+				 activeTab = subpageArr[0];
+			}else{
+				 activeTab = subpageArr[1];
+			}
+			
+			var targetTab = "";
+			for (var j = 0, tabLength = tabs.length; j < tabLength; j++) {
+				tabs[j].addEventListener("click", function() {
+					// 获取当前点击的选项目标窗口的标识，比较所选项与处于展示状态窗口的标识进行对比；
+					targetTab = this.getAttribute("data-href");
+					
+					if (targetTab === activeTab) {
+						return;
+					}
+					// 改变顶部栏的tab选项
+					if(targetTab == "jyipandian.html"){
+						document.getElementById("tabone").className = 'active tabclass';
+						document.getElementById("tabtwo").className = 'tabclass';
+					}else{
+						document.getElementById("tabone").className = 'tabclass';
+						document.getElementById("tabtwo").className = 'active tabclass';
+					}
+					
+					/**
+					 * 展示目标窗口，隐藏当前展示的窗口；
+					 * 这里要先展示，后隐藏，避免切换慢造成白屏；
+					 * http://www.html5plus.org/doc/zh_cn/webview.html#plus.webview.show
+					 * http://www.html5plus.org/doc/zh_cn/webview.html#plus.webview.hide
+					 */
+					plus.webview.show(targetTab, "fade-in", 300);
+					plus.webview.hide(activeTab);
+					// 将目标窗口，也就是现在处于展示状态窗口的标识，赋值给中间变量；
+					activeTab = targetTab;
+				});
+			}
+		});
+		</script>
+			
+			
+
+	</body>
+
+</html>

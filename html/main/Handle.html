@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>办理</title>
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/Handle.css" />		
+	</head>
+	<body>
+		<div class="top" id="shuaxin">
+			<div class="toptitle">办理</div>
+			<div class="topcont">
+				<div class="l kuaisu">
+					<div class="box">
+						<img src="../../image/kuaisu.png" alt="">
+						<span>快速发起</span>
+					</div>
+				</div>
+				<div class="l">
+					<div class="box">
+						<img src="../../image/xuanze.png" alt="">
+						<span>选择系统</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="contBox">
+			<div class="mianban">
+				<div class="me ">自己发起</div>
+				<div class="other active">他人发起</div>
+			</div>
+			<div class="meother">
+				<div class="myself">
+					<div class="topTab">
+						<ul>
+							<li class="active">待提交</li>
+							<li>办理中</li>
+							<li>已驳回</li>
+							<li>已完成</li>
+						</ul>
+					</div>
+					<div class="boxes">
+						<script type="text/template" id="ziji_tmp">
+							<div class="daitj active">
+								<% for (var i=0,l=info.length;i<l;i++) { %>
+									<% if (info[i].action =='102') { %>
+										<div class="item">
+											<div class="left">
+												<ul>
+													<li>订单编号</li>
+													<li>申请人</li>
+													<li>使用仪器</li>
+													<li>课题名称</li>
+													<li>样品名称</li>
+													<li>测试类别</li>
+												</ul>
+											</div>
+											<div class="center">
+												<ul>
+													<li><%= info[i].billcode%></li>
+													<li><%= info[i].creater%></li>
+													<li><%= info[i].zicmc%></li>
+													<li><%= info[i].suosktz%></li>
+													<li><%= info[i].yangpmc%></li>
+													<li><%= info[i].ceslb%></li>
+												</ul>
+											</div>
+											<div class="btngroup">
+												<button class="btn-yuyue">预约详情</button>
+												<% if ( flag == '02') { %>
+													<button class="btn-tongyi">同意预约</button>
+												<% } %>												
+											</div>
+										</div>
+									<% } %>
+								<% } %>
+							</div>
+							<div class="banlz">					
+								<% for (var i=0,l=info.length;i<l;i++) { %>
+									<% if (info[i].action =='3') { %>
+										<div class="item">
+											<div class="left">
+												<ul>
+													<li>订单编号</li>
+													<li>申请人</li>
+													<li>使用仪器</li>
+													<li>课题名称</li>
+													<li>样品名称</li>
+													<li>测试类别</li>
+												</ul>
+											</div>
+											<div class="center">
+												<ul>
+													<li><%= info[i].billcode%></li>
+													<li><%= info[i].creater%></li>
+													<li><%= info[i].zicmc%></li>
+													<li><%= info[i].suosktz%></li>
+													<li><%= info[i].yangpmc%></li>
+													<li><%= info[i].ceslb%></li>
+												</ul>
+											</div>
+										</div>
+									<% } %>
+								<% } %>
+							</div>
+							<div class="yibh">
+								<% for (var i=0,l=info.length;i<l;i++) { %>
+									<% if (info[i].action =='101') { %>
+										<div class="item">
+											<div class="left">
+												<ul>
+													<li>订单编号</li>
+													<li>申请人</li>
+													<li>使用仪器</li>
+													<li>课题名称</li>
+													<li>样品名称</li>
+													<li>测试类别</li>
+												</ul>
+											</div>
+											<div class="center">
+												<ul>
+													<li><%= info[i].billcode%></li>
+													<li><%= info[i].creater%></li>
+													<li><%= info[i].zicmc%></li>
+													<li><%= info[i].suosktz%></li>
+													<li><%= info[i].yangpmc%></li>
+													<li><%= info[i].ceslb%></li>
+												</ul>
+											</div>
+										</div>
+									<% } %>
+								<% } %>
+							</div>
+							<div class="yiwc">
+								<% for (var i=0,l=info.length;i<l;i++) { %>
+									<% if (info[i].action =='100') { %>
+										<div class="item">
+											<div class="left">
+												<ul>
+													<li>订单编号</li>
+													<li>申请人</li>
+													<li>使用仪器</li>
+													<li>课题名称</li>
+													<li>样品名称</li>
+													<li>测试类别</li>
+												</ul>
+											</div>
+											<div class="center">
+												<ul>
+													<li><%= info[i].billcode%></li>
+													<li><%= info[i].creater%></li>
+													<li><%= info[i].zicmc%></li>
+													<li><%= info[i].suosktz%></li>
+													<li><%= info[i].yangpmc%></li>
+													<li><%= info[i].ceslb%></li>
+												</ul>
+											</div>
+										</div>
+									<% } %>
+								<% } %>
+							</div>
+						</script>
+					</div>
+				</div>
+				<div class="otherself active">
+					<div class="topTab">
+						<ul>
+							<li class="active">待审批</li>
+							<li>办理中</li>
+							<li>已驳回</li>
+							<li>已完成</li>
+						</ul>
+					</div>
+					<div class="boxes">
+						<script type="text/template" id="tmp">
+							<div class="daitj active">	
+								<% for (var i=0,l=info.length;i<l;i++) { %>
+									<% if (info[i].action =='0') { %>
+										<div class="item">
+											<div class="left">
+												<ul>
+													<li>订单编号</li>
+													<li>申请人</li>
+													<li>使用仪器</li>
+													<li>课题名称</li>
+													<li>样品名称</li>
+													<li>测试类别</li>
+												</ul>
+											</div>
+											<div class="center">
+												<ul>
+													<li><%= info[i].billcode%></li>
+													<li><%= info[i].creater%></li>
+													<li><%= info[i].zicmc%></li>
+													<li><%= info[i].suosktz%></li>
+													<li><%= info[i].yangpmc%></li>
+													<li><%= info[i].ceslb%></li>
+												</ul>
+											</div>
+											<div class="btngroup">
+												<button class="btn-tongyi" data-ceslb="<%=info[i].ceslb%>" data-recid="<%=info[i].recid%>" data-ptguid="<%=info[i].ptguid%>">同意预约</button>
+											</div>
+										</div>
+									<% } %>
+								<% } %>
+							</div>
+							<div class="banlz"></div>
+							<div class="yibh">
+								<% for (var i=0,l=info.length;i<l;i++) { %>
+									<% if (info[i].action =='101') { %>
+										<div class="item">
+											<div class="left">
+												<ul>
+													<li>订单编号</li>
+													<li>申请人</li>
+													<li>使用仪器</li>
+													<li>课题名称</li>
+													<li>样品名称</li>
+													<li>测试类别</li>
+												</ul>
+											</div>
+											<div class="center">
+												<ul>
+													<li><%= info[i].billcode%></li>
+													<li><%= info[i].creater%></li>
+													<li><%= info[i].zicmc%></li>
+													<li><%= info[i].suosktz%></li>
+													<li><%= info[i].yangpmc%></li>
+													<li><%= info[i].ceslb%></li>
+												</ul>
+											</div>
+										</div>
+									<% } %>
+								<% } %>
+							</div>
+							<div class="yiwc">								
+									<% for (var i=0,l=info.length;i<l;i++) { %>
+										<% if (info[i].action =='100') { %>
+											<div class="item">
+												<div class="left">
+													<ul>
+														<li>订单编号</li>
+														<li>申请人</li>
+														<li>使用仪器</li>
+														<li>课题名称</li>
+														<li>样品名称</li>
+														<li>测试类别</li>
+													</ul>
+												</div>
+												<div class="center">
+													<ul>
+														<li><%= info[i].billcode%></li>
+														<li><%= info[i].creater%></li>
+														<li><%= info[i].zicmc%></li>
+														<li><%= info[i].suosktz%></li>
+														<li><%= info[i].yangpmc%></li>
+														<li><%= info[i].ceslb%></li>
+													</ul>
+												</div>
+											</div>
+										<% } %>
+									<% } %>
+							</div>
+						</script>
+					</div>
+				</div>
+			</div>			
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/template-native.js"></script>
+	<script>		
+		$(function(){
+			var url=localStorage.url;
+			var useId=localStorage.userId;
+			mui.init({
+				pullRefresh : {
+					container:".contBox",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+					down : {
+						style:'circle',//必选，下拉刷新样式，目前支持原生5+ ‘circle’ 样式
+						color:'#2BD009', //可选，默认“#2BD009” 下拉刷新控件颜色
+						height:'500px',//可选,默认50px.下拉刷新控件的高度,
+						range:'500px', //可选 默认100px,控件可下拉拖拽的范围
+						offset:'0px', //可选 默认0px,下拉刷新控件的起始位置
+						auto: false,//可选,默认false.首次加载自动上拉刷新一次
+						callback :pullfresh ,//必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+						contentdown : "下拉可以刷新",//可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+						contentover : "释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+						contentrefresh : "正在刷新...",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+					}
+				}
+			});
+			mui.plusReady(function(){
+				console.log('初始化加载办理')
+			})
+			function pullfresh(){
+				setTimeout((window.location.reload()),1000)
+			}
+			$('.myself .topTab li').on('click',function(){
+				$(this).addClass('active').siblings('li').removeClass('active');
+				var i=$(this).index();
+				$(".myself .boxes>div").eq(i).addClass("active").siblings().removeClass("active");
+			});
+			$('.otherself .topTab li').on('click',function(){
+				$(this).addClass('active').siblings('li').removeClass('active');
+				var i=$(this).index();
+				$(".otherself .boxes>div").eq(i).addClass("active").siblings().removeClass("active");
+			});
+			$('.mianban').on('click','div',function(){				
+				$(this).addClass('active').siblings('div').removeClass('active');
+				var i=$(this).index();
+				$(".meother>div").eq(i).addClass("active").siblings().removeClass("active");
+			});			
+			//点击快速发起
+			$('.kuaisu').on('click',function(){
+				mui.openWindow({
+					url: "../business/kuaisufaqi.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: true
+					}
+				});
+			});
+			//判断角色授权,区分加载他人发起
+			var dy_roles = JSON.parse(localStorage.dy_roles || "{}"	);
+			var dy_roles_arr = [];
+			for(var key in dy_roles){
+				dy_roles_arr.push(dy_roles[key]['rname'])
+			}
+			var flag = '01';//判断当前用户是否有管理员权限,区分自己发起是否含有同意按钮,默认赋值01,01没有按钮
+			if( dy_roles_arr.indexOf('PTGLY')>-1 || dy_roles_arr.indexOf('SBGLY')>-1){
+				flag = '02'
+				$.ajax({
+					url:url+'/jqzw/server',
+					type:'get',
+					data:{service:"NeedToDoService",params:useId,method:"getOtherToDoInfo"},
+					dataType:'json',
+					success:function(info){
+						console.log(JSON.stringify(info))
+						if(info.type == 'success' && info.value.length>0){
+							var other_html=template("tmp",{info:info.value});
+							$('.otherself .boxes').html(other_html);						
+						}					
+						
+					},
+					error:function(err){
+						console.log(JSON.stringify(err))
+					}
+				});
+			}
+			//自己发起列表
+			$.ajax({
+				url:url+'/jqzw/server',
+				type:'get',
+				data:{service:"NeedToDoService",params:useId,method:"getCurLoginUserToDoInfo"},
+				dataType:'json',
+				success:function(info){
+					if(info.type == 'success' && info.value.length>0){
+						var other_html=template("ziji_tmp",{info:info.value,flag:flag});
+						$('.myself .boxes').html(other_html);						
+					}			
+					
+				},
+				error:function(err){
+					console.log(JSON.stringify(err))
+				}
+			});			
+			//管理员权限,他人发起,待审批同意预约按钮
+			$('.otherself .boxes').on('click','.btn-tongyi',function(){
+				var recid=$(this).attr('data-recid');
+				var ptguid=$(this).attr('data-ptguid');	
+				var ceslb=$(this).attr('data-ceslb');
+				var ceslx= ceslb == '委托测试'?'WEITCYSQD':'ZIZCYSQD';
+				var stdcode = localStorage.stdcode;
+				//默认登录,防止登录过期
+				$.ajax({
+					type:'get',
+					url:url+'/jqzw/login/log',
+					dataType:'json',
+					data:{username:stdcode,token:"tryagain"},
+					success:function(info){
+						if(info.type == 'success'){
+							$.ajax({
+								url:url+'/jqzw/server',
+								type:'get',
+								dataType:'json',
+								data:{service:"NeedToDoService",method:"InsertBoolean",params:recid+',true,'+ceslx+','+ptguid+',审批同意'},
+								beforeSend:function(){
+									plus.nativeUI.showWaiting('正在提交...');						
+								},
+								success:function(info){
+									console.log(JSON.stringify(info))
+									if(info.value == 'success'){
+										window.location.reload();
+										mui.toast('提交成功')
+									}else{
+										window.location.reload();
+										mui.toast('提交失败，请重试')
+									}
+								},
+								error:function(err){
+									console.log(JSON.stringify(err))
+								},
+								complete:function(){
+									plus.nativeUI.closeWaiting();
+									console.log('complete')
+								}
+							});
+						}else{
+							mui.toast('登录失败，会话过期，请重新登录');
+						}
+					},
+					error:function(err){
+						mui.toast('登录失败，会话过期，请重新登录');
+					}
+				});
+				
+			});
+			
+			
+		});		
+		
+	</script>
+</html>

@@ -1,0 +1,360 @@
+<!--
+	作者：369126371@qq.com
+	时间：2016-10-26
+	描述：资产归回
+-->
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>资产归回</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../../css/mui.min.css">
+	</head>
+<style>
+	.mui-content{
+		background:#fff;
+		overflow: auto;
+	}
+	.headcount{
+			background-color: rgb(44,195,255);
+		}
+	.mui-table-view-cell:after {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0px;
+		height: 1px;
+		content: '';
+		-webkit-transform: scaleY(.5);
+		transform: scaleY(.5);
+		background-color: #DCDCDC;				
+	}
+	.mui-table-view-cell{
+		color: #676767;
+		font-size: 14px;
+	}
+	.lititle{
+		width: 100%;
+		font-size: 14px;
+	}
+	.lidivone{
+		width: 30%;
+		text-align: right;
+		float: left;
+	}
+	.lidivtwo{
+		width: 70%;
+		float: left;
+	}
+	.lidivtwo input{
+		font-size: 14px;
+	}
+	
+	.buttondiv{
+		width: 100%;
+		height: 50px;
+	}
+	.buttonwebs{
+		width: 98%;
+		margin-left: 1%;
+		height: 45px;
+		background-color: rgb(44,195,255);
+		color: #FFFFFF;
+		font-size: 18px;
+		letter-spacing: 5px;
+		border: 1px solid rgb(90,200,255);
+	}
+	
+	.inputluru{
+		width: 90%;
+		border: 1px #CCCCCC solid;
+	}
+   .hidediv{
+		display: none;
+	}
+	#thelistul{
+		padding: 5px;
+	}
+	input[type=text]{
+		margin-bottom: 0px;
+		height: 25px;
+		line-height: 20px;
+	}
+	.flstdcode,.flrecid{
+		display: none;
+	}
+	.fltitle{
+		height: 50px;
+		margin-top:5px ;
+		width: 100%;
+		text-align: center;
+		font-size: 16px;
+		letter-spacing: 5px;
+		color: #FFFFFF;
+		background-color: rgb(44,195,255);.
+		line-height: 50px;
+		padding-top: 12px;
+	}
+	.lbtitle{
+		height: 30px;
+		margin-top:5px ;
+		width: 100%;
+		text-align: center;
+		font-size: 14px;
+		letter-spacing: 5px;
+		color: #FFFFFF;
+		background-color: rgb(44,195,255);.
+		line-height: 50px;
+		padding-top: 5px;
+	}
+	.redbixu{
+		color: red;
+	}
+	.plusandjian{
+		float: left;
+		height: 16px;
+		width: 16px;
+		border-radius: 8px;
+		font-weight: 700;
+		color: #FFFFFF;
+		background-color: #666666;
+		text-align: center;
+		line-height: 16px;
+		margin-right: 10px;
+	}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav headcount">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;">
+				<span style="font-size: 15px;"></span>
+			</a>
+			<h1 class="mui-title" style="color: #FFFFFF;">设备报修</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded" style="margin: 5px;">
+				<ul class="mui-table-view" id="thelistul">
+					<li class="mui-table-view-cell" style="display: none;" >
+						<div class="lititle">
+							<div class="lidivone">申报单位：</div>
+							<div class="lidivtwo"><input class="inputluru" type="text"  id="Outorg" readonly="readonly"/></div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="lititle">
+							<div class="lidivone">报修时间<span class="redbixu">*</span>：</div>
+							<div class="lidivtwo"><input class="inputluru qdht" id="BIZ_SDSFDX_BAOXKSQR"  readonly="readonly"  type="text"/></div>
+						</div>
+					</li>
+					<!--
+					<li class="mui-table-view-cell">
+						<div class="lititle">
+							<div class="lidivone">预期结束日期<span class="redbixu">*</span>：</div>
+							<div class="lidivtwo"><input class="inputluru qdht" id="BIZ_SDSFDX_BAOXJSSJ"  readonly="readonly"  type="text"/></div>
+						</div>
+					</li>
+					-->
+					<li class="mui-table-view-cell">
+						<div class="lititle">
+							<div class="lidivone">报修人<span class="redbixu">*</span>：</div>
+							<div class="lidivtwo" id="BIZ_SDSFDX_JINGBR"></div>
+						</div>
+						
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="lititle">
+							<div class="lidivone ">经办人电话：</div>
+							<div class="lidivtwo"><input class="inputluru qdhts" id="BIZ_SDSFDX_JINGBRDH" type="text" /></div>
+						</div>
+						
+					</li>
+					<li class="mui-table-view-cell" style="display: none;">
+						<div class="lititle">
+							<div class="lidivone">是否专项：</div>
+							<div class="lidivtwo"><input class="inputluru qdht" type="checkbox" id="BIZ_SDSFDX_ISZX" /></div>
+						</div>
+						
+					</li>
+	
+					<li class="mui-table-view-cell" style="display: none;">
+						<div class="lititle">
+							<div class="lidivone">维修经费：</div>
+							<div class="lidivtwo"><input class="inputluru qdhts" type="text" id="BIZ_SDSFDX_BAOXJF" /></div>
+						</div>
+						
+					</li>
+					<!--
+					<li class="mui-table-view-cell">
+						<div class="lititle">
+							<div class="lidivone">维修预算：</div>
+							<div class="lidivtwo"><input class="inputluru qdhts" id="BIZ_SDSFDX_BAOXYS" type="text" /></div>
+						</div>
+					</li>
+					-->
+					<li class="mui-table-view-cell">
+						<div class="lititle">
+							<div class="lidivone">故障描述：<span class="redbixu">*</span>：</div>
+							<div class="lidivtwo">
+								<textarea id="BIZ_SDSFDX_BAOXYY" class="qdht qdhts" rows="2" cols="3"></textarea>
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell" id="clickCard">
+						<span style="font-size: 16px; font-weight: 700;">待报修资产信息：</span>
+					</li>
+				</ul>
+				<div class="buttondiv">
+					<button class="buttonwebs" id="comtodnaButton">确定</button>
+				</div>
+			</div>
+		</div>
+		<script src="../../js/jquery-1.11.3.js"></script>
+		<script type="text/javascript" src="../../js/jqzw_server.js" ></script>
+		<script type="text/javascript" src="../../js/mui.min.js" ></script>
+		<script type="text/javascript" src="../../js/laydate/laydate.js" ></script>
+		<script type="text/javascript" src="../../js/layer/layer.js" ></script>
+		<script type="text/javascript" src="../../js/Util.js" ></script>
+		
+		<script>
+		mui.init();
+		
+		mui.plusReady(function(){ 
+			var AssetBaoXiu = plus.webview.getWebviewById("AssetBaoXiu");
+			var assetcards = AssetBaoXiu.assetcards;
+			setDivAssetCard(assetcards);
+		});
+		
+		$(function(){
+			var dd = new Date();
+			var y = dd.getFullYear();
+			var m = dd.getMonth()+1;//获取当前月份的日期
+			if(m<10){
+				m="0"+m.toString()
+			}
+			var d = dd.getDate(); 
+			if(d<10){
+				d="0"+d.toString()
+			}
+			$("#BIZ_SDSFDX_BAOXKSQR").val(y+"-"+m+"-"+d);
+			$("#comtodnaButton").click(function(){
+				var AcceptBaoXiu = new Object();
+				var flags = true;
+				$(".qdht").each(function(){
+					if($(this).val() == ""){
+						var tiptext = $(this).parent().siblings(".lidivone").text();
+						mui.toast(tiptext+"不能为空！");
+						flags = false;
+						return false;
+					}
+					var shuxing = $(this).attr("id");
+					AcceptBaoXiu[shuxing] = replaceReturn($(this).val());
+				});
+				if(!flags){
+					return false
+				}
+				$(".qdhts").each(function(){
+					var shuxing = $(this).attr("id");
+					AcceptBaoXiu[shuxing] = replaceReturn($(this).val());
+				});
+				if($("#BIZ_SDSFDX_ISZX").is(':checked')){
+					AcceptBaoXiu["BIZ_SDSFDX_ISZX"] = true;
+				}else{
+					AcceptBaoXiu["BIZ_SDSFDX_ISZX"] = false;
+				}
+				//如果循环有未填写的表头将会直接返回 并给出提示
+				var Assetsjson = "{"+"'AcceptBaoXiu':'"+JSON.stringify(AcceptBaoXiu)+"','AssetCards':'"+JSON.stringify(assetcardsnew)+"'}";
+				console.log(Assetsjson);
+				$jqzw_server.callServer('SdSfDxAssetRepairService','saveAssetRepair',Assetsjson).success(function(iv){
+					if(iv){
+						mui.toast("保存成功！");
+						mui.back();
+					}else{
+						mui.toast("保存失败！")
+					}
+				}).error(function(iv){
+					mui.toast("保存失败！")
+					console.log(iv);
+				}).unlogin(function(iv){
+					mui.toast("登录超时，可重新点击上一次按钮");
+				});
+			});
+		});
+		
+		;!function(){
+			laydate.skin('yalan');
+			laydate({
+			   elem: '#BIZ_SDSFDX_BAOXKSQR',
+			   isclear: false, //是否显示清空
+			   issure: false //是否显示确定
+			});
+		}();
+		
+		var assetcardsnew = [];
+		function setDivAssetCard(assetcards){
+				$("#BIZ_SDSFDX_JINGBR").text(localStorage.title);
+				for(var i in assetcards){
+					var objnew = new Object();
+					objnew["recid"] = assetcards[i].recid;
+					objnew["zicbh"] = assetcards[i].zicbh;
+					objnew["billdefine"] = assetcards[i].billdefine;
+					objnew["objectid"] = assetcards[i].objectid;
+					assetcardsnew.push(objnew);
+					var html = '<div class="mui-card" style="margin:5px" id="assetcards'+i+'">'
+								+'<ul class="mui-table-view">'
+									+'<li class="mui-table-view-cell mui-collapse">'
+										+'<a class="mui-navigate-right" href="#">'
+											+'<div class="plusandjian">+</div>'+assetcards[i].zicbh+" "+assetcards[i].zicmc+'</a>'
+											+'<div class="mui-collapse-content">'
+												+'<div class="lititle">'
+													+'<div class="sumdiv" id="zhanshidivshow">'
+														+'<ul class="mui-table-view">'
+															+'<li class="mui-table-view-cell zicbh">'
+																+'<div class="lititle">'
+																	+'<div class="lidivone">资产编号：</div>'
+																	+'<div class="lidivtwo">'+assetcards[i].zicbh+'</div>'
+																+'</div>'
+															+'</li>'
+															+'<li class="mui-table-view-cell zicmc">'
+																+'<div class="lititle">'
+																	+'<div class="lidivone">资产名称：</div>'
+																	+'<div class="lidivtwo">'+assetcards[i].zicmc+'</div>'
+																+'</div>'
+															+'</li>'
+															+'<li class="mui-table-view-cell zicmc">'
+																+'<div class="lititle">'
+																	+'<div class="lidivone">取得日期：</div>'
+																	+'<div class="lidivtwo">'+formatData(assetcards[i].qudrq)+'</div>'
+																+'</div>'
+															+'</li>'
+															+'<li class="mui-table-view-cell guigxh">'
+																+'<div class="lititle">'
+																	+'<div class="lidivone">规格型号：</div>'
+																	+'<div class="lidivtwo">'+assetcards[i].guigxh+'</div>'
+																+'</div>'
+															+'</li>'
+															+'<li class="mui-table-view-cell jiaz">'
+																+'<div class="lititle">'
+																	+'<div class="lidivone">价值：</div>'
+																	+'<div class="lidivtwo">'+assetcards[i].jiaz+'</div>'
+																+'</div>'
+															+'</li>'
+															+'<li class="mui-table-view-cell shul">'
+																+'<div class="lititle">'
+																	+'<div class="lidivone">责任人：</div>'
+																	+'<div class="lidivtwo">'+assetcards[i].shiyr+'</div>'
+																+'</div>'
+															+'</li>'
+														+'</ul>'
+													+'</div>';
+					$("#thelistul").append(html);
+				}
+			}
+		</script>
+	</body>
+
+</html>

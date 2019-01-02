@@ -1,0 +1,426 @@
+<!--
+	作者：369126371@qq.com
+	时间：2016-10-25
+	描述：资产临时借用
+-->
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>资产借用</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/checkstyle.css" />
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/common.css" />
+		<style>
+			html,
+			body {
+				background-color:rgb(239,239,239);
+			}
+			.mui-pull-left .mui-icon {
+				padding-right: 5px;
+				font-size: 28px;
+			}
+			.mui-bottom
+			{
+			    position: fixed;
+			    z-index: 10;
+			    right: 0;
+			    left: 0;
+			    border-bottom: 0;
+			    background-color:rgba(85,85,85,0.6)
+			}
+			.rightdiv{
+				
+			}
+			.bottomb{
+				font-size: 16px;
+			}
+			.contonediv{
+				width: 94%;
+				margin-left: 3%;
+				margin-top: 3%;
+				float: left;
+				
+			}
+			.worddiv{
+				width: 100%;
+				float: left;
+				
+			}
+			.divleft{
+				float: left;
+				width: 45%;
+				background-color: #FFFFFF;
+				text-indent: 1em;
+				font-size: 14px;
+				height: 40px;
+				overflow: hidden;
+				line-height: 40px;
+				
+			}
+			.divright{
+				background-color: #FFFFFF;
+				float: left;
+				width: 55%;
+				text-align: right;
+				padding-right: 5%;
+				font-size: 14px;
+				height: 40px;
+				overflow: hidden;
+				line-height: 40px;
+			}
+			.hline{
+				height: 1px;
+				background-color: rgb(239,239,239);
+				width: 100%;
+				float: left;
+			}
+			.buttondiv{
+				background-color: #FFFFFF;
+				float: left;
+				width: 100%;
+			}
+			.buttondiv .divlefts{
+				margin-top:13px ;
+				padding-left: 15px;
+				width: 30%;
+				float:left;
+			}
+			.buttondiv .divrights{
+				height: 50px;
+				line-height: 50px;
+				width: 70%;
+				float:left;
+				text-align: right;
+				padding-right: 5%;
+			}
+			.buttonto{
+				padding: 8px 8px;
+				margin-left: 10px;
+				margin-top: 6px;
+				background-color: rgb(42,195,253);
+				color: #FFFFFF;
+				border: 1px solid rgb(168,230,254);
+			}
+			
+			.recid{
+				display: none;
+			}
+			
+			.buttondiv{
+				width: 100%;
+				height: 50px;
+			}
+			.buttonwebs{
+				width: 98%;
+				margin-left: 1%;
+				height: 45px;
+				background-color: rgb(42,195,253);
+				color: #FFFFFF;
+				font-size: 18px;
+				letter-spacing: 5px;
+			}
+			.lititle{
+				width: 100%;
+				font-size: 14px;
+			}
+			.lidivone{
+				width: 35%;
+				float: left;
+				text-align: right;
+			}
+			.lidivtwo{
+				width: 65%;
+				float: left;
+				
+			}
+			.inputrow label {
+				font-family: 'Helvetica Neue',Helvetica,sans-serif;
+				line-height: 1.1;
+				float: right;
+				width: 25%;
+				padding: 10px 15px;
+				height: 40px;
+				border-top-right-radius:10px;
+				border-bottom-right-radius:10px;
+				border: 1px solid rgb(44,195,255); 
+			}
+			.inputrow input {
+				width: 75%;
+				margin-bottom: 0;
+				padding-left: 0;
+				border: 1px solid #CCCCCC; 
+				border-top-left-radius:10px;
+				border-bottom-left-radius:10px;
+				border-top-right-radius:0px;
+				border-bottom-right-radius:0px;
+			}
+			#bimg{
+				width: 20%;
+				margin-top: 15px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav" >
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left">
+				<span style="font-size: 15px;"></span>
+			</a>
+			<h1 class="mui-title">资产借用登记</h1>
+		</header>
+
+		<div class="mui-content heightdiv" style="background-color: #FFFFFF;text-align: center;" id="toShowDis" >
+			<img  id="bimg" src="../../image/sm_icon.png" onclick="clicked('../base/barcode_scan.html',true,true);" />
+			<div class="button" onclick="clicked('../base/barcode_scan.html',true,true);">扫一扫</div>
+			<div class="button" onclick="readData()">读一读</div>
+			<div  style="height: 20px; width: 92%; margin-left: 4%;" align="center">
+				<div class="inputrow" id="inputrow">
+					<label style="background-color:rgb(44,195,255);color:white;text-align: center;" id="searchBy"> 搜索</label>
+					<input type="text" id="searchinput"  placeholder="请输入要搜索的资产编号" style="background:url(../../image/icon_ss.png) center left 10px no-repeat;background-size: 20px; padding-left: 40px;font-size: 13px;">
+				</div>
+			</div>
+		</div>
+		<div class="mui-content" style="background-color: #FFFFFF; " id="divshows" ></div>
+		<div style="height: 105px; float: left;width: 100%;"></div>
+		<div class="mui-bottom mui-bar-tab">
+			<div style="width: 100%;">
+				<div style="color:#FFFFFF;float: left;padding: 15px 5px 0px 10px;">
+					已选择<span id="indesshow">0</span>项
+				</div>
+				<div style="color:#FFFFFF;float: right;padding: 15px 10px 0 0;">
+					 <input type="checkbox" class="chk_5" id="allcheck"><label for="allcheck"></label>&nbsp;全选&nbsp;&nbsp;
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			<div style="padding: 10px 0; width: 100%; text-align: center;">
+				<button class="bottomb" id="todotoagree">填写借用信息</button>
+			</div>
+		</div>
+		
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../../js/jqzw_server.js" ></script>
+		<script type="text/javascript" src="../../js/layer/layer.js" ></script>
+		<script type="text/javascript" src="../../js/common.js" ></script>
+		<script type="text/javascript" src="../../js/test.js"></script>
+		<script type="text/javascript" src="../../js/nfcty.js" ></script>
+		<script type="text/javascript" src="../../js/Util.js"></script>
+		<script type="text/javascript">
+			var aniShow = "pop-in";
+			mui.init();
+			
+			window.addEventListener('refresh',function(event){
+			  //获得事件参数; 
+			  queryDisposal(); 
+			});
+			
+			var zcbhs = [];
+			function scaned( t, r, f ) {
+				for(var i=0;i<zcbhs.length;i++){
+					if(zcbhs[i] == r){
+						mui.toast("此条已扫描");
+						return;
+					}
+				}
+				QueryAssetRecord(r);
+			}
+			function __read(intent){
+			    var s = "nono";
+			    waiting.setTitle('请勿移开标签\n正在读取数据...');
+			    var Parcelable = plus.android.importClass("android.os.Parcelable");
+			    var tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+			    s = pluginGetStringSync(tag);
+			    var stringread = s.split(",");
+			    var stringif = stringread[0].split("##")
+			    for(var i=0;i<zcbhs.length;i++){
+					if(zcbhs[i] == stringif[1]){
+						mui.toast("此条已扫描");
+						return;
+					}
+				}
+				zcbhs.push(stringif[1]);
+			    QueryAssetRecords(stringif[1],stringif[0]);
+			    waiting.close();
+			}
+			
+			function QueryAssetRecords(ZicBh,rfid){
+				$jqzw_server.callServer('SdSfDxAssetRepairService','queryAssetCardInfo1',ZicBh,rfid).success(function(iv){
+					if(iv == null || iv == ""){
+						mui.toast("未搜索到数据");
+						return;
+					} 
+					addCardDiv(iv);
+				}).error(function(iv){
+					console.log(iv); 
+				}).unlogin(function(iv){
+					mui.toast("登录超时，可重新进行上一步搜索");
+				});
+			}
+			
+			function addCardDiv(iv) {
+				zcbhs.push(iv.zicbh);
+				var jsonstr = JSON.stringify(iv).replace(/\"/g,"#@");
+				var html = '<div class="contonediv">'
+							+'<div class="recid">'+iv.recid+'</div>'
+							+'<div class="worddiv">'
+								+'<div class="divleft">资产编号</div><div class="divright">'+iv.zicbh+'</div></div>'
+							+'<div class="hline"></div>'
+							+'<div class="worddiv">'
+								+'<div class="divleft">资产名称</div><div class="divright">'+iv.zicmc+'</div>'
+							+'</div>'
+							+'<div class="worddiv">'
+								+'<div class="divleft">取得日期</div>'
+								+'<div class="divright">'+formatData(iv.qudrq)+'</div>'
+							+'</div>'
+							+'<div class="worddiv">'
+								+'<div class="divleft">存放地点</div><div class="divright">'+iv.cunfdd+'</div>'
+							+'</div>'
+							+'<div class="worddiv">'
+								+'<div class="divleft">责任人</div>'
+								+'<div class="divright">'+iv.shiyr+'</div>'
+							+'</div>'
+							+'<div class="hline"></div><div class="buttondiv"><div class="divlefts"><input type="checkbox" class="chk_6" id="ucheck'+iv.recid+'" name="checkboxitem" objstr="'+jsonstr+'" checked><label for="ucheck'+iv.recid+'"></label></div><div class="divrights"></div></div></div>';
+				$("#divshows").prepend(html);
+				var flag = true;
+				var indesshow = 0 ;
+				$(".chk_6").each(function(){
+					if(!$(this).is(':checked')){
+						flag = false;
+					}else{
+						indesshow = indesshow+1;
+					}
+				});
+				$("#indesshow").text(indesshow);
+				if(flag){
+					$("#allcheck").addClass("checkedthis")
+					$("#allcheck").prop("checked", true);
+				}else{
+					$("#allcheck").removeClass("checkedthis")
+					$("#allcheck").prop("checked", false);
+				}
+			}
+			
+			function QueryAssetRecord(ZicBh){
+				for(var i=0;i<zcbhs.length;i++){
+					if(zcbhs[i] == ZicBh){
+						mui.toast("此条资产已扫描！");
+						return;
+					}
+				}
+				plus.nativeUI.showWaiting("正在查询卡片信息");
+				$jqzw_server.callServer('SdSfDxAssetBorrowService','queryAssetCardInfo',ZicBh).success(function(iv){
+//					console.log(JSON.stringify(iv));
+					if(iv == null || iv == ""){
+						plus.nativeUI.closeWaiting();
+						mui.toast("未搜索到数据");
+						return;
+					}
+					addCardDiv(iv);
+					plus.nativeUI.closeWaiting();
+				}).error(function(iv){
+					plus.nativeUI.closeWaiting();
+					console.log(iv); 
+				}).unlogin(function(iv){
+					plus.nativeUI.closeWaiting();
+					mui.toast("登录超时，可重新进行上一步搜索");
+				});
+			}
+			
+			mui.plusReady(function(){});
+			
+			$(function(){
+				$("#searchBy").click(function(){
+					var zicbh = $("#searchinput").val();
+					if(zicbh == ""){
+						mui.toast("搜索条件不能为空！");
+						return;
+					}
+					QueryAssetRecord(zicbh);
+				
+				});
+				$("#todotoagree").click(function(){
+					var objs = [];
+					$(".chk_6").each(function(){
+						if($(this).is(':checked')){
+							var obj = $(this).attr("objstr").replace(/#@/g,"\"");
+							var obja = JSON.parse(obj);
+							objs.push(obja);
+						}
+					});
+					
+					if(objs.length!=0){
+						mui.openWindow({
+							url: "../Management/AssetJieYong.html",
+							id:'AssetJieYong',
+							styles: {
+								popGesture: 'close',
+								scrollIndicator: "none"
+							},
+							show: {
+								aniShow: aniShow
+							},
+							waiting: {
+								autoShow: false
+							},
+							extras:{
+								assetcards : objs
+							}
+						});
+					}else{
+						mui.toast("请选择要借用的资产");
+					}
+				});
+				$(document).on("click",".toviewdetail",function(){
+					layer.open({
+					    type: 1,
+					    content: '<ul class="mui-table-view"><li class="mui-table-view-cell"><div class="lititle"><div class="lidivone">资产编号：</div><div class="lidivtwo" id="zicbh">TY2016026666</div></div></li><li class="mui-table-view-cell"><div class="lititle"><div class="lidivone">资产名称：</div><div class="lidivtwo" id="zicmc">戴尔计算机</div></div></li><li class="mui-table-view-cell"><div class="lititle"><div class="lidivone">价值：</div><div class="lidivtwo" id="jiaz">111.22</div></div></li><li class="mui-table-view-cell"><div class="lititle"><div class="lidivone">使用人：</div><div class="lidivtwo" id="shiyr">我是使用人</div></div></li><li class="mui-table-view-cell"><div class="lititle"><div class="lidivone">使用部门：</div><div class="lidivtwo" id="shiybm">我是使用部门</div></div></li><li class="mui-table-view-cell"><div class="lititle"><div class="lidivone">存放地点：</div><div class="lidivtwo" id="cunfdd">我是存放地点</div></div></li><li class="mui-table-view-cell"><div class="lititle"><div class="lidivone">数量：</div><div class="lidivtwo" id="shul">21</div></div></li><li class="mui-table-view-cell"><div class="lititle"><div class="lidivone">备注：</div><div class="lidivtwo" id="beiZ">我是一条备注我是一条备注我是一条备注我是一条备注我是一条备注我是一条备注我是一条备注</div></div></li></ul>',
+					    anim: true,
+					    style: 'position:fixed; top:50px; left:0; width:100%; height:150px; padding:10px 0; border:none;'
+					});
+				});
+				//点击复选框 判断是否全选了 全选 全选勾中 不是全选取消勾中
+				$(".chk_6").click(function(){
+					var flag = true;
+					if($(this).is(':checked')){
+						$(".chk_6").each(function(){
+							if(!$(this).is(':checked')){
+								flag = false;
+							}
+						});
+					}else{
+						flag = false;
+					}
+					
+					if(flag){
+						$("#allcheck").addClass("checkedthis")
+						$("#allcheck").prop("checked", true);
+					}else{
+						$("#allcheck").removeClass("checkedthis")
+						$("#allcheck").prop("checked", false);
+					}
+				});
+				$("#allcheck:checkbox").click(function(){
+					if($(this).hasClass("checkedthis")){
+						$(this).removeClass("checkedthis")
+						$("[name = checkboxitem]:checkbox").prop("checked", false);		
+						$("#indesshow").text("0")
+					}else{
+						$("[name = checkboxitem]:checkbox").prop("checked", true);
+						$(this).addClass("checkedthis")
+						$("#indesshow").text($(".contonediv").length);
+					}
+				});
+				
+				$(document).on("click","[name = checkboxitem]:checkbox",function(){
+					var indexs = $("[name = checkboxitem]:checked").length;
+					$("#indesshow").text(indexs);
+				});
+			});
+		</script>
+	</body>
+</html>

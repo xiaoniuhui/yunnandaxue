@@ -1,0 +1,24 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.cont{
+	margin-top: 44px;
+	min-height: 500px;
+	background-color: #FFFFFF;
+	padding-top: 20px;
+}
+.yewu{
+	width:90%;
+	line-height: 1;
+	background-image: linear-gradient(-90deg, #3DA1F2 0%, #3586EF 95%);
+	border-radius: 4px;
+	margin: 0 auto;
+	text-align: center;
+	font-family: PingFangSC-Regular;
+	font-size: 18px;
+	color: #FFFFFF;
+	letter-spacing: 0;
+	padding: 15px 0;
+	margin-bottom: 20px;
+}

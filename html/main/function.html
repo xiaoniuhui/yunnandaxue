@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>功能</title>
+		<link rel="stylesheet" href="../../css/mui.min.css">	
+		<link rel="stylesheet" href="../../css/function.css">	
+	</head>
+	<body>
+		<div class="cont">
+			<div class="list">
+				<div class="title">资产</div>
+				<div class="items">
+					<div class="item zichanbtn">
+						<div class="imgbox">
+							<img src="../../image/saomacha.png" alt="">						
+						</div>
+						<span>扫码查</span>
+					</div>					
+				</div>
+			</div>
+			<div class="list">
+				<div class="title">大仪</div>
+				<div class="items">
+					<div class="item dayibtn">
+						<div class="imgbox">
+							<img src="../../image/yuyueceshi.png" alt="">						
+						</div>
+						<span>预约测试</span>
+					</div>
+					<div class="item smsxj">
+						<div class="imgbox">
+							<img src="../../image/saomacha.png" alt="">						
+						</div>
+						<span>扫码上下机</span>
+					</div>
+					<div class="item feiyhd">
+						<div class="imgbox">
+							<img src="../../image/feiyongheding.png" alt="">						
+						</div>
+						<span>费用核定</span>
+					</div>
+					<div class="item ziydj">
+						<div class="imgbox">
+							<img src="../../image/feiyongheding.png" alt="">						
+						</div>
+						<span>自用登记</span>
+					</div> 
+					<div class="item yuancsxj">
+						<div class="imgbox">
+							<img src="../../image/feiyongheding.png" alt="">						
+						</div>
+						<span>远程上下机</span>
+					</div> 
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script src="../../js/common.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script>
+		mui.init({
+			keyEventBind: {//返回设置
+				backbutton: false
+			},
+			swipeBack: false,
+			statusBarBackground: '#f7f7f7',
+			gestureConfig: {  
+				doubletap: true
+			}
+		});			
+		//创建子页面，首个选项卡页面显示，其它均隐藏；
+		mui.plusReady(function(){
+		});
+		$(function(){
+			//大型仪器委托预约
+			$('.dayibtn').on('click',function(){
+				mui.openWindow({
+					url: "../business/yuyueyiqi.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					},
+					extras: {
+						hrefid: ""
+					}
+				});
+			});
+			//资产扫码查
+			$('.zichanbtn').on('click',function(){
+				mui.openWindow({
+					//url: "../business/saomacha.html",
+					url: "../base/barcode_scan.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					}
+				});
+			});
+			//费用核定
+			$('.feiyhd').on('click',function(){
+				mui.openWindow({
+					url: "../business/feiyongheding.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					},
+					extras: {
+						
+					}
+				});
+			});		
+			//自用登记
+			$('.ziydj').on('click',function(){
+				mui.openWindow({
+					url: "../business/ziyongdengji.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					},
+					extras: {
+						
+					}
+				});
+			});	
+			//远程上下机
+			$('.yuancsxj').on('click',function(){
+				mui.openWindow({
+					url: "../business/yuancsxj.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					},
+					extras: {
+						
+					}
+				});
+			});
+			//大仪扫码上下机
+			$('.smsxj').on('click',function(){
+				if(localStorage.stdcode == '' || localStorage.stdcode == null || localStorage.stdcode ==undefined){
+					//跳转登录页
+					mui.openWindow({
+						url: "../base/login.html",
+						styles: {
+							popGesture: 'close',
+							scrollIndicator: "none"
+						},						
+						waiting: {
+							autoShow: true
+						},
+						extras:{										
+						}
+					});
+					return;
+				}
+				mui.openWindow({
+					url: "../base/barcode_scan_dy.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					}
+				});
+			});
+		});
+		
+		
+		
+	</script>
+</html>

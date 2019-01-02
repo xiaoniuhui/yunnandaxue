@@ -1,0 +1,41 @@
+{
+  "html/main/AnnouncementList.html": {
+    "href": "html/main/AnnouncementList.html",
+    "resources": [],
+    "priority": 0
+  },
+  "html/main/ScanCredit.html": {
+    "href": "html/main/ScanCredit.html",
+    "resources": [],
+    "refer": [],
+    "priority": 2
+  },
+  "html/main/MainRe.html": {
+    "href": "html/main/MainRe.html",
+    "resources": [],
+    "refer": [],
+    "priority": 1
+  },
+  "html/main/HomeList.html": {
+    "href": "html/main/HomeList.html",
+    "resources": [],
+    "refer": [],
+    "priority": 1
+  },
+  "html/main/UserPage.html": {
+    "href": "html/main/UserPage.html",
+    "resources": [],
+    "priority": 2
+  },
+  "html/main/ToDoList.html": {
+    "href": "html/main/ToDoList.html",
+    "resources": [],
+    "priority": 3
+  },
+  "index.html": {
+    "href": "index.html",
+    "resources": [],
+    "refer": [],
+    "priority": 0
+  }
+}

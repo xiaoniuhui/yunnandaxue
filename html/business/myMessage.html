@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>我的消息</title>
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/myMessage.css">
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的消息</h1>
+		</header>
+		<div class="cont">
+			<div class="topTab">
+				<ul>
+					<li class="active">通知</li>
+					<li>催办</li>
+					<li>知会</li>
+					<li>预警</li>
+				</ul>
+			</div>
+			<div class="tabCont">
+				<div class="tongzhi active">
+					<script type="text/template" id="tmp">
+						<% for (var i=0,l=info.length;i<l;i++) { %>
+							<div class="list">
+								<span class="title"><%=info[i].fasnr%></span>
+								<span class="time"><%=info[i].billtime%></span>
+							</div>
+						<% } %>
+					</script>
+				</div>
+				<div class="cuiban">
+					<div class="list">
+						<span class="title">提交的资产高拍仪验收单据</span>
+						<span class="time">2018-10-20</span>
+						<span class="gly">袁明全</span>
+					</div>
+					<div class="list">
+						<span class="title">提交的资产高拍仪</span>
+						<span class="time">2018-10-20</span>
+						<span class="gly">袁明全</span>
+					</div>
+					<div class="list">
+						<span class="title">提交的资产高拍仪验收单据</span>
+						<span class="time">2018-10-20</span>
+						<span class="gly">袁明全</span>
+					</div>
+				</div>
+				<div class="zhihui">
+					<ul>
+						<li><span class="l">知会主题</span><span class="r">费用核定</span></li>
+						<li><span class="l">预约仪器</span><span class="r">色谱仪</span></li>
+						<li><span class="l">机组老师</span><span class="r">袁明全</span></li>
+						<li><span class="l">预约类型</span><span class="r">委托测试</span></li>
+						<li><span class="l">预约测试时间</span><span class="r">2018-10-10 8:00-10:00</span></li>
+					</ul>
+					<!-- <button>确认</button> -->
+				</div>
+				<div class="yujing">暂无消息</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/template-native.js"></script>
+	<script>
+		var url_mh = localStorage.url_mh;
+		var userId = localStorage.userId;
+		mui.init({
+		});		
+		
+		mui.plusReady(function() {
+		});
+		$(function(){
+			$('.topTab li').on('click',function(){
+				$(this).addClass('active').siblings('li').removeClass('active');
+				var i=$(this).index();
+				$(".tabCont>div").eq(i).addClass("active").siblings().removeClass("active");
+			});
+			//加载通知
+			$.ajax({
+				url:url_mh+'/jqzw/server',
+				type:'get',
+				data:{service:"MessageTbService",method:"getNotApprovalList",params:userId},
+				dataType:'json',
+				success:function(info){
+					if(info.type == 'success'){
+						var html = template('tmp',{info:info.value});
+						$('.tongzhi').append(html);
+					}
+				},
+				error:function(err){
+					console.log(JSON.stringify(err));
+				}
+			});
+			//加载下一步审批人,提醒
+			$.ajax({
+				url:url_mh+'/jqzw/server',
+				type:'get',
+				data:{service:"MessageTbService",method:"getMessageTb",params:userId},
+				dataType:'json',
+				success:function(info){
+					console.log(JSON.stringify(info))
+// 					if(info.type == 'success'){
+// 						var html = template('tmp',{info:info.value});
+// 						$('.tongzhi').append(html);
+// 					}
+				},
+				error:function(err){
+					console.log(JSON.stringify(err));
+				}
+			});
+			//获取当前用户验收、报增、调拨、处置超时（3天）审批列表
+			$.ajax({
+				url:url_mh+'/jqzw/server',
+				type:'get',
+				data:{service:"MessageTbService",method:"getOvertimeNotApprovalList",params:userId},
+				dataType:'json',
+				success:function(info){
+					console.log(JSON.stringify(info))
+// 					if(info.type == 'success'){
+// 						var html = template('tmp',{info:info.value});
+// 						$('.tongzhi').append(html);
+// 					}
+				},
+				error:function(err){
+					console.log(JSON.stringify(err));
+				}
+			});
+			
+			
+			
+		});
+		
+		
+	</script>
+</html>

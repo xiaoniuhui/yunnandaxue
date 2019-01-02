@@ -1,0 +1,38 @@
+*{
+	margin: 0;
+	padding: 0;	
+}
+.contBox{
+	padding-top: 44px;
+}
+.item{
+	background-color: #FFFFFF;
+	padding-bottom: 20px;
+	margin-top: 5px;
+}
+.item ul{
+	list-style: none;
+}
+.item ul li{
+	overflow: hidden;
+	line-height: 1;
+	padding: 20px 20px 0;
+}
+.item li span.l{
+	float: left;
+	font-family: PingFangSC-Regular;
+	font-size: 16px;
+	color: #666666;	
+	max-width:130px;
+	overflow: hidden;
+	word-break: keep-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+	
+}
+.item li span.r{
+	float: right;
+	font-family: PingFangSC-Regular;
+	font-size: 16px;
+	color: #0B0B0B;
+}

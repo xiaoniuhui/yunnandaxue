@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>招标采购</title>
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/myMessage.css">
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">招标采购</h1>
+		</header>
+		<div class="cont">			
+			<div class="tabCont">
+				<div class="active">
+					<script type="text/template" id="tmp">
+						<% for (var i=0,l=info.length;i<l;i++) { %>
+							<div class="list">
+								<span class="title"><%=info[i].title%></span>
+								<span class="time"><%=info[i].createtime%></span>
+								<input type="hidden" value="<%=info[i].content%>">
+							</div>
+						<% } %>
+					</script>
+				</div>				
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/template-native.js"></script>
+	<script>		
+		$(function(){
+			mui.init({
+			});	
+			mui.plusReady(function() {
+			});
+			var url_mh=localStorage.url_mh;//获取门户后台地址
+			//初始化加载工作通知列表
+			$.ajax({
+				url:url_mh+'/jqzw/server',
+				type:'get',
+				dataType:'json',
+				data:{service:"NewsService",params:"1,30,116",method:"getNewsList"},
+				success:function(info){
+					if(info.type == 'success'){
+						var html=template('tmp',{info:info.value});
+						$('.active').html(html);
+					}
+				},
+				error:function(err){
+					console.log(JSON.stringify(err));
+				}
+			});
+			
+			
+			
+			
+			//工作通知列表打开对应详情
+			$('.tabCont').on('click','.list',function(){
+				var newstitle=$(this).children('.title').text();
+				var newstime=$(this).children('.time').text();	
+				var wendnr=$(this).children('input').val();
+				mui.openWindow({
+					url: "../business/workDetail.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					},
+					extras: {
+						newstitle:newstitle,
+						newstime:newstime,
+						wendnr:wendnr
+ 					}
+				});
+			});
+		});
+		
+		
+	</script>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../css/checkstyle.css" />
+
+		<style type="text/css">
+		html,body{
+			width:100%;
+			
+			font-family: "微软雅黑"; 
+		}
+		.divxuhao{
+			width: 7%;
+			float:left;
+			height: 30px;
+			line-height: 30px;
+		}
+		.divlefts{
+			margin-top:3px ;
+			padding-left: 10px;
+			width: 13%;
+			float:left;
+		}
+		.divcon{
+			width: 25%;
+			float:left;
+			height: 30px;
+			line-height: 30px;
+			font-size: 12px;
+		}
+		.divrights{ 
+			height: 30px;
+			line-height: 30px;
+			width: 55%;
+			float:left;
+			text-align: right;
+			font-size: 12px;
+		}
+		.mui-bottom
+			{
+			    position: fixed;
+			    z-index: 10;
+			    right: 0;
+			    left: 0;
+			    border-bottom: 0;
+			    background-color:rgba(85,85,85,0.6)
+			}
+			.rightdiv{
+				
+			}
+			.bottomb{
+				font-size: 16px;
+			}
+			.contonediv{
+				width: 94%;
+				margin-left: 3%;
+				margin-top: 3%;
+				float: left;
+				
+			}
+			.worddiv{
+				width: 100%;
+				float: left;
+				
+			}
+			.divleft{
+				float: left;
+				width: 45%;
+				background-color: #FFFFFF;
+				text-indent: 1em;
+				font-size: 14px;
+				height: 40px;
+				overflow: hidden;
+				line-height: 40px;
+				
+			}
+			.divright{
+				background-color: #FFFFFF;
+				float: left;
+				width: 55%;
+				text-align: right;
+				padding-right: 5%;
+				font-size: 14px;
+				height: 40px;
+				overflow: hidden;
+				line-height: 40px;
+			}
+			.hline{
+				height: 1px;
+				background-color: rgb(239,239,239);
+				width: 100%;
+				float: left;
+			}
+			.buttondiv{
+				background-color: #FFFFFF;
+				float: left;
+				width: 100%;
+			}
+			.buttondiv .divlefts{
+				margin-top:13px ;
+				padding-left: 15px;
+				width: 30%;
+				float:left;
+			}
+			.buttondiv .divrights{
+				height: 50px;
+				line-height: 50px;
+				width: 70%;
+				float:left;
+				text-align: right;
+				padding-right: 5%;
+			}
+			.buttonto{
+				padding: 8px 8px;
+				margin-left: 10px;
+				margin-top: 6px;
+				background-color: rgb(42,195,253);
+				color: #FFFFFF;
+				border: 1px solid rgb(168,230,254);
+			}
+			.lititle{
+				width: 100%;
+				font-size: 12px;
+			}
+			.lidivone{
+				width: 35%;
+				float: left;
+				text-align: right;
+			}
+			.lidivtwo{
+				width: 65%;
+				float: left;
+				
+			}
+			.mui-content>.mui-table-view:first-child {
+			    margin-top: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mui-content">
+		    <ul class="mui-table-view" id="taboneList"></ul>
+		</div>
+		<div style="height: 105px; float: left;width: 100%;"></div>
+		
+		<div class="mui-bottom mui-bar-tab">
+			<div style="width: 100%;">
+				<div style="color:#FFFFFF;float: left;padding: 15px 5px 0px 10px;">
+					已选择<span id="indesshow">0</span>项
+				</div>
+				<div style="color:#FFFFFF;float: right;padding: 15px 10px 0 0;">
+					 <input type="checkbox" class="chk_5" id="allcheck"><label for="allcheck"></label>&nbsp;全选&nbsp;&nbsp;
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			<div style="padding: 10px 0; width: 100%; text-align: center;">
+				<button class="bottomb" id="todopankui">盘亏</button>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jqzw_server.js"></script>
+		<script src="../../js/jquery-1.11.3.js"></script>
+		<script type="text/javascript" src="../../js/layer/layer.js" ></script>
+		<script type="text/javascript" charset="utf-8"> 
+			var aniShow = "pop-in";
+			var jiaojiesyu;
+			mui.init({});
+			mui.plusReady(function() {
+				var chartshow = plus.webview.getWebviewById('chartshow');
+				$jqzw_server.callServer('SdSfDxAssetInventory','getSchemeDetail',chartshow.recid).success(function(jiaojies){
+					jiaojiesyu = jiaojies;
+					setYmx(jiaojies)
+				}).error(function(iv){
+					console.log(iv);
+				}).unlogin(function(iv){
+					console.log(iv);
+				}); 
+			});
+			
+			function setYmx(jiaojies){
+				var html = "";
+				var index = 0;
+				for(var i=0;i<jiaojies.length;i++){ 
+					if(!jiaojies[i].isChecked){
+						index = index+1;
+						var zicmc = jiaojies[i].zicmc;
+						if(zicmc.length > 8){
+							zicmc = jiaojies[i].zicmc.substring(0,8)+"...";
+						}
+						html = html + '<li class="mui-table-view-cell">'
+							+'<div class="divxuhao" style="font-size:12px">'+index+'</div>'
+							+'<div class="divlefts">'
+								+'<input type="checkbox" class="chk_6 weipancheck" id="ucheck'+index+'" name="checkboxitem" recid="'+jiaojies[i].recid+'" cardObjectId="'+jiaojies[i].cardObjectId+'" >'
+								+'<label for="ucheck'+index+'"></label>'
+							+'</div><div class="alertdiv" i="'+i+'"><div class="divcon">'+jiaojies[i].zicbh+'</div><div class="divrights lidivclick" recid="'+jiaojies[i].recid+'">'+zicmc+'</div></div></li>';
+					}
+				};
+				var mingxi = plus.webview.getWebviewById('mingxi');
+				mingxi.evalJS("xiugaiweipan('"+index+"');") 
+				$("#taboneList").html(html);
+			}
+			$(function(){
+				mui("#taboneList").on('tap','.alertdiv',function(){
+					var i = $(this).attr("i");
+					var alerthtml = '<ul class="mui-table-view"><li class="mui-table-view-cell"><div class="lititle"><div class="lidivone">资产编号：</div><div class="lidivtwo" id="zicbh">'+jiaojiesyu[i].zicbh+'</div></div></li><li class="mui-table-view-cell"><div class="lititle"><div class="lidivone">资产名称：</div><div class="lidivtwo" id="zicmc">'+jiaojiesyu[i].zicmc+'</div></div></li><li class="mui-table-view-cell"><div class="lititle"><div class="lidivone">价值：</div><div class="lidivtwo" id="jiaz">'+jiaojiesyu[i].jiaz+'</div></div></li><li class="mui-table-view-cell"><div class="lititle"><div class="lidivone">使用人：</div><div class="lidivtwo" id="shiyr">'+jiaojiesyu[i].shiyr+'</div></div></li><li class="mui-table-view-cell"><div class="lititle"><div class="lidivone">使用部门：</div><div class="lidivtwo" id="shiybm">'+jiaojiesyu[i].shiybm+'</div></div></li><li class="mui-table-view-cell"><div class="lititle"><div class="lidivone">存放地点：</div><div class="lidivtwo" id="cunfdd">'+jiaojiesyu[i].cunfdd+'</div></div></li><li class="mui-table-view-cell"><div class="lititle"><div class="lidivone">数量：</div><div class="lidivtwo" id="shul">'+jiaojiesyu[i].zhangmsl+'</div></div></li></ul>'
+					layer.open({
+						shade: 0.8,
+						shadeClose:true,
+					    content: alerthtml
+					});
+				});
+					//mui自带监听事件
+				mui("#taboneList").on('tap','.weipancheck',function(){
+					var flag = true;
+					if($(this).is(':checked')){
+						
+						$(".weipancheck").each(function(){
+							if(!$(this).is(':checked')){
+								flag = false;
+							}
+						});	
+					}else{
+						flag = false;
+					}
+					
+					if(flag){
+						$(this).addClass("checkedthis")
+						$("#allcheck").prop("checked", true);
+					}else{
+						$(this).removeClass("checkedthis")
+						$("#allcheck").prop("checked", false);
+					}
+					var indexs = $("[name = checkboxitem]:checked").length;
+					$("#indesshow").text(indexs);
+				}); 
+		
+				$(document).on("click",".weipancheck",function(){
+					var flag = true;
+					if($(this).is(':checked')){
+						
+						$(".weipancheck").each(function(){
+							if(!$(this).is(':checked')){
+								flag = false;
+							}
+						});	
+					}else{
+						flag = false;
+					}
+					
+					if(flag){
+						$(this).addClass("checkedthis")
+						$("#allcheck").prop("checked", true);
+					}else{
+						$(this).removeClass("checkedthis")
+						$("#allcheck").prop("checked", false);
+					}
+					var indexs = $("[name = checkboxitem]:checked").length;
+					$("#indesshow").text(indexs);
+				});
+					
+				$("#allcheck:checkbox").click(function(){
+					if($(this).hasClass("checkedthis")){
+						$(this).removeClass("checkedthis");
+						$("[name = checkboxitem]:checkbox").prop("checked", false);		
+						$("#indesshow").text("0")
+					}else{
+						$("[name = checkboxitem]:checkbox").prop("checked", true);
+						$(this).addClass("checkedthis");
+						$("#indesshow").text($("[name = checkboxitem]:checked").length);
+					}				
+				});
+				
+				document.getElementById("todopankui").addEventListener('tap', function() {
+					plus.nativeUI.showWaiting();
+					var recids = [];
+					var cardObjectIds = [];
+					$("[name = checkboxitem]:checked").each(function(){
+						var recid = $(this).attr("recid");
+						var cardObjectId = $(this).attr("cardObjectIds");
+						recids.push(recid);
+						cardObjectIds.push(cardObjectId);
+					});
+					if(recids.length == 0){
+						mui.toast("请选择资产");
+						plus.nativeUI.closeWaiting();
+					} else {
+						var chartshow = plus.webview.getWebviewById('chartshow');
+						$jqzw_server.callServer('SdSfDxAssetInventory','updateSchemeDetailAndCardInfo',chartshow.recid,JSON.stringify(recids),JSON.stringify(cardObjectIds),"03").success(function(iv){ 
+							$jqzw_server.callServer('SdSfDxAssetInventory','getSchemeDetail',chartshow.recid).success(function(jiaojies){
+								var pankui = plus.webview.getWebviewById('pankui.html');
+								pankui.evalJS("updatepankui();") 
+								setYmx(jiaojies)
+								$("#indesshow").text("0");
+								plus.nativeUI.closeWaiting();
+							}).error(function(iv){
+								plus.nativeUI.closeWaiting();
+								console.log(iv);
+							}).unlogin(function(iv){
+								plus.nativeUI.closeWaiting();
+								console.log(iv);
+							}); 
+						}).error(function(iv){
+							plus.nativeUI.closeWaiting();
+							console.log(iv);
+						}).unlogin(function(iv){
+							plus.nativeUI.closeWaiting();
+							console.log(iv);
+						});
+					}
+				});
+			}); 
+		</script>
+	</body>
+
+</html>

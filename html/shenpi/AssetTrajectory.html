@@ -1,0 +1,222 @@
+<!--
+	作者：369126371@qq.com
+	时间：2016-08-18
+	描述：处置审批轨迹
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="../../css/mui.min.css" />
+	<style>
+		body, html {
+			background-color:rgb(255,255,255);
+		}
+		
+
+		.condiv{
+			width: 100%;
+		}
+		.titlediv{
+			margin-top: 20px;
+			width: 100%;	
+			
+			color: #666;
+			font-weight: 700;
+		}
+		.contentdiv{
+			margin-top: 20px;
+		}
+		.cirdiv{
+			float: left;
+			height: 30px;
+
+			width: 30px;
+			margin-top: 7px;
+			z-index:9999;
+			margin-left: 15px;
+		}
+		.cirimg{
+			height: 30px;
+
+			width: 30px;
+			position: absolute;
+		}
+		.line{
+			float: left;
+			margin-left: 0px;
+			width: 30px;
+			height: 1px;
+			background-color: rgb(31,180,229);
+			margin-top: 21px;
+			
+		}
+
+		.textdiv{
+			
+			margin-left: 10px;
+			float: left;
+			margin-top: 11px;
+			
+			
+		}
+		.newline{
+			width: 100%;
+			height: 10px;
+			float: left;
+		}
+		.vline{
+			width: 1px;
+			background-color: rgb(31,180,229); 
+			position: absolute;
+			
+			margin-left: 30px;
+			z-index: 0;
+		}
+		.divstep{
+			float: left;
+		}
+		.clickshow{
+			
+			overflow: hidden;
+		}
+		.hidetoshowdiv{
+			display: none;
+		}
+	</style>
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav" style="background-color: rgb(42,195,253);">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;">
+				<span style="font-size: 15px;"></span>
+			</a>
+			
+			<h1 class="mui-title" style="color: white;">流程监控</h1>
+		</header>
+		<div class="mui-content"  >
+			<div class="vline" id="vline"></div>
+			<div class="contentdiv">
+			
+	
+	
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js" ></script>
+	<script type="text/javascript" src="../../js/jquery-1.11.3.js" ></script>
+	<script type="text/javascript" src="../../js/jqzw_server.js" ></script>
+	<script type="text/javascript" src="../../js/layer/layer.js" ></script>
+	<script>
+		
+		mui.plusReady(function(){
+			//createTimeZhou();
+			var AssetTrajectory = plus.webview.getWebviewById("AssetTrajectory"); 
+			$jqzw_server.callServer('SdSfDxNeedToDoService','getListTimeItem',AssetTrajectory.biaoming,AssetTrajectory.DisPosal.recid).success(function(iv){
+				CreateTrajectory(iv)
+				//console.log(JSON.stringify(iv));  
+				}).error(function(iv){
+					console.log(iv);
+				}).unlogin(function(iv){
+					mui.toast("会话过久，可重新进行上次操作"); 
+			});
+		})
+		
+		
+		function CreateTrajectory(trajectorys){
+			for(var i=trajectorys.length-1; i>0;i--){
+				
+				
+				var zhuangtai = "";
+				if(trajectorys[i].actionid == 1){
+					zhuangtai = "同意";
+				}else if(trajectorys[i].actionid == 3){
+					zhuangtai = "提交";
+				}
+				var htmls = "";
+				if(i!=1){
+					htmls = '<div class="newline"></div>'
+				}
+				var approveunittitle = trajectorys[i].approveunittitle;
+				if(approveunittitle.length>14){
+					approveunittitle = approveunittitle.substring(0,14)+"..."
+				}
+				htmls = htmls+'<div class="divstep"><div class="cirdiv"><img src="../../image/gj_icon.png" class="cirimg"></div><div class="line"></div><div class="hidetoshowdiv">'+trajectorys[i].suggest+'</div><div class="textdiv" style="font-size:13px;"><span class="clickshow">提交单位：'+approveunittitle+'&nbsp;</span></br>审批结果：'+zhuangtai+'</br>提交人：'+trajectorys[i].approvalusertitle+'</br>审批意见：'+trajectorys[i].suggest+'</br>提交日期：'+trajectorys[i].approvedate+'</div></div>'
+				$(".contentdiv").append(htmls);
+			}
+			
+			createTimeZhou();
+		}
+		
+		$(function(){
+			//mui自带监听事件
+			mui("#contentdiv").on('tap','.clickshow',function(){
+				var hidetext = $(this).parent().siblings(".hidetoshowdiv").text();
+				var opencheckhtmls = '<div id="checkboxcontent">'+hidetext+'</div>'
+				layer.open({
+				    content: opencheckhtmls,
+				});
+			}) 
+			$(document).on("click",".clickshow",function(){
+				var hidetext = $(this).parent().siblings(".hidetoshowdiv").text();
+				var opencheckhtmls = '<div id="checkboxcontent">'+hidetext+'</div>'
+				layer.open({
+				    content: opencheckhtmls,
+				});
+			})
+		});
+		
+		function createTimeZhou(){
+			var vheight = 0;
+			var steparr = getElementsClass("divstep");
+			var oneheight = 0;
+			for(var i=0;i<steparr.length;i++){
+				 oneheight = parseInt(steparr[i].offsetHeight)-11;
+				 vheight = vheight+parseInt(steparr[i].offsetHeight)-11;
+			}
+			vheight = vheight + oneheight+40;	
+			//vheight = vheight 减掉oneheight 和 40  就是最初的长度
+			document.getElementById("vline").style.height=vheight+"px";
+		}
+		
+		
+		
+
+		
+		//原生获取class
+		function getElementsClass(param){ 
+
+            	//ie8 获取 class方法
+	            var classobj= new Array();//定义数组 
+	 
+				var classint=0;//定义数组的下标 
+				 
+				var tags=document.getElementsByTagName("*");//获取HTML的所有标签 
+				 
+				for(var i in tags){//对标签进行遍历 
+				 
+				if(tags[i].nodeType==1){//判断节点类型 
+				 
+				if(tags[i].getAttribute("class") == param)//判断和需要CLASS名字相同的，并组成一个数组 
+				 
+				{ 
+				 
+				classobj[classint]=tags[i]; 
+				 
+				classint++; 
+				 
+				} 
+				 
+				} 
+				 
+				} 
+				 
+				return classobj;//返回组成的数组 
+            
+		 
+		} 
+	</script>
+</html>

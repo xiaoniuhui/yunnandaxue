@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>首页</title>
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/Homelist.css">
+	</head>
+	<body>
+		<div class="content">
+			<div class="swiper">
+				<div class="mui-slider">
+				  <div class="mui-slider-group mui-slider-loop">
+					<!--支持循环，需要重复图片节点-->
+					<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="../../image/banner1.png" /></a></div>
+					<div class="mui-slider-item"><a href="#"><img src="../../image/banner_2.png" /></a></div>
+					<div class="mui-slider-item"><a href="#"><img src="../../image/banner_3.png" /></a></div>
+					<div class="mui-slider-item"><a href="#"><img src="../../image/banner1.png" /></a></div>
+					<!--支持循环，需要重复图片节点-->
+					<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="../../image/banner_2.png" /></a></div>
+				  </div>
+				</div>
+			</div>
+			<div class="list">
+				<div class="item jigyzn">
+					<div class="imgbox">
+						<img src="../../image/organization%20.png" alt="">						
+					</div>
+					<span>机构与职能</span>
+				</div>
+				<!-- <div class="item">
+					<div class="imgbox">
+						<img src="../../image/wenjian1x.png" alt="">						
+					</div>
+					<span>文件制度</span>
+				</div> -->
+				<div class="item worknotice">
+					<div class="imgbox">
+						<img src="../../image/gongzuo.png" alt="">						
+					</div>
+					<span>工作通知</span>
+				</div>
+				<div class="item zhaobiaocg">
+					<div class="imgbox">
+						<img src="../../image/zhaobiao.png" alt="">						
+					</div>
+					<span>招标采购</span>
+				</div>
+				<div class="item yiqiyy">
+					<div class="imgbox">
+						<img src="../../image/yuyueceshi.png" alt="">						
+					</div>
+					<span>仪器预约</span>
+				</div>
+				<!-- <div class="item">
+					<div class="imgbox">
+						<img src="../../image/xiazai.png" alt="">						
+					</div>
+					<span>下载中心</span>
+				</div> -->
+			</div>
+			<div class="news">
+				<div class="newscont">
+					<p class="p1">新闻公告</p>
+					<div class="news-cont">
+						<script type="text/template" id="newsTmp">
+						<% for (var i=0;i<list.length;i++) { %>
+							<div class="newsbox" data-recid="<%= list[i].recid%>">
+								<div class="newstitle"><%= list[i].title%></div>
+								<div class="newstime"><%= list[i].createtime%></div>
+								<input type="hidden" value="<%= list[i].content%>">
+							</div>
+						<% } %>					
+						</script>
+					</div>
+				</div>				
+			</div>			
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/template-native.js"></script>
+	<script>		
+		
+		$(function(){
+			mui.init({
+				pullRefresh : {
+					container:".news",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+					down : {
+						style:'circle',//必选，下拉刷新样式，目前支持原生5+ ‘circle’ 样式
+						color:'#2BD009', //可选，默认“#2BD009” 下拉刷新控件颜色
+						height:'500px',//可选,默认50px.下拉刷新控件的高度,
+						range:'500px', //可选 默认100px,控件可下拉拖拽的范围
+						offset:'0px', //可选 默认0px,下拉刷新控件的起始位置
+						auto: false,//可选,默认false.首次加载自动上拉刷新一次
+						callback :pullfresh ,//必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+						contentdown : "下拉可以刷新",//可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+						contentover : "释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+						contentrefresh : "正在刷新...",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+					}
+				}
+			});			
+			function pullfresh(){
+				setTimeout((window.location.reload()),1000)
+			}
+						
+			var url=localStorage.url;//获取全局设置的url地址
+			//页面初始化加载新闻公告列表
+			$.ajax({
+				type:'get',
+				dataType:'json',
+				url:url+'/jqzw/server',
+				data:{service:"NewsService",params:"1,6,113",method:"getNewsList"},
+				success:function(info){
+					if(info.type == 'success'){
+						var html=template('newsTmp',{list:info.value});
+						$('.news-cont').html(html);
+ 					}
+					
+				},
+				error:function(err){
+					mui.toast("加载新闻列表失败，请重试");
+				}
+			});
+			//新闻列表打开对应详情
+			$('.newscont').on('click','.newsbox',function(){
+				var recid=$(this).attr('data-recid');
+				var newstitle=$(this).children('.newstitle').text();
+				var newstime=$(this).children('.newstime').text();	
+				var wendnr=$(this).children('input').val();	
+				mui.openWindow({
+					url: "../business/newsDetail.html",
+					id: '',
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					},
+					extras: {
+						recid:recid,
+						newstitle:newstitle,
+						newstime:newstime,
+						wendnr:wendnr
+					}
+				});
+			});
+			//仪器预约
+			$('.yiqiyy').on('click',function(){
+				mui.openWindow({
+					url: "../business/yuyueyiqi.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					},
+					extras: {
+						hrefid: ""
+					}
+				});
+			});
+			//点击机构与职能
+			$('.jigyzn').on('click',function(){
+				mui.openWindow({
+					url: "../business/organization.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					},
+					extras: {
+						recid:''
+					}
+				});
+			});
+			//工作通知
+			$('.worknotice').on('click',function(){
+				mui.openWindow({
+					url: "../business/workNotice.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					},
+					extras: {
+						recid:''
+					}
+				});
+			});
+			//招标采购
+			$('.zhaobiaocg').on('click',function(){
+				mui.openWindow({
+					url: "../business/zhaobiaocg.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					}
+				});
+			});
+		});
+	</script>
+</html>

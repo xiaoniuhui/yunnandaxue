@@ -1,0 +1,42 @@
+/**
+ * 审批底部全选、同意等按钮通用样式
+ */
+.mui-bottom .bottom-div-select {
+	float: left;
+	width: 56%;
+	height: 44px;
+}
+.mui-bottom .bottom-div-select .mui-input-row {
+	display: inline-block;
+	height: 44px;
+	overflow: visible;
+}
+.mui-bottom .bottom-div-select .mui-input-row label {
+	color: #333333;
+	padding-right: 5px;
+    padding-left: 50px;
+}
+.mui-bottom .bottom-div-select .bottom-select-itemcount {
+	display: inline-block;
+	height: 44px;
+	line-height: 44px;
+	color: #999999;
+	font-size: 14px;
+}
+.mui-bottom .bottom-btn {
+	float: left;
+	width: 22%;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	color: #ffffff;
+	font-size: 16px;
+	border: 0 solid #fff;
+	border-radius: 0;
+}
+.mui-bottom .bottom-btn.bottom-btn-agree {
+	background-color: #2eb2d3;
+}
+.mui-bottom .bottom-btn.bottom-btn-reject {
+	background-color: #0275ab;
+}

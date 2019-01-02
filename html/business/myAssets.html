@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>名下资产</title>
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/myAssets.css">
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">名下资产</h1>
+		</header>
+		<div class="cont">
+			<div class="assets">
+				<script type="text/template" id="tmp">
+					<% for (var i=0,l=info.length;i<l;i++) { %>
+						<div class="list" data-sortgbid="<%=info[i].sortgbid%>">
+							<span class="title"><%=info[i].classgbmc%></span>
+							<span class="time"><%=info[i].shulAll%>个</span>
+							<span class="gly"><%=info[i].jiazAll%>万元</span>
+						</div>
+					<% } %>
+				</script>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/template-native.js"></script>
+	<script>		
+		$(function(){
+			mui.init({
+			});		
+			
+			mui.plusReady(function() {
+			plus.nativeUI.showWaiting('正在加载...');
+			var url_mh=localStorage.url_mh;//资产后台地址
+			var stdcode=localStorage.stdcode;
+			//默认登录,防止登录过期
+			$.ajax({
+				type:'get',
+				url:url_mh+'/jqzw/login/log',
+				dataType:'json',
+				data:{username:stdcode,token:"tryagain"},				
+				success:function(info){
+					if(info.type == 'success'){
+						//获取名下资产初始化
+						$.ajax({
+							type:'get',
+							url:url_mh+'/jqzw/server',
+							data:{service:"InventoryClientService",method:"getPersonalAsset",params:""},
+							dataType:'json',
+							success:function(info){
+								if(info.type == 'success'){
+									var html = template('tmp',{info:info.value});
+									$('.assets').html(html)
+								}
+							},
+							error:function(err){
+								console.log(JSON.stringify(err))
+							}
+						})
+					}else{
+						mui.toast('登录失败，会话过期，请重新登录');
+					}
+				},
+				error:function(err){
+					mui.toast('登录失败，会话过期，请重新登录');
+				},
+				complete:function(){
+					plus.nativeUI.closeWaiting();
+				}
+			})
+			});
+			
+			
+			$('.assets').on('click','.list',function(){
+				var sortgbid = $(this).attr('data-sortgbid');
+				mui.openWindow({
+					url: "../business/myAssetsDetail.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: true
+					},
+					extras:{	
+						sortgbid:sortgbid
+					}
+				});
+			});
+			
+		});
+		
+		
+	</script>
+</html>

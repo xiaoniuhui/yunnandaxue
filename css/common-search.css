@@ -1,0 +1,46 @@
+/**
+ * 通用搜索框样式
+ */
+.common-search {
+	height: 46px;
+	margin: 6px 0;
+	background-color: #FFFFFF;
+}
+
+.common-search .mui-input-row {
+	float: left;
+	width: 90%;
+	margin: 0 5%;
+}
+
+#cancelSearch {
+	display: none;
+	float: left;
+	width: 15%;
+	height: 46px;
+	line-height: 46px;
+	text-align: left;
+}
+.common-search .mui-search:before {
+	top: 30px;
+}
+.common-search .mui-input-row.mui-search .mui-icon-clear {
+    top: 12px;
+}
+
+.common-search input[type='search'] {
+	margin-bottom: 0;
+	background-color: #FFFFFF;
+	border: 1px solid #D2D2D2;
+	margin: 6px 0; 
+}
+.common-search .mui-placeholder {
+	margin: 6px 0; 
+}
+
+#searchResult {
+	width: 100%;
+	background: #FFFFFF;
+}
+
+

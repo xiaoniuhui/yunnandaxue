@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>账户设置</title>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<style>
+			body, html
+			{
+				background:#fff;
+				font-size: 16px;
+			}	
+			.mui-content{
+				background:#fff;
+				height:100%;
+				width:100%;
+				overflow: auto;
+			}
+			.mui-table-view-cell:after {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0px;
+				height: 1px;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #DCDCDC;				
+			}
+			.mui-table-view li.mui-table-view-cell a{
+				font-family: PingFangSC-Regular;
+				font-size: 14px;
+				color: #666666;
+			}
+			.mui-table-view-cell{
+				color: rgb(181,208,224);
+				font-size: 14px;
+			}	
+			.mui-content > .mui-table-view:first-child {
+				margin-top: 5px;
+			}
+			.mui-table-view:before {
+				height: 0px;
+			}
+			.buttondiv{
+				width: 100%;
+				height: 50px;
+				margin: 20% auto;
+				background:#fff;
+			}
+			.buttonwebs{
+				width: 100%;
+				height: 45px;
+				color: #FFFFFF;
+				font-size: 18px;
+				letter-spacing: 5px;
+				border-radius: 0px;
+				border: rgb(90,225,253) 1px solid;
+				border-left: 0px;
+				border-right: 0px;
+				background-color: rgb(42,195,253);
+				
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">账户设置</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view" >
+				<li class="mui-table-view-cell">
+					<a href="javascript:;">姓名<span style="float: right;color: #C1CACA;" id="username"></span></a>					
+				</li>
+				<li class="mui-table-view-cell">
+					<a href="javascript:;">工号/学号<span style="float: right;color: #C1CACA;" id="stdcode"></span></a>					
+				</li>
+				<li class="mui-table-view-cell">
+					<a href="javascript:;">账户名<span style="float: right;color: #C1CACA;" id="userId"></span></a>					
+				</li>
+				<li class="mui-table-view-cell">
+					<a href="javascript:;">所属单位<span style="float: right;color: #C1CACA;" id="dept"></span></a>					
+				</li>
+			</ul>			
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			mui.plusReady(function() {				
+			});
+			$(function(){				
+				$('#username').text(localStorage.username);
+				$('#stdcode').text(localStorage.stdcode);
+				$('#userId').text(localStorage.stdcode);
+				$('#dept').text(localStorage.dept);
+			});			
+		</script>
+	</body>
+</html>

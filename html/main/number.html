@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>看数</title>
+		<link rel="stylesheet" href="../../css/mui.min.css">	
+		<link rel="stylesheet" href="../../css/mui.picker.min.css">
+		<link rel="stylesheet" href="../../css/mui.poppicker.css">
+		<link rel="stylesheet" href="../../css/number.css">
+	</head>
+	<body>
+		<div class="top">
+			<div class="toptitle">看数</div>
+			<div class="topcont">
+				<div class="l">
+					<div class="box myAssets">
+						<img src="../../image/gail.png" alt="">
+						<span>名下资产</span>
+					</div>
+				</div>
+				<div class="l">
+					<div class="box">
+						<img src="../../image/baob.png" alt="">
+						<span>报表</span>
+					</div>
+				</div>
+				<div class="l">
+					<div class="box">
+						<img src="../../image/zhuant.png" alt="">
+						<span>专题</span>
+					</div>
+				</div>
+			</div>			
+		</div>
+		<div class="selectTime">
+			<div class="item">
+				<label for="startDiv">开始时间</label>
+				<div id="startDiv"></div>
+			</div>
+			<div class="item">
+				<label for="endDiv">结束时间</label>
+				<div id="endDiv"></div>
+			</div>
+		</div>
+		<div class="mianban">
+			<div class="">国标分类</div>
+			<div class="active">教育分类</div>
+		</div>
+		<div class="mianbanTan">
+			<div class="guobiao">
+				<div class="zicanboxes">
+					<script type="text/tmplate" id="guobiaotmp">
+						<% for (var i=0,l=info.length;i<l;i++) { %>
+							<div class="item">
+								<div class="zichanTitle"><%=info[i].flname%></div>
+								<div class="zichanbox">
+									<ul>
+										<li><span class="l"></span><span class="c">数量/面积</span><span class="r">价值</span></li>
+										<li><span class="l">期初日期</span><span class="c"><%=info[i].qcsl%></span><span class="r"><%=info[i].qcjz%></span></li>
+										<li><span class="l">本期增加</span><span class="c"><%=info[i].zjsl%></span><span class="r"><%=info[i].zjjz%></span></li>
+										<li><span class="l">本期减少</span><span class="c"><%=info[i].jssl%></span><span class="r"><%=info[i].jsjz%></span></li>
+										<li><span class="l">期末日期</span><span class="c"><%=info[i].qmsl%></span><span class="r"><%=info[i].qmjz%></span></li>
+									</ul>
+								</div>
+							</div>
+						<% } %>
+					</script>															
+				</div>
+			</div>
+			<div class="jiaoyu active">
+				<div class="zicanboxes">
+					<script type="text/tmplate" id="tmp">
+						<% for (var i=0,l=info.length;i<l;i++) { %>
+							<div class="item">
+								<div class="zichanTitle"><%=info[i].flname%></div>
+								<div class="zichanbox">
+									<ul>
+										<li><span class="l"></span><span class="c">数量/面积</span><span class="r">价值</span></li>
+										<li><span class="l">期初日期</span><span class="c"><%=info[i].qcsl%></span><span class="r"><%=info[i].qcjz%></span></li>
+										<li><span class="l">本期增加</span><span class="c"><%=info[i].zjsl%></span><span class="r"><%=info[i].zjjz%></span></li>
+										<li><span class="l">本期减少</span><span class="c"><%=info[i].jssl%></span><span class="r"><%=info[i].jsjz%></span></li>
+										<li><span class="l">期末日期</span><span class="c"><%=info[i].qmsl%></span><span class="r"><%=info[i].qmjz%></span></li>
+									</ul>
+								</div>
+							</div>
+						<% } %>
+					</script>															
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script src="../../js/mui.picker.min.js"></script>
+	<script src="../../js/mui.poppicker.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/template-native.js"></script>
+	<script>		
+		$(function(){
+			var url_mh=localStorage.url_mh;//资产后台地址
+			var stdcode=localStorage.stdcode;
+			mui.init({
+				pullRefresh : {
+					container:".mianbanTan",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+					down : {
+						style:'circle',//必选，下拉刷新样式，目前支持原生5+ ‘circle’ 样式
+						color:'#2BD009', //可选，默认“#2BD009” 下拉刷新控件颜色
+						height:'500px',//可选,默认50px.下拉刷新控件的高度,
+						range:'500px', //可选 默认100px,控件可下拉拖拽的范围
+						offset:'0px', //可选 默认0px,下拉刷新控件的起始位置
+						auto: false,//可选,默认false.首次加载自动上拉刷新一次
+						callback :pullfresh ,//必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+						
+					}
+				}
+			});			
+			function pullfresh(){
+				setTimeout((window.location.reload()),1000)
+			}
+			window.addEventListener('refresh', function(e){
+				location.reload();
+			});
+			mui.init({
+				keyEventBind: {//返回设置
+					backbutton: false
+				},
+				swipeBack: false,
+				statusBarBackground: '#f7f7f7',
+				gestureConfig: {  
+					doubletap: true					
+				}
+			});
+			//创建子页面，首个选项卡页面显示，其它均隐藏；
+			mui.plusReady(function() {				
+			});
+			//开始日期
+			$('#startDiv').on('click',function(){
+				var dtpicker = new mui.DtPicker({
+					type:'date',
+					labels: ['年', '月', '日'],//设置默认标签区域提示语
+					beginDate: new Date(2013, 00, 01),//设置开始日期
+					endDate: new Date()
+				});
+				dtpicker.show(function(items){
+					var riqi=items.y.text+'-'+items.m.text+'-'+items.d.text;
+					$('#startDiv').text(riqi);
+				});
+			});
+			//结束日期
+			$('#endDiv').on('click',function(){
+				var dtpicker = new mui.DtPicker({
+					type:'date',
+					labels: ['年', '月', '日'],//设置默认标签区域提示语
+					beginDate: new Date(2013,00,01),
+					endDate: new Date()//设置开始日期
+				});
+				dtpicker.show(function(items){
+					var startTime = $('#startDiv').text();
+					if( startTime == '' || startTime == undefined || startTime == null){
+						mui.toast('请先选取开始时间');
+						return;
+					}
+					var endTime = items.y.text+'-'+items.m.text+'-'+items.d.text;
+					$('#endDiv').text(endTime);
+					if( startTime == endTime){
+						mui.toast('日期区间不能相同');
+						$('#startDiv').text('');
+						$('#endDiv').text('');
+						return;
+					}
+					// 检测用户是否登录以及用户角色
+					if(localStorage.userId == '' || localStorage.userId == null || localStorage.userId == undefined){
+						return;
+					}else{
+						//加载国标列表,判断当前用户是否有资产角色,无资产角色则不加载
+						var dy_roles=JSON.parse(localStorage.dy_roles);
+						var zichan_arr=[];
+						for( var i=0,l=dy_roles.length;i<l;i++){
+							if(dy_roles[i].rname == 'GLY' || dy_roles[i].rname == 'YJGLY' || dy_roles[i].rname == 'CXRY' || dy_roles[i].rname == 'YJCXRY'){
+								zichan_arr.push(dy_roles[i].rname)
+							}
+						}
+						if(zichan_arr.length > 0){
+							//加载国标列表
+							$.ajax({
+								url:url_mh+'/jqzw/server',
+								type:'get',
+								dataType:'json',
+								data:{service:"SearchDataService",params:stdcode+','+startTime+','+endTime,method:"getGBDataList"},
+								beforeSend:function(){
+									plus.nativeUI.showWaiting("正在查询...");
+								},
+								success:function(info){
+									console.log(JSON.stringify(info))
+									if(info.type == 'success'){
+										var html=template('guobiaotmp',{info:info.value});
+										$('.guobiao .zicanboxes').html(html);
+										if(info.value[0].code == '0'){
+											mui.toast(info.value[0].msg)
+										}										
+									}					
+								},
+								error:function(err){
+									console.log(JSON.stringify(err))
+								},
+								complete:function(){
+									plus.nativeUI.closeWaiting();
+									console.log('Ncomplete')
+								}
+							});
+							//加载教育列表
+							$.ajax({
+								url:url_mh+'/jqzw/server',
+								type:'get',
+								dataType:'json',
+								data:{service:"SearchDataService",params:stdcode+','+startTime+','+endTime,method:"getJYDataList"},
+								success:function(info){
+									if(info.type == 'success'){
+										var html=template('tmp',{info:info.value});
+										$('.jiaoyu .zicanboxes').html(html);
+									}					
+								},
+								error:function(err){
+									console.log(JSON.stringify(err))
+								}
+							});
+						}else{
+							mui.toast('您没有权限查看')
+						}
+					}
+					
+				});
+			});
+			$('.mianban').on('click','div',function(){				
+				$(this).addClass('active').siblings('div').removeClass('active');
+				var i=$(this).index();
+				$(".mianbanTan>div").eq(i).addClass("active").siblings().removeClass("active");
+			});
+			
+			//名下资产点击事件 myAssets
+			$('.myAssets').on('click',function(){
+				if(localStorage.stdcode == '' || localStorage.stdcode == null || localStorage.stdcode ==undefined){
+					//跳转登录页
+					mui.openWindow({
+						url: "../base/login.html",
+						styles: {
+							popGesture: 'close',
+							scrollIndicator: "none"
+						},						
+						waiting: {
+							autoShow: true
+						}
+					});
+					return;
+				}				
+				mui.openWindow({
+					url: "../business/myAssets.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: true
+					}
+				});
+			});
+		});
+		
+		
+		
+	</script>
+</html>

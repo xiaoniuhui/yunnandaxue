@@ -1,0 +1,93 @@
+/* 登录页面样式 */
+body{
+	background-color: #FFF;
+}
+.w{
+	margin: 0 auto;
+	margin-top: 38.5px;
+	width:86%;
+}
+.welcom{
+	font-family: PingFangSC-Medium;
+	font-size: 24px;
+	color: #333333;
+	letter-spacing: 0;
+	line-height: 18px;	
+	margin-top: 120px;
+	margin-bottom: 72px;
+}
+.account{
+	height: 66px;
+}
+.account input{
+	border: none;
+	border-bottom: 1px solid #D2D2D2;
+}
+.pwd{
+	height: 66px;
+}
+.pwd input{
+	border: none;
+	border-bottom: 1px solid #D2D2D2;
+}
+.yzm{
+	height: 66px;
+	position: relative;
+}
+.yzm input{
+	border: none;
+	border-bottom: 1px solid #D2D2D2;	
+}
+#yzmBtn{
+	position: absolute;
+	top:0;
+	right: 0;
+	font-family: PingFangSC-Regular;
+	font-size: 16px;
+	color: #1755D3;
+	letter-spacing: 0;
+	cursor: pointer;
+}
+#forget{
+	font-family: PingFangSC-Regular;
+	font-size: 16px;
+	color: #6F6F6F;
+	letter-spacing: 0;
+	line-height: 16px;
+	float: right;
+}
+.toggle{
+	font-family: PingFangSC-Regular;
+	font-size: 16px;
+	color: #6F6F6F;
+	letter-spacing: 0;
+	line-height: 16px;
+	float: left;
+}
+.toregister{
+	font-family: PingFangSC-Regular;
+	font-size: 16px;
+	color: #333;
+	letter-spacing: 0;
+	line-height: 16px;
+	float: right;
+}
+.loginBtn{
+	clear: both;
+	width:76.8%;
+	height:46px;
+	background-image: linear-gradient(-270deg, #4557FF 5%, #35C4FF 100%);
+	border-radius: 8px;
+	text-align: center;
+	line-height: 46px;
+	margin: 0 auto;
+	margin-top: 48px;
+}
+/* 切换盒子 */
+.toggleBOX{
+	display: none;
+}
+.toggleBOX.active{
+	display: block;
+}
+	

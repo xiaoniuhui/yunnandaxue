@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>费用核定及确认</title>
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/feiyongheding.css">
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">费用核定及确认</h1>
+		</header>
+		<div class="cont">
+			<div class="mianban">
+				<div class="me active">核定费用</div>
+				<div class="other">确认费用</div>
+			</div>
+			<div class="mianbanTab">
+				<div class="heding active">
+					<div class="topTab">
+						<ul>
+							<li class="active">待核定</li>
+							<li>已核定</li>
+						</ul>
+					</div>
+					<div class="boxes">
+						<div class="daihedingBox active">
+							<script id="daihd_tmp" type="text/template">
+								<% for (var i=0,l=info.length;i<l;i++) { %>
+									<% if (info[i].cesdzt == '06') { %>
+										<div class="item">
+											<div class="left">
+												<ul>
+													<li>预约单号</li>
+													<li>委托人</li>
+													<li>使用仪器</li>
+													<li>课题名称</li>
+													<li>测试时间</li>
+													<li>测试类别</li>
+												</ul>
+											</div>
+											<div class="center">
+												<ul>
+													<li><%=info[i].billcode%></li>
+													<li><%=info[i].weitr%></li>
+													<li><%=info[i].zicmc%></li>
+													<li><%=info[i].suosktz%></li>
+													<li><%=info[i].yuycsrq%></li>
+													<li><%=info[i].ceslb%></li>
+												</ul>
+											</div>
+											<div class="btngroup">
+												<button class="btn-yuyue" data-shijje="<%=info[i].shijje%>" data-ceslb="<%=info[i].ceslb%>" data-cesxm="<%=info[i].cesxm%>" data-yuancsxm="<%=info[i].yuancsxm%>" data-recid="<%=info[i].recid%>">费用核定</button>
+											</div>
+										</div>
+									<% } %>
+								<% } %>
+							</script>
+						</div>
+						<div class="yihedingBox">
+							<script id="yihd_tmp" type="text/template">
+								<% for (var i=0,l=info.length;i<l;i++) { %>
+									<% if (info[i].cesdzt == '07') { %>
+										<div class="item">
+											<div class="left">
+												<ul>
+													<li>预约单号</li>
+													<li>委托人</li>
+													<li>使用仪器</li>
+													<li>课题名称</li>
+													<li>测试时间</li>
+													<li>测试类别</li>
+												</ul>
+											</div>
+											<div class="center">
+												<ul>
+													<li><%=info[i].billcode%></li>
+													<li><%=info[i].weitr%></li>
+													<li><%=info[i].zicmc%></li>
+													<li><%=info[i].suosktz%></li>
+													<li><%=info[i].yuycsrq%></li>
+													<li><%=info[i].ceslb%></li>
+												</ul>
+											</div>
+										</div>
+									<% } %>
+								<% } %>
+							</script>
+						</div>
+					</div>
+				</div>
+				<div class="queren">
+					<div class="topTab">
+						<ul>
+							<li class="active">待确定</li>
+							<li>已确定</li>
+						</ul>
+					</div>
+					<div class="boxes">				
+						<div class="daiqdBox active">					
+							<script id="daiqd_tmp" type="text/template">
+								<% for (var i=0,l=info.length;i<l;i++) { %>
+									<% if (info[i].cesdzt == '07') { %>
+										<div class="item">
+											<div class="left">
+												<ul>
+													<li>预约单号</li>
+													<li>委托人</li>
+													<li>使用仪器</li>
+													<li>课题名称</li>
+													<li>测试时间</li>
+													<li>测试类别</li>
+												</ul>
+											</div>
+											<div class="center">
+												<ul>
+													<li><%=info[i].billcode%></li>
+													<li><%=info[i].weitr%></li>
+													<li><%=info[i].zicmc%></li>
+													<li><%=info[i].suosktz%></li>
+													<li><%=info[i].yuycsrq%></li>
+													<li><%=info[i].ceslb%></li>
+												</ul>
+											</div>
+											<% if ( info[i].weitr == curUser) { %>
+												<div class="btngroup">
+													<button class="btn-queren" data-ceslb="<%=info[i].ceslb%>" data-shijje="<%=info[i].shijje%>" data-recid="<%=info[i].recid%>">费用确认</button>
+												</div>
+											<% } %>											
+										</div>
+									<% } %>
+								<% } %>
+							</script>
+						</div>
+						<div class="yiqdBox">
+							<script id="yiqd_tmp" type="text/template">
+								<% for (var i=0,l=info.length;i<l;i++) { %>
+									<% if (info[i].cesdzt == '08') { %>
+										<div class="item">
+											<div class="left">
+												<ul>
+													<li>预约单号</li>
+													<li>委托人</li>
+													<li>使用仪器</li>
+													<li>课题名称</li>
+													<li>测试时间</li>
+													<li>测试类别</li>
+												</ul>
+											</div>
+											<div class="center">
+												<ul>
+													<li><%=info[i].billcode%></li>
+													<li><%=info[i].weitr%></li>
+													<li><%=info[i].zicmc%></li>
+													<li><%=info[i].suosktz%></li>
+													<li><%=info[i].yuycsrq%></li>
+													<li><%=info[i].ceslb%></li>
+												</ul>
+											</div>											
+										</div>
+									<% } %>
+								<% } %>
+							</script>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/template-native.js"></script>
+	<script>		
+		$(function(){
+			window.addEventListener('refresh', function(e){
+                location.reload();
+            });
+			var url=localStorage.url;
+			var stdcode = localStorage.stdcode;//供默认登录使用
+			var currentUser=localStorage.username;
+			var dy_roles=JSON.parse(localStorage.dy_roles||"{}");
+			var user_arr=[];
+			for(var key in dy_roles){
+				user_arr.push(dy_roles[key].rname)
+			}
+			mui.init({
+// 				pullRefresh : {
+// 					container:".mianbanTab",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+// 					down : {
+// 						style:'circle',//必选，下拉刷新样式，目前支持原生5+ ‘circle’ 样式
+// 						color:'#2BD009', //可选，默认“#2BD009” 下拉刷新控件颜色
+// 						height:'500px',//可选,默认50px.下拉刷新控件的高度,
+// 						range:'500px', //可选 默认100px,控件可下拉拖拽的范围
+// 						offset:'0px', //可选 默认0px,下拉刷新控件的起始位置
+// 						auto: false,//可选,默认false.首次加载自动上拉刷新一次
+// 						callback :pullfresh ,//必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+// 						contentdown : "下拉可以刷新",//可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+// 						contentover : "释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+// 						contentrefresh : "正在刷新...",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+// 					}
+// 				}
+			});			
+			function pullfresh(){
+				setTimeout((window.location.reload()),1000)
+			}
+			mui.plusReady(function() {
+			});
+			
+			
+			// 初始化加载数据 委托测试列表1,6代表分页（06：待机组费用核定，08：已完成确认  待核定/已核定
+			$.ajax({
+				url:url+'/jqzw/server',
+				type:'get',
+				dataType:'json',
+				data:{service:"BigEquipmentService",method:"getDelegatList",params:"1,50,06"},
+				success:function(info){
+					if(info.type == 'success'){
+						//只有平台管理员或者设备管理员可以看到核定费用
+						if(user_arr.indexOf('PTGLY')>-1 || user_arr.indexOf('SBGLY')>-1){
+							var html_daihd=template('daihd_tmp',{info:info.value});
+							$('.heding .daihedingBox').html(html_daihd);
+							var html_yihd=template('yihd_tmp',{info:info.value});
+							$('.heding .yihedingBox').html(html_yihd);
+						}					
+						//待确定
+						var html_daiqd=template('daiqd_tmp',{info:info.value,curUser:currentUser});
+						$('.queren .daiqdBox').html(html_daiqd);
+						//已确定
+						var html_yiqd=template('yiqd_tmp',{info:info.value});
+						$('.queren .yiqdBox').html(html_yiqd);
+					}
+				},
+				error:function(err){
+					console.log(JSON.stringify(err));
+				}
+			});
+			
+			
+			//核定 确认切换
+			$('.mianban').on('click','div',function(){				
+				$(this).addClass('active').siblings('div').removeClass('active');
+				var i=$(this).index();
+				$(".mianbanTab>div").eq(i).addClass("active").siblings().removeClass("active");
+			});
+			//核定费用切换
+			$('.heding .topTab li').on('click',function(){
+				$(this).addClass('active').siblings('li').removeClass('active');
+				var i=$(this).index();
+				$(".heding .boxes>div").eq(i).addClass("active").siblings().removeClass("active");
+			});
+			//确认费用切换
+			$('.queren .topTab li').on('click',function(){
+				$(this).addClass('active').siblings('li').removeClass('active');
+				var i=$(this).index();
+				$(".queren .boxes>div").eq(i).addClass("active").siblings().removeClass("active");
+			});
+			//费用核定按钮
+			$(".heding").on('click','.btn-yuyue',function(){
+				var obj={};
+				var recid = $(this).attr('data-recid');
+				var ceslb = $(this).attr('data-ceslb');
+				var shijje = $(this).attr('data-shijje');
+				var biangje =0;//先写固定值
+				var lxcode = '01';//先写定值01增加 02减少
+				var yuancsxm =$(this).attr('data-yuancsxm');
+				var cesxm =$(this).attr('data-cesxm');
+				obj.recid=recid;
+				obj.biangje=biangje;
+				obj.shijje=shijje;
+				obj.lxcode=lxcode;
+				obj.yuancsxm=yuancsxm;
+				obj.cesxm=cesxm;
+				obj.beiz="备注测试信息";//后续需要修改
+				obj.ceslb=ceslb;
+				mui.openWindow({
+					url: "./feiyongqueren.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					show: {
+						duration: 500
+					},
+					waiting: {
+						autoShow: true
+					},
+					extras:{
+						obj:obj
+					}
+				});
+			});	
+			//确认费用按钮
+			$(".queren .daiqdBox").on('click','.btn-queren',function(){
+				var recid = $(this).attr('data-recid');
+				var shijje = $(this).attr('data-shijje');
+				var json={};
+				json.recid=recid;
+				json.shijje=shijje;
+				json.ceslb=$(this).attr('data-ceslb');
+				json=JSON.stringify(json);
+				$.ajax({
+					url:url+'/jqzw/server',
+					type:'get',
+					dataType:'json',
+					data:{service:"BigEquipmentService",method:"saveDelegationCostAccount",params:json},
+					beforeSend:function(){
+						plus.nativeUI.showWaiting('正在提交...');
+						
+					},
+					success:function(info){
+						console.log(JSON.stringify(info));
+						if(info.type == 'success'){
+							mui.toast('费用确认成功')
+							location.reload();
+						}						
+					},
+					error:function(err){
+						console.log(JSON.stringify(err))
+					},
+					complete:function(){
+						plus.nativeUI.closeWaiting();
+					}
+				})
+			});	
+		});
+		
+		
+	</script>
+</html>

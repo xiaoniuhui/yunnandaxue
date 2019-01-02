@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>资产调剂申请</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/checkstyle.css" />
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../css/tiaojiapplication.css" />
+		<link rel="stylesheet" href="../../css/common-asset-search.css" />
+	</head>
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">资产调剂申请</h1>
+		</header>
+		<div class="mui-bottom mui-bar-tab">
+			<div style="width: 100%;">
+				<div style="color:#FFFFFF;float: left;padding: 15px 5px 0px 10px;">
+					已选择<span id="indesshow">0</span>项
+				</div>
+				<div style="color:#FFFFFF;float: right;padding: 15px 10px 0 0;">
+					 <input type="checkbox" class="chk_5" id="allcheck"><label for="allcheck"></label>&nbsp;全选&nbsp;&nbsp;
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			<div style="padding: 10px 0; width: 100%; text-align: center;">
+				<button class="bottomb" id="todotoagree">提交审核</button>
+			</div>
+		</div>
+		
+		<div class="mui-content">
+			<div class="asset-search">
+				<img  id="bimg" src="../../image/sm_icon.png"/>
+				<div class="button" onclick="openScanPage();">扫一扫</div>
+				<div class="button" onclick="readData()">读一读</div>
+				<div class="asset-search-btn">
+					<label id="searchBy"> 搜索</label>
+					<input type="text" id="searchinput"  placeholder="请输入要搜索的资产编号" style="">
+				</div>
+			</div>
+			
+			<div id="divshows" >
+				<div class="dept-select">
+					<span class="dept-select-title">调出部门：</span>
+					<span id="tiaochuspan" class="dept-select-value">请选择部门</span>
+				</div>
+				<div class="dept-select">
+					<span class="dept-select-title">调入部门：</span>
+					<span id="tiaoruspan" class="dept-select-value">请选择部门</span>
+				</div> 
+			</div>
+			
+			<div class="content-approval" id="asset-info" >
+				<!--<div class="contonediv">
+					<div class="recid">012D642047B00F39751A28E887A4CE26</div>
+					<div class="worddiv">
+						<div class="divleft">资产编号</div><div class="divright">05040602</div>
+					</div>
+					<div class="hline"></div>
+					<div class="worddiv">
+						<div class="divleft">资产名称</div><div class="divright">彩色电视机</div>
+					</div>
+					<div class="worddiv">
+						<div class="divleft">存放地点</div><div class="divright"></div>
+					</div>
+					<div class="hline"></div>
+					<div class="buttondiv">
+						<div class="divlefts">
+							<input name="checkboxitem" type="checkbox" class="chk_6" id="ucheck012D642047B00F39751A28E887A4CE26" objstr="{#@jiaz#@:6480,#@mianj#@:0,#@guigxh#@:#@3258_长虹LT*#@,#@chuzxsmc#@:#@#@,#@chuch#@:#@#@,#@classgbmc#@:#@通用设备#@,#@shul#@:1,#@shiybm#@:#@财务处办公室X#@,#@shiyr#@:#@应明#@,#@zicmc#@:#@彩色电视机#@,#@pinp#@:#@#@,#@billdefine#@:#@100F4A9BE5D2F5BEFBB7C8FA0883835F#@,#@cunfddid#@:#@#@,#@shiybmid#@:#@4C184B96DB5EF3791B09DCC143AE86CF#@,#@xmjf1mc#@:#@#@,#@xmjf1#@:#@#@,#@ziclbmc#@:#@固定资产#@,#@cunfdd#@:#@#@,#@qudrq#@:1164902400000,#@isshiwjj#@:#@#@,#@chuzsy#@:0,#@recid#@:#@012D642047B00F39751A28E887A4CE26#@,#@shiyrid#@:#@D475913C7A65D6A5EA5F85A34B455509#@,#@shiyzk#@:#@在用#@,#@zicbh#@:#@05040602#@,#@zicflid#@:#@3AD9F955A0001161F8EFD8A0634A6405#@,#@chuzxsid#@:#@#@,#@beiZ#@:#@#@,#@objectid#@:#@1675EF7F9FE64653B9D5DE9202DA29C7#@,#@zicflbt#@:#@彩色电视机#@}" checked="checked">
+							<label for="ucheck012D642047B00F39751A28E887A4CE26"></label>
+						</div>
+						<div class="divrights"></div>
+					</div>
+				</div>
+			</div>-->
+			<div style="height: 105px; width: 100%;"></div>
+		</div>
+		
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../../js/jqzw_server.js" ></script>
+		<script type="text/javascript" src="../../js/layer/layer.js" ></script>
+		<script type="text/javascript" src="../../js/common.js" ></script>
+		<script type="text/javascript" src="../../js/test.js"></script>
+		<script type="text/javascript" src="../../js/nfcty.js" ></script>
+		<script type="text/javascript" src="../../js/Util.js"></script>
+		<script type="text/javascript">
+			var aniShow = "pop-in";
+			var diaochubmid = null;
+			var diaochubm = null;
+			var diaorubmid = null;
+			var diaorubm = null;
+			mui.init();
+			
+			window.addEventListener('refresh',function(event){
+			  //获得事件参数; 
+			  queryDisposal(); 
+			});
+			//调出部门
+			window.addEventListener('refreTiaocbm',function(event){
+			  	if(event.detail.selectdept != ""){
+			  		diaochubmid = event.detail.selectdeptrecid;
+			  		diaochubm = event.detail.selectdept;
+			  		$("#tiaochuspan").text(diaochubm);
+			  	}
+			});
+			//调入部门
+			window.addEventListener('refreshDioarbm',function(event){
+			  	if(event.detail.selectdept != ""){
+			  		diaorubmid = event.detail.selectdeptrecid;
+			  		diaorubm = event.detail.selectdept;
+			  		$("#tiaoruspan").text(diaorubm);
+			  	}
+			});
+			
+			mui.plusReady(function() {
+				mui("#divshows").on('tap','#tiaochuspan',function(){ 
+					mui.openWindow({
+						url: "../basedata/selectDept.html",
+						id: 'selectDeptYou',
+						styles: {
+							popGesture: 'close',
+							scrollIndicator: "none"
+						},
+						waiting: {
+							autoShow: false
+						},
+						extras: {
+							hrefid: plus.webview.currentWebview().id,
+							callback: 'refreTiaocbm'
+						}
+					});
+				});
+				
+				mui("#divshows").on('tap','#tiaoruspan',function(){
+					mui.openWindow({
+						url: "../basedata/selectDept.html",
+						id: 'selectDeptYou',
+						styles: {
+							popGesture: 'close',
+							scrollIndicator: "none"
+						},
+						waiting: {
+							autoShow: false
+						},
+						extras: {
+							hrefid: plus.webview.currentWebview().id,
+							callback: 'refreshDioarbm'
+						}
+					});
+				});
+			});
+			
+			function __read(intent){
+			    var s = "nono";
+			    waiting.setTitle('请勿移开标签\n正在读取数据...');
+			    var Parcelable = plus.android.importClass("android.os.Parcelable");
+			    var tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+			    s = pluginGetStringSync(tag);
+			    var stringread = s.split(",");
+			    var stringif = stringread[0].split("##")
+				zcbhs.push(stringif[1]);
+			    QueryAssetRecords(stringif[1],stringif[0]);
+			    waiting.close();
+			}
+			
+			function isTransoutDeptNull() {
+				if(diaochubmid===null || diaochubmid==='') {
+					mui.toast('请选择调出部门！');
+					return true;
+				}
+				return false;
+			}
+			
+			function openScanPage() {
+				if(!isTransoutDeptNull()) {
+					clicked('../base/barcode_scan.html',true,true);
+				}
+			}
+			
+			function scaned( t, r, f ) {
+				QueryAssetRecord(r);
+			}
+			
+			function checkIsScan(ZicBh) {
+				var scaned = false;
+				for(var i=0;i<zcbhs.length;i++){
+					if(zcbhs[i] == ZicBh){
+						scaned = true;
+						break;
+					}
+				}
+				if(scaned) {
+					mui.toast("此条已扫描");
+				}
+				return scaned;
+			}
+			
+			var zcbhs = [];
+			function QueryAssetRecords(ZicBh,rfid){
+				if(checkIsScan()) {
+					return;
+				}
+				$jqzw_server.callServer('SDSFDXDepartmentMove','queryAssetCardInfo1',ZicBh, diaochubmid, rfid).success(function(iv){
+//					console.log(JSON.stringify(iv));
+					if(iv == null || iv == ""){
+						mui.toast("未搜索到数据");
+						return;
+					} 
+					insertAssetInfo(ZicBh, iv);
+				}).error(function(iv){
+					console.log(iv); 
+				}).unlogin(function(iv){
+					mui.toast("登录超时，可重新进行上一步搜索");
+				});
+			}
+			
+			function QueryAssetRecord(ZicBh){
+				if(checkIsScan()) {
+					return;
+				}
+				plus.nativeUI.showWaiting("正在查询卡片信息");
+				$jqzw_server.callServer('SDSFDXDepartmentMove', 'queryAssetCardInfo', ZicBh, diaochubmid).success(function(iv){
+					if(iv == null || iv == ""){
+						mui.toast("未搜索到数据，请确认资产是否存在并属于调出部门！");
+					} else {
+						insertAssetInfo(ZicBh, iv);
+					}
+					plus.nativeUI.closeWaiting();
+				}).error(function(iv){
+					plus.nativeUI.closeWaiting();
+					console.log(iv); 
+				});
+			}
+			
+			function insertAssetInfo(ZicBh, iv) {
+				zcbhs.push(ZicBh);
+				$("#asset-info").prepend(createAssetInfoDiv(iv));
+				var flag = true;
+				var indesshow = 0 ;
+				$(".chk_6").each(function(){
+					if(!$(this).is(':checked')){
+						flag = false;
+					}else{
+						indesshow = indesshow+1;
+					}
+				})	
+				$("#indesshow").text(indesshow);
+				if(flag){
+					$("#allcheck").addClass("checkedthis")
+					$("#allcheck").prop("checked", true);
+				}else{
+					$("#allcheck").removeClass("checkedthis")
+					$("#allcheck").prop("checked", false);
+				}
+			}
+			
+			$(function(){
+				mui("body").on('tap','#searchBy',function(){
+					if(isTransoutDeptNull()) {
+						return;
+					}
+					var zicbh = $("#searchinput").val();
+					if(zicbh == ""){
+						mui.toast("搜索条件不能为空！");
+						return;
+					}
+					QueryAssetRecord(zicbh);
+				});
+				
+				$("#todotoagree").on('tap', function(){
+					if(!checkBeforeSubmit()) {
+						return;
+					}
+//					
+					var objs = [];
+					$(".chk_6").each(function(){
+						if($(this).is(':checked')){
+							var obj = $(this).attr("objstr").replace(/#@/g,"\"");
+							var obja = JSON.parse(obj);
+							objs.push(obja);
+						}
+					});
+					
+					if(objs.length!=0){
+						mui.openWindow({
+							url: "AssetTiaoji_tj.html",
+							id:'AssetTiaoji_tj',
+							styles: {
+								popGesture: 'close',
+								scrollIndicator: "none"
+							},
+							show: {
+								aniShow: aniShow
+							},
+							waiting: {
+								autoShow: false
+							},
+							extras:{
+								assetcards : objs,
+								diaochubmid :diaochubmid,
+								diaochubm :diaochubm, 
+								diaorubmid :diaorubmid,
+								diaorubm :diaorubm
+							}
+						});
+					}else{
+						mui.toast("请选择要调剂的资产");
+					}
+				});
+			});
+			
+			function checkBeforeSubmit() {
+				if(diaochubmid===null || diaochubmid==='') {
+					mui.toast('请选择调出部门！');
+					return false;
+				}
+				if(diaorubmid===null || diaorubmid==='') {
+					mui.toast('请选择调入部门！');
+					return false;
+				}
+//				if(diaochubmid === diaorubmid) {
+//					mui.toast('调入部门和调出部门不能是同一部门！');
+//					return false;
+//				}
+				return true;
+			}
+			
+			$("#allcheck:checkbox").click(function(){
+				if($(this).hasClass("checkedthis")){
+					$(this).removeClass("checkedthis")
+					$("[name = checkboxitem]:checkbox").prop("checked", false);		
+					$("#indesshow").text("0")
+				}else{
+					$("[name = checkboxitem]:checkbox").prop("checked", true);
+					$(this).addClass("checkedthis")
+					$("#indesshow").text($(".contonediv").length);
+				}
+			});
+			
+			$(document).on("click","[name = checkboxitem]:checkbox",function(){
+				var indexs = $("[name = checkboxitem]:checked").length;
+				$("#indesshow").text(indexs);
+				
+				if(indexs == $(".contonediv").length) {
+					$("#allcheck").addClass("checkedthis")
+					$("#allcheck").prop("checked", true);
+				}else{
+					$("#allcheck").removeClass("checkedthis")
+					$("#allcheck").prop("checked", false);
+				}
+			});
+			
+			function createAssetInfoDiv(iv) {
+				var jsonstr = JSON.stringify(iv).replace(/\"/g,"#@");
+				var divHtml = '<div class="contonediv">'
+							+ 	'<div class="recid">'+iv.recid+'</div>'
+							+	'<div class="worddiv">'
+							+		'<div class="divleft">资产编号</div><div class="divright">'+iv.zicbh+'</div>'
+							+	'</div>'
+							+	'<div class="hline"></div>'
+							+	'<div class="worddiv">'
+							+		'<div class="divleft">资产名称</div><div class="divright">'+iv.zicmc+'</div>'
+							+	'</div>'
+							+	'<div class="worddiv">'
+							+		'<div class="divleft">存放地点</div><div class="divright">'+iv.cunfdd+'</div>'
+							+	'</div>'
+							+'<div class="worddiv">'
+								+'<div class="divleft">取得日期</div>'
+								+'<div class="divright">'+formatData(iv.qudrq)+'</div>'
+							+'</div>'
+							+'<div class="worddiv">'
+								+'<div class="divleft">责任人</div>'
+								+'<div class="divright">'+iv.shiyr+'</div>'
+							+'</div>'
+							+	'<div class="hline"></div>'
+							+	'<div class="buttondiv clear">'
+							+		'<div class="divlefts">'
+							+			'<input name="checkboxitem" type="checkbox" class="chk_6" id="ucheck'+iv.recid+'" objstr="'+jsonstr+'" checked="checked">'
+							+			'<label for="ucheck'+iv.recid+'"></label>'
+							+		'</div>'
+							+		'<div class="divrights"></div>'
+							+	'</div>'
+							+ '</div>';
+				return divHtml;
+			}
+		</script>
+	</body>
+</html>

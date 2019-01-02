@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>预约仪器试仪器列表</title>
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link type="text/css" rel="stylesheet" href="../../css/common.css">
+		<link rel="stylesheet" type="text/css" href="../../css/common-asset-search.css">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.text{
+			height: 100px;
+		}
+		.text label{
+			height: 100px;
+		}
+		textarea{
+			height: 100px;
+		}
+		.btnHome{
+			width: 100%;
+			position: fixed;
+			bottom: 20px;
+			left: 0;
+		}
+		.btnHome button{
+			width: 80%;
+			margin: 10px 10%;
+		}
+	</style>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">自主登记设备选择</h1>
+		</header>	
+		<div class="content mui-input-group">
+			 <div class="mui-input-row">
+		        <label>实验类型</label>
+		   		 <select  class="mui-input-clear qdht" id="shiylx">
+		   		 	<option value="">想选择实验类型</option>
+		   		 	<option value="01">教学</option>
+		   		 	<option value="02">科研</option>
+		   		 	<option value="03">社会服务</option>
+		   		 </select>
+		    </div>
+		    <div class="mui-input-row">
+		        <label>样品名称</label>
+		   		 <input type="text" class="mui-input-clear yangpmc qdht" id="yangpmc" placeholder="请输入样品名称">
+		    </div>
+		    <div class="mui-input-row">
+		        <label>样品数量</label>
+		   		 <input type="text" class="mui-input-clear yangpsl qdht" id="yangpsl" placeholder="请输入样品数量">
+		    </div>
+		    <div class="mui-input-row">
+		        <label>使用人</label>
+		   		 <input type="text" class="mui-input-clear shiyr " id="" placeholder="请选择样使用人">
+		   		 <input type="hidden" class="mui-input-clear shiyrid qdht" id="shiyr" placeholder="" >
+		    </div>
+		    <div class="mui-input-row">
+		        <label>使用机时</label>
+		   		 <input type="text" class="mui-input-clear shiyjs qdht" id="shiyjs" placeholder="请输入使用机时">
+		    </div>
+		    <div class="mui-input-row text">
+		        <label>测试项目</label>
+		   		 <textarea  class="mui-input-clear cesxm qdht" id="cesxm" placeholder="请输入测试项目"></textarea>
+		    </div>
+		    <div class="mui-input-row text">
+		        <label>实验说明</label>
+		   		 <textarea class="mui-input-clear shiysm qdht" id="shiysm" placeholder="请输入实验说明"></textarea>
+		    </div>
+		</div>
+		<div class="btnHome">
+			<button type="button" class="mui-btn mui-btn-primary" id="btn">保存</button>
+		</div>
+		
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/template-native.js"></script>
+	<script src="../../js/jqzw_server.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var recid,guigxh,yiqgly,jizry,shebmc;
+		mui.plusReady(function(){
+			var self = plus.webview.currentWebview();
+			shebmc = self.name;
+			recid = self.myid; 
+			console.log(recid)
+			guigxh = self.style;
+			yiqgly = self.people;
+			jizry = self.peo;
+			//选择使用人
+			$('.content').on('click','.shiyr',function(){
+				console.log(111)
+				mui.openWindow({
+					url:"../business/selectPerson.html",
+					id: 'selectPerson',
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					},
+					extras:{		
+							
+						}
+				})
+			})
+		})
+		//监听自定义事件
+		var name;
+		var shiyrId;
+		window.addEventListener("change", function(e) {
+			document.getElementsByClassName("shiyr")[0].value = e.detail.name;
+			document.getElementsByClassName("shiyrid")[0].value = e.detail.recid;
+			name = e.detail.name;
+			shiyrId = e.detail.recid;
+			console.log(recid)
+		});
+		//保存
+		$('.btnHome').on('click','#btn',function(){
+//			var shiylx = $('#shiylx option:selected').val();
+//			var yangpmc = $('#yangpmc').val();
+//			var yangpsl = $('#yangpsl').val();
+//			var shiyr = name;
+//			var id = shiyrId;
+//			var shiyjs = $('#shiyjs').val();
+//			var cesxm = $('#cesxm').val();
+//			var shiysm = $('#shiysm').val();
+//			console.log(shiylx + yangpmc + yangpsl + shiyr + id + shiyjs + cesxm + shiysm + guigxh);
+			var json_xx = {'shebmc':shebmc,'recid':recid,'guigxh':guigxh,'yiqgly':yiqgly,'yiqjzry':jizry};
+			var json_obj = JSON.stringify(json_xx);
+			var json_ao = JSON.parse(json_obj)		
+			//生成json串
+			var obj_zb = {};
+			var $qdht = $(".qdht");
+			var len = $qdht.length;
+			var $item;
+			for(var i = 0; i <len ; i++){
+				$item = $($qdht[i]);
+				var shuxing = $item.attr("id");
+				obj_zb[shuxing] = $item.val();
+			}
+			//拼接json
+			var json_zb = JSON.stringify(obj_zb);
+			var json_zz = JSON.parse(json_zb)
+			var json_item = $.extend({},json_zz,json_ao);
+			var json_items = JSON.stringify(json_item)
+			console.log(json_items)
+			var url_mh=localStorage.url_mh;
+			$.ajax({
+				url:url_mh+'/jqzw/server',
+				type:'get',
+				dataType:'json',
+				data:{service:"SelfUseManageService",method:"saveSelfUse",params:json_items},
+				success:function(info){
+					console.log(JSON.stringify(info))
+					mui.toast('保存成功！');
+					mui.back();
+				}
+			})
+		})
+	</script>
+</html>
+
+
+
