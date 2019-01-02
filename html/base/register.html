@@ -1,8 +1,3 @@
-<!--
-	作者：宋超
-	时间：2016-10-24
-	描述：注册页
--->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,27 +8,24 @@
 		<link href="../../css/checkstyle.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="../../css/register.css"/>
 	</head>
-	<style>
-
-	</style>
 	<body>
-
 		<header class="head">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: #000;margin: 13px;">
 			</a>
 			<h3 class="" style="color: #000;">注册</h1>
 		</header>
 		<div class="registerList">
+			<form id="formbox">
 			<div class="name box">
 				<div class="up">姓名</div>
 				<div class="down">
-					<input type="text" name="name" id="name" placeholder="请输入姓名" />
+					<input type="text" name="username" id="username" placeholder="请输入姓名" />
 				</div>
 			</div>
 			<div class="name box">
 				<div class="up">身份信息</div>
 				<div class="down sel">
-					<select type="text" name="shefxx" id="shefxx" placeholder="请选择" />
+					<select type="text" name="shenfxx" id="shenfxx" placeholder="请选择" />
 						<option value="0101">本科</option>
 						<option value="0102">硕士</option>
 						<option value="0102">博士</option>
@@ -44,15 +36,21 @@
 				</div>
 			</div>
 			<div class="name box">
+				<div class="up">登录名</div>
+				<div class="down">
+					<input type="text" name="denglm" id="denglm" placeholder="您的登录名" />
+				</div>
+			</div>
+			<div class="name box">
 				<div class="up">登陆密码</div>
 				<div class="down">
-					<input type="text" name="password" id="password" placeholder="建议使用字母、数字和符合两种及以上组合，6-20个字符" />
+					<input type="password" name="userpassword" id="userpassword" placeholder="建议使用字母、数字和符合两种及以上组合，6-20个字符" />
 				</div>
 			</div>
 			<div class="name box">
 				<div class="up">确认密码</div>
 				<div class="down">
-					<input type="text" name="quermm" id="quermm" placeholder="请在此输入密码" />
+					<input type="password" id="confim" placeholder="请在此输入密码" />
 				</div>
 			</div>
 			<div class="name box">
@@ -76,50 +74,174 @@
 			<div class="name box">
 				<div class="up">所属部门名称</div>
 				<div class="down">
-					<input type="text" name="bummc" id="bummc" placeholder="请输入所属部门" />
+					<input type="text" name="suosbmmc" id="suosbmmc" placeholder="请输入所属部门" />
 				</div>
 			</div>
 			<div class="name box">
 				<div class="up">所属单位地址</div>
 				<div class="down">
-					<input type="text" name="address" id="address" placeholder="请输入单位地址" />
+					<input type="text" name="suosdwdz" id="suosdwdz" placeholder="请输入单位地址" />
 				</div>
 			</div>
 			<div class="name box">
 				<div class="up">电子邮箱</div>
 				<div class="down">
-					<input type="text" name="email" id="email" placeholder="建议使用常用邮箱，用于登陆和找回密码" />
+					<input type="text" name="dianzyx" id="dianzyx" placeholder="建议使用常用邮箱，用于登陆和找回密码" />
 				</div>
 			</div>		
 			<div class="name box">
 				<div class="up">手机号码</div>
 				<div class="down">
-					<input type="text" name="phone" id="phone" placeholder="请输入手机号码" />
+					<input type="text" name="shoujhm" id="shoujhm" placeholder="请输入手机号码" />
 				</div>
 			</div>	
 			<div class="name box">
 				<div class="up">验证码</div>
 				<div class="down">
-					<input type="text" name="yanzm" id="yanzm" placeholder="请输入验证码" />
-					<button class="yanzmbtn">获取验证码</button>
+					<input type="text" name="SmsCheckCode" id="SmsCheckCode" placeholder="请输入验证码" />
+					<div class="yanzmbtn">获取验证码</div>
 				</div>
 			</div>
+			</form>
 			<button class="zhucbtn">立即注册</button>
 		</div>
 	
 		<script src="../../js/mui.min.js"></script>
-		<script src="../../js/jquery-1.11.3.js"></script>
-		<script src="../../js/jqzw_server.js"></script>
-		<script type="text/javascript" > 
-			var aniShow = "pop-in";
-			mui.init({});
+		<script src="../../js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript"> 
+			var url_mh = localStorage.url_mh;
+			mui.init({
+				
+			});
 			mui.plusReady(function() {
 				
 				
 			});
 			$(function(){
-				$(".registerbut").click(function(){
-					mui.back();
+				//判断登录名是否重复				
+				$('#denglm').blur(function(){
+					var username=$('#denglm').val();
+					if( username ==''){
+						mui.toast('登录名不能为空');
+						return;
+					}
+					$.ajax({
+						type:'get',
+						url:url_mh+'/jqzw/server',
+						dataType:'json',
+						data:{service:'CommonService',method:'JloginName',params:username},
+						beforeSend:function(){
+							plus.nativeUI.showWaiting('正在请求...');
+						},
+						success:function(info){
+							if(info.type == 'success'){
+								mui.toast(info.value);
+							}
+						},
+						error:function(err){
+							console.log(JSON.stringify(err))
+						},
+						complete:function(){
+							plus.nativeUI.closeWaiting();
+						}
+					})
+					
+				});
+				//获取验证码
+				$('.yanzmbtn').on('click',function(){
+					var username=$('#denglm').val();
+					var tellphone = $("#shoujhm").val();
+					if( username ==''){
+						mui.toast('登录名不能为空');
+						return;
+					}
+					if( tellphone ==''){
+						mui.toast('手机号码不能为空');
+						return;
+					}
+					var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
+					if (!myreg.test(tellphone)) {
+						mui.toast('您输入的手机格式有误，请重新输入');
+						return;
+					}
+					var _this=$(this);
+					if(_this.hasClass('daoji')){
+						return;
+					}
+					var time=60;			
+					$(this).addClass('daoji').text(time+'秒后重新获取');
+					var timeId=setInterval(function(){
+						time--;
+						if (time < 1 ) {
+							window.clearInterval(timeId);
+							_this.removeClass('daoji').text('获取验证码');
+							return;
+						}
+						_this.text(time + '秒后重新获取');
+					},1000);
+					$.ajax({
+						type:'get',
+						url:url_mh+'/jqzw/sverification',
+						dataType:'json',
+						data:{username:username,phone:tellphone,SMSverificateId:"Register"},
+						beforeSend:function(){
+							plus.nativeUI.showWaiting('正在发送...');
+						},
+						success:function(info){
+							mui.toast('验证码已发送，请注意查收')
+						},
+						error:function(err){
+							console.log(JSON.stringify(err))
+						},
+						complete:function(){
+							plus.nativeUI.closeWaiting();
+						}
+					})
+				})
+				//注册按钮
+				$(".zhucbtn").click(function(e){
+					e.preventDefault();
+					e.stopPropagation();
+					if($('#username').val()==''){
+						mui.toast('姓名不能为空')
+						return;
+					}else if($('#denglm').val()==''){
+						mui.toast('登录名不能为空')
+						return;
+					}else if($('#userpassword').val()==''){
+						mui.toast('密码不能为空')
+						return;
+					}else if($('#confim').val()==''){
+						mui.toast('确认密码不能为空')
+						return;
+					}else if($('#dianzyx').val()==''){
+						mui.toast('电子邮箱不能为空')
+						return;
+					}else if($('#shoujhm').val()==''){
+						mui.toast('手机号码不能为空')
+						return;
+					}else if($('#suosdw').val()==''){
+						mui.toast('所属单位不能为空')
+						return;
+					}else if($('#suosbmmc').val()==''){
+						mui.toast('所属部门不能为空')
+						return;
+					}else if($('#suosdwdz').val()==''){
+						mui.toast('所属单位地址不能为空')
+						return;
+					}else if($('#SmsCheckCode').val()==''){
+						mui.toast('验证码不能为空')
+						return;
+					}else{
+						var formdata=$('#formbox').serializeArray();
+						var obj={};
+						//from表单json化
+						$.each(formdata,function(index,item){
+							obj[item.name]=item.value;
+						});
+						console.log(JSON.stringify(obj))
+					}
+					
 				})
 			});
 			

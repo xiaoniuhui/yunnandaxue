@@ -15,7 +15,7 @@ h3{
 .registerList{
 	width: 92.3%;
 	margin: 0 auto;
-	margin-top: 64px;
+	margin-top: 30px;
 }
 .registerList .box{
 	margin-bottom: 16px;
@@ -64,18 +64,21 @@ h3{
 }
 .registerList .down .yanzmbtn{
 	float: right;
-	width: 108px;
+	width: 140px;
 	height: 40px;
 	border: solid 1px #368AF0;
 	border-radius: 2px;
 	color: #1755D3;
-	line-height: 30px;
+	line-height: 40px;
 	font-size: 16px;
+	text-align: center;
 }
 .zhucbtn{
 	display: block;
 	width: 100%;
 	margin: 0 auto;
+	margin-top: 80px;
+	margin-bottom: 40px;
 	height: 46px;
 	background: linear-gradient(to right, #3DA1F2 , #3586EF);
 	font-size: 18px;
