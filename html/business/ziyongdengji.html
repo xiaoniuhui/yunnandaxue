@@ -112,23 +112,7 @@
 				console.log(recid)
 				console.log(yiqgly)
 				console.log(jizry)
-				if(localStorage.stdcode == '' || localStorage.stdcode == null || localStorage.stdcode ==undefined){
-					//跳转登录页
-					mui.openWindow({
-						url: "../base/login.html",
-						styles: {
-							popGesture: 'close',
-							scrollIndicator: "none"
-						},						
-						waiting: {
-							autoShow: true
-						},
-						extras:{		
-							
-						}
-					});
-					return;
-				}
+				
 				mui.openWindow({
 					url: "../business/dengjiDetail.html",
 					id: 'dengjiDetail',
