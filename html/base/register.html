@@ -44,7 +44,7 @@
 			<div class="name box">
 				<div class="up">登陆密码</div>
 				<div class="down">
-					<input type="password" name="userpassword" id="userpassword" placeholder="建议使用字母、数字和符合两种及以上组合，6-20个字符" />
+					<input type="password" name="password" id="userpassword" placeholder="建议使用字母、数字和符合两种及以上组合，6-20个字符" />
 				</div>
 			</div>
 			<div class="name box">
@@ -92,7 +92,7 @@
 			<div class="name box">
 				<div class="up">手机号码</div>
 				<div class="down">
-					<input type="text" name="shoujhm" id="shoujhm" placeholder="请输入手机号码" />
+					<input type="text" name="lianxdh" id="shoujhm" placeholder="请输入手机号码" />
 				</div>
 			</div>	
 			<div class="name box">
@@ -109,7 +109,7 @@
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript"> 
-			var url_mh = localStorage.url_mh;
+			var url = localStorage.url_mh;
 			mui.init({
 				
 			});
@@ -127,7 +127,7 @@
 					}
 					$.ajax({
 						type:'get',
-						url:url_mh+'/jqzw/server',
+						url:url+'/jqzw/server',
 						dataType:'json',
 						data:{service:'CommonService',method:'JloginName',params:username},
 						beforeSend:function(){
@@ -181,7 +181,7 @@
 					},1000);
 					$.ajax({
 						type:'get',
-						url:url_mh+'/jqzw/sverification',
+						url:url+'/jqzw/sverification',
 						dataType:'json',
 						data:{username:username,phone:tellphone,SMSverificateId:"Register"},
 						beforeSend:function(){
@@ -239,8 +239,31 @@
 						$.each(formdata,function(index,item){
 							obj[item.name]=item.value;
 						});
-//						console.log(JSON.stringify(obj))
-						//提交测试zy
+						var shoujhm=$('#shoujhm').val();
+						var SmsCheckCode=$('#SmsCheckCode').val();
+						var jsonstring=JSON.stringify(obj);
+						$.ajax({
+							type:'get',
+							url:url+'/jqzw/server',
+							dataType:'json',
+							data:{service:"CommonService",method:"Register",params:jsonstring,shoujhm:shoujhm,SmsCheckCode:SmsCheckCode},
+							beforeSend:function(){
+								plus.nativeUI.showWaiting('正在注册...');
+							},
+							success:function(info){
+								console.log(JSON.stringify(info))
+								if(info.type == 'success'){
+									mui.toast(info.value);
+									mui.back();
+								}
+							},
+							error:function(err){
+								console.log(JSON.stringify(err))
+							},
+							complete:function(){
+								plus.nativeUI.closeWaiting();
+							}
+						})
 					}
 					
 				})

@@ -343,7 +343,6 @@
 					data:{service:"NeedToDoService",params:useId,method:"getOtherToDoInfo"},
 					dataType:'json',
 					success:function(info){
-						console.log(JSON.stringify(info))
 						if(info.type == 'success' && info.value.length>0){
 							var other_html=template("tmp",{info:info.value});
 							$('.otherself .boxes').html(other_html);						
