@@ -279,6 +279,7 @@
 					dataType:'json',
 					data:{service:"BigEquipmentService",params:userId,method:"getGetTopicList"},
 					success:function(info){
+						console.log(JSON.stringify(info))
 						var picker = new mui.PopPicker();
 						picker.setData(info.value); 
 						picker.show(function(e){
@@ -451,7 +452,7 @@
 				obj.yujjs=($('#yangpsl').val()-0)*0.5;
 				obj.wid=localStorage.wid;
 				obj.accountcode=$('#dsuoszb').text();
-				obj.objectid=objectid;
+				obj.cardobjectid=objectid;
 				//obj.cesxm=getChekcbox();
 				obj.cesxm={
 					"62DC0E12200000014309853BC9E4872C":getJichuChekcbox(),
