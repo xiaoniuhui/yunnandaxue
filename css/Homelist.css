@@ -46,7 +46,7 @@ body{
 	background-color: #F4F4F4;
 	border-top: 1px solid #CBCBCB;
 	margin-top: 8px;
-	padding-top: 16px;
+	/*padding-top: 16px;*/
 }
 .newscont{
 	width:95%;
@@ -66,23 +66,45 @@ body{
 	background-color: #FFFFFF;
 	border-bottom: 1px solid #EFEFEF;
 	padding: 0 20px;
-	padding-top: 20px;
+	/*padding-top: 20px;*/
 	position: relative;
 }
 .newstitle{
 	font-family: PingFangSC-Regular;
-	font-size: 14px;
+	font-weight: bolder;
+	font-size: 17px;
 	color: #333333;
 	letter-spacing: 0;
-	line-height: 20px;
+	line-height: 25px;
+	 -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+     display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .newstime{
 	font-family: PingFangSC-Regular;
-	font-size: 12px;
+	font-size: 14px;
 	color: #999999;
 	letter-spacing: 0;
 	line-height: 12px;
 	position: absolute;
 	bottom:15px;
-	left: 20px;
+	left: 40px;
+}
+.newsLeft{
+	width: 54.6%;
+	margin-left: 5.1%;
+	float: left;
+	padding-top: 15px;
+}
+.newsRight{
+	width: 30%;
+	margin-left: 8%;
+	float: left; 
+}
+.newsRight img{
+	width: 120px;
+	height: 86px;
+	margin-top: 7px;
 }
