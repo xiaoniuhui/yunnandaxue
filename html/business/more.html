@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link type="text/css" rel="stylesheet" href="../../css/common.css">
+		<link rel="stylesheet" type="text/css" href="../../css/common-asset-search.css">
+		<link rel="stylesheet" href="../../css/Homelist.css">
+		<title></title>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">更多</h1>
+		</header>
+		<div class="content">
+			<div class="list">
+				<div class="item jigyzn">
+					<div class="imgbox">
+						<img src="../../image/organization%20.png" alt="">						
+					</div>
+					<span>机构与职能</span>
+				</div>
+				<!-- <div class="item">
+					<div class="imgbox">
+						<img src="../../image/wenjian1x.png" alt="">						
+					</div>
+					<span>文件制度</span>
+				</div> -->
+				<div class="item worknotice">
+					<div class="imgbox">
+						<img src="../../image/gongzuo.png" alt="">						
+					</div>
+					<span>工作通知</span>
+				</div>
+				<div class="item zhaobiaocg">
+					<div class="imgbox">
+						<img src="../../image/zhaobiao.png" alt="">						
+					</div>
+					<span>招标采购</span>
+				</div>
+				<div class="item yiqiyy">
+					<div class="imgbox">
+						<img src="../../image/yuyueceshi.png" alt="">						
+					</div>
+					<span>仪器预约</span>
+				</div> 
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		//仪器预约
+			$('.yiqiyy').on('click',function(){
+				mui.openWindow({
+					url: "../business/yuyueyiqi.html",
+					styles: {
+						popGesture: 'close',  
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					},
+					extras: {
+						hrefid: ""
+					}
+				});
+			});
+			//点击机构与职能
+			$('.jigyzn').on('click',function(){
+				mui.openWindow({
+					url: "../business/organization.html",
+					//url:'../business/pdfDetail.html',
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					},
+					extras: {
+						recid:''
+					}
+				});
+			});
+			//工作通知
+			$('.worknotice').on('click',function(){
+				mui.openWindow({
+					url: "../business/workNotice.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					},
+					extras: {
+						recid:''
+					}
+				});
+			});
+			//招标采购
+			$('.zhaobiaocg').on('click',function(){
+				mui.openWindow({
+					url: "../business/zhaobiaocg.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					}
+				});
+			});
+	</script>
+</html>
