@@ -10,17 +10,22 @@
 		<link rel="stylesheet" href="../../css/Homelist.css">
 	</head>
 	<body>
+		<header class="mui-bar mui-bar-nav title">
+			<h1 class="mui-title">云南大学</h1>
+		</header>
 		<div class="content">
 			<div class="swiper">
 				<div class="mui-slider">
 				  <div class="mui-slider-group mui-slider-loop">
 					<!--支持循环，需要重复图片节点-->
-					<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="../../image/banner1.png" /></a></div>
-					<div class="mui-slider-item"><a href="#"><img src="../../image/banner_2.png" /></a></div>
-					<div class="mui-slider-item"><a href="#"><img src="../../image/banner_3.png" /></a></div>
-					<div class="mui-slider-item"><a href="#"><img src="../../image/banner1.png" /></a></div>
+					<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="../../image/banner_01.png" /></a></div>
+					<div class="mui-slider-item"><a href="#"><img src="../../image/banner_02.png" /></a></div>
+					<div class="mui-slider-item"><a href="#"><img src="../../image/banner_03.png" /></a></div>
+					<div class="mui-slider-item"><a href="#"><img src="../../image/banner_04.png" /></a></div>
+					<div class="mui-slider-item"><a href="#"><img src="../../image/banner_05.png" /></a></div>
+					<div class="mui-slider-item"><a href="#"><img src="../../image/banner_01.png" /></a></div>
 					<!--支持循环，需要重复图片节点-->
-					<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="../../image/banner_2.png" /></a></div>
+					<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="../../image/banner_02.png" /></a></div>
 				  </div>
 				</div>
 			</div>
@@ -55,12 +60,12 @@
 					</div>
 					<span>仪器预约</span>
 				</div>
-				<!-- <div class="item">
+				 <div class="item more">
 					<div class="imgbox">
 						<img src="../../image/xiazai.png" alt="">						
 					</div>
-					<span>下载中心</span>
-				</div> -->
+					<span>更多</span>
+				</div> 
 			</div>
 			<div class="news">
 				<div class="newscont">
@@ -75,7 +80,7 @@
 									<input class="contents" type="hidden" value="<%= list[i].content%>">
 								</div>
 								<div class="newsRight">
-									<img src="../../image/default.png"/>
+									<img src="../../image/peitu_<%=i%2%>.png"/>
 								</div>
 							</div>
 						<% } %>					
@@ -115,6 +120,11 @@
 					}  
 				}
 			});	
+			//轮播图
+			var gallery = mui('.mui-slider');
+			gallery.slider({
+			  interval:3000//自动轮播周期，若为0则不自动播放，默认为0；
+			});
 			mui.plusReady(function(){
 				createNews()
 			});
@@ -142,6 +152,8 @@
 					data:{service:"NewsService",params:pageNum+","+pageSize+",113",method:"getNewsList"},
 					success:function(info){    
 						console.log(JSON.stringify(info.value))
+						//新闻列表图片
+						var num = Math.ceil(Math.random()*6); 
 						if(info.type == 'success' && info.value.length > 0){ 
 							var html=template('newsTmp',{list:info.value});
 							$('.news-cont').append(html);
@@ -162,7 +174,6 @@
 				var newstitle=$(this).children('.newstitle').text();
 				var newstime=$(this).children('.newstime').text();	
 				var index = $(this).index(); 
-				console.log(index) 
 				var wendnr=$('.contents').eq(index).val();
 //				var wendnr=$(this).children('input').val(); 
 				console.log(wendnr)  
@@ -246,6 +257,27 @@
 					}
 				});
 			});
+			//更多
+			$('.more').on('click',function(){
+				mui.openWindow({
+					url: "../business/more.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					}
+				});
+			});
+			//向下滑动显示头部
+			$(document).scroll(function(){
+				if($(document).scrollTop() >= 5){
+					$('.title').fadeIn(300);
+				}else{
+					$('.title').fadeOut(300);
+				}
+			})
 		});
 	</script>
 </html>
