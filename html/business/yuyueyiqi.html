@@ -42,7 +42,7 @@
 										<span style="overflow: hidden;"><%=info[i].zicmc%></span>
 										<span><%=info[i].yiqgly%></span>
 										<span><%=info[i].jizrylxdh%></span>
-										<span>空闲</span>
+										<span><%=info[i].dangqzt%></span>
 									</div>
 								</div>
 								<div class="btngroup" data-objid="<%=info[i].objectid%>" data-recid="<%=info[i].recid%>">
@@ -137,7 +137,6 @@
 				var objectid=$(this).parent().attr('data-objid');
 				mui.openWindow({
 					url: "../business/weituotest.html",
-					id: '',
 					styles: {
 						popGesture: 'close',
 						scrollIndicator: "none"
@@ -176,20 +175,37 @@
 				}
 				var recid=$(this).parent().attr('data-recid');
 				var objectid=$(this).parent().attr('data-objid');
-				mui.openWindow({
-					url: "../business/zizhutest.html",
-					styles: {
-						popGesture: 'close',
-						scrollIndicator: "none"
+				var stdcode=localStorage.stdcode;
+				$.ajax({
+					type:'get',
+					url:url+'/jqzw/server',
+					data:{service:"BigEquipmentService",method:"checkUser4SlefA",params:objectid+','+stdcode},
+					dataType:'json',
+					success:function(info){
+						if(info.value == '1'){
+							mui.openWindow({
+								url: "../business/zizhutest.html",
+								styles: {
+									popGesture: 'close',
+									scrollIndicator: "none"
+								},
+								waiting: {
+									autoShow: false
+								},
+								extras: {
+									recid:recid,
+									objectid:objectid
+								}
+							});
+						}else{
+							mui.toast(info.value)
+						}
 					},
-					waiting: {
-						autoShow: false
-					},
-					extras: {
-						recid:recid,
-						objectid:objectid
+					error:function(err){
+						console.log(JSON.stringify(err))
 					}
-				});
+				})
+				
 			});
 			//搜索点击事件
 			$('#searchBy').on('click',function(){
