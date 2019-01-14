@@ -2,16 +2,23 @@
 body{
 	background-color: #FFFFFF;
 }
+.title{
+	display: none;	 
+}
+.logePng{
+	width: 40px;
+	height: 40px;
+}
 .content{
-	
+	/*margin-top: 58px;*/
 }
 /* 轮播图 */
 .swiper{
 	width:100%;
 }
-.swiper a img{
+.swiper a img{      
 	width:100%;
-	height: 125px;
+	height: 260px;
 }
 .content .list{
 	width:95%;
@@ -44,9 +51,9 @@ body{
 	wdith:100%;
 	min-height: 500px;
 	background-color: #F4F4F4;
-	border-top: 1px solid #CBCBCB;
+	/*border-top: 1px solid #CBCBCB;*/
 	margin-top: 8px;
-	/*padding-top: 16px;*/
+	padding-top: 10px;
 }
 .newscont{
 	width:95%;
@@ -55,8 +62,9 @@ body{
 }
 .p1{
 	font-family: PingFangSC-Medium;
-	font-size: 16px;
-	color: #333333;
+	font-size: 20px;
+	font-weight: bold;
+	color: #666;
 	letter-spacing: 0;
 	line-height: 16px;
 	margin-top: 15px;
