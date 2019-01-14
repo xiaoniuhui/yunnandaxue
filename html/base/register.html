@@ -28,9 +28,10 @@
 					<select type="text" name="shenfxx" id="shenfxx" placeholder="请选择" />
 						<option value="0101">本科</option>
 						<option value="0102">硕士</option>
-						<option value="0102">博士</option>
+						<option value="0103">博士</option>
 						<option value="02">导师</option>
-						<option value="03" >其他</option>
+						<option value="03">企业用户</option>
+						<option value="04">其他</option>
 					</select>
 					<span class="icon_down"><img src="../../image/jt_x.png"/></span>
 				</div>
@@ -104,6 +105,7 @@
 			</div>
 			</form>
 			<button class="zhucbtn">立即注册</button>
+			<div class="xuzhibtn">点击上面的"注册按钮"，即表示您同意《云南大学大型仪器共享平台用户注册须知》</div>
 		</div>
 	
 		<script src="../../js/mui.min.js"></script>
@@ -266,6 +268,21 @@
 						})
 					}
 					
+				})
+				//第三方链接
+				$('.xuzhibtn').on('click',function(){
+					mui.openWindow({
+						url: "./xuzhi.html",
+						styles: {
+							popGesture: 'close',
+							scrollIndicator: "none"
+						},						
+						waiting: {
+							autoShow: true
+						},
+						extras:{										
+						}
+					});	
 				})
 			});
 			

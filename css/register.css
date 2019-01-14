@@ -78,10 +78,15 @@ h3{
 	width: 100%;
 	margin: 0 auto;
 	margin-top: 80px;
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 	height: 46px;
 	background: linear-gradient(to right, #3DA1F2 , #3586EF);
 	font-size: 18px;
 	color: #FFFFFF;
 	letter-spacing: 0;
+}
+.xuzhibtn{
+	font-size: 14px;
+	margin-bottom: 20px;
+	
 }

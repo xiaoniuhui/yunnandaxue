@@ -1,0 +1,37 @@
+ .notice{
+  background-color: #F9F8F8;
+  border: 1px solid #dedede;
+}
+
+ .notice .title{
+  height: 60px;
+  background-color: #f4f4f4;
+  line-height: 60px;
+  text-align: center;
+}
+ .notice .title span{
+  font-family:MicrosoftYaHei;
+  font-size:16px;
+  color:#444444;
+}
+ .notice .text{
+  padding: 20px 30px 30px;
+  box-sizing: border-box;
+  line-height: 26px;
+  font-family:MicrosoftYaHei;
+  font-size:12px;
+  color:#444444;
+}
+ .notice .text .two{
+  margin-left: 15px;
+}
+ .notice .text .section1{
+  font-weight:bold;
+}
+ .notice .text .text1{
+  margin-left: 15px;
+}
+ .notice .text .section2{
+  font-weight:bold;
+  margin-top: 17px;
+}
