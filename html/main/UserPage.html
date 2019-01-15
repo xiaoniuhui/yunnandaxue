@@ -8,9 +8,9 @@
 		<style>
 			body, html
 			{
-				background:#fff;
 				font-size: 16px;
-			}	
+				font-family: 'PingFangSC-Regular';
+			}
 			.mui-content{
 				background:#fff;
 				height:100%;
@@ -30,8 +30,10 @@
 			}
 			.mui-table-view li.mui-table-view-cell a{
 				font-family: PingFangSC-Regular;
-				font-size: 14px;
+				font-size: 18px;
 				color: #666666;
+				float: left;
+				width: 100%;
 			}
 			.mui-table-view-cell{
 				color: rgb(181,208,224);
@@ -44,10 +46,9 @@
 				height: 0px;
 			}
 			.buttondiv{
-				width: 100%;
+				width: 80%;
 				height: 50px;
 				margin: 20% auto;
-				background:#fff;
 			}
 			.buttonwebs{
 				width: 100%;
@@ -55,33 +56,75 @@
 				color: #FFFFFF;
 				font-size: 18px;
 				letter-spacing: 5px;
-				border-radius: 0px;
+				border-radius: 5px;
 				border: rgb(90,225,253) 1px solid;
 				border-left: 0px;
 				border-right: 0px;
-				background-color: rgb(42,195,253);
+				background-image: linear-gradient(-270deg, #4557FF 5%, #35C4FF 100%);
 				
+			}
+			.bg{
+				width: 100%;
+				height: 160px;
+				background: url(../../image/bg_personCenter1.png) center;
+				margin-bottom: 10px;
+			}
+			.toux{
+				width: 24.2%;
+				text-align: center;
+				float: left;
+			}
+			.toux img{
+				width: 60px;
+				height: 57px;
+				margin-top: 50px;
+			}
+			.denglm{
+				height: 160px;
+				line-height: 160px;
+				font-size: 16px;
+				color: white;
+				float: left;
+			}
+			li{
+				height: 54px;
+				line-height: 30px;
+				overflow: hidden;
+			}
+			li img{
+				width: 24px;
+				height: 24px;
+				float: left;
+				margin: 3px 5px 0 0;
 			}
 		</style>
 	</head>
 	<body>
-		<header class="mui-bar mui-bar-nav">
-		</header>
+		<div class="bg">
+			<div class="toux">
+				<img src="../../image/mortx.png" >
+			</div>
+			<div class="denglm"></div>
+		</div>
 		<div class="mui-content">
 			<ul class="mui-table-view" >
 				<li class="mui-table-view-cell" id="mynews">
+					<img src="../../image/wodxx.png" >
 					<a href="javascript:;">我的消息<span style="float: right;color: #C1CACA;">&gt;</span></a>					
 				</li>
 				<li class="mui-table-view-cell" id="myrole">
+					<img src="../../image/xitqx.png" >
 					<a href="javascript:;">系统角色<span style="float: right;color: #C1CACA;">&gt;</span></a>					
 				</li>
 				<li class="mui-table-view-cell" id="myaccount">
+					<img src="../../image/zhanghsz.png" >
 					<a href="javascript:;">账户设置<span style="float: right;color: #C1CACA;">&gt;</span></a>					
 				</li>
 			</ul>
-			<div class="buttondiv">
-				<button class="buttonwebs">退出登录</button>
-			</div>
+			
+		</div>
+		<div class="buttondiv">
+			<button class="buttonwebs">退出登录</button>
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/jquery-3.2.1.min.js" ></script>
@@ -90,6 +133,28 @@
 			mui.plusReady(function() {
 				
 			});
+			var userId=localStorage.username;
+			//判断是否登录
+			if(userId){
+				$('.denglm').html(userId)					
+				$('.buttonwebs').show();
+			}else{
+				$('.denglm').html('立即登录');
+				$('.buttonwebs').hide();
+				$('.denglm').click(function(){
+					mui.openWindow({
+						url: "../base/login.html",
+						styles: {
+							popGesture: 'close',
+							scrollIndicator: "none"
+						},
+						waiting: {
+							autoShow: false
+						}
+					});
+				})
+			}
+			
 			window.addEventListener('refresh', function(e){
 				location.reload();
 			});
