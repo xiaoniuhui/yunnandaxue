@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<header class="mui-bar mui-bar-nav title">
-			<h1 class="mui-title">云南大学</h1>
+			<h1 class="mui-title">云南大学资产管理平台</h1>
 		</header>
 		<div class="content">
 			<div class="swiper">
@@ -151,7 +151,6 @@
 					url:url+'/jqzw/server', 
 					data:{service:"NewsService",params:pageNum+","+pageSize+",113",method:"getNewsList"},
 					success:function(info){    
-						console.log(JSON.stringify(info.value))
 						//新闻列表图片
 						var num = Math.ceil(Math.random()*6); 
 						if(info.type == 'success' && info.value.length > 0){ 
@@ -174,9 +173,7 @@
 				var newstitle=$(this).children('.newstitle').text();
 				var newstime=$(this).children('.newstime').text();	
 				var index = $(this).index(); 
-				var wendnr=$('.contents').eq(index).val();
-//				var wendnr=$(this).children('input').val(); 
-				console.log(wendnr)  
+				var wendnr=$('.contents').eq(index).val();  
 				mui.openWindow({ 
 					url: "../business/newsDetail.html",
 					id: '', 
