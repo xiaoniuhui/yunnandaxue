@@ -26,37 +26,39 @@
 						<label id="searchBy" style="background: #488CFF;"> 搜索</label>
 						<input type="text" id="searchinput"  placeholder="搜索设备名称、规格型号、所属平台" style="">
 					</div>
-					<script type="text/template" id="tmp">
-						<% for (var i=0;i<info.length;i++) { %>
-							<div class="item">
-								<div class="imgbox"><img src="<%=info[i].picUrl%>" alt=""></div>
-								<div class="yiqiinfo">
-									<div class="left">
-										<span>仪器名称</span>
-										<span>负责人</span>
-										<span>联系方式</span>
-										<span>当前状态</span>
+					<div class="yiqxx">
+						<script type="text/template" id="tmp">
+							<% for (var i=0;i<info.length;i++) { %>
+								<div class="item">
+									<div class="imgbox"><img src="<%=info[i].picUrl%>" alt=""></div>
+									<div class="yiqiinfo">
+										<div class="left">
+											<span>仪器名称</span>
+											<span>负责人</span>
+											<span>联系方式</span>
+											<span>当前状态</span>
+										</div>
+										<div class="right">
+											<span style="overflow: hidden;"><%=info[i].zicmc%></span>
+											<span><%=info[i].yiqgly%></span>
+											<span><%=info[i].jizrylxdh%></span>
+											<span><%=info[i].dangqzt%></span>
+										</div>
 									</div>
-									<div class="right">
-										<span style="overflow: hidden;"><%=info[i].zicmc%></span>
-										<span><%=info[i].yiqgly%></span>
-										<span><%=info[i].jizrylxdh%></span>
-										<span><%=info[i].dangqzt%></span>
+									<div class="btngroup" data-objid="<%=info[i].objectid%>" data-recid="<%=info[i].recid%>">
+										<% if (info[i].yuyfs =='01') {%>
+											<button class="btnwt">委托测试</button>
+										<% } else if (info[i].yuyfs =='02') {%>
+											<button class="btnzz" data-zizsfbs="<%=info[i].zizsfbs%>">自助测试</button>
+										<% } else if (info[i].yuyfs =='03') {%>
+											<button class="btnwt">委托测试</button>
+											<button class="btnzz" data-zizsfbs="<%=info[i].zizsfbs%>">自助测试</button>
+										<% } %>
 									</div>
 								</div>
-								<div class="btngroup" data-objid="<%=info[i].objectid%>" data-recid="<%=info[i].recid%>">
-									<% if (info[i].yuyfs =='01') {%>
-										<button class="btnwt">委托测试</button>
-									<% } else if (info[i].yuyfs =='02') {%>
-										<button class="btnzz" data-zizsfbs="<%=info[i].zizsfbs%>">自助测试</button>
-									<% } else if (info[i].yuyfs =='03') {%>
-										<button class="btnwt">委托测试</button>
-										<button class="btnzz" data-zizsfbs="<%=info[i].zizsfbs%>">自助测试</button>
-									<% } %>
-								</div>
-							</div>
-						<% } %>				
-					</script>
+							<% } %>				
+						</script>
+					</div>
 				</div>	
 			</div>
 		</div>
@@ -222,7 +224,7 @@
 					success:function(info){
 						if(info.type == 'success'){
 							var html=template('tmp',{info:info.value});
-							$('.yiqicont').html(html);
+							$('.yiqxx').html(html);
 						}else{
 							mui.toast('未所搜到相关仪器')
 						}
