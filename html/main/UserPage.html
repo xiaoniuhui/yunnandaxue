@@ -104,7 +104,7 @@
 			<div class="toux">
 				<img src="../../image/mortx.png" >
 			</div>
-			
+			<div class="denglm"></div>
 		</div>
 		<div class="mui-content">
 			<ul class="mui-table-view" >
@@ -128,29 +128,34 @@
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/jquery-3.2.1.min.js" ></script>
-		<script type="text/javascript" charset="utf-8">
-			window.addEventListener('refresh', function(e){
+		<script type="text/javascript" charset="utf-8"> 
+			window.addEventListener('refresh', function(e){				
+				 console.log(123)
 				location.reload();
+				// var uname = e.detail.username;
+				isLogin()
 			});
-			//判断是否登录
-			if(localStorage.userId == '' || localStorage.userId == null || localStorage.userId == undefined){
-					$('.denglm').html('立即登录');
-					$('.buttonwebs').hide();
-					$('.denglm').click(function(){
-						mui.openWindow({
-							url: "../base/login.html",
-							styles: {
-								popGesture: 'close',
-								scrollIndicator: "none"
-							},
-							waiting: {
-								autoShow: false
-							}
-						});
-					})
-				}else{
-					$('.denglm').text(localStorage.username)					
-					$('.buttonwebs').show();
+			isLogin()
+			function isLogin(){
+				if(localStorage.userId == '' || localStorage.userId == null || localStorage.userId == undefined){
+						$('.denglm').html('立即登录');
+						$('.buttonwebs').hide();
+						$('.denglm').click(function(){
+							mui.openWindow({
+								url: "../base/login.html",
+								styles: {
+									popGesture: 'close',
+									scrollIndicator: "none"
+								},
+								waiting: {
+									autoShow: false
+								}
+							});
+						})
+					}else{
+						$('.denglm').text(localStorage.username)					
+						$('.buttonwebs').show();
+					}
 				}		
 			$(function(){
 				$("#myaccount").click(function(){					

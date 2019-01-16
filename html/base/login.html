@@ -163,8 +163,11 @@
 									localStorage.yonghlxcode=info.value.user.yonghlxcode;
 									localStorage.dy_roles=JSON.stringify(info.value.user.roles);
 									localStorage.mh_roles=JSON.stringify(info.value.user.roles);
+									//
+									plus.webview.getWebviewById('UserPage.html').reload()
 									//跳转,返回上一页
 									mui.back();	
+									
 								}else{
 									mui.toast(info.value);
 								}

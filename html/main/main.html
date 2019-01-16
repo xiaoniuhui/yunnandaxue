@@ -42,7 +42,7 @@
 			//localStorage.url="http://10.2.8.47:9791";
 			//localStorage.url_mh="http://10.2.8.47:9791";
 			window.addEventListener('refresh', function(e){
-                location.reload();				
+                location.reload();
             });
 			//mui初始化			
 			mui.init({
@@ -86,7 +86,7 @@
 				if (targetTab == activeTab) {
 					return;
 				}
-				if(targetTab == 'Handle.html' || targetTab == 'number.html' || 'UserPage.html'){
+				if(targetTab == 'Handle.html' || targetTab == 'number.html' ){
 					// 检测用户是否登录以及用户角色
 					if(localStorage.userId == '' || localStorage.userId == null || localStorage.userId == undefined){
 						mui.openWindow({
