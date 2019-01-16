@@ -104,7 +104,7 @@
 			<div class="toux">
 				<img src="../../image/mortx.png" >
 			</div>
-			<div class="denglm"></div>
+			
 		</div>
 		<div class="mui-content">
 			<ul class="mui-table-view" >
@@ -129,36 +129,30 @@
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" charset="utf-8">
-			mui.init();
-			mui.plusReady(function() {
-				
-			});
-			var userId=localStorage.username;
-			//判断是否登录
-			if(userId){
-				$('.denglm').html(userId)					
-				$('.buttonwebs').show();
-			}else{
-				$('.denglm').html('立即登录');
-				$('.buttonwebs').hide();
-				$('.denglm').click(function(){
-					mui.openWindow({
-						url: "../base/login.html",
-						styles: {
-							popGesture: 'close',
-							scrollIndicator: "none"
-						},
-						waiting: {
-							autoShow: false
-						}
-					});
-				})
-			}
-			
 			window.addEventListener('refresh', function(e){
 				location.reload();
 			});
-			$(function(){				
+			//判断是否登录
+			if(localStorage.userId == '' || localStorage.userId == null || localStorage.userId == undefined){
+					$('.denglm').html('立即登录');
+					$('.buttonwebs').hide();
+					$('.denglm').click(function(){
+						mui.openWindow({
+							url: "../base/login.html",
+							styles: {
+								popGesture: 'close',
+								scrollIndicator: "none"
+							},
+							waiting: {
+								autoShow: false
+							}
+						});
+					})
+				}else{
+					$('.denglm').text(localStorage.username)					
+					$('.buttonwebs').show();
+				}		
+			$(function(){
 				$("#myaccount").click(function(){					
 					mui.openWindow({
 						url: "../business/settingAccount.html",
@@ -201,6 +195,7 @@
 					localStorage.username="";
 					localStorage.stdcode="";
 					localStorage.dept="";
+					localStorage.yonghlxcode="";
 					localStorage.dy_roles="";
 					localStorage.mh_roles="";
 					mui.openWindow({
