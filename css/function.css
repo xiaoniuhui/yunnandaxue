@@ -17,7 +17,7 @@
 .items{
 	overflow: hidden;
 }
-.list .item{	
+.list .items .item{	
 	width:25%;
 	height: 72px;
 	float: left;

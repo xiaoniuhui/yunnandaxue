@@ -37,10 +37,10 @@
 		<script type="text/javascript" src="../../js/layer/layer.js" ></script>
 		<script type="text/javascript" charset="utf-8">
 			//设置url地址,全局设置
-			localStorage.url="http://www.yqsbgl.ynu.edu.cn";
-			localStorage.url_mh="http://www.yqsbgl.ynu.edu.cn";
-			//localStorage.url="http://10.2.8.47:9791";
-			//localStorage.url_mh="http://10.2.8.47:9791";
+			//localStorage.url="http://www.yqsbgl.ynu.edu.cn";
+			//localStorage.url_mh="http://www.yqsbgl.ynu.edu.cn";
+			localStorage.url="http://10.2.8.47:9791";
+			localStorage.url_mh="http://10.2.8.47:9791";
 			window.addEventListener('refresh', function(e){
                 location.reload();
             });
@@ -86,7 +86,7 @@
 				if (targetTab == activeTab) {
 					return;
 				}
-				if(targetTab == 'Handle.html' || targetTab == 'number.html' ){
+				if(targetTab == 'Handle.html' || targetTab == 'number.html' || targetTab == 'function.html' ){
 					// 检测用户是否登录以及用户角色
 					if(localStorage.userId == '' || localStorage.userId == null || localStorage.userId == undefined){
 						mui.openWindow({
