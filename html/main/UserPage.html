@@ -79,12 +79,19 @@
 				height: 57px;
 				margin-top: 50px;
 			}
-			.denglm{
+			.yonghxx{
+				float: left;
 				height: 160px;
-				line-height: 160px;
 				font-size: 16px;
 				color: white;
-				float: left;
+			}
+			.denglm{
+				height: 30px;
+				line-height: 30px;
+				margin-top: 55px;
+			}
+			.xueh{
+				color: #E0E0E0;
 			}
 			li{
 				height: 54px;
@@ -97,6 +104,11 @@
 				float: left;
 				margin: 3px 5px 0 0;
 			}
+			li a span img{
+				width: 16px;
+				height: 16px;
+				margin-top: 2px;
+			}
 		</style>
 	</head>
 	<body>
@@ -104,7 +116,14 @@
 			<div class="toux">
 				<img src="../../image/mortx.png" >
 			</div>
-			<div class="denglm"></div>
+			<div class="yonghxx">
+				<div class="denglm"></div>
+				<div class="xueh">
+					<span>工号/学号:</span>
+					<span class="xuehNum"></span>
+				</div>
+			</div>
+			
 		</div>
 		<div class="mui-content">
 			<ul class="mui-table-view" >
@@ -114,11 +133,11 @@
 				</li> -->
 				<li class="mui-table-view-cell" id="myrole">
 					<img src="../../image/xitqx.png" >
-					<a href="javascript:;">系统角色<span style="float: right;color: #C1CACA;">&gt;</span></a>					
+					<a href="javascript:;">系统角色<span style="float: right;margin-top: 5px;"><img src="../../image/jiantRight.png" ></span></a>					
 				</li>
 				<li class="mui-table-view-cell" id="myaccount">
 					<img src="../../image/zhanghsz.png" >
-					<a href="javascript:;">账户设置<span style="float: right;color: #C1CACA;">&gt;</span></a>					
+					<a href="javascript:;">账户设置<span style="float: right;margin-top: 5px;"><img src="../../image/jiantRight.png" ></span></a>					
 				</li>
 			</ul>
 			
@@ -151,7 +170,8 @@
 							});
 						})
 					}else{
-						$('.denglm').text(localStorage.username)					
+						$('.denglm').text(localStorage.username)	
+						$('.xuehNum').text(localStorage.stdcode)
 						$('.buttonwebs').show();
 					}
 				}		
