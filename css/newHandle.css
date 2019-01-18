@@ -8,6 +8,39 @@ html,body{
 ul,li{
 	list-style: none;
 }
+.banner_bg{
+	width: 100%;
+	height: 260px;
+	background: url(../image/banner_bg.png) no-repeat center center;
+	background-size: 100% 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+/* 切换按钮 */
+.cardtab{
+	width:100%;
+	position: fixed;
+	left: 0;
+	top: 67px;
+	padding:  5px 15px ;
+	font-size: 14px;
+	color: #FFFFFF;
+}
+.cardtab ul{
+	display: flex;
+}
+.cardtab ul li{
+	flex: 1;
+	line-height: 1;
+	border-bottom: 3px solid transparent;
+	text-align: center;
+	padding-bottom: 5px;
+}
+.cardtab ul li.active{
+	border-bottom: 3px solid #FFD45B;
+}
+
 .mui-bar{
 	background-color:#3B77EA;
 }
@@ -23,11 +56,7 @@ header h1.mui-title{
 	background-color: #FFFFFF;
 	margin-top: 44px;
 }
-.top_bg{
-	background-color: #3B77EA;
-	height: 200px;
-	padding-top: 25px;
-}
+
 .tabs{
 	width: 95%;
 	height: 36px;
@@ -35,9 +64,8 @@ header h1.mui-title{
 	margin: 0 auto;
 }
 .cards{
-	width: 95%;	
+	width: 100%;	
 	margin: 0 auto;
-	margin-top: 30px;
 }
 .cards .card{
 	width: 100%;
@@ -126,4 +154,21 @@ header h1.mui-title{
 	border-radius: 15px;
 	font-family: PingFangSC-Semibold;
 	color: #FFFFFF;
+}
+
+/* 滚动区域 */
+#cardinfo{
+	width: 94%;
+	border-radius: 4px;
+	margin-top: 120px;	
+	background: #F4F4F4;
+	margin-left:3%;
+}
+#cardinfo .content{
+	width: 100%;
+	background: white;
+	border-radius: 4px;
+	margin-bottom: 10px;
+	padding-top: 20px;
+	position: relative;
 }

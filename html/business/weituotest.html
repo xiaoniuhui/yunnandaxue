@@ -177,7 +177,7 @@
 				data:{service:"BigEquipmentService",params:objId,method:"getFeeScaleList"},
 				dataType:'json',
 				success:function(info){
-					console.log(JSON.stringify(info))
+					// console.log(JSON.stringify(info))
 					if(info.type == 'success'){
 						var html=template('scaleTmp',{info:info.value[0],yonghlxCode:localStorage.yonghlxcode});
 						$('.charge').html(html);

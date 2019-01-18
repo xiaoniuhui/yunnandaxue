@@ -151,3 +151,31 @@ html,body{
 	float: left;
 	color: #333;
 }
+
+
+.title{
+			background: rgba(255,255,255,0);
+			border: none;
+			box-shadow: none;
+		}
+		.title .mui-action-back{
+			color: white;
+		}
+		.title h1{
+			font-size: 20px;
+			color: white;
+			font-weight: bold;
+		}
+		.mui-scrollbar {
+            display: none !important;
+        }
+		.mui-bar{
+			background-color:#3B77EA;
+		}
+		.mui-bar-nav{
+			box-shadow: none;
+		}
+		header h1.mui-title{
+			font-size: 18px;
+			color: #FFFFFF;
+		}
