@@ -80,6 +80,7 @@
 				margin-top: 50px;
 			}
 			.yonghxx{
+				width: 65%;
 				float: left;
 				height: 160px;
 				font-size: 16px;
@@ -88,10 +89,20 @@
 			.denglm{
 				height: 30px;
 				line-height: 30px;
-				margin-top: 55px;
+				margin-top: 30px;
 			}
 			.xueh{
 				color: #E0E0E0;
+				height: 30px;
+				line-height: 30px;
+			}
+			.sousdw{
+				color: #E0E0E0;
+				height: 30px;
+				line-height: 30px;
+			}
+			.xuehNum{
+				
 			}
 			li{
 				height: 54px;
@@ -121,6 +132,10 @@
 				<div class="xueh">
 					<span>工号/学号:</span>
 					<span class="xuehNum"></span>
+				</div>
+				<div class="sousdw">
+					<span>所属单位:</span>
+					<span class="xuehNum danwmc"></span>
 				</div>
 			</div>
 			
@@ -172,6 +187,7 @@
 					}else{
 						$('.denglm').text(localStorage.username)	
 						$('.xuehNum').text(localStorage.stdcode)
+						$('.danwmc').text(localStorage.dept)
 						$('.buttonwebs').show();
 					}
 				}		

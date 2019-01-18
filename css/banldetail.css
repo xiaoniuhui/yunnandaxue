@@ -1,3 +1,6 @@
+html,body{
+	font-size: 'PingFangSC-Semibold';
+}
 .banner_bg{
 	width: 100%;
 	height: 260px;
@@ -7,8 +10,144 @@
 	top: 0;
 	left: 0;
 }
-.shenpjd{
+.shenp{
 	width: 90%;
-	height: 80px;
-	margin: 50px auto 0;
+	height: 30px;
+	margin: 50px 0 0 7%;
+	z-index: 999;
+	-webkit-transform:translateZ(1px);
+	-moz-transform:translateZ(1px);
+	-o-transform:translateZ(1px);
+	transform:translateZ(1px);
+}
+.shenpjd{
+	width: 23%;	
+	float: left;
+}
+.shenpjd .yuan{
+	width: 8px;
+	height: 8px;
+	display: inline-block;
+	border-radius: 4px;
+	background: #6A89FB;
+}
+.shenpjd .xian{
+	width: 70%;
+	display: inline-block;
+	border-top: solid 1px #2A5CD0;
+	height: 4px;
+	margin-right: 5px;
+}
+
+.daitj{
+	width: 17px;
+}
+.shenpjd p{
+	color: white;
+	text-align: right;
+}
+.shenptxt{
+	width: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.shenptxt p{
+	width: 20%;
+	font-size: 12px;
+	text-align: center;
+	float: left;
+	z-index: 999;
+	-webkit-transform:translateZ(1px);
+	-moz-transform:translateZ(1px);
+	-o-transform:translateZ(1px);
+	transform:translateZ(1px);
+	color: #A3B2F4;
+}
+.shenptxt p:nth-child(1){
+	width: 18%;
+}
+.shenptxt p:nth-child(3){
+	width: 22%;
+}
+#detail{
+	width: 94%;
+	margin-left:3%;
+	border-radius: 4px;
+	margin-top: 120px;
+	background: #F4F4F4;
+}
+#detail .content{
+	width: 100%;
+	background: white;
+	border-radius: 4px;
+	margin-bottom: 10px;
+	padding-top: 20px;
+	position: relative;
+}
+#detail .content .titleLogo{
+	width: 4px;
+	height: 16px;
+	background: #50E3C2;
+	position: absolute;
+	top: 20px;
+	left: 0;
+}
+.yiqsb{
+	height: 258px;	
+}
+.yangp{
+	height: 309px;
+}
+.yangp .right{
+	padding-left: 10px;
+}
+.shenpyj{
+	height: 380px;
+}
+.yangp .title, .shenpyj .title{
+	margin-bottom: 20px;
+}
+.title{
+	padding-left: 4.8%;
+	height: 20px;
+	line-height: 20px;
+	color: #999999;
+	font-size: 14px;
+}
+.name{
+	padding-left: 4.8%;
+	height: 40px;
+	line-height: 40px;
+	font-size: 18px;
+	color: #0B0B0B;
+}
+.name .zhuangt{
+	float: right;
+	padding-right: 20px;
+	color: #EA8F59;
+	font-size: 14px;
+}
+.name .dian{
+	width: 4px;
+	height: 4px;
+	border-radius: 2px;
+	background: #EA8F59;
+	float: right;
+	margin:20px 6px 0 0;
+}
+.model{
+	height: 21px;
+	line-height: 21px;
+	margin-bottom: 10px;
+	padding-left: 4.8%;
+	font-size: 15px;
+}
+.model .left{
+	width: 90px;
+	float: left;
+	color: $666;
+}
+.model .right{
+	float: left;
+	color: #333;
 }

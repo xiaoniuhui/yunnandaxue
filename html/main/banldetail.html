@@ -16,7 +16,6 @@
 			box-shadow: none;
 		}
 		.title .mui-action-back{
-			font-size: 20px;
 			color: white;
 		}
 		.title h1{
@@ -24,13 +23,110 @@
 			color: white;
 			font-weight: bold;
 		}
+		.mui-scrollbar {
+            display: none !important;
+        }
+
 	</style>
 	<body>
+		<div class="banner_bg"></div>
 		<header class="mui-bar mui-bar-nav title">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">办理详情</h1>
-		</header>
-		<div class="banner_bg"></div>
-		<div class="shenpjd"></div>
+		</header>		
+		<!-- 审批轨迹 -->
+		<div class="shenp">
+			<div class="shenpjd daitj">
+				<span class="yuan"></span>
+			</div>
+			<div class="shenpjd">
+				<span class="xian"></span>
+				<span class="yuan"></span>
+			</div>
+			<div class="shenpjd">
+				<span class="xian"></span>
+				<span class="yuan"></span>
+			</div>
+			<div class="shenpjd">
+				<span class="xian"></span>
+				<span class="yuan"></span>
+			</div>
+			<div class="shenpjd">
+				<span class="xian"></span>
+				<span class="yuan"></span>
+			</div>
+		</div>
+		<div class="shenptxt">
+			<p>待提交</p>
+			<p>待审批</p>
+			<p>待机组费用核定</p>
+			<p>待用户确认</p>
+			<p>已完成确认</p>
+		</div>
+		<!-- 详情内容 -->
+		<div class="mui-scroll-wrapper" id="detail">
+			<div class="mui-scroll">
+				<div class="yiqsb content">
+					<din class="titleLogo"></din>
+					<p class="title">仪器设备信息</p>
+					<p class="name"><span class="yiqmc">核磁共振波谱仪</span><span class="zhuangt">待审批</span><span class="dian"></span></p>
+					<p class="shebph model"><span class="left">设备编号</span><span class="right">201848484848</span></p>
+					<p class="yiqfzr model"><span class="left">仪器负责人</span><span class="right">张三</span></p>
+					<p class="cunfdd model"><span class="left">存放地点</span><span class="right">仓库</span></p>
+					<p class="fuzrdh model"><span class="left">负责人电话</span><span class="right">13512345678</span></p>
+					<p class="guigxh model"><span class="left">规格型号</span><span class="right">AGF-DD00014</span></p>
+				</div>
+				<div class="yangp content">
+					<din class="titleLogo"></din>
+					<p class="title">样品信息</p>
+					<p class="shebph model"><span class="left">样品名称</span><span class="right">201848484848</span></p>
+					<p class="yiqfzr model"><span class="left">样品数量</span><span class="right">张三</span></p>
+					<p class="cunfdd model"><span class="left">期望完成时间</span><span class="right">仓库</span></p>
+					<p class="fuzrdh model"><span class="left">预约测试时间</span><span class="right">13512345678</span></p>
+					<p class="guigxh model"><span class="left">样品形态</span><span class="right">AGF-DD00014</span></p>
+					<p class="guigxh model"><span class="left">样品是否回收</span><span class="right">AGF-DD00014</span></p>
+					<p class="guigxh model"><span class="left">样品保存要求</span><span class="right">AGF-DD00014</span></p>
+					<p class="guigxh model"><span class="left">检测要求</span><span class="right">AGF-DD00014</span></p>
+				</div>
+				<div class="shenpyj content">
+					<din class="titleLogo"></din>
+					<p class="title">审批意见及信息</p>
+					<p class="shebph model"><span class="left">审批状态</span><span class="right">审核通过</span></p>
+					<p class="yiqfzr model"><span class="left">审批意见</span><span class="right">同意</span></p>
+					<p class="cunfdd model"><span class="left">所属账本</span><span class="right">2018-12</span></p>
+					<p class="fuzrdh model"><span class="left">使用性质</span><span class="right">科研</span></p>
+					<p class="guigxh model"><span class="left">所属课题组</span><span class="right">动态共价</span></p>
+					<p class="guigxh model"><span class="left">申请人姓名</span><span class="right">沈喜然</span></p>
+					<p class="guigxh model"><span class="left">申请人地址</span><span class="right">云南大学</span></p>
+					<p class="guigxh model"><span class="left">申请人单位</span><span class="right">云南大学</span></p>
+					<p class="guigxh model"><span class="left">Email</span><span class="right">jiuqi.com.cn</span></p>
+					<p class="guigxh model"><span class="left">电话</span><span class="right">13512345678</span></p>
+				</div>
+			</div>
+		</div>
 	</body>
+	<script src="../../js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var options = {
+			 scrollY: true, //是否竖向滚动
+			 scrollX: false, //是否横向滚动
+			 startX: 0, //初始化时滚动至x
+			 startY: 0, //初始化时滚动至y
+			 indicators: true, //是否显示滚动条
+			 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+			 bounce: true //是否启用回弹
+			}
+			mui('.mui-scroll-wrapper').scroll({
+				deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+			});
+			//审批轨迹
+			var num = 2;
+			$('.shenpjd').eq(num-1).children('.shadow').css({opacity:'0.37'});
+			for(var i = 0; i < num; i++){
+				$('.shenpjd').eq(i).children('.yuan').css({background:'#EC742D'});
+				$('.shenpjd').eq(i).children('.xian').css({borderTop:'solid 1px #EC742D'});
+				$('.shenptxt').children('p').eq(i).css({color:'white'});
+			}
+	</script>
 </html>
