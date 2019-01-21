@@ -52,7 +52,7 @@
 		var stdcode=localStorage.stdcode;
 		$(function(){
 			if(localStorage.stdcode == '' || localStorage.stdcode == null || localStorage.stdcode ==undefined){
-				
+				console.log('未登录，不请求')
 			}else{
 				$.ajax({
 					type:'get',
