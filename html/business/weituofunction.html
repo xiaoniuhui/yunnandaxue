@@ -13,11 +13,11 @@
 		<div class="banner_bg"></div>
 		<div class="cardtab">
 			<ul>
-				<li class="active">待提交</li>
-				<li>待审批</li>
-				<li>待机组费用核定</li>
-				<li>待用户确认</li>
-				<li>已完成确认</li>
+				<li id="weituobanli_banli_daitijiao">待提交</li>
+				<li class="active" id="weituobanli_banli_daishenpi">待审批</li>
+				<li id="weituobanli_banli_daiheding">待机组费用核定</li>
+				<li id="weituobanli_banli_daiqueren">待用户确认</li>
+				<li id="weituobanli_banli_yiwancheng">已完成确认</li>
 			</ul>
 		</div>
 		<header class="mui-bar mui-bar-nav">
@@ -28,72 +28,32 @@
 			<div class="mui-scroll-wrapper" id="cardinfo">
 				<div class="mui-scroll">
 					<div class="cards">
-						<div class="card">
-							<div class="cardinfo">
-								<div class="title">
-									<span class="l">核磁共振波谱仪</span>
-									<span class="r">待机组核定费用</span>
+						<script type="text/template" id="tmp">
+							<% for (var i=0,l=info.length;i<l;i++) { %>
+								<div class="card">
+									<div class="cardinfo">
+										<div class="title">
+											<span class="l"><%=info[i].shebmc%></span>
+										</div>
+										<ul class="">
+											<li><span class="l">预约单号</span><span class="r"><%=info[i].billcode%></span></li>
+											<li><span class="l">委托人人</span><span class="r"><%=info[i].weitr%></span></li>
+											<li><span class="l">委托人电话</span><span class="r"><%=info[i].weitrdh%></span></li>
+											<li><span class="l">预约测试时间</span><span class="r"><%=info[i].yuycssj%></span></li>
+											<li><span class="l">期望完成时间</span><span class="r"><%=info[i].qiwwcsj%></span></li>
+											<li><span class="l">管理员</span><span class="r"><%=info[i].fuzr%></span></li>
+											<li><span class="l">管理员电话</span><span class="r"><%=info[i].fuzrdh%></span></li>
+										</ul>
+									</div>
+									<div class="btngroup">
+										<span class="detail" data-state="<%=info[i].state%>" data-recid="<%=info[i].recId%>">进入详情</span>
+										<% if (info[i].action != '1') { %>
+											<span class="handle action" data-recid="<%=info[i].recId%>"><%=info[i].action%></span>
+										<% } %>										
+									</div>
 								</div>
-								<ul class="">
-									<li><span class="l">申请人</span><span class="r">刘瑞雪</span></li>
-									<li><span class="l">预约单号</span><span class="r">20182019888886</span></li>
-									<li><span class="l">测试时间</span><span class="r">2019-01-18</span></li>
-									<li><span class="l">测试类别</span><span class="r">自助测试</span></li>
-									<li><span class="l">课题名称</span><span class="r">水分子课题组</span></li>
-									<li><span class="l">所属账本</span><span class="r">水分子课题组</span></li>
-									<li><span class="l">仪器负责人</span><span class="r">袁明全</span></li>
-									<li><span class="l">负责人电话</span><span class="r">15711168045</span></li>
-								</ul>
-							</div>
-							<div class="btngroup">
-								<span class="detail">进入详情</span>
-								<span class="handle action">处理</span>
-							</div>
-						</div>
-						<div class="card">
-							<div class="cardinfo">
-								<div class="title">
-									<span class="l">核磁共振波谱仪</span>
-									<span class="r">待机组核定费用</span>
-								</div>
-								<ul class="">
-									<li><span class="l">申请人</span><span class="r">刘瑞雪</span></li>
-									<li><span class="l">预约单号</span><span class="r">20182019888886</span></li>
-									<li><span class="l">测试时间</span><span class="r">2019-01-18</span></li>
-									<li><span class="l">测试类别</span><span class="r">自助测试</span></li>
-									<li><span class="l">课题名称</span><span class="r">水分子课题组</span></li>
-									<li><span class="l">所属账本</span><span class="r">水分子课题组</span></li>
-									<li><span class="l">仪器负责人</span><span class="r">袁明全</span></li>
-									<li><span class="l">负责人电话</span><span class="r">15711168045</span></li>
-								</ul>
-							</div>
-							<div class="btngroup">
-								<span class="detail">进入详情</span>
-								<span class="handle action">处理</span>
-							</div>
-						</div>
-						<div class="card">
-							<div class="cardinfo">
-								<div class="title">
-									<span class="l">核磁共振波谱仪</span>
-									<span class="r">待机组核定费用</span>
-								</div>
-								<ul class="">
-									<li><span class="l">申请人</span><span class="r">刘瑞雪</span></li>
-									<li><span class="l">预约单号</span><span class="r">20182019888886</span></li>
-									<li><span class="l">测试时间</span><span class="r">2019-01-18</span></li>
-									<li><span class="l">测试类别</span><span class="r">自助测试</span></li>
-									<li><span class="l">课题名称</span><span class="r">水分子课题组</span></li>
-									<li><span class="l">所属账本</span><span class="r">水分子课题组</span></li>
-									<li><span class="l">仪器负责人</span><span class="r">袁明全</span></li>
-									<li><span class="l">负责人电话</span><span class="r">15711168045</span></li>
-								</ul>
-							</div>
-							<div class="btngroup">
-								<span class="detail">进入详情</span>
-								<span class="handle action">处理</span>
-							</div>
-						</div>
+							<% } %>
+						</script>
 					</div>
 				</div>
 			</div>
@@ -102,6 +62,7 @@
 	</body>
 	<script type="text/javascript" src="../../js/mui.min.js"></script>
 	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/template-native.js"></script>
 	<script>
 		mui.init({
 		});		
@@ -127,12 +88,11 @@
 					url:url+'/jqzw/server',
 					type:'get',
 					dataType:'json',
-					data:{service:"SelfHelpService",params:'['+stdcode+',zizhubanli_banli_daishenpi]',method:"getSelfHelplist"},
+					data:{service:"DelegationService",params:'['+stdcode+',weituobanli_banli_daishenpi]',method:"getDelegationlist"},
 					beforeSend:function(){
 						plus.nativeUI.showWaiting('正在加载...')
 					},
 					success:function(info){
-						console.log(JSON.stringify(info))
 						if(info.type == 'success'){
 							var html = template('tmp',{info:info.value});
 							$('.cards').html(html);
@@ -146,19 +106,50 @@
 					}
 				});
 				$('.cardtab ul li').on('click',function(){
+					if($(this).hasClass('active')){
+						return;
+					}
 					$(this).addClass('active').siblings('li').removeClass('active');
-					var i=$(this).index();
+					var dqzt = $(this).attr('id');
+					$.ajax({
+						url:url+'/jqzw/server',
+						type:'get',
+						dataType:'json',
+						data:{service:"DelegationService",params:'['+stdcode+','+dqzt+']',method:"getDelegationlist"},
+						beforeSend:function(){
+							plus.nativeUI.showWaiting('正在加载...')
+						},
+						success:function(info){
+							console.log(JSON.stringify(info))
+							if(info.type == 'success'){
+								var html = template('tmp',{info:info.value});
+								$('.cards').html(html);	
+							}
+						},
+						error:function(err){
+							console.log(JSON.stringify(err))
+						},
+						complete:function(){
+							plus.nativeUI.closeWaiting();
+						}
+					});
 				});
 				//点击跳转页面
 				$('.cards').on('click','.detail',function(){
+					var recid=$(this).attr('data-recid');
+					var state=$(this).attr('data-state');
 					mui.openWindow({
-						url:'./banldetail.html',
+						url:'./weituobanldetail.html',
 						styles: {
 							popGesture: 'close',
 							scrollIndicator: "none"
 						},
 						waiting: {
 							autoShow: false
+						},
+						extras:{
+							recid:recid,
+							state:state
 						}
 					});
 				});
