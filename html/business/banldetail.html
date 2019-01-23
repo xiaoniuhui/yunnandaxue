@@ -47,67 +47,93 @@
 		<!-- 详情内容 -->
 		<div class="mui-scroll-wrapper" id="detail">
 			<div class="mui-scroll">
-				<div class="yiqsb content">
-					<din class="titleLogo"></din>
-					<p class="title">仪器设备信息</p>
-					<p class="name"><span class="yiqmc">核磁共振波谱仪</span><span class="zhuangt">待审批</span><span class="dian"></span></p>
-					<p class="shebph model"><span class="left">设备编号</span><span class="right">201848484848</span></p>
-					<p class="yiqfzr model"><span class="left">仪器负责人</span><span class="right">张三</span></p>
-					<p class="cunfdd model"><span class="left">存放地点</span><span class="right">仓库</span></p>
-					<p class="fuzrdh model"><span class="left">负责人电话</span><span class="right">13512345678</span></p>
-					<p class="guigxh model"><span class="left">规格型号</span><span class="right">AGF-DD00014</span></p>
-				</div>
-				<div class="yangp content">
-					<din class="titleLogo"></din>
-					<p class="title">样品信息</p>
-					<p class="shebph model"><span class="left">样品名称</span><span class="right">201848484848</span></p>
-					<p class="yiqfzr model"><span class="left">样品数量</span><span class="right">张三</span></p>
-					<p class="cunfdd model"><span class="left">期望完成时间</span><span class="right">仓库</span></p>
-					<p class="fuzrdh model"><span class="left">预约测试时间</span><span class="right">13512345678</span></p>
-					<p class="guigxh model"><span class="left">样品形态</span><span class="right">AGF-DD00014</span></p>
-					<p class="guigxh model"><span class="left">样品是否回收</span><span class="right">AGF-DD00014</span></p>
-					<p class="guigxh model"><span class="left">样品保存要求</span><span class="right">AGF-DD00014</span></p>
-					<p class="guigxh model"><span class="left">检测要求</span><span class="right">AGF-DD00014</span></p>
-				</div>
-				<div class="shenpyj content">
-					<din class="titleLogo"></din>
-					<p class="title">审批意见及信息</p>
-					<p class="shebph model"><span class="left">审批状态</span><span class="right">审核通过</span></p>
-					<p class="yiqfzr model"><span class="left">审批意见</span><span class="right">同意</span></p>
-					<p class="cunfdd model"><span class="left">所属账本</span><span class="right">2018-12</span></p>
-					<p class="fuzrdh model"><span class="left">使用性质</span><span class="right">科研</span></p>
-					<p class="guigxh model"><span class="left">所属课题组</span><span class="right">动态共价</span></p>
-					<p class="guigxh model"><span class="left">申请人姓名</span><span class="right">沈喜然</span></p>
-					<p class="guigxh model"><span class="left">申请人地址</span><span class="right">云南大学</span></p>
-					<p class="guigxh model"><span class="left">申请人单位</span><span class="right">云南大学</span></p>
-					<p class="guigxh model"><span class="left">Email</span><span class="right">jiuqi.com.cn</span></p>
-					<p class="guigxh model"><span class="left">电话</span><span class="right">13512345678</span></p>
-				</div>
+				<script type="text/template" id="tmp">
+					<div class="yiqsb content">
+						<din class="titleLogo"></din>
+						<p class="title">仪器设备信息</p>
+						<p class="name"><span class="yiqmc"><%=info.shebmc%></span></p>
+						<p class="shebph model"><span class="left">订单编号</span><span class="right"><%=info.billcode%></span></p>
+						<p class="yiqfzr model"><span class="left">仪器负责人</span><span class="right"><%=info.fuzr%></span></p>
+						<p class="cunfdd model"><span class="left">存放地点</span><span class="right"><%=info.shebmc%></span></p>
+						<p class="fuzrdh model"><span class="left">负责人电话</span><span class="right"><%=info.fuzrdh%></span></p>
+						<p class="guigxh model"><span class="left">规格型号</span><span class="right"><%=info.guigxh%></span></p>
+					</div>
+					<div class="yangp content">
+						<din class="titleLogo"></din>
+						<p class="title">样品信息</p>
+						<p class="shebph model"><span class="left">样品名称</span><span class="right"><%=info.yangpmc%></span></p>
+						<p class="yiqfzr model"><span class="left">样品数量</span><span class="right"><%=info.yangpsl%></span></p>
+						<p class="cunfdd model"><span class="left">预约开始时间</span><span class="right"><%=info.yuyks%></span></p>
+						<p class="fuzrdh model"><span class="left">预约结束时间</span><span class="right"><%=info.yuyjs%></span></p>
+						<p class="guigxh model"><span class="left">样品形态</span><span class="right"><%=info.yangpxt%></span></p>
+					</div>
+					<div class="shenpyj content">
+						<din class="titleLogo"></din>
+						<p class="title">审批意见及信息</p>
+						<p class="cunfdd model"><span class="left">所属账本</span><span class="right"><%=info.accountcode%></span></p>
+						<p class="guigxh model"><span class="left">所属课题组</span><span class="right"><%=info.ketmc%></span></p>
+						<p class="fuzrdh model"><span class="left">使用性质</span><span class="right"><%=info.shiyxz%></span></p>						
+						<p class="guigxh model"><span class="left">申请人姓名</span><span class="right"><%=info.shenqr%></span></p>
+						<p class="guigxh model"><span class="left">申请人单位</span><span class="right"><%=info.shenqrdw%></span></p>
+						<p class="guigxh model"><span class="left">Email</span><span class="right"><%=info.shenqryx%></span></p>
+						<p class="guigxh model"><span class="left">电话</span><span class="right"><%=info.shenqrdh%></span></p>
+					</div>
+				</script>
 			</div>
 		</div>
 	</body>
 	<script src="../../js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/template-native.js"></script>
 	<script type="text/javascript">
-		var options = {
-			 scrollY: true, //是否竖向滚动
-			 scrollX: false, //是否横向滚动
-			 startX: 0, //初始化时滚动至x
-			 startY: 0, //初始化时滚动至y
-			 indicators: true, //是否显示滚动条
-			 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
-			 bounce: true //是否启用回弹
-			}
-			mui('.mui-scroll-wrapper').scroll({
-				deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+		mui.init({
+		});
+		mui.plusReady(function() {			
+			$(function(){
+				var url=localStorage.url;
+				var stdcode=localStorage.stdcode;
+				var options = {
+					 scrollY: true, //是否竖向滚动
+					 scrollX: false, //是否横向滚动
+					 startX: 0, //初始化时滚动至x
+					 startY: 0, //初始化时滚动至y
+					 indicators: true, //是否显示滚动条
+					 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+					 bounce: true //是否启用回弹
+				}
+				mui('.mui-scroll-wrapper').scroll({
+					deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+				});
+				//审批轨迹
+				var self = plus.webview.currentWebview();
+				var num = self.state;//1-5
+				$('.shenpjd').eq(num-1).children('.shadow').css({opacity:'0.37'});
+				for(var i = 0; i < num; i++){
+					$('.shenpjd').eq(i).children('.yuan').css({background:'#EC742D'});
+					$('.shenpjd').eq(i).children('.xian').css({borderTop:'solid 1px #EC742D'});
+					$('.shenptxt').children('p').eq(i).css({color:'white'});
+				}
+				//详情
+				var recid = self.recid;
+				$.ajax({
+					url:url+'/jqzw/server',
+					type:'get',
+					dataType:'json',
+					data:{service:"SelfHelpService",params:'['+recid+']',method:"getSelfHelDetail"},
+					success:function(info){
+						console.log(JSON.stringify(info))
+						if(info.type == 'success'){
+							var html = template('tmp',{info:info.value});
+							$('.mui-scroll').html(html);
+						}
+					},
+					error:function(err){
+						console.log(JSON.stringify(err))
+					}
+				});
 			});
-			//审批轨迹
-			var num = 5;//1-5
-			$('.shenpjd').eq(num-1).children('.shadow').css({opacity:'0.37'});
-			for(var i = 0; i < num; i++){
-				$('.shenpjd').eq(i).children('.yuan').css({background:'#EC742D'});
-				$('.shenpjd').eq(i).children('.xian').css({borderTop:'solid 1px #EC742D'});
-				$('.shenptxt').children('p').eq(i).css({color:'white'});
-			}
+		});
+		
+			
 	</script>
 </html>

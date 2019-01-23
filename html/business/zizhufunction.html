@@ -13,8 +13,8 @@
 		<div class="banner_bg"></div>
 		<div class="cardtab">
 			<ul>
-				<li class="active" id="zizhubanli_banli_daitijiao">待提交</li>
-				<li id="zizhubanli_banli_daishenpi">待审批</li>
+				<li  id="zizhubanli_banli_daitijiao">待提交</li>
+				<li class="active" id="zizhubanli_banli_daishenpi">待审批</li>
 				<li id="zizhubanli_banli_daiheding">待机组费用核定</li>
 				<li id="zizhubanli_banli_daiqueren">待用户确认</li>
 				<li id="zizhubanli_banli_yiwancheng">已完成确认</li>
@@ -36,16 +36,19 @@
 											<span class="l"><%=info[i].shebmc%></span>
 										</div>
 										<ul class="">
-											<li><span class="l">申请人</span><span class="r"><%=info[i].shenqr%></span></li>
 											<li><span class="l">预约单号</span><span class="r"><%=info[i].billcode%></span></li>
-											<li><span class="l">测试时间</span><span class="r"><%=info[i].billtime%></span></li>
-											<li><span class="l">负责人电话</span><span class="r"><%=info[i].shenqrdh%></span></li>
+											<li><span class="l">申请人</span><span class="r"><%=info[i].shenqr%></span></li>
+											<li><span class="l">申请人电话</span><span class="r"><%=info[i].shenqrdh%></span></li>
+											<li><span class="l">预约开始时间</span><span class="r"><%=info[i].yuyks%></span></li>
+											<li><span class="l">预约结束时间</span><span class="r"><%=info[i].yuyjs%></span></li>
+											<li><span class="l">管理员</span><span class="r"><%=info[i].fuzr%></span></li>
+											<li><span class="l">管理员电话</span><span class="r"><%=info[i].fuzrdh%></span></li>
 										</ul>
 									</div>
 									<div class="btngroup">
-										<span class="detail">进入详情</span>
+										<span class="detail" data-state="<%=info[i].state%>" data-recid="<%=info[i].recId%>">进入详情</span>
 										<% if (info[i].action != '1') { %>
-											<span class="handle action"><%=info[i].action%></span>
+											<span class="handle action" data-recid="<%=info[i].recId%>"><%=info[i].action%></span>
 										<% } %>										
 									</div>
 								</div>
@@ -88,8 +91,7 @@
 					beforeSend:function(){
 						plus.nativeUI.showWaiting('正在加载...')
 					},
-					success:function(info){
-						console.log(JSON.stringify(info))
+					success:function(info){						
 						if(info.type == 'success'){
 							var html = template('tmp',{info:info.value});
 							$('.cards').html(html);
@@ -117,6 +119,7 @@
 							plus.nativeUI.showWaiting('正在加载...')
 						},
 						success:function(info){
+							console.log(JSON.stringify(info))
 							if(info.type == 'success'){
 								var html = template('tmp',{info:info.value});
 								$('.cards').html(html);	
@@ -130,8 +133,10 @@
 						}
 					});
 				});
-				//点击跳转页面
+				//点击详情跳转页面
 				$('.cards').on('click','.detail',function(){
+					var recid=$(this).attr('data-recid');
+					var state=$(this).attr('data-state');
 					mui.openWindow({
 						url:'./banldetail.html',
 						styles: {
@@ -140,8 +145,18 @@
 						},
 						waiting: {
 							autoShow: false
+						},
+						extras:{
+							recid:recid,
+							state:state
 						}
 					});
+				});
+				//点击按钮事件
+				$('.cards').on('click','.action',function(){
+					var recid=$(this).attr('data-recid');
+					console.log(recid);
+					
 				});
 			});
 		});
