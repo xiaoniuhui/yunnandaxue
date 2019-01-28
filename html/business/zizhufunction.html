@@ -15,6 +15,7 @@
 			<ul>
 				<li  id="zizhubanli_banli_daitijiao">待提交</li>
 				<li class="active" id="zizhubanli_banli_daishenpi">待审批</li>
+				<li id="zizhubanli_banli_daiceshi">待测试</li>
 				<li id="zizhubanli_banli_daiheding">待机组费用核定</li>
 				<li id="zizhubanli_banli_daiqueren">待用户确认</li>
 				<li id="zizhubanli_banli_yiwancheng">已完成确认</li>
@@ -47,8 +48,8 @@
 									</div>
 									<div class="btngroup">
 										<span class="detail" data-state="<%=info[i].state%>" data-recid="<%=info[i].recId%>">进入详情</span>
-										<% if (info[i].action != '1') { %>
-											<span class="handle action" data-recid="<%=info[i].recId%>"><%=info[i].action%></span>
+										<% if (info[i].action != '1') { %>											
+											<span class="handle action" data-shijje="<%=info[i].shijje%>" data-cesxm="<%=info[i].cesxm%>" data-yuancsxm="<%=info[i].yuancsxm%>"  data-ptguid="<%=info[i].ptguid%>" data-recid="<%=info[i].recId%>"><%=info[i].action%></span>
 										<% } %>										
 									</div>
 								</div>
@@ -154,10 +155,124 @@
 				});
 				//点击按钮事件
 				$('.cards').on('click','.action',function(){
+					if($(this).text() == '同意'){
 					var recid=$(this).attr('data-recid');
-					console.log(recid);
-					
+					var ptguid=$(this).attr('data-ptguid');	
+					var stdcode = localStorage.stdcode;
+					//默认登录,防止登录过期
+					$.ajax({
+						type:'get',
+						url:url+'/jqzw/login/log',
+						dataType:'json',
+						data:{username:stdcode,token:"tryagain"},
+						success:function(info){
+							if(info.type == 'success'){
+								$.ajax({
+									url:url+'/jqzw/server',
+									type:'get',
+									dataType:'json',
+									data:{service:"NeedToDoService",method:"InsertBoolean",params:recid+',true,ZIZCYSQD,'+ptguid+',审批同意'},
+									beforeSend:function(){
+										plus.nativeUI.showWaiting('正在提交...');						
+									},
+									success:function(info){
+										console.log(JSON.stringify(info))
+										if(info.value == 'success'){
+											window.location.reload();
+											mui.toast('提交成功')
+										}else{
+											window.location.reload();
+											mui.toast('提交失败，请重试')
+										}
+									},
+									error:function(err){
+										console.log(JSON.stringify(err))
+									},
+									complete:function(){
+										plus.nativeUI.closeWaiting();
+										console.log('complete')
+									}
+								});
+							}else{
+								mui.toast('登录失败，会话过期，请重新登录');
+							}
+						},
+						error:function(err){
+							mui.toast('登录失败，会话过期，请重新登录');
+						}
+					});
+					}					
 				});
+				//点击核定按钮页面
+				$('.cards').on('click','.handle',function(){
+					if($(this).text() == '核定'){
+						var obj={};
+						var recid = $(this).attr('data-recid');
+						var shijje = $(this).attr('data-shijje');
+						var biangje =0;//先写固定值
+						var lxcode = '01';//先写定值01增加 02减少
+						var yuancsxm =$(this).attr('data-yuancsxm');
+						var cesxm =$(this).attr('data-cesxm');
+						obj.recid=recid;
+						obj.biangje=biangje;
+						obj.shijje=shijje;
+						obj.lxcode=lxcode;
+						obj.yuancsxm=yuancsxm;
+						obj.cesxm=cesxm;
+						obj.beiz="备注测试信息";//后续需要修改
+						obj.ceslb="ZIZCYSQD";
+						mui.openWindow({
+							url: "./feiyongqueren.html",
+							styles: {
+								popGesture: 'close',
+								scrollIndicator: "none"
+							},
+							show: {
+								duration: 500
+							},
+							waiting: {
+								autoShow: true
+							},
+							extras:{
+								obj:obj
+							}
+						});
+					}
+				});
+				//确认费用按钮
+				$('.cards').on('click','.handle',function(){
+					if($(this).text() == '确认'){
+					var recid = $(this).attr('data-recid');
+					var shijje = $(this).attr('data-shijje');
+					console.log(shijje)
+					var json={};
+					json.recid=recid;
+					json.shijje=shijje;
+					json.ceslb="ZIZCYSQD";
+					json=JSON.stringify(json);
+					$.ajax({
+						url:url+'/jqzw/server',
+						type:'get',
+						dataType:'json',
+						data:{service:"BigEquipmentService",method:"saveDelegationCostAccount",params:json},
+						beforeSend:function(){
+							plus.nativeUI.showWaiting('正在提交...');
+						},
+						success:function(info){
+							if(info.type == 'success'){
+								mui.toast('费用确认成功')
+								location.reload();
+							}						
+						},
+						error:function(err){
+							console.log(JSON.stringify(err))
+						},
+						complete:function(){
+							plus.nativeUI.closeWaiting();
+						}
+					})
+					}
+				});	
 			});
 		});
 		

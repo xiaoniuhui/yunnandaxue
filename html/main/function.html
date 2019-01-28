@@ -63,6 +63,7 @@
 					dataType:'json',
 					data:{service:"FunctionService",method:"getFunctionlist",params:stdcode},
 					success:function(info){
+						console.log(JSON.stringify(info))
 						if(info.type == 'success'){
 							var func_html=template('func_tmp',{info:info.value.function});
 							$('.cont').html(func_html);

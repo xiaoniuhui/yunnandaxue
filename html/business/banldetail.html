@@ -8,6 +8,10 @@
 		<title>自助测试单详情</title>
 		<link rel="stylesheet" href="../../css/mui.min.css" />
 		<link rel="stylesheet" type="text/css" href="../../css/banldetail.css"/>
+		<style>
+			.shenp .shenpjd .xian{width: 40%;}
+			.shenpjd{width: 20%;float: left;}
+		</style>
 	</head>
 	<body>
 		<div class="banner_bg"></div>
@@ -36,10 +40,15 @@
 				<span class="xian"></span>
 				<span class="yuan"></span>
 			</div>
+			<div class="shenpjd">
+				<span class="xian"></span>
+				<span class="yuan"></span>
+			</div>
 		</div>
 		<div class="shenptxt">
 			<p>待提交</p>
 			<p>待审批</p>
+			<p>待测试</p>
 			<p>待机组费用核定</p>
 			<p>待用户确认</p>
 			<p>已完成确认</p>
@@ -120,7 +129,6 @@
 					dataType:'json',
 					data:{service:"SelfHelpService",params:'['+recid+']',method:"getSelfHelDetail"},
 					success:function(info){
-						console.log(JSON.stringify(info))
 						if(info.type == 'success'){
 							var html = template('tmp',{info:info.value});
 							$('.mui-scroll').html(html);
