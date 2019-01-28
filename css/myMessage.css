@@ -3,10 +3,10 @@
 	padding: 0;
 }
 .cont{
-	margin-top: 54px;
+	margin-top: 44px;
 	background-color: #FFFFFF;
 	width:100%;
-	min-height: 500px;	
+	min-height: 736px;	
 }
 .topTab{
 	width:100%;
@@ -60,7 +60,7 @@
 .list span.title{
 	display: block;
 	font-family: PingFangSC-Regular;
-	font-size: 14px;
+	font-size: 18px;
 	color: #0B0B0B;
 	line-height: 1;
 	margin-bottom: 10px;
@@ -68,7 +68,7 @@
 .list span.time{
 	display: block;
 	font-family: PingFangSC-Regular;
-	font-size: 12px;
+	font-size: 16px;
 	color: #666666;	
 	line-height: 1;
 }
