@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>功能</title>
+		<link rel="stylesheet" href="../../css/mui.min.css">	
+		<link rel="stylesheet" href="../../css/function.css">	
+	</head>
+	<body>
+		<div class="cont">
+			<script type="text/template" id="func_tmp">
+				<% for (var i=0,l=info.length;i<l;i++) { %>
+					<div class="list">
+						<div class="title"><%=info[i].title%></div>
+						<div class="items">
+						<% for (var k=0,kl=info[i].table_func.length;k<kl;k++) { %>
+								<div class="item" data-pageurl="<%=info[i].table_func[k].page%>">
+									<div class="imgbox">
+										<img src="<%=info[i].table_func[k].imgurl%>" alt="">						
+									</div>
+									<span><%=info[i].table_func[k].iconname%></span>
+								</div>
+						<% } %>
+						</div>
+					</div>
+				<% } %>
+			</script>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script src="../../js/common.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/template-native.js"></script>
+	<script>
+		mui.init({
+			keyEventBind: {//返回设置
+				backbutton: false
+			},
+			swipeBack: false,
+			statusBarBackground: '#f7f7f7',
+			gestureConfig: {  
+				doubletap: true
+			}
+		});			
+		//创建子页面，首个选项卡页面显示，其它均隐藏；
+		mui.plusReady(function(){
+		});
+		var url=localStorage.url;
+		var stdcode=localStorage.stdcode;
+		$(function(){
+			if(localStorage.stdcode == '' || localStorage.stdcode == null || localStorage.stdcode ==undefined){
+				console.log('未登录，不请求')
+			}else{
+				$.ajax({
+					type:'get',
+					url:url+'/jqzw/server',
+					dataType:'json',
+					data:{service:"FunctionService",method:"getFunctionlist",params:stdcode},
+					success:function(info){
+						console.log(JSON.stringify(info.value.function))
+						if(info.type == 'success'){
+							var func_html=template('func_tmp',{info:info.value.function});
+							$('.cont').html(func_html);
+						}
+					},
+					error:function(err){
+						console.log(JSON.stringify(err))
+					}
+				})
+			}
+			//页面跳转链接
+			$('.cont').on('click','.list .item',function(){
+				var pageurl=$(this).attr('data-pageurl');
+				mui.openWindow({
+					url:pageurl,
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: false
+					}
+				});
+			})
+			
+			
+			
+			
+		});
+		
+		
+		
+	</script>
+</html>
