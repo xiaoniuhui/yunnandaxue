@@ -1,26 +1,36 @@
+body{
+	background-color: #F4F4F4;
+}
 .cont{
-	width:100%;
-	padding-top:20px;
+	width:95%;
+	margin: 0 auto;
+	margin-top: 54px;
 }
 .cont .title{
-	padding-left: 20px;
-	font-size: 20px;
-	font-family: PingFangSC-Regular;
-	font-size: 18px;
-	color: #333333;
+	line-height: 1;	
+	font-family: PingFangSC-Medium;
+	font-size: 16px;
+	color: #0B0B0B;
+	border-left: 4px solid #50E3C2;
+	padding-left: 16px;
 } 
 .list{
 	margin-bottom: 15px;
-	background-color: #FFFFFF;
-	padding-top: 15px;
+	padding-top: 20px;
+	background-color: #FFFFFF;	
+	border-radius: 5px;	
 }
 .items{
 	overflow: hidden;
+	margin-top: 20px;
+	border-top: 1px solid #F4F4F4;
 }
 .list .items .item{	
-	width:25%;
-	height: 72px;
+	width:33%;
 	float: left;
+	border-bottom: 1px solid #F4F4F4;
+	border-right: 1px solid #F4F4F4;
+	height: 108px;
 }
 .list .item{
 	text-align: center;
@@ -29,7 +39,7 @@
 	width: 32px;
 	height: 32px;
 	margin: 0 auto;
-	margin-top: 15px;	
+	margin-top: 30px;	
 }
 .item span{
 	font-family: PingFangSC-Regular;

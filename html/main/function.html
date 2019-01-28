@@ -10,6 +10,9 @@
 		<link rel="stylesheet" href="../../css/function.css">	
 	</head>
 	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">功能</h1>
+		</header>
 		<div class="cont">
 			<script type="text/template" id="func_tmp">
 				<% for (var i=0,l=info.length;i<l;i++) { %>
@@ -60,7 +63,6 @@
 					dataType:'json',
 					data:{service:"FunctionService",method:"getFunctionlist",params:stdcode},
 					success:function(info){
-						console.log(JSON.stringify(info.value.function))
 						if(info.type == 'success'){
 							var func_html=template('func_tmp',{info:info.value.function});
 							$('.cont').html(func_html);
