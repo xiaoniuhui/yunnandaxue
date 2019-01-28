@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>委托测试单详情</title>
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/banldetail.css"/>
+	</head>
+	<body>
+		<div class="banner_bg"></div>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: #FFFFFF;"></a>
+			<h1 class="mui-title">委托测试单详情</h1>
+		</header>
+		<!-- 审批轨迹 -->
+		<div class="shenp">
+			<div class="shenpjd daitj">
+				<span class="yuan"></span>
+			</div>
+			<div class="shenpjd">
+				<span class="xian"></span>
+				<span class="yuan"></span>
+			</div>
+			<div class="shenpjd">
+				<span class="xian"></span>
+				<span class="yuan"></span>
+			</div>
+			<div class="shenpjd">
+				<span class="xian"></span>
+				<span class="yuan"></span>
+			</div>
+			<div class="shenpjd">
+				<span class="xian"></span>
+				<span class="yuan"></span>
+			</div>
+		</div>
+		<div class="shenptxt">
+			<p>待提交</p>
+			<p>待审批</p>
+			<p>待机组费用核定</p>
+			<p>待用户确认</p>
+			<p>已完成确认</p>
+		</div>
+		<!-- 详情内容 -->
+		<div class="mui-scroll-wrapper" id="detail">
+			<div class="mui-scroll">
+				<script type="text/template" id="tmp">
+					<div class="yiqsb content">
+						<din class="titleLogo"></din>
+						<p class="title">仪器设备信息</p>
+						<p class="name"><span class="yiqmc"><%=info.shebmc%></span></p>
+						<p class="shebph model"><span class="left">订单编号</span><span class="right"><%=info.billcode%></span></p>
+						<p class="yiqfzr model"><span class="left">仪器负责人</span><span class="right"><%=info.fuzr%></span></p>
+						<p class="fuzrdh model"><span class="left">负责人电话</span><span class="right"><%=info.fuzrdh%></span></p>
+						<p class="guigxh model"><span class="left">规格型号</span><span class="right"><%=info.guigxh%></span></p>
+					</div>
+					<div class="yangp content">
+						<din class="titleLogo"></din>
+						<p class="title">样品信息</p>
+						<p class="shebph model"><span class="left">样品名称</span><span class="right"><%=info.yangpmc%></span></p>
+						<p class="yiqfzr model"><span class="left">样品数量</span><span class="right"><%=info.yangpsl%></span></p>
+						<p class="cunfdd model"><span class="left">预约测试时间</span><span class="right"><%=info.yuycssj%></span></p>
+						<p class="fuzrdh model"><span class="left">期望完成时间</span><span class="right"><%=info.qiwwcsj%></span></p>
+						<p class="guigxh model"><span class="left">样品形态</span><span class="right"><%=info.yangpxt%></span></p>
+					</div>
+					<div class="shenpyj content">
+						<din class="titleLogo"></din>
+						<p class="title">审批意见及信息</p>
+						<p class="cunfdd model"><span class="left">所属账本</span><span class="right"><%=info.accountcode%></span></p>
+						<p class="guigxh model"><span class="left">所属课题组</span><span class="right"><%=info.ketmc%></span></p>
+						<p class="fuzrdh model"><span class="left">使用性质</span><span class="right"><%=info.xiangmlx%></span></p>						
+						<p class="guigxh model"><span class="left">委托人姓名</span><span class="right"><%=info.weitr%></span></p>
+						<p class="guigxh model"><span class="left">委托人单位</span><span class="right"><%=info.weitrdh%></span></p>
+						<p class="guigxh model"><span class="left">Email</span><span class="right"><%=info.weitryx%></span></p>
+						<p class="guigxh model"><span class="left">委托人电话</span><span class="right"><%=info.weitrdh%></span></p>
+					</div>
+				</script>
+			</div>
+		</div>
+	</body>
+	<script src="../../js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/template-native.js"></script>
+	<script type="text/javascript">
+		mui.init({
+		});
+		mui.plusReady(function() {			
+			$(function(){
+				var url=localStorage.url;
+				var stdcode=localStorage.stdcode;
+				var options = {
+					 scrollY: true, //是否竖向滚动
+					 scrollX: false, //是否横向滚动
+					 startX: 0, //初始化时滚动至x
+					 startY: 0, //初始化时滚动至y
+					 indicators: true, //是否显示滚动条
+					 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+					 bounce: true //是否启用回弹
+				}
+				mui('.mui-scroll-wrapper').scroll({
+					deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+				});
+				//审批轨迹
+				var self = plus.webview.currentWebview();
+				var num = self.state;//1-5
+				$('.shenpjd').eq(num-1).children('.shadow').css({opacity:'0.37'});
+				for(var i = 0; i < num; i++){
+					$('.shenpjd').eq(i).children('.yuan').css({background:'#EC742D'});
+					$('.shenpjd').eq(i).children('.xian').css({borderTop:'solid 1px #EC742D'});
+					$('.shenptxt').children('p').eq(i).css({color:'white'});
+				}
+				//详情
+				var recid = self.recid;
+				$.ajax({
+					url:url+'/jqzw/server',
+					type:'get',
+					dataType:'json',
+					data:{service:"DelegationService",params:'['+recid+']',method:"getDelegationDetail"},
+					success:function(info){
+						console.log(JSON.stringify(info))
+						if(info.type == 'success'){
+							var html = template('tmp',{info:info.value});
+							$('.mui-scroll').html(html);
+						}
+					},
+					error:function(err){
+						console.log(JSON.stringify(err))
+					}
+				});
+			});
+		});
+		
+			
+	</script>
+</html>
