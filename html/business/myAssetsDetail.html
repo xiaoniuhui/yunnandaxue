@@ -50,8 +50,10 @@
 					url:url_mh+'/jqzw/server',
 					data:{service:"InventoryClientService",method:"getPersonCardInfo",params:sortgbid+',1,20'},
 					dataType:'json',
+					beforeSend:function(){
+						plus.nativeUI.showWaiting('正在加载...');								
+					},
 					success:function(info){
-						console.log(JSON.stringify(info))
 						if( info.type == 'success'){
 							var html = template('tmp',{info:info.value});
 							$('.contBox').html(html);
@@ -59,6 +61,9 @@
 					},
 					error:function(err){
 						console.log(JSON.stringify(err))
+					},
+					complete:function(){
+						plus.nativeUI.closeWaiting();
 					}
 				})
 			});
