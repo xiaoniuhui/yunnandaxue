@@ -64,8 +64,13 @@
 	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
 	<script src="../../js/template-native.js"></script>
 	<script>		
-		
-		mui.plusReady(function() {
+		window.addEventListener('refresh', function(e){//执行刷新
+			function haha(){
+				console.log('haha')
+			}
+			haha();
+		});
+		mui.plusReady(function() {			
 			$(function(){
 				var options = {
 					 scrollY: true, //是否竖向滚动
@@ -243,33 +248,72 @@
 					if($(this).text() == '确认'){
 					var recid = $(this).attr('data-recid');
 					var shijje = $(this).attr('data-shijje');
-					console.log(shijje)
 					var json={};
 					json.recid=recid;
 					json.shijje=shijje;
 					json.ceslb="WEITCYSQD";
-					json=JSON.stringify(json);
-					$.ajax({
-						url:url+'/jqzw/server',
-						type:'get',
-						dataType:'json',
-						data:{service:"BigEquipmentService",method:"saveDelegationCostAccount",params:json},
-						beforeSend:function(){
-							plus.nativeUI.showWaiting('正在提交...');
-						},
-						success:function(info){
-							if(info.type == 'success'){
-								mui.toast('费用确认成功')
-								location.reload();
-							}						
-						},
-						error:function(err){
-							console.log(JSON.stringify(err))
-						},
-						complete:function(){
-							plus.nativeUI.closeWaiting();
+					mui.prompt('<label>使用评价：</label><input type="radio" name="shiypj" value="01" checked>非常满意<input type="radio" value="02" name="shiypj">基本满意<input type="radio" value="03" name="shiypj">一般<input type="radio" value="04" name="shiypj">不满意<input type="radio" value="05" name="shiypj">极差','评价内容','确认信息',['取消','确认'],function (e) {
+						if(e.index == '0'){
+							console.log('xuxiao')
+						}else{
+							var val = $('input[name="shiypj"]:checked').val()
+							if( val == '04' || val == '05' ){
+								if(e.value == ''){
+									mui.alert('请填写评价内容')
+								}else{
+									json.shiypj=val;
+									json.pingjnr=e.value
+									json=JSON.stringify(json);
+									$.ajax({
+										url:url+'/jqzw/server',
+										type:'get',
+										dataType:'json',
+										data:{service:"BigEquipmentService",method:"saveDelegationCostAccount",params:json},
+										beforeSend:function(){
+											plus.nativeUI.showWaiting('正在提交...');
+										},
+										success:function(info){
+											if(info.type == 'success'){
+												mui.toast('费用确认成功')
+												location.reload();
+											}						
+										},
+										error:function(err){
+											console.log(JSON.stringify(err))
+										},
+										complete:function(){
+											plus.nativeUI.closeWaiting();
+										}
+									})
+								}
+							}else{
+								json.shiypj=val;
+								json.pingjnr=e.value
+								json=JSON.stringify(json);
+								$.ajax({
+									url:url+'/jqzw/server',
+									type:'get',
+									dataType:'json',
+									data:{service:"BigEquipmentService",method:"saveDelegationCostAccount",params:json},
+									beforeSend:function(){
+										plus.nativeUI.showWaiting('正在提交...');
+									},
+									success:function(info){
+										if(info.type == 'success'){
+											mui.toast('费用确认成功')
+											location.reload();
+										}						
+									},
+									error:function(err){
+										console.log(JSON.stringify(err))
+									},
+									complete:function(){
+										plus.nativeUI.closeWaiting();
+									}
+								})
+							}
 						}
-					})
+					},'div')
 					}
 				});	
 			});

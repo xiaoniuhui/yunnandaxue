@@ -26,14 +26,26 @@
 	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
 	<script>		
 		$(function(){
-			
+			mui.init({
+				beforeback: function() {
+			　　　　 //获得父页面的webview
+					var list = plus.webview.currentWebview().opener();
+			　　　　 //触发父页面的自定义事件(refresh),从而进行刷新
+					mui.fire(list, 'refresh');
+					//返回true,继续页面关闭逻辑
+					return true;
+				}
+			});
 			var url=localStorage.url;
 			mui.plusReady(function() {
 				var self = plus.webview.currentWebview();
 				$('.price').text(self.obj.shijje+'元');
 				var obj=JSON.stringify(self.obj);
 				//核定确认提交
-				$('.btngrop').on('click',function(){
+				$('.btngrop').on('click',function(){					
+					plus.webview.currentWebview().close();
+					mui.back();
+					return;
 					$.ajax({
 						url:url+'/jqzw/server',
 						type:'get',
@@ -44,10 +56,10 @@
 							
 						},
 						success:function(info){
-							console.log(JSON.stringify(info))
 							mui.toast('核定费用成功');
 							plus.nativeUI.closeWaiting();
-							mui.back();
+							plus.webview.currentWebview().close();
+							// mui.back();
 						},
 						error:function(err){
 							console.log(JSON.stringify(err))
