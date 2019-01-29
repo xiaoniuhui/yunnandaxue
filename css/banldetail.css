@@ -19,7 +19,7 @@ html,body{
 	-moz-transform:translateZ(1px);
 	-o-transform:translateZ(1px);
 	transform:translateZ(1px);
-} 
+}
 .shenpjd{
 	width: 23%;	
 	float: left;
@@ -38,7 +38,8 @@ html,body{
 	height: 4px;
 	margin-right: 5px;
 }
-.shenp .daitj{
+
+.daitj{
 	width: 17px;
 }
 .shenpjd p{
@@ -92,13 +93,14 @@ html,body{
 	left: 0;
 }
 .yiqsb{
-	height: 258px;	
+	height: 278px;	
 }
 .yangp{
 	height: 220px;
 }
 .yangp .right{
 	padding-left: 10px;
+	word-wrap: break-word;
 }
 .shenpyj{
 	height: 290px;
@@ -147,6 +149,7 @@ html,body{
 	color: $666;
 }
 .model .right{
+	width: 250px;
 	float: left;
 	color: #333;
 }
