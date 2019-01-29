@@ -13,7 +13,9 @@ html,body{
 .shenp{
 	width: 90%;
 	height: 30px;
-	margin: 50px 0 0 6%;
+	/* margin: 50px 0 0 6%; */
+	margin: 0 auto;
+	margin-top: 50px;
 	z-index: 999;
 	-webkit-transform:translateZ(1px);
 	-moz-transform:translateZ(1px);
