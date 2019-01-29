@@ -77,8 +77,13 @@
 			//页面跳转链接
 			$('.cont').on('click','.list .item',function(){
 				var pageurl=$(this).attr('data-pageurl');
+				var webId = pageurl.split('/');
+				var ID = webId[2].substring(0,webId[2].length-5)
+				
+				console.log(ID)
 				mui.openWindow({
 					url:pageurl,
+					id:ID,
 					styles: {
 						popGesture: 'close',
 						scrollIndicator: "none"

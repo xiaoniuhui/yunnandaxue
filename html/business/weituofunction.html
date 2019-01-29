@@ -64,12 +64,9 @@
 	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
 	<script src="../../js/template-native.js"></script>
 	<script>		
-		window.addEventListener('refresh', function(e){//执行刷新
-			function haha(){
-				// location.reload();
-				console.log('haha')
-			}
-			haha();
+		window.addEventListener('reload', function(e){//执行刷新
+			location.reload();
+			console.log(12)
 		});
 		mui.plusReady(function() {			
 			$(function(){
