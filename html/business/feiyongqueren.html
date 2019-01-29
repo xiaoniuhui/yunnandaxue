@@ -33,12 +33,7 @@
 				$('.price').text(self.obj.shijje+'元');
 				var obj=JSON.stringify(self.obj);
 				//核定确认提交
-				$('.btngrop').on('click',function(){	
-					var list = plus.webview.getWebviewById('weituofunction');
-					//触发父页面的自定义事件(refresh),从而进行刷新
-					mui.fire(list, 'reload');　
-					mui.back();
-					return;
+				$('.btngrop').on('click',function(){
 					$.ajax({
 						url:url+'/jqzw/server',
 						type:'get',
@@ -46,16 +41,14 @@
 						data:{service:"BigEquipmentService",method:"saveDelegationCost",params:obj},
 						beforeSend:function(){
 							plus.nativeUI.showWaiting('正在提交...');
-							
 						},
 						success:function(info){
 							mui.toast('核定费用成功');
 							plus.nativeUI.closeWaiting();
-							plus.webview.currentWebview().close();
-							// mui.back();
 							var list = plus.webview.currentWebview().opener();
 							//触发父页面的自定义事件(refresh),从而进行刷新
-							mui.fire(list, 'refresh');　　　　 
+							mui.fire(list, 'reload');　
+							mui.back();　　　 
 						},
 						error:function(err){
 							console.log(JSON.stringify(err))
