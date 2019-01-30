@@ -364,16 +364,7 @@
 								success:function(info){
 									if(info.type =='success'){
 										mui.toast('提交成功');
-										mui.openWindow({
-											url: "./yuyueyiqi.html",
-											styles: {
-												popGesture: 'close',
-												scrollIndicator: "none"
-											},
-											waiting: {
-												autoShow: false
-											}
-										});
+										plus.webview.currentWebview().close();
 									}else{
 										mui.toast(info.value);
 									}
