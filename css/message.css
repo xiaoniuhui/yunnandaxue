@@ -1,0 +1,28 @@
+body{
+	font-family: PingFangSC-Regular;
+}
+.cont{
+	margin-top: 44px;
+	width: 100%;
+	min-height: 50rem;
+	background-color: #FFFFFF;
+}
+.cont .item{
+	line-height: 1;
+	font-size: 20px;
+	padding: 15px 0;
+	border-bottom: 1px solid #C0C0C0;
+}
+.cont .item span{
+	line-height: 1;
+	font-size: 20px;
+	vertical-align: middle;
+}
+.cont .item .circle{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	display: inline-block;
+	margin-left: 15px;
+	margin-right: 10px;
+}
