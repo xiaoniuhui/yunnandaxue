@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>请选择查询大类</title>
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/kuaisufaqi.css">
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">请选择查询大类</h1>
+		</header>
+		<div class="cont">
+			<script type="text/template" id="tmp">
+				<% for (var i=0,l=info.length;i<l;i++) { %>
+					<div class="yewu" data-fenl="<%=info[i].query_func%>"><%=info[i].title%></div>
+				<% } %>
+			</script>			
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/template-native.js"></script>
+	<script>		
+		$(function(){
+			mui.init({
+			});	
+			mui.plusReady(function() {
+			});
+			var url_mh=localStorage.url_mh;//资产后台地址
+			$.ajax({
+				url:url_mh+'/jqzw/server',
+				type:'get',
+				data:{service:"FunctionService",method:"getQueryList",params:"[]"},
+				dataType:'json',
+				success:function(info){
+					console.log(JSON.stringify(info))
+					if(info.type == 'success'){
+						var html=template('tmp',{info:info.value.query});
+						$('.cont').html(html);
+					}else{
+						mui.toast('查询大类失败，请稍后重试')
+					}
+				},
+				error:function(err){
+					console.log(JSON.stringify(err))
+				}
+			})
+			$('.cont').on('click','.yewu',function(){
+				var fenle=$(this).attr('data-fenl');
+				mui.openWindow({
+					url: "./looknumberDetail.html",
+					styles: {
+						popGesture: 'close',
+						scrollIndicator: "none"
+					},
+					waiting: {
+						autoShow: true
+					},
+					extras: {
+						fenle:fenle
+					}
+				});
+			});
+		});
+		
+		
+	</script>
+</html>

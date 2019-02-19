@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>看数</title>
+		<link rel="stylesheet" href="../../css/mui.min.css">	
+		<link rel="stylesheet" href="../../css/mui.picker.min.css">
+		<link rel="stylesheet" href="../../css/mui.poppicker.css">
+		<link rel="stylesheet" href="../../css/number.css">
+	</head>
+	<body>	
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">详情</h1>
+		</header>
+		<div class="selectTime" style="margin-top: 44px;">
+			<div class="item">
+				<label for="startDiv">开始时间</label>
+				<div id="startDiv"></div>
+			</div>
+			<div class="item">
+				<label for="endDiv">结束时间</label>
+				<div id="endDiv"></div>
+			</div>
+		</div>		
+		<div class="mianbanTan">
+			<div class="guobiao">
+				<div class="zicanboxes active">
+					<script type="text/tmplate" id="guobiaotmp">
+						<% for (var i=0,l=info.length;i<l;i++) { %>
+							<div class="item">
+								<div class="zichanTitle"><%=info[i].flname%></div>
+								<div class="zichanbox">
+									<ul>
+										<li><span class="l"></span><span class="c">数量/面积</span><span class="r">价值</span></li>
+										<li><span class="l">期初日期</span><span class="c"><%=info[i].qcsl%></span><span class="r"><%=info[i].qcjz%></span></li>
+										<li><span class="l">本期增加</span><span class="c"><%=info[i].zjsl%></span><span class="r"><%=info[i].zjjz%></span></li>
+										<li><span class="l">本期减少</span><span class="c"><%=info[i].jssl%></span><span class="r"><%=info[i].jsjz%></span></li>
+										<li><span class="l">期末日期</span><span class="c"><%=info[i].qmsl%></span><span class="r"><%=info[i].qmjz%></span></li>
+									</ul>
+								</div>
+							</div>
+						<% } %>
+					</script>															
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script src="../../js/mui.picker.min.js"></script>
+	<script src="../../js/mui.poppicker.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/template-native.js"></script>
+	<script>
+		mui.init({
+			keyEventBind: {//返回设置
+				backbutton: false
+			},
+			swipeBack: false,
+			statusBarBackground: '#f7f7f7',
+			gestureConfig: {  
+				doubletap: true					
+			}
+		});
+		//创建子页面，首个选项卡页面显示，其它均隐藏；
+		mui.plusReady(function() {				
+		
+		$(function(){
+			var url_mh=localStorage.url_mh;//资产后台地址
+			var stdcode=localStorage.stdcode;	
+			var self = plus.webview.currentWebview();
+			var fenlei=self.fenle;
+			
+			//开始日期
+			$('#startDiv').on('click',function(){
+				var dtpicker = new mui.DtPicker({
+					type:'date',
+					labels: ['年', '月', '日'],//设置默认标签区域提示语
+					beginDate: new Date(2015, 00, 01),//设置开始日期
+					endDate: new Date()
+				});
+				dtpicker.show(function(items){
+					var riqi=items.y.text+'-'+items.m.text+'-'+items.d.text;
+					$('#startDiv').text(riqi);
+				});
+			});
+			//结束日期
+			$('#endDiv').on('click',function(){
+				var dtpicker = new mui.DtPicker({
+					type:'date',
+					labels: ['年', '月', '日'],//设置默认标签区域提示语
+					beginDate: new Date(2015,00,01),
+					endDate: new Date()//设置开始日期
+				});
+				dtpicker.show(function(items){
+					var startTime = $('#startDiv').text();
+					if( startTime == '' || startTime == undefined || startTime == null){
+						mui.toast('请先选取开始时间');
+						return;
+					}
+					var endTime = items.y.text+'-'+items.m.text+'-'+items.d.text;
+					$('#endDiv').text(endTime);
+					if( startTime == endTime){
+						mui.toast('日期区间不能相同');
+						$('#startDiv').text('');
+						$('#endDiv').text('');
+						return;
+					}
+					$.ajax({
+						url:url_mh+'/jqzw/server',
+						type:'get',
+						dataType:'json',
+						data:{service:"SearchDataService",params:stdcode+','+startTime+','+endTime,method:fenlei},
+						beforeSend:function(){
+							plus.nativeUI.showWaiting("正在查询...");
+						},
+						success:function(info){
+							if(info.type == 'success'){
+								var html=template('guobiaotmp',{info:info.value});
+								$('.guobiao .zicanboxes').html(html);
+							}					
+						},
+						error:function(err){
+							console.log(JSON.stringify(err))
+						},
+						complete:function(){
+							plus.nativeUI.closeWaiting();
+						}
+					});
+				});
+			});
+		});
+		});
+	</script>
+</html>
