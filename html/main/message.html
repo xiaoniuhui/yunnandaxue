@@ -7,35 +7,57 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<title>消息</title>
 		<link rel="stylesheet" href="../../css/mui.min.css">
-		<link rel="stylesheet" href="../../css/message.css">
+		<link rel="stylesheet" href="../../css/myMessage.css">
 	</head>
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<h1 class="mui-title">消息</h1>
 		</header>
 		<div class="cont">
-			<div class="item">
-				<span class="circle"><img src="../../image/yuyueceshi.png" alt=""></span>
-				<span class="">大仪消息</span>
-			</div>
-			<div class="item">
-				<span class="circle"><img src="../../image/zichanmess.png" alt=""></span>
-				<span class="">资产消息</span>
+			<div class="tabCont">
+				<div class="tongzhi">
+					<script type="text/template" id="name">
+						<% for (var i=0,l=list.length;i<l;i++) { %>
+							<div class="list">
+								<span class="title"><%=list[i].fasnr%></span>
+								<span class="time"><%=list[i].billtime%></span>
+							</div>
+						<% } %>
+					</script>
+				</div>
 			</div>
 		</div>
 	</body>
 	<script type="text/javascript" src="../../js/mui.min.js"></script>
 	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/template-native.js"></script>
 	<script>
+		var url_mh = localStorage.url_mh;
+		var userId = localStorage.userId;
 		mui.init({
 		});		
 		
 		mui.plusReady(function() {
 		});
 		$(function(){
-			
+			//加载通知
+			$.ajax({
+				url:url_mh+'/jqzw/server',
+				type:'get',
+				data:{service:"MessageTbService",method:"getMessageTb",params:'61CCF8DD800000C146018AAFBFFBA202'},
+				dataType:'json',
+				success:function(info){
+					console.log(JSON.stringify(info));
+					if(info.type == 'success'){
+						var html = template('name',{list:info.value});
+						$('.tongzhi').append(html);
+					}
+				},
+				error:function(err){
+					console.log(JSON.stringify(err));
+				}
+			});		
 		});
-		
-		
+						
 	</script>
 </html>

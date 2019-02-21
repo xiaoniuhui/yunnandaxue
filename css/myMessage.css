@@ -41,7 +41,7 @@
 .tabCont>div{
 	width:100%;
 	min-height: 100px;
-	display: none;
+	/* display: none; */
 }
 .tabCont>div.active{
 	display: block;
@@ -52,7 +52,7 @@
 .list{
 	width:100%;
 	line-height: 1;
-	padding: 20px;
+	padding:10px 20px;
 	border-bottom: 1px solid #CBCBCB;
 	overflow: hidden;
 	position: relative;
@@ -60,15 +60,15 @@
 .list span.title{
 	display: block;
 	font-family: PingFangSC-Regular;
-	font-size: 18px;
+	font-size: 16px;
 	color: #0B0B0B;
-	line-height: 1;
+	line-height: 1.5;
 	margin-bottom: 10px;
 }
 .list span.time{
 	display: block;
 	font-family: PingFangSC-Regular;
-	font-size: 16px;
+	font-size: 12px;
 	color: #666666;	
 	line-height: 1;
 }
