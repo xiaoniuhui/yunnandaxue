@@ -115,7 +115,8 @@
 					});
 				}
 				//扫码跳转
-				function handleReslut(type, result) {					
+				function handleReslut(type, result) {
+					var dqzt=plus.webview.currentWebview().dqzt
 					mui.openWindow({
 						url: '../business/dy_saoma.html',
 						styles: {
@@ -126,7 +127,8 @@
 							autoShow: false
 						},
 						extras: {
-							result: result
+							result: result,
+							dqzt:dqzt
 						}
 					});			
 				}
