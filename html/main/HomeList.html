@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<div class="list">
-				<div class="item jigyzn">
+				<div class="item organization">
 					<div class="imgbox">
 						<img src="../../image/organization%20.png" alt="">						
 					</div>
@@ -42,7 +42,7 @@
 					</div>
 					<span>文件制度</span>
 				</div> -->
-				<div class="item worknotice">
+				<div class="item workNotice">
 					<div class="imgbox">
 						<img src="../../image/gongzuo.png" alt="">						
 					</div>
@@ -54,7 +54,7 @@
 					</div>
 					<span>招标采购</span>
 				</div>
-				<div class="item yiqiyy">
+				<div class="item yuyueyiqi">
 					<div class="imgbox">
 						<img src="../../image/yuyueceshi.png" alt="">						
 					</div>
@@ -93,8 +93,7 @@
 	<script type="text/javascript" src="../../js/mui.min.js"></script>
 	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
 	<script src="../../js/template-native.js"></script>
-	<script>		
-		
+	<script>
 		$(function(){
 			mui.init({
 				pullRefresh : {
@@ -192,10 +191,11 @@
 					}
 				});
 			});
-			//仪器预约
-			$('.yiqiyy').on('click',function(){
+			//机构 通知 招标 仪器 更多点击事件
+			$('.list .item').on('click',function(){
+				var hrefId=$(this).attr('class').slice(5).trim();
 				mui.openWindow({
-					url: "../business/yuyueyiqi.html",
+					url: "../business/"+hrefId+".html",
 					styles: {
 						popGesture: 'close',  
 						scrollIndicator: "none"
@@ -208,66 +208,10 @@
 					}
 				});
 			});
-			//点击机构与职能
-			$('.jigyzn').on('click',function(){
-				mui.openWindow({
-					url: "../business/organization.html",
-					//url:'../business/pdfDetail.html',
-					styles: {
-						popGesture: 'close',
-						scrollIndicator: "none"
-					},
-					waiting: {
-						autoShow: false
-					},
-					extras: {
-						recid:''
-					}
-				});
-			});
-			//工作通知
-			$('.worknotice').on('click',function(){
-				mui.openWindow({
-					url: "../business/workNotice.html",
-					styles: {
-						popGesture: 'close',
-						scrollIndicator: "none"
-					},
-					waiting: {
-						autoShow: false
-					},
-					extras: {
-						recid:''
-					}
-				});
-			});
-			//招标采购
-			$('.zhaobiaocg').on('click',function(){
-				mui.openWindow({
-					url: "../business/zhaobiaocg.html",
-					styles: {
-						popGesture: 'close',
-						scrollIndicator: "none"
-					},
-					waiting: {
-						autoShow: false
-					}
-				});
-			});
-			//更多
-			$('.more').on('click',function(){
-				mui.openWindow({
-					url: "../business/more.html",
-					// url:"pdf.html",
-					styles: {
-						popGesture: 'close',
-						scrollIndicator: "none"
-					},
-					waiting: {
-						autoShow: false
-					}
-				});
-			});
+			
+			
+			
+			
 			//向下滑动显示头部
 			$(document).scroll(function(){
 				if($(document).scrollTop() >= 5){
