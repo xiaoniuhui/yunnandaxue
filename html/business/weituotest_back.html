@@ -17,151 +17,137 @@
 			<h1 class="mui-title">委托预约</h1>
 		</header>
 		<div class="cont">
-			<form id="baseform">
-			<div id="slider" class="mui-slider">				
-				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-					<a class="mui-control-item" href="#item1mobile">测样基本信息</a>
-					<a class="mui-control-item" href="#item2mobile">课题账本信息</a>
-					<a class="mui-control-item" href="#item3mobile">收费项选择</a>
-				</div>
-				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
-				
-				<div class="mui-slider-group">
-					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
-						<div id="scroll1" class="mui-scroll-wrapper">
-							<div class="mui-scroll sampleInfo">
-								<div class="remind">
-									<h6>1：委托测试必须提前电话预约</h6>
-									<h6>2：线下与机组人员联系预约时间</h6>
-								</div>
-								<div class="tianxie">
-									<div class="item">
-										<label for="yangpmc" style="border: none;">样品名称</label>
-										<input type="text" placeholder="请填写" id="yangpmc" name="yangpmc">
-									</div>
-									<div class="item">
-										<label for="yangpsl" style="border: none;">样品数量</label>
-										<input type="text" placeholder="请填写" id="yangpsl" name="yangpsl">
-									</div>	
-									<div class="item">
-										<label for="yuycsrq">预约测试日期</label>
-										<div id="dyuycsrq"></div>
-										<input type="hidden" id="yuycsrq" name="yuycsrq">
-									</div>
-									<div class="item">
-										<label for="qiwwcsj">期望完成时间</label>
-										<div id="dshijd"></div>
-										<input type="hidden" id="qiwwcsj" name="qiwwcsj">
-									</div>
-								</div>
-								<div class="bottom">
-									<h6>样品信息监测要求</h6>
-									<textarea rows="" cols="" placeholder="请填写" id="jiancyq" name="jiancyq"></textarea>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div id="item2mobile" class="mui-slider-item mui-control-content">
-						<div id="scroll2" class="mui-scroll-wrapper">
-							<div class="mui-scroll ketiinfo">
-								<div class="tianxie">
-									<div class="item">
-										<label for="xiangmlx">项目类型</label>
-										<div id="dxiangmlx"></div>
-										<input type="hidden" id="xiangmlx" name="xiangmlx">
-									</div>
-									<div class="item">
-										<label for="suoszb">所属账本</label>
-										<div id="dsuoszb"></div>
-										<input type="hidden" id="accountid" name="accountid">
-									</div>	
-									<div class="item">
-										<label for="ketz">课题组<i style="visibility: hidden;">啊</i></label>
-										<div id="dketz"></div>
-										<input type="hidden" id="ketz" name="ketz">
-									</div>
-									<div class="itemA">
-										<label>样品形态</label>
-										<input type="radio" name="yangpxt" checked value="01">固态
-										<input type="radio" name="yangpxt" value="02">液态
-									</div>
-									<div class="itemA">
-										<label>腐蚀性</label>
-										<input type="radio" name="fusx" value="01" >是
-										<input type="radio" name="fusx" value="02" checked>否
-									</div>
-									<div class="itemA">
-										<label>易燃性</label>
-										<input type="radio" name="yirx" value="01" >是
-										<input type="radio" name="yirx" value="02" checked>否
-									</div>
-									<div class="itemA">
-										<label>易爆性</label>
-										<input type="radio" name="yibx" value="01" >是
-										<input type="radio" name="yibx" value="02" checked>否
-									</div>
-									<div class="itemA">
-										<label>毒性</label>
-										<input type="radio" name="dux" value="01" >是
-										<input type="radio" name="dux" value="02" checked>否
-									</div>
-									<div class="itemA">
-										<label>样品是否回收</label>
-										<input type="radio" name="shifhs" value="01" >是
-										<input type="radio" name="shifhs" value="02" checked>否
-									</div>
-									<div class="item">
-										<label for="yangpys" style="border: none;">颜色</label>
-										<input type="text" id="yangpys" name="yangpys">
-									</div>	
-								</div>
-							</div>
-						</div>
-					</div>
-					<div id="item3mobile" class="mui-slider-item mui-control-content">
-						<div id="scroll3" class="mui-scroll-wrapper">
-							<div class="mui-scroll charge">
-								<script type="text/template" id="scaleTmp">
-									<% for (var key in info) { %>
-										<h4><%= key%></h4>
-										<% for (var i=0,l=info[key].length;i<l;i++) { %>
-											<div class="listItem">
-												<div class="checkBox">
-													<input type="hidden" value="<%=info[key][i].beiz%>" class="beiz">	
-													<input type="hidden" value="<%=info[key][i].irecid%>" class="recid">										
-													<% if ( key =='基础测试项目') { %>
-														<input type="checkbox" class="jichu">
-													<% } else { %>
-														<input type="checkbox" class="qita">
-													<% } %>
-													<label>
-														<span class="xmmc">
-															<%= info[key][i].xiagnmmc%>
-														</span>
-														<span class="jiage">
-															<% if (yonghlxCode =='01') { %>
-																<%=info[key][i].xiaonj%>
-															<%}else {%>
-																<%=info[key][i].xiaowj%>
-															<% }%>
-														</span>元/<%=info[key][i].chongmm%>
-													</label>
-												</div>
-												<div class="shul">
-													<label for="">样品数量</label>
-													<input type="text" name="" id="" value="" class="shuliang">
-													小计：<span class="xiaoji"><span>
-												</div>
-											</div>
-										<% } %>
-									<% } %>	
-								</script>
-							</div>
-						</div>
-					</div>
-				</div>				
+			<div class="topTab">
+				<ul>
+					<li class="active">测样基本信息</li>
+					<li>课题账本信息</li>
+					<li>收费项选择</li>
+				</ul>
 			</div>
-			</form>
+			<div class="tabcont">
+				<form id="baseform">
+				<div class="sampleInfo active">
+					<div class="remind">
+						<h6>1：委托测试必须提前电话预约</h6>
+						<h6>2：线下与机组人员联系预约时间</h6>
+					</div>
+					<div class="tianxie">
+						<div class="item">
+							<label for="yangpmc" style="border: none;">样品名称</label>
+							<input type="text" placeholder="请填写" id="yangpmc" name="yangpmc">
+						</div>
+						<div class="item">
+							<label for="yangpsl" style="border: none;">样品数量</label>
+							<input type="text" placeholder="请填写" id="yangpsl" name="yangpsl">
+						</div>	
+						<div class="item">
+							<label for="yuycsrq">预约测试日期</label>
+							<div id="dyuycsrq"></div>
+							<input type="hidden" id="yuycsrq" name="yuycsrq">
+						</div>
+						<div class="item">
+							<label for="qiwwcsj">期望完成时间</label>
+							<div id="dshijd"></div>
+							<input type="hidden" id="qiwwcsj" name="qiwwcsj">
+						</div>
+					</div>
+					<div class="bottom">
+						<h6>样品信息监测要求</h6>
+						<textarea rows="" cols="" placeholder="请填写" id="jiancyq" name="jiancyq"></textarea>
+					</div>
+				</div>
+				<div class="ketiinfo">
+					<div class="tianxie">
+						<div class="item">
+							<label for="xiangmlx">项目类型</label>
+							<div id="dxiangmlx"></div>
+							<input type="hidden" id="xiangmlx" name="xiangmlx">
+						</div>
+						<div class="item">
+							<label for="suoszb">所属账本</label>
+							<div id="dsuoszb"></div>
+							<input type="hidden" id="accountid" name="accountid">
+						</div>	
+						<div class="item">
+							<label for="ketz">课题组<i style="visibility: hidden;">啊</i></label>
+							<div id="dketz"></div>
+							<input type="hidden" id="ketz" name="ketz">
+						</div>
+						<div class="itemA">
+							<label>样品形态</label>
+							<input type="radio" name="yangpxt" checked value="01">固态
+							<input type="radio" name="yangpxt" value="02">液态
+						</div>
+						<div class="itemA">
+							<label>腐蚀性</label>
+							<input type="radio" name="fusx" value="01" >是
+							<input type="radio" name="fusx" value="02" checked>否
+						</div>
+						<div class="itemA">
+							<label>易燃性</label>
+							<input type="radio" name="yirx" value="01" >是
+							<input type="radio" name="yirx" value="02" checked>否
+						</div>
+						<div class="itemA">
+							<label>易爆性</label>
+							<input type="radio" name="yibx" value="01" >是
+							<input type="radio" name="yibx" value="02" checked>否
+						</div>
+						<div class="itemA">
+							<label>毒性</label>
+							<input type="radio" name="dux" value="01" >是
+							<input type="radio" name="dux" value="02" checked>否
+						</div>
+						<div class="itemA">
+							<label>样品是否回收</label>
+							<input type="radio" name="shifhs" value="01" >是
+							<input type="radio" name="shifhs" value="02" checked>否
+						</div>
+						<div class="item">
+							<label for="yangpys" style="border: none;">颜色</label>
+							<input type="text" id="yangpys" name="yangpys">
+						</div>	
+					</div>
+				</div>
+				<div class="charge">
+					<script type="text/template" id="scaleTmp">
+						<% for (var key in info) { %>
+							<h4><%= key%></h4>
+							<% for (var i=0,l=info[key].length;i<l;i++) { %>
+								<div class="listItem">
+									<div class="checkBox">
+										<input type="hidden" value="<%=info[key][i].beiz%>" class="beiz">	
+										<input type="hidden" value="<%=info[key][i].irecid%>" class="recid">										
+										<% if ( key =='基础测试项目') { %>
+											<input type="checkbox" class="jichu">
+										<% } else { %>
+											<input type="checkbox" class="qita">
+										<% } %>
+										<label>
+											<span class="xmmc">
+												<%= info[key][i].xiagnmmc%>
+											</span>
+											<span class="jiage">
+												<% if (yonghlxCode =='01') { %>
+													<%=info[key][i].xiaonj%>
+												<%}else {%>
+													<%=info[key][i].xiaowj%>
+												<% }%>
+											</span>元/<%=info[key][i].chongmm%>
+										</label>
+									</div>
+									<div class="shul">
+										<label for="">样品数量</label>
+										<input type="text" name="" id="" value="" class="shuliang">
+										小计：<span class="xiaoji"><span>
+									</div>
+								</div>
+							<% } %>
+						<% } %>	
+					</script>				
+				</div>
+				</form>
+			</div>
 			<div class="but-bottom">
 				<div class="heji">
 					预计费用：<span id="yujifeiyong"></span>
@@ -204,11 +190,7 @@
 			})
 		}
 		mui.init({
-			swipeBack: false
-		});	
-		$('.mui-scroll-wrapper').scroll({
-			indicators: true //是否显示滚动条
-		});		
+		});			
 		//创建子页面，首个选项卡页面显示，其它均隐藏；
 		mui.plusReady(function() {
 			var self=plus.webview.currentWebview();
@@ -323,7 +305,10 @@
 			$('body').on('keyup','input.shuliang',function(){
 				var flag=$(this).parent().siblings('div.checkBox').children('input[type="checkbox"]').prop('checked');//获取复选框状态值true/false
 				var shuliang=$(this).val()-0;
-				var danjia=$(this).parent().siblings('div.checkBox').find('span.jiage').text()-0;//获取价格
+				var danjia=$(this).parent().siblings('div.checkBox').find('span.jiage').text()-0;//获取价格		
+				console.log(danjia);
+				console.log(shuliang);
+				console.log(flag)
 				if(flag){
 					$(this).siblings('span.xiaoji').text(shuliang*danjia);//每一项勾选的小计
 					getsum();
@@ -373,6 +358,8 @@
 				});
 				return obj_arr;
 			}
+			
+			
 			//获取所有基础测试项目
 			function getjichu_all(){
 				var jichu_all=[];
@@ -424,7 +411,11 @@
 					qita_all.push(obj);
 				});
 				return qita_all;
-			}			
+			}
+			
+			
+			
+			
 			//复选框勾选事件
 			$('body').on('change','input[type="checkbox"]',function(){
 				var flag=$(this).prop('checked');
@@ -437,7 +428,8 @@
 					$(this).parent().siblings('div.shul').find('span.xiaoji').text("");
 					getsum()
 				}				
-			});			
+			});
+			
 			//btnsubmit提交按钮
 			$('.btnsubmit').on('click',function(){
 				//所属账本和课题组不能为空

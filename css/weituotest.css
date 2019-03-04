@@ -197,9 +197,9 @@ form div.active{
 
 /* 按钮盒子 */
 .but-bottom{
-	position: fixed;
+	/* position: fixed;
 	left: 0;
-	bottom: 0;
+	bottom: 0; */
 	background-color: #b2b9b9;
 	width: 100%;
 	padding:10px 20px;
@@ -227,5 +227,8 @@ form div.active{
 .heji{
 	margin-bottom: 15px;
 }
-
-
+/* mui库 */
+.mui-control-content {
+	background-color: white;
+	min-height: 600px;
+}

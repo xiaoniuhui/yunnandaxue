@@ -3,7 +3,6 @@
 	padding: 0;
 }
 .cont{
-	margin-top: 44px;
 	background-color: #FFFFFF;
 	width:100%;
 	min-height: 736px;	
@@ -41,7 +40,6 @@
 .tabCont>div{
 	width:100%;
 	min-height: 100px;
-	display: none;
 }
 .tabCont>div.active{
 	display: block;

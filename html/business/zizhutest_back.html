@@ -17,110 +17,101 @@
 			<h1 class="mui-title">自助预约测试</h1>
 		</header>
 		<div class="cont">
-			<form id="baseform">
-			<div id="slider" class="mui-slider">
-				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-					<a class="mui-control-item" href="#item1mobile">测样基本信息</a>
-					<a class="mui-control-item" href="#item2mobile">课题账本信息</a>
-				</div>
-				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6"></div>
-				<div class="mui-slider-group">
-					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
-						<div id="scroll1" class="mui-scroll-wrapper">
-							<div class="mui-scroll sampleInfo">
-								<div class="tianxie">
-									<div class="item">
-										<label for="yangpmc" style="border: none;">样品名称</label>
-										<input type="text" placeholder="请填写" id="yangpmc" name="yangpmc">
-									</div>
-									<div class="item">
-										<label for="yangpsl" style="border: none;">样品数量</label>
-										<input type="text" placeholder="请填写" id="yangpsl" name="yangpsl">
-									</div>	
-									<div class="item">
-										<label for="yuysyrq">预约使用日期</label>
-										<div id="yuysyrqDiv"></div>
-										<input type="hidden" id="yuysyrq" name="yuysyrq">
-									</div>
-									<div class="item">
-										<label for="yuykssj">预约开始时间</label>
-										<div id="yuykssjDiv"></div>
-										<input type="hidden" id="yuykssj" name="yuykssj">
-									</div>
-									<div class="item">
-										<label for="yuyjssj">预约结束时间</label>
-										<div id="yuyjssjDiv"></div>
-										<input type="hidden" id="yuyjssj" name="yuyjssj">
-										<input type="hidden" id="yujjs" name="yujjs">
-									</div>
-									<div class="bottom">
-										<h6>实验内容</h6>
-										<textarea rows="" cols="" placeholder="请填写" id="jiancyq" name="jiancyq"></textarea>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div id="item2mobile" class="mui-slider-item mui-control-content">
-						<div id="scroll2" class="mui-scroll-wrapper">
-							<div class="mui-scroll ketiinfo">
-								<div class="tianxie">
-									<div class="item">
-										<label for="xiangmlx">使用性质</label>
-										<div id="dxiangmlx"></div>
-										<input type="hidden" id="xiangmlx" name="xiangmlx">
-									</div>
-									<div class="item">
-										<label for="suoszb">所属账本</label>
-										<div id="dsuoszb"></div>
-										<input type="hidden" id="accountid" name="accountid">
-									</div>	
-									<div class="item">
-										<label for="ketz">课题组<i style="visibility: hidden;">啊</i></label>
-										<div id="dketz"></div>
-										<input type="hidden" id="ketz" name="ketz">
-									</div>
-									<div class="itemA">
-										<label>样品形态</label>
-										<input type="radio" name="yangpxt" checked value="01">固态
-										<input type="radio" name="yangpxt" value="02">液态
-									</div>
-									<div class="itemA">
-										<label>腐蚀性</label>
-										<input type="radio" name="fusx" value="01" >是
-										<input type="radio" name="fusx" value="02" checked>否
-									</div>
-									<div class="itemA">
-										<label>易燃性</label>
-										<input type="radio" name="yirx" value="01" >是
-										<input type="radio" name="yirx" value="02" checked>否
-									</div>
-									<div class="itemA">
-										<label>易爆性</label>
-										<input type="radio" name="yibx" value="01" >是
-										<input type="radio" name="yibx" value="02" checked>否
-									</div>
-									<div class="itemA">
-										<label>毒性</label>
-										<input type="radio" name="dux" value="01" >是
-										<input type="radio" name="dux" value="02" checked>否
-									</div>
-									<div class="itemA">
-										<label>样品是否回收</label>
-										<input type="radio" name="shifhs" value="01" >是
-										<input type="radio" name="shifhs" value="02" checked>否
-									</div>
-									<div class="item">
-										<label for="yangpys" style="border: none;">颜色</label>
-										<input type="text" id="yangpys" name="yangpys">
-									</div>	
-								</div>
-							</div>
-						</div>			
-					</div>
-				</div>
+			<div class="topTab">
+				<ul>
+					<li class="active">测样基本信息</li>
+					<li>课题账本信息</li>
+				</ul>
 			</div>
-			</form>
+			<div class="tabcont">
+				<form id="baseform">
+				<div class="sampleInfo active">
+					<div class="tianxie">
+						<div class="item">
+							<label for="yangpmc" style="border: none;">样品名称</label>
+							<input type="text" placeholder="请填写" id="yangpmc" name="yangpmc">
+						</div>
+						<div class="item">
+							<label for="yangpsl" style="border: none;">样品数量</label>
+							<input type="text" placeholder="请填写" id="yangpsl" name="yangpsl">
+						</div>	
+						<div class="item">
+							<label for="yuysyrq">预约使用日期</label>
+							<div id="yuysyrqDiv"></div>
+							<input type="hidden" id="yuysyrq" name="yuysyrq">
+						</div>
+						<div class="item">
+							<label for="yuykssj">预约开始时间</label>
+							<div id="yuykssjDiv"></div>
+							<input type="hidden" id="yuykssj" name="yuykssj">
+						</div>
+						<div class="item">
+							<label for="yuyjssj">预约结束时间</label>
+							<div id="yuyjssjDiv"></div>
+							<input type="hidden" id="yuyjssj" name="yuyjssj">
+							<input type="hidden" id="yujjs" name="yujjs">
+						</div>						
+					</div>
+					<div class="bottom">
+						<h6>实验内容</h6>
+						<textarea rows="" cols="" placeholder="请填写" id="jiancyq" name="jiancyq"></textarea>
+					</div>
+				</div>
+				<div class="ketiinfo">
+					<div class="tianxie">
+						<div class="item">
+							<label for="xiangmlx">使用性质</label>
+							<div id="dxiangmlx"></div>
+							<input type="hidden" id="xiangmlx" name="xiangmlx">
+						</div>
+						<div class="item">
+							<label for="suoszb">所属账本</label>
+							<div id="dsuoszb"></div>
+							<input type="hidden" id="accountid" name="accountid">
+						</div>	
+						<div class="item">
+							<label for="ketz">课题组<i style="visibility: hidden;">啊</i></label>
+							<div id="dketz"></div>
+							<input type="hidden" id="ketz" name="ketz">
+						</div>
+						<div class="itemA">
+							<label>样品形态</label>
+							<input type="radio" name="yangpxt" checked value="01">固态
+							<input type="radio" name="yangpxt" value="02">液态
+						</div>
+						<div class="itemA">
+							<label>腐蚀性</label>
+							<input type="radio" name="fusx" value="01" >是
+							<input type="radio" name="fusx" value="02" checked>否
+						</div>
+						<div class="itemA">
+							<label>易燃性</label>
+							<input type="radio" name="yirx" value="01" >是
+							<input type="radio" name="yirx" value="02" checked>否
+						</div>
+						<div class="itemA">
+							<label>易爆性</label>
+							<input type="radio" name="yibx" value="01" >是
+							<input type="radio" name="yibx" value="02" checked>否
+						</div>
+						<div class="itemA">
+							<label>毒性</label>
+							<input type="radio" name="dux" value="01" >是
+							<input type="radio" name="dux" value="02" checked>否
+						</div>
+						<div class="itemA">
+							<label>样品是否回收</label>
+							<input type="radio" name="shifhs" value="01" >是
+							<input type="radio" name="shifhs" value="02" checked>否
+						</div>
+						<div class="item">
+							<label for="yangpys" style="border: none;">颜色</label>
+							<input type="text" id="yangpys" name="yangpys">
+						</div>	
+					</div>
+				</div>
+				</form>
+			</div>
 			<div class="but-bottom">
 				<div class="heji">
 					预计费用：<span id="yujifeiyong"></span>

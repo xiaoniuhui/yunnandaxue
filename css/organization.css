@@ -2,13 +2,13 @@
 	margin: 0;
 	padding: 0;
 }
-.tabCont{
+.caigou,.shiys,.yiqisheb,.bangongshi{
 	padding: 20px;
 }
-.tabCont div ul{
+div ul{
 	list-style: none;
 }
-.tabCont div ul li{
+div ul li{
 	letter-spacing: 0;
 	line-height: 16px;
 	padding: 10px 0;
