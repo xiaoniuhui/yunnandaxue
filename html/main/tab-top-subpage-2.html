@@ -64,6 +64,7 @@
 // 			}
 			var url_mh = localStorage.url_mh;
 			var userId = localStorage.userId;
+			console.log('页面2')
 			$(function(){
 				//加载通知
 				$.ajax({
@@ -72,7 +73,6 @@
 					data:{service:"MessageTbService",method:"getMessageTb",params:userId},
 					dataType:'json',
 					success:function(info){
-						console.log(JSON.stringify(info));
 						if(info.type == 'success'){
 							var html = template('name',{list:info.value});
 							if(!info.value.length>0){
