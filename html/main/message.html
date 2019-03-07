@@ -30,12 +30,12 @@
 					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
 						<div id="scroll1" class="mui-scroll-wrapper">
 							<div class="mui-scroll">
-								<div class="tongzhi">
+								<div class="tongzhi" id="tz">
 									<script type="text/template" id="name">
 										<% for (var i=0,l=list.length;i<l;i++) { %>
 											<div class="list">
-												<span class="title"><%=list[i].fasnr%></span>
-												<span class="time"><%=list[i].billtime%></span>
+												<span class="title"><%=list[i].message%></span>
+												<span class="time"><%=list[i].time%></span>
 											</div>
 										<% } %>
 									</script>
@@ -46,7 +46,16 @@
 					<div id="item2mobile" class="mui-slider-item mui-control-content">
 						<div id="scroll2" class="mui-scroll-wrapper">
 							<div class="mui-scroll">
-								暂无消息
+								<div class="tongzhi" id="cuiban">
+									<script type="text/template" id="cuiban_tmp">
+										<% for (var k=0,kl=list_cui.length;k<kl;k++) { %>
+											<div class="list">
+												<span class="title"><%=list_cui[k].message%></span>
+												<span class="time"><%=list_cui[k].time%></span>
+											</div>
+										<% } %>
+									</script>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -61,37 +70,70 @@
 				swipeBack: false
 			});
 			$(function(){
-				$('.mui-scroll-wrapper').scroll({
-					indicators: true //是否显示滚动条
-				});
 				var url_mh = localStorage.url_mh;
-				var userId = localStorage.userId;
-				//加载催办消息
+				var stdcode = localStorage.stdcode;
+				//加载待办、催办消息
 				if(localStorage.stdcode == '' || localStorage.stdcode == null || localStorage.stdcode ==undefined){
 					console.log('未登录，不请求消息接口')
 				}else{
+					//默认登录
 					$.ajax({
-						url:url_mh+'/jqzw/server',
 						type:'get',
-						data:{service:"MessageTbService",method:"getMessageTb",params:userId},
+						url:url_mh+'/jqzw/login/log',
 						dataType:'json',
+						data:{username:stdcode,token:"tryagain"},
 						success:function(info){
-							if(info.type == 'success'){
-								var html = template('name',{list:info.value});								
-								if(!info.value.length>0){
-									$('.tongzhi').html('暂无消息');
-								}else{
-									$('.tongzhi').html(html);
-								}
+							if( info.type == 'success'){
+								//01待办
+								$.ajax({
+									url:url_mh+'/jqzw/server',
+									type:'get',
+									data:{service:"MessageTbService",method:"getMessageList",params:'01'},
+									dataType:'json',
+									success:function(info){
+										if(info.type == 'success'){
+											var html = template('name',{list:info.value});								
+											if(info.value.length>0){
+												$('#tz').html(html);
+											}else{												
+												$('#tz').html('暂无消息');
+											}
+										}
+									},
+									error:function(err){
+										console.log(JSON.stringify(err));
+									}
+								});
+								//02催办
+								$.ajax({
+									url:url_mh+'/jqzw/server',
+									type:'get',
+									data:{service:"MessageTbService",method:"getMessageList",params:'02'},
+									dataType:'json',
+									success:function(info){
+										if(info.type == 'success'){
+											var html = template('cuiban_tmp',{list_cui:info.value});								
+											if(info.value.length>0){
+												$('#cuiban').html(html);												
+											}else{
+												$('#cuiban').html('暂无消息');
+											}
+										}
+									},
+									error:function(err){
+										console.log(JSON.stringify(err));
+									}
+								});
+							}else{
+								mui.toast('登录失败，会话过期，请重新登录');
 							}
 						},
 						error:function(err){
-							console.log(JSON.stringify(err));
+							mui.toast('登录失败，会话过期，请重新登录');
 						}
-					});
+					})
 				}
-			})
-			
+			})			
 		</script>
 
 	</body>
