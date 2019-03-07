@@ -8,6 +8,7 @@
 		<title>费用调整及核定</title>
 		<link rel="stylesheet" href="../../css/mui.min.css">
 		<link rel="stylesheet" href="../../css/feiyongqueren.css">
+		<link rel="stylesheet" href="../../css/weituotest.css">
 	</head>
 	<body>
 		<header class="mui-bar mui-bar-nav">
@@ -20,25 +21,199 @@
 				<div class="price"></div>
 			</div>
 		</div>
+		<div class="feiyadd mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div class="cards_jichu">
+					<script type="text/template" id="tmp_jichu">
+						<% for (var i=0,l=info.length;i<l;i++) { %>
+							<div class="item">
+								<p>
+									<% if (info[i].checked == '0') { %>
+										<input type="checkbox" class="check" id="jichu<%=i%>" name="<%=info[i].feiyxj%>">
+									<% } %>
+									<% if (info[i].checked == '1') { %>
+										<input type="checkbox" class="check" id="jichu<%=i%>" checked="checked" name="<%=info[i].feiyxj%>">
+									<% } %>
+									<span><%=info[i].xiangmmc%></span><span  class="danjia"><%=info[i].feiyxj%></span>元/样
+								</p>
+								<% if(info[i].yangpsl != '0'){%>
+									<p>样品数量<input type="" name="" id="" value="<%=info[i].yangpsl%>" class="int" />小计:<span class="xiaoji"></span></p>
+								<% } %>
+								<% if(info[i].yangpsl == '0'){%>
+									<p>样品数量<input type="" name="" id="" placeholder="请填写" class="int" />小计:<span class="xiaoji"></span></p>
+								<% } %>
+							</div>
+						<%  } %>
+					</script>
+				</div> 
+				<div class="cards_qita">
+					<script type="text/template" id="tmp_qita">
+						<% for (var i=0,l=info.length;i<l;i++) { %>
+							<div class="item">
+								<p>   
+									<% if (info[i].checked == '0') { %>
+										<input type="checkbox" class="check" id="qita<%=i%>" name="<%=info[i].feiyxj%>">
+									<% } %>
+									<% if (info[i].checked == '1') { %>
+										<input type="checkbox" class="check" id="qita<%=i%>" checked="checked" name="<%=info[i].feiyxj%>">
+									<% } %>
+									<span><%=info[i].xiangmmc%></span><span class="danjia"><%=info[i].feiyxj%></span>元/样
+								</p>
+								<% if(info[i].yangpsl != '0'){%>
+									<p>样品数量<input type="" name="" id="" value="<%=info[i].yangpsl%>" class="int" />小计:<span class="xiaoji"></span></p>
+								<% } %>
+								<% if(info[i].yangpsl == '0'){%>
+									<p>样品数量<input type="" name="" id="" placeholder="请填写" class="int" />小计:<span class="xiaoji"></span></p>
+								<% } %>
+							</div>
+						<%  } %>  
+					</script>
+				</div>
+			</div>
+		</div>
 		<div class="btngrop">确定</div>
 	</body>
 	<script type="text/javascript" src="../../js/mui.min.js"></script>
 	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/template-native.js"></script>
 	<script>	
-		$(function(){		
-			
+		$(function(){
+			var options = {
+				 scrollY: true, //是否竖向滚动
+				 scrollX: false, //是否横向滚动
+				 startX: 0, //初始化时滚动至x
+				 startY: 0, //初始化时滚动至y
+				 indicators: true, //是否显示滚动条
+				 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+				 bounce: true //是否启用回弹
+				}
+			mui('.mui-scroll-wrapper').scroll({
+				deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+			});
+			var url=localStorage.url;
+			var userId=localStorage.wid;
+			var stdcode = localStorage.stdcode;//供默认登录使用
 			var url=localStorage.url;
 			mui.plusReady(function() {
 				var self = plus.webview.currentWebview();
 				$('.price').text(self.obj.shijje+'元');
 				var obj=JSON.stringify(self.obj);
+				var cont = self.obj.yuancsxm;
+				var yuancsxm = JSON.parse(cont);   
+				console.log(JSON.stringify(yuancsxm))  
+				//渲染数据
+				var html_jichu = template('tmp_jichu',{info:yuancsxm.jichu_all});
+				var html_qita = template('tmp_qita',{info:yuancsxm.qita_all});
+				$('.cards_jichu').html(html_jichu); 
+				$('.cards_qita').html(html_qita);
+				//计算价钱总和
+				function getsum(){
+					var heji=0;
+					$.each($('input[type="checkbox"]:checked'),function(index,item){
+						var thisdanjia=$(item).parent().siblings('p').find('span.xiaoji').text()-0;
+						heji+=thisdanjia;
+					});
+					$('.price').text(heji+'.0元');
+				}
+				//复选框事件
+				$('body').on('change','input[type="checkbox"]',function(){
+					var flag=$(this).prop('checked');
+					var shuliang=$(this).parent().siblings('p').children('input.int').val()-0;
+					var danjia=$(this).parent().find('span.danjia').text()-0;				
+					if(flag){
+						$(this).parent().siblings('p').find('span.xiaoji').text(shuliang*danjia);
+						getsum()
+					}else{
+						$(this).parent().siblings('p').find('span.xiaoji').text("");
+						getsum()
+					}				
+				});	
+				//键盘输入事件
+				$('body').on('keyup','input.int',function(){
+					var flag=$(this).parent().siblings('p').children('input[type="checkbox"]').prop('checked');//获取复选框状态值true/false
+					var shuliang=$(this).val()-0;
+					console.log(shuliang+'===')
+					var danjia=$(this).parent().siblings('p').children('span.danjia').text()-0;//获取价格
+					console.log(danjia+'+++')
+					if(flag){
+						$(this).siblings('span.xiaoji').text(shuliang*danjia);//每一项勾选的小计
+						getsum();
+					}				
+				});
+				//确定多选框状态,数值等
+				var Zobj;
+				function docheck(){
+					var $int = $('.check');
+					var len = $int.length;
+					var sum = 0;					
+					var cesxm_jichu = [];//cesxm添加
+					var cesxm_qita = [];
+					var xiangmfl_jichu;
+					var xiangmfl_qita;
+					var cesxm = {};
+					for(var i = 0; i < len; i++){
+						if($int.eq(i).is(':checked')){
+							
+							var id = $int.eq(i).attr('id');
+							var money = $int.eq(i).attr('name');
+							var index = id.substr(id.length-1,1);
+							var s = id.substring(0,id.length-1);
+							var num = $int.eq(i).parent('p').siblings('p').children('input').val();
+							sum += money*num;
+							if(s == 'jichu'){
+								yuancsxm.jichu_all[index].checked = 1;
+								yuancsxm.jichu_all[index].yangpsl = num;
+								xiangmfl_jichu = yuancsxm.jichu_all[0].xiangmfl;
+								cesxm_jichu.push(yuancsxm.jichu_all[index]);
+							}else if(s == 'qita'){
+								yuancsxm.qita_all[index].checked = 1;  
+								yuancsxm.qita_all[index].yangpsl = num;
+								cesxm_qita.push(yuancsxm.qita_all[index]);
+								xiangmfl_qita = yuancsxm.qita_all[0].xiangmfl;
+							}
+						}else{
+							var id = $int.eq(i).attr('id');
+							var index = id.substr(id.length-1,1);
+							var s = id.substring(0,id.length-1);
+							if(s == 'jichu'){
+								yuancsxm.jichu_all[index].checked = 0;
+								yuancsxm.jichu_all[index].yangpsl = 0;
+							}else if(s == 'qita'){
+								yuancsxm.qita_all[index].checked = 0;  
+								yuancsxm.qita_all[index].yangpsl = 0;
+							}
+						}
+					}
+					var yuan = $('.price').text();
+					self.obj.shijje = yuan.substring(0,yuan.length-3);
+					console.log(self.obj.shijje)
+					self.obj.yuancsxm = yuancsxm;
+					console.log(xiangmfl_jichu)
+					cesxm[xiangmfl_jichu] = cesxm_jichu;
+					cesxm[xiangmfl_qita] = cesxm_qita;
+					self.obj.cesxm = cesxm;
+					console.log(JSON.stringify(cesxm))
+					console.log(JSON.stringify(self.obj))
+					Zobj = JSON.stringify(self.obj);
+				}
+				
+				
 				//核定确认提交
 				$('.btngrop').on('click',function(){
+					docheck();
+					//校验选中的条目数量是否为空
+					$.each($('input[type="checkbox"]:checked'),function(index,item){
+						var shul=$(item).parent().siblings('p').children('.int').val();
+						if(shul == ''){
+							alert('选中条目必须添加数量！')
+							return;
+						}
+					});
 					$.ajax({
 						url:url+'/jqzw/server',
 						type:'get',
 						dataType:'json',
-						data:{service:"BigEquipmentService",method:"saveDelegationCost",params:obj},
+						data:{service:"BigEquipmentService",method:"saveDelegationCost",params:Zobj},
 						beforeSend:function(){
 							plus.nativeUI.showWaiting('正在提交...');
 						},
