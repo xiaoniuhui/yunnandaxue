@@ -99,8 +99,7 @@
 				$('.price').text(self.obj.shijje+'元');
 				var obj=JSON.stringify(self.obj);
 				var cont = self.obj.yuancsxm;
-				var yuancsxm = JSON.parse(cont);   
-				console.log(JSON.stringify(yuancsxm))  
+				var yuancsxm = JSON.parse(cont);
 				//渲染数据
 				var html_jichu = template('tmp_jichu',{info:yuancsxm.jichu_all});
 				var html_qita = template('tmp_qita',{info:yuancsxm.qita_all});
