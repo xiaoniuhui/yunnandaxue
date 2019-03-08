@@ -37,10 +37,10 @@
 									<span><%=info[i].xiangmmc%></span><span  class="danjia"><%=info[i].danj%></span>元/<%=info[i].chongmm%>
 								</p>
 								<% if(info[i].yangpsl != '0'){%>
-									<p>样品数量<input type="" name="" id="" value="<%=info[i].yangpsl%>" class="int" />小计:<span class="xiaoji"></span></p>
+									<p>样品数量<input type="" name="" id="" value="<%=info[i].yangpsl%>" class="int" />小计:<span class="xiaoji"><%=info[i].feiyxj%></span></p>
 								<% } %>
 								<% if(info[i].yangpsl == '0'){%>
-									<p>样品数量<input type="" name="" id="" placeholder="请填写" class="int" />小计:<span class="xiaoji"></span></p>
+									<p>样品数量<input type="" name="" id="" placeholder="请填写" class="int" />小计:<span class="xiaoji"><%=info[i].feiyxj%></span></p>
 								<% } %>
 							</div>
 						<%  } %>
@@ -58,12 +58,12 @@
 										<input type="checkbox" class="check" id="qita<%=i%>" checked="checked" name="<%=info[i].danj%>">
 									<% } %>
 									<span><%=info[i].xiangmmc%></span><span class="danjia"><%=info[i].danj%></span>元/<%=info[i].chongmm%>
-								</p>
+								</p>	
 								<% if(info[i].yangpsl != '0'){%>
-									<p>样品数量<input type="" name="" id="" value="<%=info[i].yangpsl%>" class="int" />小计:<span class="xiaoji"></span></p>
+									<p>样品数量<input type="" name="" id="" value="<%=info[i].yangpsl%>" class="int" />小计:<span class="xiaoji"><%=info[i].feiyxj%></span></p>
 								<% } %>
 								<% if(info[i].yangpsl == '0'){%>
-									<p>样品数量<input type="" name="" id="" placeholder="请填写" class="int" />小计:<span class="xiaoji"></span></p>
+									<p>样品数量<input type="" name="" id="" placeholder="请填写" class="int" />小计:<span class="xiaoji"><%=info[i].feiyxj%></span></p>
 								<% } %>
 							</div>
 						<%  } %>  
@@ -108,9 +108,11 @@
 				$('.cards_qita').html(html_qita);
 				//计算价钱总和
 				function getsum(){
-					var heji=0;
+					var heji = 0;
 					$.each($('input[type="checkbox"]:checked'),function(index,item){
-						var thisdanjia=$(item).parent().siblings('p').find('span.xiaoji').text()-0;
+						// console.log(index)
+						var thisdanjia=$(item).parent().siblings('p').children('.xiaoji').text()-0;
+						console.log(thisdanjia+'+++')
 						heji+=thisdanjia;
 					});
 					$('.price').text(heji+'.0元');
@@ -200,6 +202,11 @@
 				
 				//核定确认提交
 				$('.btngrop').on('click',function(){
+					var price = $('.price').text().substring(0,$('.price').text().length-3)
+					if(price <= 0){
+						mui.toast('金额应大于零！');
+						return
+					}
 					docheck();
 					//校验选中的条目数量是否为空
 					$.each($('input[type="checkbox"]:checked'),function(index,item){
@@ -218,12 +225,18 @@
 							plus.nativeUI.showWaiting('正在提交...');
 						},
 						success:function(info){
-							mui.toast('核定费用成功');
-							plus.nativeUI.closeWaiting();
-							var list = plus.webview.currentWebview().opener();
-							//触发父页面的自定义事件(refresh),从而进行刷新
-							mui.fire(list, 'reload');　
-							mui.back();　　　 
+							console.log(JSON.stringify(info))
+							if(info.type == 'success'){
+								mui.toast('核定费用成功');
+								plus.nativeUI.closeWaiting();
+								var list = plus.webview.currentWebview().opener();
+								//触发父页面的自定义事件(refresh),从而进行刷新
+								mui.fire(list, 'reload');　
+								mui.back();　
+							}else{
+								mui.toast('核定费用失败');
+								return 
+							}						　　 
 						},
 						error:function(err){
 							console.log(JSON.stringify(err))
