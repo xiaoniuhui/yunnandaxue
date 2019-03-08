@@ -144,7 +144,7 @@
 															<%}else {%>
 																<%=info[key][i].xiaowj%>
 															<% }%>
-														</span>元/<%=info[key][i].chongmm%>
+														</span>元/<span class="cmm"><%=info[key][i].chongmm%></spam>
 													</label>
 												</div>
 												<div class="shul">
@@ -191,7 +191,7 @@
 				data:{service:"BigEquipmentService",params:objId,method:"getFeeScaleList"},
 				dataType:'json',
 				success:function(info){
-					// console.log(JSON.stringify(info))
+					console.log(JSON.stringify(info))
 					if(info.type == 'success'){
 						var html=template('scaleTmp',{info:info.value[0],yonghlxCode:localStorage.yonghlxcode});
 						$('.charge').html(html);
@@ -337,6 +337,7 @@
 					var recid=$(item).siblings('input.recid').val();//获取recid
 					var yangpsl=$(item).parent().siblings('div.shul').find('input.shuliang').val()-0;//获取样品数量
 					var danj=$(item).siblings('label').find('span.jiage').text()-0;//获取价格
+					var chongmm=$(item).siblings('label').find('span.cmm').text().trim();//获取重命名
 					var xiangmmc=$(item).siblings('label').find('span.xmmc').text().trim();//获取项目名称
 					var feiyxj=yangpsl*danj;
 					var beizhu=$(item).siblings('input.beiz').val();//获取beiz					
@@ -347,6 +348,8 @@
 					obj.xiangmmc=xiangmmc;
 					obj.checked=1;					
 					obj.beizhu=beizhu;
+					obj.danj=danj;
+					obj.chongmm=chongmm;
 					obj_arr.push(obj);
 				});
 				return obj_arr;
@@ -359,6 +362,7 @@
 					var recid=$(item).siblings('input.recid').val();//获取recid
 					var yangpsl=$(item).parent().siblings('div.shul').find('input.shuliang').val()-0;//获取样品数量
 					var danj=$(item).siblings('label').find('span.jiage').text()-0;//获取价格
+					var chongmm=$(item).siblings('label').find('span.cmm').text().trim();//获取重命名
 					var xiangmmc=$(item).siblings('label').find('span.xmmc').text().trim();//获取项目名称
 					var feiyxj=yangpsl*danj;
 					var beizhu=$(item).siblings('input.beiz').val();//获取beiz
@@ -369,6 +373,8 @@
 					obj.xiangmmc=xiangmmc;
 					obj.checked=1;
 					obj.beizhu=beizhu;
+					obj.danj=danj;
+					obj.chongmm=chongmm;
 					obj_arr.push(obj);
 				});
 				return obj_arr;
@@ -381,6 +387,7 @@
 					var recid=$(item).siblings('input.recid').val();//获取recid
 					var yangpsl=$(item).parent().siblings('div.shul').find('input.shuliang').val()-0;//获取样品数量
 					var danj=$(item).siblings('label').find('span.jiage').text()-0;//获取价格
+					var chongmm=$(item).siblings('label').find('span.cmm').text().trim();//获取重命名
 					var xiangmmc=$(item).siblings('label').find('span.xmmc').text().trim();//获取项目名称
 					var feiyxj=yangpsl*danj;
 					var beizhu=$(item).siblings('input.beiz').val();//获取beiz					
@@ -388,6 +395,8 @@
 					obj.feiyxj=feiyxj;
 					obj.recid=recid;
 					obj.yangpsl=yangpsl;
+					obj.danj=danj;
+					obj.chongmm=chongmm;
 					obj.xiangmmc=xiangmmc;
 					if($(this).is(':checked')){
 						obj.checked=1;
@@ -407,6 +416,7 @@
 					var recid=$(item).siblings('input.recid').val();//获取recid
 					var yangpsl=$(item).parent().siblings('div.shul').find('input.shuliang').val()-0;//获取样品数量
 					var danj=$(item).siblings('label').find('span.jiage').text()-0;//获取价格
+					var chongmm=$(item).siblings('label').find('span.cmm').text().trim();//获取重命名
 					var xiangmmc=$(item).siblings('label').find('span.xmmc').text().trim();//获取项目名称
 					var feiyxj=yangpsl*danj;
 					var beizhu=$(item).siblings('input.beiz').val();//获取beiz
@@ -414,6 +424,8 @@
 					obj.feiyxj=feiyxj;
 					obj.recid=recid;
 					obj.yangpsl=yangpsl;
+					obj.danj=danj;
+					obj.chongmm=chongmm;
 					obj.xiangmmc=xiangmmc;
 					if($(this).is(':checked')){
 						obj.checked=1;
