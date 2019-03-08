@@ -29,12 +29,12 @@
 							<div class="item">
 								<p>
 									<% if (info[i].checked == '0') { %>
-										<input type="checkbox" class="check" id="jichu<%=i%>" name="<%=info[i].feiyxj%>">
+										<input type="checkbox" class="check" id="jichu<%=i%>" name="<%=info[i].danj%>">
 									<% } %>
 									<% if (info[i].checked == '1') { %>
-										<input type="checkbox" class="check" id="jichu<%=i%>" checked="checked" name="<%=info[i].feiyxj%>">
+										<input type="checkbox" class="check" id="jichu<%=i%>" checked="checked" name="<%=info[i].danj%>">
 									<% } %>
-									<span><%=info[i].xiangmmc%></span><span  class="danjia"><%=info[i].feiyxj%></span>元/样
+									<span><%=info[i].xiangmmc%></span><span  class="danjia"><%=info[i].danj%></span>元/<%=info[i].chongmm%>
 								</p>
 								<% if(info[i].yangpsl != '0'){%>
 									<p>样品数量<input type="" name="" id="" value="<%=info[i].yangpsl%>" class="int" />小计:<span class="xiaoji"></span></p>
@@ -52,12 +52,12 @@
 							<div class="item">
 								<p>   
 									<% if (info[i].checked == '0') { %>
-										<input type="checkbox" class="check" id="qita<%=i%>" name="<%=info[i].feiyxj%>">
+										<input type="checkbox" class="check" id="qita<%=i%>" name="<%=info[i].danj%>">
 									<% } %>
 									<% if (info[i].checked == '1') { %>
-										<input type="checkbox" class="check" id="qita<%=i%>" checked="checked" name="<%=info[i].feiyxj%>">
+										<input type="checkbox" class="check" id="qita<%=i%>" checked="checked" name="<%=info[i].danj%>">
 									<% } %>
-									<span><%=info[i].xiangmmc%></span><span class="danjia"><%=info[i].feiyxj%></span>元/样
+									<span><%=info[i].xiangmmc%></span><span class="danjia"><%=info[i].danj%></span>元/<%=info[i].chongmm%>
 								</p>
 								<% if(info[i].yangpsl != '0'){%>
 									<p>样品数量<input type="" name="" id="" value="<%=info[i].yangpsl%>" class="int" />小计:<span class="xiaoji"></span></p>
