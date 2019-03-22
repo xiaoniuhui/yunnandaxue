@@ -18,11 +18,11 @@
 			<div class="item">
 				<div class="top">
 					<img src="../../image/dayi.png" alt="">
-					<span>大型仪器共享平台</span>
+					<span>用户角色</span>
 				</div>
 				<div class="role dy"></div>
 			</div>
-			<div class="item">
+			<!-- <div class="item">
 				<div class="top">
 					<img src="../../image/zichan.png" alt="">
 					<span>资产</span>
@@ -31,7 +31,7 @@
 					<div class="list">平台管理员</div>
 					<div class="list">管理员</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</body>
 	<script type="text/javascript" src="../../js/mui.min.js"></script>
@@ -43,20 +43,17 @@
 			mui.plusReady(function() {
 			});
 			var dy_roles=JSON.parse(localStorage.dy_roles||"{}");
-			var mh_roles=JSON.parse(localStorage.mh_roles||"{}");
-			console.log(localStorage.dy_roles)
-			console.log(localStorage.mh_roles)
-			
+			// var mh_roles=JSON.parse(localStorage.mh_roles||"{}");
 			var dy_html="";
 			for(var i=0,l=dy_roles.length;i<l;i++){
 				dy_html+='<div class="list">'+dy_roles[i].title+'</div>';
 			}
 			$('.dy').html(dy_html);
-			var mh_html="";
-			for(var i=0,l=mh_roles.length;i<l;i++){
-				mh_html+='<div class="list">'+mh_roles[i].title+'</div>';
-			}
-			$('.mh').html(mh_html);
+// 			var mh_html="";
+// 			for(var i=0,l=mh_roles.length;i<l;i++){
+// 				mh_html+='<div class="list">'+mh_roles[i].title+'</div>';
+// 			}
+// 			$('.mh').html(mh_html);
 		});
 		
 		
