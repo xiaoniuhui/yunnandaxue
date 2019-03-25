@@ -166,14 +166,12 @@
 			
 			//新闻列表打开对应详情
 			$('.newscont').on('click','.newsbox',function(){
-				var recid=$(this).attr('data-recid');
-				var newstitle=$(this).children('.newstitle').text();
-				var newstime=$(this).children('.newstime').text();	
 				var index = $(this).index()-1; 
 				var wendnr=$('.contents').eq(index).val();  
+				var newstitle=$('.newstitle').eq(index).text();				
+				var newstime=$('.newstime').eq(index).text();
 				mui.openWindow({ 
 					url: "../business/newsDetail.html",
-					id: '', 
 					styles: {
 						popGesture: 'close',
 						scrollIndicator: "none"
@@ -182,7 +180,6 @@
 						autoShow: false
 					},
 					extras: {
-						recid:recid,
 						newstitle:newstitle,
 						newstime:newstime,
 						wendnr:wendnr
