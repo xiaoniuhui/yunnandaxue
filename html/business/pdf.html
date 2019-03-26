@@ -21,7 +21,9 @@
     <div id="app"></div>
     <script src="./pdfobject.js"></script>
     <script>
-		var pdfhref=location.search;
+		//var pdfhref=location.search;
+		var pdfhref=location.search.substring(5);
+		console.log(pdfhref)
         var options = {pdfOpenParams: { scrollbars: '0', toolbar: '0', statusbar: '0'}};
 		PDFObject.embed(pdfhref,"#app",options);
     </script>

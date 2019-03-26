@@ -39,6 +39,7 @@
 				-webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.5);
 				box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.5);
 			}
+			*{ touch-action: none; }
 		</style>
 	</head>
 	<body style="background-color: #000000;">
@@ -101,8 +102,9 @@
 						break;
 					}
 					result = result.replace(/\n/g, '');
-					back();//关闭扫描页面,按返回键后直接返回到功能页面
-					handleReslut(type,result);
+					result = result.trim().substring(0,12).trim().indexOf(':')>0?result.split(';')[0].split(':')[1]:result.trim().substring(0,12).trim();
+					//back();//关闭扫描页面,按返回键后直接返回到功能页面
+					handleReslut(type,result);					
 				}
 				// 从相册中选择二维码图片 
 				function scanPicture() {
@@ -115,8 +117,7 @@
 					});
 				}
 				//扫码跳转
-				function handleReslut(type, result) {
-					var result = result.split(';')[0].split(':')[1];
+				function handleReslut(type, result) {					
 					mui.openWindow({
 						url: '../business/saomacha.html',
 						styles: {
@@ -129,7 +130,10 @@
 						extras: {
 							result: result
 						}
-					});			
+					});
+					setTimeout(function() {  
+						plus.webview.currentWebview().close('none');  
+                    }, 300);			
 				}
 		</script>
 	</body>

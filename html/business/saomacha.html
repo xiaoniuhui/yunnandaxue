@@ -37,7 +37,6 @@
 			mui.plusReady(function() {
 				var ws=plus.webview.currentWebview();
 				var result=ws.result;//扫码传过来的信息
-				mui.toast(result)
 				$.ajax({
 					type:'get',
 					url:url_mh+'/jqzw/server',
