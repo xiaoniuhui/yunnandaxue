@@ -22,7 +22,7 @@
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" charset="utf-8">
-			var url=localStorage.url;//获取全局设置的url地址
+			
 			mui.init();
 			mui.plusReady(function() {
 				var self = plus.webview.currentWebview();
@@ -31,6 +31,27 @@
 				$('.newstitle').text(newstitle);
 				$('.createTime').text(newstime);
 				$('.cont').html(self.wendnr);
+				//点击a标签下载pdf预览
+				mui(".cont").on("tap", "a", function() {
+					var href=$(this).attr('href');
+					downFile(href)									
+			    })
+				function downFile(url){
+					plus.nativeUI.showWaiting('正在下载文件...');
+					var wgtOption = { filename: "_downloads/", retry: 1 };
+					var dtask =plus.downloader.createDownload(url, wgtOption, function (d, status) {						
+						if (status == 200) {							
+							var fileUrl = d.filename;
+							plus.runtime.openFile(fileUrl, {}, function(e) {
+							});                  
+						}else{
+							mui.alert("下载文件失败，请稍后重试" + status);							
+						}
+						plus.nativeUI.closeWaiting();
+					})
+					dtask.start();
+				}
+				
 			});						
 		</script>
 	</body>
